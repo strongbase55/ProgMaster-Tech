@@ -787,20 +787,22 @@
             var currentUrl = window.location.href;
 
             // Define the base URL and the maximum day number
-            var baseUrl = "https://progmaster-tech.in/python-day-1-assignment.html";
-            var maxDayNumber = 1;
+            var baseUrl = "https://progmaster-tech.in/python-day-";
+            var maxDayNumber = 30;
 
-            // Loop through day numbers
-            for (var i = 1; i <= maxDayNumber; i++) {
-                // Create the URL for each day
-                var dayUrl = baseUrl + i + ".html";
+            // Extract the day number from the current URL
+            var match = currentUrl.match(/python-day-(\d+)-assignment\.html/);
+            var currentDayNumber = match ? parseInt(match[1]) : null;
 
-                // If the current URL matches any of the day URLs, prevent navigation
-                if (currentUrl === dayUrl) {
-                    alert("Navigation to this page is disabled.");
-                    window.location.href = "https://progmaster-tech.in"; // Redirect to a different page
-                    break; // Exit the loop
+            // If the current URL is valid and the day number is within the allowed range
+            if (currentDayNumber && currentDayNumber <= maxDayNumber) {
+                // If the current day is not day 1, redirect to day 1
+                if (currentDayNumber !== 1) {
+                    window.location.href = baseUrl + "1-assignment.html";
                 }
+            } else {
+                // Redirect to a default URL if the current URL is invalid
+                window.location.href = "https://progmaster-tech.in/python-day-1-assignment.html";
             }
         });
     </script>
