@@ -783,20 +783,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Get the current URL
-            var currentUrl = window.location.href;
+            // Check if the user is allowed to access this day's assignment
+            const allowedDays = ["day-1", "day-2", "day-3"]; // Define allowed days
+            const currentPage = location.pathname.split("/").pop().split(".")[0]; // Get current page name
 
-            // Define the base URL for day assignments
-            var baseUrl = "https://progmaster-tech.in/python-day-";
-            var dayAssignmentUrl = baseUrl + "1-assignment.html";
-
-            // Extract the day number from the current URL
-            var match = currentUrl.match(/python-day-(\d+)-assignment\.html/);
-            var currentDayNumber = match ? parseInt(match[1]) : null;
-
-            // If the current URL corresponds to day 2 or beyond, or if the day number is not present or invalid, redirect to day 1
-            if (!currentDayNumber || currentDayNumber > 1) {
-                window.location.href = dayAssignmentUrl;
+            if (!allowedDays.includes(currentPage)) {
+                // If the user is not allowed, redirect back to python.html
+                window.location.href = "python.html";
             }
         });
     </script>
