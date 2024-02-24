@@ -18,14 +18,31 @@
 <body>
     <header class="header" data-header>
         <div class="container">
+
             <a href="#" class="logo">
                 <img src="./assets/images/logo.svg" width="32" height="32" alt="Cryptex logo"> ProgMaster
             </a>
+
             <nav class="navbar" data-navbar>
                 <ul class="navbar-list">
+
                     <li class="navbar-item">
                         <a href="#" class="navbar-link active" data-nav-link>Homepage</a>
                     </li>
+
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Certificates</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Assignments</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Forum</a>
+                    </li>
+
 
                 </ul>
             </nav>
@@ -41,8 +58,8 @@
     </header>
     <div class="assignment-card" id="assignmentCard">
         <nav class="navbar1" data-navbar>
-            <ul class="navbar-list">
-                <li class="navbar-item">
+            <ul class="navbar-list1">
+                <li class="navbar-item1">
                     <a href="#" class="navbar-link" id="week1" data-nav-link>Week-1 Assignments</a>
                     <ul class="days-list">
                         <li><a href="#">Day-1 Assignment</a></li>
@@ -477,8 +494,220 @@
     </ul>
 
 
+    <!-- python content -->
+    <div class="python-content">
+        <div class="python-card">
+            <h1>
+                <day>Day 1:</day> Introduction to Python</h1>
+
+            <h2>What is Python?</h2>
+            <p>Python is a popular programming language known for its simplicity and versatility. It's widely used in various fields such as <span class="highlight">web development</span>, <span class="highlight">data analysis</span>, and <span class="highlight">automation</span>.</p>
+
+            <h2>Why Python?</h2>
+            <ul>
+                <li><strong>Easy to Learn:</strong> Python has a straightforward syntax, making it <span class="highlight">beginner-friendly</span>.</li>
+                <li><strong>Versatile:</strong> It can be used for a wide range of applications.</li>
+                <li><strong>Large Community:</strong> Python has a large community of developers, which means extensive support and resources are available.</li>
+            </ul>
+
+            <h2>Getting Started</h2>
+            <ol>
+                <li><strong>Download Python:</strong> Go to the <a href="https://www.python.org/downloads/">official Python website</a> and download the latest version for your operating system.</li>
+                <li><strong>Installation:</strong> Run the downloaded installer and follow the on-screen instructions. Make sure to check the option to add Python to the PATH.</li>
+                <li><strong>Verify Installation:</strong> Open a terminal or command prompt and type <code>python --version</code> to verify that Python is installed correctly.</li>
+            </ol>
+
+            <h2>Your First Python Program</h2>
+            <p>Let's write a simple "<span class="highlight">Hello, World!</span>" program to get started:</p>
+            <pre><code>print("Hello, World!")</code></pre>
+
+            <p>Save this code in a file with a <code>.py</code> extension, such as <code>hello.py</code>. Then, open a terminal or command prompt, navigate to the directory containing the file, and run <code>python hello.py</code>. You should see the output:
+                <code>Hello, World!</code>.</p>
+
+            <h2>Conclusion</h2>
+            <p>You've taken your first step into the world of Python! In the upcoming days, we'll explore more about Python programming and its various applications.</p>
+        </div>
+
+        <!-- day 2 content -->
 
 
+        <div class="python-card">
+            <h1>
+                <day>Day 2:</day> Data Types in Python</h1>
+
+            <h2>Introduction</h2>
+            <p>In Python, data types represent the various kinds of data that can be used and manipulated in a program. Understanding data types is fundamental to programming as it allows you to work with different kinds of data effectively.</p>
+
+            <h2>Common Data Types</h2>
+            <p>Python supports several built-in data types, including:</p>
+            <ul>
+                <li><strong>Integer:</strong> Represents whole numbers, e.g., 5, -10, 100.</li>
+                <li><strong>Float:</strong> Represents floating-point numbers, e.g., 3.14, -0.5, 2.0.</li>
+                <li><strong>String:</strong> Represents a sequence of characters, enclosed in single or double quotes, e.g., 'hello', "world".</li>
+                <li><strong>List:</strong> Represents an ordered collection of items, enclosed in square brackets, e.g., [1, 2, 3, 4].</li>
+                <li><strong>Tuple:</strong> Similar to a list but immutable (cannot be modified after creation), enclosed in parentheses, e.g., (1, 2, 3).</li>
+                <li><strong>Dictionary:</strong> Represents a collection of key-value pairs, enclosed in curly braces, e.g., {'name': 'John', 'age': 30}.</li>
+                <li><strong>Boolean:</strong> Represents True or False values, used for logical operations.</li>
+                <li><strong>None:</strong> Represents the absence of a value or a null value.</li>
+            </ul>
+
+            <h2>Example Usage</h2>
+            <p>Let's explore some examples of using these data types:</p>
+            <pre><code># Integer
+  age = 25
+  
+  # Float
+  pi = 3.14
+  
+  # String
+  name = 'Alice'
+  
+  # List
+  numbers = [1, 2, 3, 4, 5]
+  
+  # Tuple
+  coordinates = (10, 20)
+  
+  # Dictionary
+  person = {'name': 'John', 'age': 30}
+  
+  # Boolean
+  is_valid = True
+  
+  # None
+  value = None
+  </code></pre>
+
+            <h2>Conclusion</h2>
+            <p>Understanding data types is essential for writing efficient and error-free Python programs. In the upcoming days, we'll delve deeper into each data type and explore their functionalities further.</p>
+        </div>
+
+        <!-- day 3 -->
+
+        <div class="python-card">
+            <h1>
+                <day>Day-3 :</day> Control Structures in Python</h1>
+
+
+
+
+            <h2>If Statement</h2>
+            <p>The if statement in Python is used for decision-making. It evaluates a condition and executes a block of code if the condition is true.</p>
+            <pre><code class="python">
+        num = 10
+        
+        if num > 0:
+            print("Positive")
+            </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Positive</p>
+            </div>
+
+            <h2>Elif Statement</h2>
+            <p>The elif statement allows you to check multiple conditions after the initial if statement.</p>
+            <pre><code class="python">
+        num = 0
+        
+        if num > 0:
+            print("Positive")
+        elif num == 0:
+            print("Zero")
+            </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Zero</p>
+            </div>
+
+            <h2>If-elif-else Statements</h2>
+            <p>The if-elif-else statement in Python allows you to execute different blocks of code based on the conditions.</p>
+            <pre><code class="python">
+    num = 10
+    
+    if num > 0:
+        print("Positive")
+    elif num == 0:
+        print("Zero")
+    else:
+        print("Negative")
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Positive</p>
+            </div>
+
+            <h2>Nested If-else Statements</h2>
+            <p>You can nest if-else statements within each other to handle more complex conditions.</p>
+            <pre><code class="python">
+    num = 10
+    
+    if num > 0:
+        if num % 2 == 0:
+            print("Positive and Even")
+        else:
+            print("Positive and Odd")
+    else:
+        print("Negative")
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Positive and Even</p>
+            </div>
+
+
+            <h2>Switch-Case (Simulated with Dictionary)</h2>
+            <p>Python does not have a built-in switch statement, but you can simulate its behavior using dictionaries.</p>
+            <pre><code class="python">
+        def case_one():
+            return "This is case one"
+        
+        def case_two():
+            return "This is case two"
+        
+        def case_default():
+            return "This is the default case"
+        
+        switch = {
+            1: case_one,
+            2: case_two
+        }
+        
+        result = switch.get(2, case_default)()
+        print(result)
+            </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>This is case two</p>
+            </div>
+
+            <h2>For Loop</h2>
+            <p>The for loop in Python is used to iterate over a sequence (list, tuple, string) or other iterable objects.</p>
+            <pre><code class="python">
+    fruits = ["apple", "banana", "cherry"]
+    
+    for fruit in fruits:
+        print(fruit)
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>apple<br>banana<br>cherry</p>
+            </div>
+
+            <h2>While Loop</h2>
+            <p>The while loop in Python executes a block of code as long as the specified condition is true.</p>
+            <pre><code class="python">
+    i = 1
+    
+    while i < 5:
+        print(i)
+        i += 1
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>1<br>2<br>3<br>4</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Assignments Script -->
 

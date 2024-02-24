@@ -6,6 +6,7 @@
 
 ::-webkit-scrollbar {
     width: 0px;
+    scroll-behavior: smooth;
 }
 
 .ass-img {
@@ -13,25 +14,86 @@
     width: 50px;
 }
 
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding-block: 15px;
+    z-index: 4;
+    color: black;
+}
+
+.header.active {
+    position: fixed;
+    top: -85px;
+    background-color: white;
+}
+
+@media(max-width:768px) {
+    .header.active {
+        top: -66px;
+    }
+}
+
+.navbar-link {
+    color: rgb(61, 151, 176);
+    font-weight: 1000;
+    padding: 12px 30px;
+    transition: var(--transition-1);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.navbar-link:is(:hover, :focus, .active) {
+    color: white;
+    text-decoration: none;
+}
+
+.logo {
+    color: rgb(61, 151, 176);
+    font-size: 2.5rem;
+    font-weight: 1000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.nav-toggle-btn .line {
+    width: 26px;
+    height: 3px;
+    background-color: rgb(61, 151, 176);
+    transition: var(--transition-1);
+}
+
 
 /* Responsive styles */
 
 .assignment-card {
     position: fixed;
-    background: pink;
+    background: rgb(51, 13, 71);
     float: right;
     right: 0px;
-    top: 5.5em;
+    top: 4.7em;
     padding: 10px;
-    min-height: 100vh;
     overflow-y: scroll;
     transition: 1s;
     display: none;
     z-index: 1;
+    max-height: 50vh;
+    max-width: 100%;
+}
+
+@media(max-width:768px) {
+    .assignment-card {
+        top: 5.5em;
+    }
 }
 
 .fa-book {
-    color: white;
+    color: rgb(61, 151, 176);
     font-size: 30px;
 }
 
@@ -48,7 +110,7 @@ a {
 }
 
 .assignment-card .navbar-link {
-    color: #41054e;
+    color: #fff;
     text-decoration: none;
     transition: .5s;
     font-size: 18px;
@@ -75,12 +137,110 @@ a {
 }
 
 .days-list a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     transition: .5s;
     font-weight: bolder;
+    font-size: 16px;
 }
 
 .days-list a:hover {
     color: #007bff;
+}
+
+
+/* Python content styles */
+
+p,
+li {
+    text-align: justify;
+}
+
+.python-content {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 40px;
+    margin-top: 15em;
+}
+
+.python-card {
+    max-width: 90%;
+    min-height: 100vh;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+}
+
+@media (max-width:768px) {
+    .python-card {
+        max-width: 97%;
+    }
+}
+
+.python-card h1 {
+    font-size: 50px;
+    color: #007bff;
+    text-align: left;
+    margin-bottom: 2em;
+    animation: title .9s infinite;
+    line-height: 70px;
+}
+
+
+/* @keyframes title {
+    from {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1.09);
+    }
+} */
+
+day {
+    color: springgreen;
+    background: #000;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.python-card h2 {
+    color: #009688;
+    font-size: 30px;
+}
+
+.python-card .highlight {
+    background-color: #576d62;
+    max-width: fit-content;
+    padding: 0px 3px;
+    border-radius: 3px;
+    position: relative;
+    display: inline;
+    /* Ensure text stays on the same line */
+}
+
+.python-card pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.python-card code {
+    color: #e83e8c;
+    font-size: 18px;
+}
+
+.python-card p {
+    line-height: 1.6;
+    font-size: 20px;
+}
+
+.python-card li {
+    font-size: 20px;
 }

@@ -407,6 +407,7 @@ body.active {
     font-weight: var(--fw-700);
     padding: 12px 30px;
     transition: var(--transition-1);
+    font-size: 20px;
 }
 
 .navbar-link:is(:hover, :focus, .active) {
