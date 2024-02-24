@@ -1296,7 +1296,7 @@ body {
 
 @media(max-width:768px) {
     .contact-container {
-        min-width: 350px;
+        min-width: 400px;
     }
     .contact-holding {
         flex-direction: column;
