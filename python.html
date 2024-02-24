@@ -794,8 +794,8 @@
             var match = currentUrl.match(/python-day-(\d+)-assignment\.html/);
             var currentDayNumber = match ? parseInt(match[1]) : null;
 
-            // If the current URL corresponds to day 2 or beyond, redirect to day 1
-            if (currentDayNumber && currentDayNumber >= 2) {
+            // If the current URL corresponds to day 2 or beyond, or if the day number is not present or invalid, redirect to day 1
+            if (!currentDayNumber || currentDayNumber >= 2) {
                 window.location.href = dayAssignmentUrl;
             }
         });
