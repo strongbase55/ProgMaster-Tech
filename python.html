@@ -795,7 +795,7 @@
             var currentDayNumber = match ? parseInt(match[1]) : null;
 
             // If the current URL corresponds to day 2 or beyond, or if the day number is not present or invalid, redirect to day 1
-            if (!currentDayNumber || currentDayNumber >= 2) {
+            if (!currentDayNumber || currentDayNumber > 1) {
                 window.location.href = dayAssignmentUrl;
             }
         });
