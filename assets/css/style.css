@@ -1252,3 +1252,90 @@ a:hover {
         max-width: 100%;
     }
 }
+
+
+/* footer section design */
+
+.footer {
+    background: #000;
+    color: #fff;
+    padding: 50px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer-section {
+    max-width: 30%;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    background: #000;
+    text-align: left;
+}
+
+.footer-logo img {
+    height: 100px;
+    width: 100px;
+}
+
+@media(max-width:768px) {
+    .footer {
+        flex-direction: column;
+        row-gap: 2em;
+    }
+    #logo-section {
+        flex-direction: column;
+    }
+    .footer-section {
+        min-width: 100%;
+        align-items: start;
+    }
+    .footer-logo img {
+        height: 150px;
+        width: 150px;
+    }
+}
+
+.footer-info {
+    text-align: left;
+}
+
+.footer-info h3 {
+    text-align: left;
+    font-size: 30px;
+}
+
+.footer-info ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.footer-info ul li {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.footer-info p a {
+    color: #fff;
+}
+
+.footer-address p {
+    margin-bottom: 10px;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 24px;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #007bff;
+}
