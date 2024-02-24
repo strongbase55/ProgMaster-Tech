@@ -3,12 +3,135 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ProgMaster Edu Hub</title>
+    <link rel="shortcut icon" href="https://progmaster.in/logo-homepage.png" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Link to Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assignment.css">
 </head>
 
 <body>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque sed maxime aliquam doloremque non ea placeat praesentium quis tempora est magni, quisquam eum dicta obcaecati repudiandae porro? Perspiciatis, quae officiis?
+    <header class="header" data-header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="./assets/images/logo.svg" width="32" height="32" alt="Cryptex logo"> ProgMaster
+            </a>
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link active" data-nav-link>Homepage</a>
+                    </li>
+
+                </ul>
+            </nav>
+            <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+            <!-- Use Font Awesome icon for the book -->
+            <!-- HTML -->
+            <button class="ass-btn" id="assignmentIcon" onclick="Assignment()"><i class="fa fa-book"></i></button>
+        </div>
+    </header>
+    <div class="assignment-card" id="assignmentCard">
+        <nav class="navbar1" data-navbar>
+            <ul class="navbar-list">
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" id="week1" data-nav-link>Week-1 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                        <!-- Add more days if needed -->
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" id="week2" data-nav-link>Week-2 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                        <!-- Add more days if needed -->
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" data-nav-link>Week-3 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                        <!-- Add more days if needed -->
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" data-nav-link>Week-4 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                        <!-- Add more days if needed -->
+                    </ul>
+                </li>
+                <!-- Repeat for other weeks -->
+            </ul>
+        </nav>
+    </div>
+
+
+    <!-- Assignments  -->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navbarLinks = document.querySelectorAll('.navbar-link');
+
+            navbarLinks.forEach(function(navbarLink) {
+                navbarLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var daysList = this.nextElementSibling;
+                    if (daysList.style.display === "block") {
+                        daysList.style.display = "none";
+                    } else {
+                        daysList.style.display = "block";
+                    }
+
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function Assignment() {
+            var assignmentCard = document.getElementById("assignmentCard");
+            // Toggle the display property of the assignment card
+            if (assignmentCard.style.display === "block") {
+                assignmentCard.style.display = "none"; // Hide the assignment card
+            } else {
+                assignmentCard.style.display = "block"; // Show the assignment card
+            }
+        }
+    </script>
+
+
+    <script src="assets/js/script.js"></script>
+
 </body>
 
 </html>

@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.ass-img {
+    height: 50px;
+    width: 50px;
+}
+
+
+/* Responsive styles */
+
+.assignment-card {
+    position: absolute;
+    background: pink;
+    float: right;
+    right: 0px;
+    top: 4em;
+    padding: 10px;
+    min-height: 100vh;
+    overflow-y: scroll;
+    transition: 1s;
+    display: none;
+    z-index: 10;
+}
+
+.fa-book {
+    color: white;
+    font-size: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* Styles for the week assignment links */
+
+.assignment-card .navbar-item {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.assignment-card .navbar-link {
+    color: #41054e;
+    text-decoration: none;
+    transition: .5s;
+    font-size: 18px;
+}
+
+.navbar1 .navbar-list {
+    display: block;
+}
+
+
+/* Styles for the days list */
+
+.assignment-card .days-list {
+    list-style-type: none;
+    padding: 0;
+    display: none;
+    transition: 1s;
+    /* Initially hide the days list */
+}
+
+.days-list li {
+    margin-bottom: 5px;
+    transition: 1s;
+}
+
+.days-list a {
+    color: #333;
+    text-decoration: none;
+    transition: .5s;
+    font-weight: bolder;
+}
+
+.days-list a:hover {
+    color: #007bff;
+}
