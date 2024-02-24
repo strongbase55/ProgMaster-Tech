@@ -17,17 +17,17 @@
 /* Responsive styles */
 
 .assignment-card {
-    position: absolute;
+    position: fixed;
     background: pink;
     float: right;
     right: 0px;
-    top: 4em;
+    top: 5.5em;
     padding: 10px;
     min-height: 100vh;
     overflow-y: scroll;
     transition: 1s;
     display: none;
-    z-index: 10;
+    z-index: 1;
 }
 
 .fa-book {
