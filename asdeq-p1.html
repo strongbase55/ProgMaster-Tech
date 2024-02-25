@@ -60,6 +60,12 @@
             padding: 20px;
         }
         
+        @media(max-width:768px) {
+            .ass-container {
+                margin-top: 1em;
+            }
+        }
+        
         .ass-card {
             /* background-color: #f0f0f0; */
             border-radius: 8px;
@@ -89,11 +95,58 @@
             border: none;
             cursor: pointer;
         }
+        /* submit button */
+        
+        #submit {
+            background: #000;
+            color: white;
+        }
+        
+        #submit:hover {
+            background: aqua;
+        }
         
         @media (max-width: 768px) {
             .ass-card {
                 max-width: 100%;
             }
+        }
+        /*themes */
+        /* Theme Selector Styles */
+        
+        .theme-selector-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: #16495b;
+            /* background-color: rgba(255, 255, 255, 0.8); */
+            /* Semi-transparent white background */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Shadow effect */
+        }
+        
+        .theme-selector-container label {
+            font-weight: bold;
+            color: white;
+        }
+        /* Make the dropdown responsive */
+        
+        @media (max-width: 768px) {
+            .theme-selector-container {
+                position: fixed;
+                top: 0px;
+                right: 0;
+                width: 100%;
+                text-align: center;
+                border-radius: 0;
+            }
+        }
+        
+        option {
+            outline: none;
         }
     </style>
 </head>
@@ -124,7 +177,15 @@
             </form>
         </div>
     </div>
-
+    <div class="theme-selector-container">
+        <label for="theme-selector">Select Theme:</label>
+        <select id="theme-selector" onchange="changeTheme()">
+            <option value="default">Default</option>
+            <option value="black">Black</option>
+            <option value="pink">Pink</option>
+            <!-- Add more color options here -->
+        </select>
+    </div>
     <script src="Google Sheet.js"></script>
 
 
@@ -148,6 +209,35 @@
     </script>
 
 
+
+    <!-- themese js -->
+    <script>
+        function changeTheme() {
+            var themeSelector = document.getElementById("theme-selector");
+            var selectedTheme = themeSelector.value;
+
+            // Define theme colors
+            var themeColors = {
+                "default": {
+                    "background": "#ffffff",
+                    "text": "#000000"
+                },
+                "black": {
+                    "background": "#000000",
+                    "text": "#ffffff"
+                },
+                "pink": {
+                    "background": "#ff69b4",
+                    "text": "#ffffff"
+                }
+                // Add more theme colors here
+            };
+
+            // Apply selected theme to the page
+            document.body.style.backgroundColor = themeColors[selectedTheme].background;
+            document.body.style.color = themeColors[selectedTheme].text;
+        }
+    </script>
 
 </body>
 
