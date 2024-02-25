@@ -81,7 +81,7 @@ body {
     border-radius: 5px;
     font-weight: 600;
     text-align: left;
-    color: white;
+    color: black;
     transition: .5s ease-out;
 }
 
@@ -178,7 +178,7 @@ body {
 .time {
     display: inline-block;
     padding: 4px 6px;
-    background: rgb(248, 248, 248);
+    background: rgb(94, 19, 129);
 }
 
 .desc {
@@ -213,7 +213,7 @@ body {
         text-align: center;
     }
     .flag {
-        background: rgb(255, 255, 255);
+        background: rgb(47, 9, 80);
         /* z-index: 15; */
     }
     .direction-l .flag:before,
@@ -226,7 +226,7 @@ body {
         width: 12px;
         height: 12px;
         margin-left: -9px;
-        background: #fff;
+        background: #000000;
         border-radius: 10px;
         border: 4px solid rgb(255, 80, 80);
         /* z-index: 10; */
