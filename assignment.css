@@ -192,6 +192,12 @@ li {
     line-height: 70px;
 }
 
+@media(max-width:768px) {
+    .python-card h1 {
+        font-size: 40;
+    }
+}
+
 
 /* @keyframes title {
     from {
