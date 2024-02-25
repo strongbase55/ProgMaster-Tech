@@ -727,6 +727,22 @@ body {
 }
 
 
+/* nptel section design */
+
+.nptel-section {
+    min-height: 30vh;
+    max-width: 100%;
+}
+
+.nptel-links {
+    min-height: 30vh;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* Intership offer letter styles------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
 #countdown {
