@@ -496,7 +496,7 @@
         <li>
             <div class="direction-r">
                 <div class="flag-wrapper">
-                    <span class="flag" style="background:Yellow;">END</span>
+                    <span class="flag" style="background:Yellow;color: black;">END</span>
                 </div>
             </div>
         </li>
@@ -768,7 +768,7 @@
             flags.forEach(flag => flag.classList.remove('unlocked'));
 
             // Unlock flags one by one as needed
-            unlockFlag(document.getElementById('day-2-flag'));
+            unlockFlag(document.getElementById('day-1-flag'));
 
             function unlockFlag(flag) {
                 flag.classList.add('unlocked');
@@ -780,7 +780,7 @@
         });
     </script>
 
-
+    <script src="assets\js\script.js"></script>
 </body>
 
 </html>
