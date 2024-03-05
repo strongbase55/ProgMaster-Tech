@@ -1,0 +1,2493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Edu Hub</title>
+    <link rel="shortcut icon" href="https://progmaster.in/logo-homepage.png" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Link to Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assignment.css">
+    <link rel="stylesheet" href="roadmap.css">
+
+
+    <style>
+        .direction-l .flag:before,
+        .direction-r .flag:before {
+            color: green;
+            /* Change color to green */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" data-header>
+        <div class="container">
+
+            <a href="#" class="logo">
+                <img src="./assets/images/logo.svg" width="32" height="32" alt="Cryptex logo"> ProgMaster
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link active" data-nav-link>Homepage</a>
+                    </li>
+
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Certificates</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Assignments</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Forum</a>
+                    </li>
+
+
+                </ul>
+            </nav>
+            <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+            <!-- Use Font Awesome icon for the book -->
+            <!-- HTML -->
+            <!-- <button class="ass-btn" id="assignmentIcon" onclick="Assignment()"><i class="fa fa-book"></i></button> -->
+        </div>
+    </header>
+    <!-- <div class="assignment-card" id="assignmentCard">
+        <nav class="navbar1" data-navbar>
+            <ul class="navbar-list1">
+                <li class="navbar-item1">
+                    <a href="#" class="navbar-link" id="week1" data-nav-link>Week-1 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" id="week2" data-nav-link>Week-2 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" data-nav-link>Week-3 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" data-nav-link>Week-4 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div> -->
+
+
+    <!-- The Timeline -->
+    <ul class="timeline">
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag" style="background:Yellow;color: black;">START</span>
+                    <!-- Add specific time or details if needed -->
+                </div>
+
+            </div>
+        </li>
+        <!-- Day 1 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper" id="day-1-flag">
+                    <span class="flag" style="background: red;">Day 1</span>
+                </div>
+                <div class="desc">
+                    <strong>Introduction to Python:</strong> Overview, installation, and setting up the environment.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 2 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper" id="day-2-flag">
+                    <span class="flag">Day 2</span>
+                </div>
+                <div class="desc">
+                    <strong>Data Types:</strong> Variables, numbers, strings, and basic operations.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 3 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper" id="day-3-flag">
+                    <span class="flag">Day 3</span>
+                </div>
+                <div class="desc">
+                    <strong>Control Structures:</strong> if-else statements and loops (for, while).
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 4 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper" id="day-4-flag">
+                    <span class="flag">Day 4</span>
+                </div>
+                <div class="desc">
+                    <strong>Functions:</strong> Defining functions, parameters, return values, and scope.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 5 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper" id="day-5-flag">
+                    <span class="flag">Day 5</span>
+                </div>
+                <div class="desc">
+                    <strong>Lists and Tuples:</strong> Creating lists and tuples, accessing elements, and list operations.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 6 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 6</span>
+                </div>
+                <div class="desc">
+                    <strong>Dictionaries:</strong> Creating dictionaries, accessing elements, and dictionary operations.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 7 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 7</span>
+                </div>
+                <div class="desc">
+                    <strong>Strings:</strong> String manipulation, methods, and formatting.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 8 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 8</span>
+                </div>
+                <div class="desc">
+                    <strong>File Handling:</strong> Reading from and writing to files.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 9 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 9</span>
+                </div>
+                <div class="desc">
+                    <strong>Exception Handling:</strong> Handling errors and exceptions in Python.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 10 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 10</span>
+                </div>
+                <div class="desc">
+                    <strong>Modules and Packages:</strong> Importing modules, creating packages, and using external libraries.
+                </div>
+            </div>
+        </li>
+        <!-- Day 11 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 11</span>
+                </div>
+                <div class="desc">
+                    <strong>Object-Oriented Programming (OOP):</strong> Classes, objects, inheritance, and polymorphism.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 12 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 12</span>
+                </div>
+                <div class="desc">
+                    <strong>Advanced OOP:</strong> Encapsulation, abstraction, class methods, and static methods.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 13 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 13</span>
+                </div>
+                <div class="desc">
+                    <strong>Exception Handling:</strong> Handling exceptions in detail, raising custom exceptions.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 14 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 14</span>
+                </div>
+                <div class="desc">
+                    <strong>Regular Expressions:</strong> Pattern matching and manipulation using regex.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 15 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 15</span>
+                </div>
+                <div class="desc">
+                    <strong>Modules and Packages:</strong> Creating and organizing larger projects, best practices.
+                </div>
+            </div>
+        </li>
+        <!-- Day 16 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 16</span>
+                </div>
+                <div class="desc">
+                    <strong>Web Development:</strong> Introduction to web frameworks like Flask or Django, creating web applications.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 17 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 17</span>
+                </div>
+                <div class="desc">
+                    <strong>Database Interaction:</strong> Using Python with databases like MySQL, SQLite, or MongoDB.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 18 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 18</span>
+                </div>
+                <div class="desc">
+                    <strong>Data Analysis:</strong> Introduction to libraries like Pandas, NumPy, and Matplotlib for data manipulation and visualization.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 19 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 19</span>
+                </div>
+                <div class="desc">
+                    <strong>Machine Learning:</strong> Basic concepts of machine learning with Python, using libraries like Scikit-learn.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 20 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 20</span>
+                </div>
+                <div class="desc">
+                    <strong>GUI Programming:</strong> Creating graphical user interfaces with libraries like Tkinter or PyQT.
+                </div>
+            </div>
+        </li>
+        <!-- Day 21 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 21</span>
+                </div>
+                <div class="desc">
+                    <strong>Deployment:</strong> Deploying Python applications to cloud platforms like Heroku or AWS.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 22 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 22</span>
+                </div>
+                <div class="desc">
+                    <strong>Testing and Debugging:</strong> Writing test cases, debugging techniques, and best practices.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 23 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 23</span>
+                </div>
+                <div class="desc">
+                    <strong>Performance Optimization:</strong> Improving the performance of Python code, profiling, and optimization techniques.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 24 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 24</span>
+                </div>
+                <div class="desc">
+                    <strong>Concurrency and Parallelism:</strong> Understanding concurrency models, threading, multiprocessing, and asynchronous programming.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 25 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 25</span>
+                </div>
+                <div class="desc">
+                    <strong>Pythonic Code:</strong> Writing idiomatic Python code, adhering to PEP guidelines, and using Pythonic patterns and constructs.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 26 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 26</span>
+                </div>
+                <div class="desc">
+                    <strong>Advanced Topics:</strong> Exploring advanced Python topics such as metaprogramming, decorators, context managers, and descriptors.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 27 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 27</span>
+                </div>
+                <div class="desc">
+                    <strong>Real-World Application Development:</strong> Building a practical application from scratch, incorporating various libraries and frameworks.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 28 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 28</span>
+                </div>
+                <div class="desc">
+                    <strong>Code Review and Refactoring:</strong> Learning the importance of code reviews, refactoring techniques, and code optimization.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 29 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 29</span>
+                </div>
+                <div class="desc">
+                    <strong>Documentation and Collaboration:</strong> Writing comprehensive documentation, collaborating with other developers using version control systems like Git.
+                </div>
+            </div>
+        </li>
+
+
+        <!-- Day 30 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 30</span>
+                </div>
+                <div class="desc">
+                    <strong>Capstone Project:</strong> Building a comprehensive Python project that integrates multiple concepts learned throughout the month.
+                </div>
+            </div>
+        </li>
+
+
+        <!-- End -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag" style="background:Yellow;color: black;">END</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+    <!-- python content -->
+    <div class="python-content">
+        <div class="python-card">
+            <h1>
+                <day>Day 1:</day> Introduction to Python</h1>
+
+            <h2>What is Python?</h2>
+            <p>Python is a popular programming language known for its simplicity and versatility. It's widely used in various fields such as <span class="highlight">web development</span>, <span class="highlight">data analysis</span>, and <span class="highlight">automation</span>.</p>
+
+            <h2>Why Python?</h2>
+            <ul>
+                <li><strong>Easy to Learn:</strong> Python has a straightforward syntax, making it <span class="highlight">beginner-friendly</span>.</li>
+                <li><strong>Versatile:</strong> It can be used for a wide range of applications.</li>
+                <li><strong>Large Community:</strong> Python has a large community of developers, which means extensive support and resources are available.</li>
+            </ul>
+
+            <h2>Getting Started</h2>
+            <ol>
+                <li><strong>Download Python:</strong> Go to the <a href="https://www.python.org/downloads/">official Python website</a> and download the latest version for your operating system.</li>
+                <li><strong>Installation:</strong> Run the downloaded installer and follow the on-screen instructions. Make sure to check the option to add Python to the PATH.</li>
+                <li><strong>Verify Installation:</strong> Open a terminal or command prompt and type <code>python --version</code> to verify that Python is installed correctly.</li>
+            </ol>
+
+            <h2>Your First Python Program</h2>
+            <p>Let's write a simple "<span class="highlight">Hello, World!</span>" program to get started:</p>
+            <pre><code>print("Hello, World!")</code></pre>
+
+            <p>Save this code in a file with a <code>.py</code> extension, such as <code>hello.py</code>. Then, open a terminal or command prompt, navigate to the directory containing the file, and run <code>python hello.py</code>. You should see the output:
+                <code>Hello, World!</code>.</p>
+
+            <h2>Conclusion</h2>
+            <p>You've taken your first step into the world of Python! In the upcoming days, we'll explore more about Python programming and its various applications.</p>
+        </div>
+
+        <!-- day 2 content -->
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 2:</day> Data Types in Python</h1>
+
+            <h2>Introduction</h2>
+            <p>In Python, data types represent the various kinds of data that can be used and manipulated in a program. Understanding data types is fundamental to programming as it allows you to work with different kinds of data effectively.</p>
+
+            <h2>Common Data Types</h2>
+            <p>Python supports several built-in data types, including:</p>
+            <ul>
+                <li><strong>Integer:</strong> Represents whole numbers, e.g., 5, -10, 100.</li>
+                <li><strong>Float:</strong> Represents floating-point numbers, e.g., 3.14, -0.5, 2.0.</li>
+                <li><strong>String:</strong> Represents a sequence of characters, enclosed in single or double quotes, e.g., 'hello', "world".</li>
+                <li><strong>List:</strong> Represents an ordered collection of items, enclosed in square brackets, e.g., [1, 2, 3, 4].</li>
+                <li><strong>Tuple:</strong> Similar to a list but immutable (cannot be modified after creation), enclosed in parentheses, e.g., (1, 2, 3).</li>
+                <li><strong>Dictionary:</strong> Represents a collection of key-value pairs, enclosed in curly braces, e.g., {'name': 'John', 'age': 30}.</li>
+                <li><strong>Boolean:</strong> Represents True or False values, used for logical operations.</li>
+                <li><strong>None:</strong> Represents the absence of a value or a null value.</li>
+            </ul>
+
+            <h2>Example Usage</h2>
+            <p>Let's explore some examples of using these data types:</p>
+            <pre><code># Integer
+  age = 25
+  
+  # Float
+  pi = 3.14
+  
+  # String
+  name = 'Alice'
+  
+  # List
+  numbers = [1, 2, 3, 4, 5]
+  
+  # Tuple
+  coordinates = (10, 20)
+  
+  # Dictionary
+  person = {'name': 'John', 'age': 30}
+  
+  # Boolean
+  is_valid = True
+  
+  # None
+  value = None
+  </code></pre>
+
+            <h2>Conclusion</h2>
+            <p>Understanding data types is essential for writing efficient and error-free Python programs. In the upcoming days, we'll delve deeper into each data type and explore their functionalities further.</p>
+        </div>
+
+        <!-- day 3 -->
+
+        <div class="python-card">
+            <h1>
+                <day>Day-3 :</day> Control Structures in Python</h1>
+
+
+
+
+            <h2>If Statement</h2>
+            <p>The if statement in Python is used for decision-making. It evaluates a condition and executes a block of code if the condition is true.</p>
+            <pre><code class="python">
+        num = 10
+        
+        if num > 0:
+            print("Positive")
+            </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Positive</p>
+            </div>
+
+            <h2>Elif Statement</h2>
+            <p>The elif statement allows you to check multiple conditions after the initial if statement.</p>
+            <pre><code class="python">
+        num = 0
+        
+        if num > 0:
+            print("Positive")
+        elif num == 0:
+            print("Zero")
+            </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Zero</p>
+            </div>
+
+            <h2>If-elif-else Statements</h2>
+            <p>The if-elif-else statement in Python allows you to execute different blocks of code based on the conditions.</p>
+            <pre><code class="python">
+    num = 10
+    
+    if num > 0:
+        print("Positive")
+    elif num == 0:
+        print("Zero")
+    else:
+        print("Negative")
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Positive</p>
+            </div>
+
+            <h2>Nested If-else Statements</h2>
+            <p>You can nest if-else statements within each other to handle more complex conditions.</p>
+            <pre><code class="python">
+    num = 10
+    
+    if num > 0:
+        if num % 2 == 0:
+            print("Positive and Even")
+        else:
+            print("Positive and Odd")
+    else:
+        print("Negative")
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>Positive and Even</p>
+            </div>
+
+
+            <h2>Switch-Case (Simulated with Dictionary)</h2>
+            <p>Python does not have a built-in switch statement, but you can simulate its behavior using dictionaries.</p>
+            <pre><code class="python">
+        def case_one():
+            return "This is case one"
+        
+        def case_two():
+            return "This is case two"
+        
+        def case_default():
+            return "This is the default case"
+        
+        switch = {
+            1: case_one,
+            2: case_two
+        }
+        
+        result = switch.get(2, case_default)()
+        print(result)
+            </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>This is case two</p>
+            </div>
+
+            <h2>For Loop</h2>
+            <p>The for loop in Python is used to iterate over a sequence (list, tuple, string) or other iterable objects.</p>
+            <pre><code class="python">
+    fruits = ["apple", "banana", "cherry"]
+    
+    for fruit in fruits:
+        print(fruit)
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>apple<br>banana<br>cherry</p>
+            </div>
+
+            <h2>While Loop</h2>
+            <p>The while loop in Python executes a block of code as long as the specified condition is true.</p>
+            <pre><code class="python">
+    i = 1
+    
+    while i < 5:
+        print(i)
+        i += 1
+        </code></pre>
+            <p><strong>Output:</strong></p>
+            <div class="output-box">
+                <p>1<br>2<br>3<br>4</p>
+            </div>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 4:</day> Functions - Defining functions, parameters, return values, and scope</h1>
+
+            <h2>Defining Functions:</h2>
+            <p>Functions in Python are defined using the <span class="highlight">def</span> keyword, followed by the function name and parameters. Here's an example:</p>
+            <pre><code>def greet(name):
+            print("Hello, " + name + "!")
+        </code></pre>
+
+            <h2>Parameters:</h2>
+            <p>Functions can have parameters, which are placeholders for values passed during the function call. Let's enhance our greet function:</p>
+            <pre><code>def greet_with_message(name, message):
+            print(message + ", " + name + "!")
+        </code></pre>
+
+            <h2>Return Values:</h2>
+            <p>Functions can return values using the <span class="highlight">return</span> statement. Example:</p>
+            <pre><code>def add_numbers(a, b):
+            return a + b
+        </code></pre>
+
+            <h2>Scope:</h2>
+            <p>Variables defined inside a function are local to that function. Understanding scope is crucial:</p>
+            <pre><code>global_variable = "I am global"
+        
+        def print_global():
+            local_variable = "I am local"
+            print(global_variable)  # Accessing the global variable
+            print(local_variable)   # Accessing the local variable
+        
+        print_global()
+        print(global_variable)
+        </code></pre>
+
+            <h2>Code and Output:</h2>
+            <p>Now, let's tie it all together with an example:</p>
+            <pre><code>greet("Alice")
+        greet_with_message("Bob", "Good morning")
+        result = add_numbers(3, 5)
+        
+        print(result)
+        </code></pre>
+
+            <p>Output:</p>
+            <pre><code>Hello, Alice!
+        Good morning, Bob!
+        8
+        </code></pre>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 5:</day> Lists and Tuples</h1>
+
+            <h2>Creating Lists and Tuples</h2>
+            <p>Lists and tuples are versatile data structures used for storing and manipulating collections of items.</p>
+
+            <pre><code># Creating a list
+        my_list = [1, 2, 3, 'apple', 'orange']
+        
+        # Creating a tuple
+        my_tuple = (4, 5, 6, 'banana', 'grape')</code></pre>
+
+            <h2>Accessing Elements</h2>
+            <p>Elements in both lists and tuples are accessed using indexing. Indexing starts from 0.</p>
+
+            <pre><code># Accessing elements in a list
+        print(my_list[0])  # Output: 1
+        print(my_list[3])  # Output: 'apple'
+        
+        # Accessing elements in a tuple
+        print(my_tuple[2])  # Output: 6
+        print(my_tuple[-1])  # Output: 'grape' (negative indexing from the end)</code></pre>
+
+            <h2>List Operations</h2>
+            <p>Lists support various operations, including appending, extending, and removing elements.</p>
+
+            <pre><code># Appending an element to a list
+        my_list.append('pear')
+        
+        # Extending a list with another list
+        additional_items = ['cherry', 'melon']
+        my_list.extend(additional_items)
+        
+        # Removing an element from a list
+        my_list.remove(2)  # Removes the element with value 2</code></pre>
+
+            <h2>Code and Output</h2>
+            <pre><code># Creating a list
+        fruits = ['apple', 'orange', 'banana']
+        
+        # Adding a new fruit
+        fruits.append('grape')
+        
+        # Accessing and printing each fruit
+        for fruit in fruits:
+            print(fruit)</code></pre>
+
+            <p>Output:</p>
+            <pre><code>apple
+        orange
+        banana
+        grape</code></pre>
+
+            <h2>Conclusion</h2>
+            <p>Understanding lists and tuples is fundamental for handling collections of data in Python. Choose the appropriate data structure based on your requirements.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 6:</day> Exploring Python Dictionaries</h1>
+
+            <p>Today's focus is on Python dictionaries, a versatile data structure that stores key-value pairs. Dictionaries offer fast and efficient data retrieval based on keys. Let's dive into creating dictionaries, accessing elements, and various operations.</p>
+
+            <h2>Creating Dictionaries:</h2>
+            <p>In Python, dictionaries are defined using curly braces <code>{}</code>. Each entry consists of a key and its associated value, separated by a colon. Here's an example:</p>
+
+            <pre><code># Creating a dictionary of student information
+    student = {
+        "name": "Alice",
+        "age": 20,
+        "major": "Computer Science"
+    }</code></pre>
+
+            <h2>Accessing Elements:</h2>
+            <p>Accessing values in a dictionary is done by specifying the key inside square brackets. For instance:</p>
+
+            <pre><code># Accessing the 'name' key
+    student_name = student["name"]
+    print("Student Name:", student_name)
+    </code></pre>
+
+            <p>This code retrieves and prints the value associated with the 'name' key.</p>
+
+            <h2>Dictionary Operations:</h2>
+            <ul>
+                <li><strong>Adding Items:</strong> You can add new key-value pairs to a dictionary.</li>
+
+                <pre><code># Adding a new key-value pair
+    student["grade"] = "A"</code></pre>
+
+                <li><strong>Updating Items:</strong> Updating the value of an existing key is straightforward.</li>
+
+                <pre><code># Updating the 'age' value
+    student["age"] = 21</code></pre>
+
+                <li><strong>Removing Items:</strong> Use the <code>pop()</code> method to remove an item by key.</li>
+
+                <pre><code># Removing the 'major' key
+    student.pop("major")</code></pre>
+            </ul>
+
+            <h2>Example Code and Output:</h2>
+            <p>Let's see these operations in action:</p>
+
+            <pre><code># Creating a dictionary
+    student = {
+        "name": "Alice",
+        "age": 20,
+        "major": "Computer Science"
+    }
+    
+    # Accessing and printing values
+    student_name = student["name"]
+    print("Student Name:", student_name)
+    
+    # Adding a new key-value pair
+    student["grade"] = "A"
+    
+    # Updating the 'age' value
+    student["age"] = 21
+    
+    # Removing the 'major' key
+    student.pop("major")
+    
+    # Printing the updated dictionary
+    print("Updated Student Information:", student)
+    </code></pre>
+
+            <p>Output:</p>
+            <pre><code>Student Name: Alice
+    Updated Student Information: {'name': 'Alice', 'age': 21, 'grade': 'A'}
+    </code></pre>
+
+            <p>Understanding dictionaries is crucial as they play a pivotal role in storing and organizing data efficiently. As we progress, you'll encounter scenarios where dictionaries are indispensable for handling complex information.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 7:</day> Strings in Python - Manipulation, Methods, and Formatting</h1>
+
+            <h2>String Manipulation:</h2>
+            <p>Python provides numerous ways to manipulate strings. You can concatenate them using the <code>+</code> operator, replicate them using <code>*</code>, or even slice them to extract specific portions.</p>
+
+            <pre><code>greeting = "Hello, "
+name = "John"
+message = greeting + name
+print(message)
+</code></pre>
+
+            <p><strong>Output:</strong></p>
+            <pre><code>Hello, John
+</code></pre>
+
+            <h2>String Methods:</h2>
+            <p>Python comes with a rich set of built-in string methods that simplify common operations. Methods like
+                <code>lower()</code>, <code>upper()</code>, <code>replace()</code>, and <code>find()</code> empower you to transform and search within strings effortlessly.</p>
+
+            <pre><code>sentence = "Python is an amazing programming language."
+print(sentence.upper())
+print(sentence.replace("amazing", "incredible"))
+print(sentence.find("programming"))
+</code></pre>
+
+            <p><strong>Output:</strong></p>
+            <pre><code>PYTHON IS AN AMAZING PROGRAMMING LANGUAGE.
+Python is an incredible programming language.
+19
+</code></pre>
+
+            <h2>String Formatting:</h2>
+            <p>String formatting allows you to create dynamic strings by embedding variables and expressions. Python supports multiple formatting approaches, including the older <code>%</code> method and the more modern
+                <code>format()</code> method.</p>
+
+            <pre><code>name = "Alice"
+age = 25
+print("Hello, my name is %s, and I am %d years old." % (name, age))
+
+# Using format method
+print("Hello, my name is {}, and I am {} years old.".format(name, age))
+</code></pre>
+
+            <p><strong>Output:</strong></p>
+            <pre><code>Hello, my name is Alice, and I am 25 years old.
+Hello, my name is Alice, and I am 25 years old.
+</code></pre>
+
+            <p>Understanding string manipulation, utilizing methods effectively, and mastering formatting techniques will significantly enhance your ability to work with textual data, a fundamental aspect of programming in Python. As we proceed further,
+                these skills will prove invaluable in various real-world applications.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 8:</day> File Handling in Python</h1>
+
+            <h2>Introduction to File Handling:</h2>
+            <p>File handling is a crucial aspect of programming, allowing you to interact with files on your computer. In Python, you can perform operations like reading from and writing to files seamlessly.</p>
+
+            <h2>Reading from a File:</h2>
+            <p>To read from a file, you typically follow these steps:</p>
+            <ol>
+                <li>Open the file using the <code>open()</code> function.</li>
+                <li>Read the content using methods like <code>read()</code> or <code>readline()</code>.</li>
+                <li>Close the file to free up system resources.</li>
+            </ol>
+            <pre><code>with open('example.txt', 'r') as file:
+    content = file.read()
+    print(content)</code></pre>
+            <p>This code opens a file named 'example.txt' in read mode ('r'), reads its content, and prints it.</p>
+
+            <h2>Writing to a File:</h2>
+            <p>To write to a file, you can use the <code>write()</code> method. If the file doesn't exist, Python will create it.</p>
+            <pre><code>with open('output.txt', 'w') as file:
+    file.write('This is a sample text written to the file.')</code></pre>
+            <p>This code creates a file named 'output.txt' (or overwrites it if it already exists) and writes the provided text to it.</p>
+
+            <h2>Appending to a File:</h2>
+            <p>If you want to add content to an existing file without overwriting it, you can open the file in append mode ('a').</p>
+            <pre><code>with open('output.txt', 'a') as file:
+    file.write('\nThis line is appended to the file.')</code></pre>
+            <p>Here, the '\n' character represents a newline, ensuring the appended text starts on a new line.</p>
+
+            <h2>Handling File Exceptions:</h2>
+            <p>When working with files, it's essential to handle exceptions to prevent crashes. Use <code>try</code> and <code>except</code> blocks for error handling.</p>
+            <pre><code>try:
+    with open('nonexistent_file.txt', 'r') as file:
+        content = file.read()
+        print(content)
+except FileNotFoundError:
+    print('The specified file does not exist.')</code></pre>
+            <p>In this example, the program gracefully handles a FileNotFoundError if the specified file is not found.</p>
+
+            <h2>Conclusion:</h2>
+            <p>File handling is a fundamental skill for any programmer. Whether you're reading configuration files, processing data, or storing results, understanding how to interact with files is crucial. Mastering file handling opens up a multitude of
+                possibilities in Python programming.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 9:</day> Exception Handling in Python</h1>
+
+            <h2>Understanding Exceptions:</h2>
+            <p>Exception handling is a crucial aspect of programming that allows developers to deal with errors and unexpected situations gracefully. In Python, an exception is an event that disrupts the normal flow of a program due to an error or unexpected
+                behavior.
+            </p>
+
+            <h2>Try-Except Blocks:</h2>
+            <p>The <code>try-except</code> block is used to handle exceptions. Code within the <code>try</code> block is executed, and if an exception occurs, it's caught by the corresponding <code>except</code> block. This prevents the program from terminating
+                abruptly.
+            </p>
+            <pre><code>try:
+    # Code that may raise an exception
+    result = 10 / 0
+except ZeroDivisionError:
+    # Handling a specific exception
+    print("Cannot divide by zero!")
+except Exception as e:
+    # Handling any other exception
+    print(f"An error occurred: {e}")</code></pre>
+
+            <h2>Handling Multiple Exceptions:</h2>
+            <p>You can handle multiple exceptions by specifying multiple <code>except</code> blocks. The order matters; Python checks them sequentially until a match is found.</p>
+            <pre><code>try:
+    # Code that may raise an exception
+    value = int("abc")
+except (ValueError, TypeError):
+    # Handling multiple exceptions
+    print("Invalid conversion to integer!")</code></pre>
+
+            <h2>Else and Finally Blocks:</h2>
+            <p>The <code>else</code> block is executed if no exceptions occur in the <code>try</code> block. The <code>finally</code> block is always executed, whether an exception occurred or not. It is often used for cleanup operations.</p>
+            <pre><code>try:
+    # Code that may raise an exception
+    result = 10 / 2
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+else:
+    print("Division successful!")
+finally:
+    print("This block always executes.")</code></pre>
+
+            <h2>Raising Exceptions:</h2>
+            <p>You can raise exceptions using the <code>raise</code> statement. This is useful when you want to signal an error condition in your code.</p>
+            <pre><code>def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+
+try:
+    user_age = -5
+    validate_age(user_age)
+except ValueError as ve:
+    print(f"Invalid age: {ve}")</code></pre>
+
+            <h2>Custom Exceptions:</h2>
+            <p>You can create custom exceptions by defining a new exception class. This allows you to raise and handle specific exceptions in your code.</p>
+            <pre><code>class CustomError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+try:
+    raise CustomError("This is a custom exception.")
+except CustomError as ce:
+    print(f"Caught custom exception: {ce.message}")</code></pre>
+
+            <p>Exception handling is an essential skill for writing robust and reliable Python programs. It ensures that your applications can gracefully recover from errors, providing a better user experience and making your code more resilient.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 10:</day> Exploring Modules, Packages, and External Libraries in Python</h1>
+
+            <h2>Understanding Modules:</h2>
+            <p>In Python, a module is a file containing Python definitions and statements. It allows you to organize your code logically and reuse code across multiple files. Modules can define functions, classes, and variables that can be used in other
+                Python scripts.</p>
+            <pre><code># Example of a simple module
+# Save this code in a file named mymodule.py
+
+def greet(name):
+    return f"Hello, {name}!"</code></pre>
+
+            <h2>Importing Modules:</h2>
+            <p>To use the functions and variables defined in a module, you need to import it. Python provides various ways to import modules, including <code>import</code>, <code>from ... import ...</code>, and aliasing.</p>
+            <pre><code># Importing the entire module
+import mymodule
+
+result = mymodule.greet("Alice")
+
+# Importing specific functions
+from mymodule import greet
+
+result = greet("Bob")
+
+# Aliasing modules
+import mymodule as mm
+
+result = mm.greet("Charlie")</code></pre>
+
+            <h2>Creating Packages:</h2>
+            <p>A package is a way of organizing related modules into a single directory hierarchy. It involves creating a directory with a special <code>__init__.py</code> file, which can be empty but is necessary to treat the directory as a package.</p>
+            <pre><code># Directory structure of a package
+my_package/
+|-- __init__.py
+|-- module1.py
+|-- module2.py</code></pre>
+
+            <h2>Using External Libraries:</h2>
+            <p>Python has a rich ecosystem of external libraries that can be easily integrated into your projects. You can install external libraries using package managers like <code>pip</code>. Common libraries include NumPy for numerical computing, pandas
+                for data analysis, and requests for making HTTP requests.</p>
+            <pre><code># Installing an external library using pip
+pip install numpy
+
+# Using the installed library in your code
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)</code></pre>
+
+            <h2>Exploring Standard Libraries:</h2>
+            <p>Python comes with a comprehensive set of standard libraries that provide modules and packages for various functionalities. These libraries cover areas such as file handling, regular expressions, networking, and more. Exploring and utilizing
+                these standard libraries can significantly enhance your productivity.</p>
+            <pre><code># Example of using the random module from the standard library
+import random
+
+random_number = random.randint(1, 100)
+print(random_number)</code></pre>
+
+            <p>Modules, packages, and external libraries are fundamental concepts in Python programming. They enable code organization, reusability, and integration of powerful tools and functionalities into your projects. Understanding how to import modules,
+                create packages, and leverage external libraries is essential for building robust and feature-rich Python applications.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 11:</day> Exploring Object-Oriented Programming (OOP) in Python</h1>
+
+            <h2>Introduction to OOP:</h2>
+            <p>Object-Oriented Programming (OOP) is a paradigm that organizes code into reusable structures called classes. Each class defines a blueprint for objects, which are instances of the class. OOP in Python involves concepts like classes, objects,
+                inheritance, and polymorphism.</p>
+
+            <h2>Classes and Objects:</h2>
+            <p>In Python, a class is created using the <code>class</code> keyword. An object is an instance of a class. Classes encapsulate data (attributes) and behavior (methods).</p>
+            <pre><code class="python">
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def display_info(self):
+        print(f"{self.make} {self.model}")
+
+# Creating an object
+my_car = Car("Toyota", "Camry")
+my_car.display_info()
+        </code></pre>
+            <p><strong>Output:</strong> Toyota Camry</p>
+
+            <h2>Inheritance:</h2>
+            <p>Inheritance allows a class (subclass/derived class) to inherit attributes and methods from another class (base class). It promotes code reuse and helps create a hierarchy of classes.</p>
+            <pre><code class="python">
+class ElectricCar(Car):
+    def __init__(self, make, model, battery_capacity):
+        # Call the constructor of the base class
+        super().__init__(make, model)
+        self.battery_capacity = battery_capacity
+
+    def display_info(self):
+        # Override the method in the base class
+        print(f"{self.make} {self.model} (Electric)")
+
+# Creating an object of the derived class
+my_electric_car = ElectricCar("Tesla", "Model S", "100 kWh")
+my_electric_car.display_info()
+        </code></pre>
+            <p><strong>Output:</strong> Tesla Model S (Electric)</p>
+
+            <h2>Polymorphism:</h2>
+            <p>Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables code to work with objects without knowing their specific types.</p>
+            <pre><code class="python">
+def show_vehicle_info(vehicle):
+    vehicle.display_info()
+
+# Using polymorphism
+show_vehicle_info(my_car)             # Calls Car's display_info
+show_vehicle_info(my_electric_car)    # Calls ElectricCar's display_info
+        </code></pre>
+            <p><strong>Output:</strong> Toyota Camry (for Car) and Tesla Model S (Electric) for ElectricCar</p>
+
+            <h2>Encapsulation:</h2>
+            <p>Encapsulation restricts access to some of an object's components, preventing the direct modification of internal states. In Python, this is achieved through private and protected attributes and methods.</p>
+            <pre><code class="python">
+class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance  # Protected attribute
+
+    def deposit(self, amount):
+        self._balance += amount
+
+    def get_balance(self):
+        return self._balance
+
+# Creating an object
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())
+        </code></pre>
+            <p><strong>Output:</strong> 1500</p>
+
+            <p>Object-Oriented Programming provides a powerful way to structure and organize code. Understanding these fundamental concepts allows you to create modular, maintainable, and extensible software in Python.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 12:</day> Advanced OOP in Python</h1>
+
+            <h2>Understanding Object-Oriented Programming (OOP):</h2>
+            <p>Object-Oriented Programming is a paradigm that uses objects, which bundle data and methods that operate on the data, to design and build applications. Python supports the four main principles of OOP: encapsulation, abstraction, inheritance,
+                and polymorphism.</p>
+
+            <h2>Encapsulation:</h2>
+            <p>Encapsulation is the bundling of data (attributes) and the methods that operate on that data into a single unit known as a class. It helps in organizing and protecting the internal state of an object.</p>
+            <pre><code>class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def display_info(self):
+        print(f"{self.make} {self.model}")
+
+# Creating an instance of the Car class
+my_car = Car("Toyota", "Camry")
+my_car.display_info()</code></pre>
+
+            <h2>Abstraction:</h2>
+            <p>Abstraction involves hiding the complex reality while exposing only the essential parts. In Python, abstraction is achieved through abstract classes and abstract methods.</p>
+            <pre><code>from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+# Creating an instance of the Circle class
+circle = Circle(5)
+print(f"Circle Area: {circle.area()}")</code></pre>
+
+            <h2>Class Methods and Static Methods:</h2>
+            <p>Class methods are methods that are bound to the class and not the instance of the class. Static methods are similar but don't have access to the class or instance itself.</p>
+            <pre><code>class MathOperations:
+    @classmethod
+    def add(cls, x, y):
+        return x + y
+
+    @staticmethod
+    def multiply(x, y):
+        return x * y
+
+# Using class method
+sum_result = MathOperations.add(3, 5)
+
+# Using static method
+product_result = MathOperations.multiply(3, 5)</code></pre>
+
+            <p>Advanced OOP in Python introduces powerful concepts that enhance code organization, reusability, and maintainability. By leveraging encapsulation, abstraction, class methods, and static methods, you can design more sophisticated and modular
+                programs, promoting efficient and scalable software development.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 13:</day> Advanced Exception Handling in Python</h1>
+
+            <h2>Understanding Exceptions:</h2>
+            <p>Exceptions are events that occur during the execution of a program, disrupting the normal flow of instructions. Python provides robust mechanisms to handle exceptions, allowing developers to write more reliable and fault-tolerant code.</p>
+
+            <h2>Handling Specific Exceptions:</h2>
+            <p>Python allows you to handle different types of exceptions individually, providing specific actions for each scenario. Here's an example:</p>
+            <pre><code>try:
+    # Code that may raise an exception
+    result = 10 / 0
+except ZeroDivisionError:
+    # Handling a specific exception
+    print("Cannot divide by zero!")</code></pre>
+
+            <h2>Handling Multiple Exceptions:</h2>
+            <p>You can handle multiple exceptions in a single <code>except</code> block or use multiple <code>except</code> blocks for different exceptions:</p>
+            <pre><code>try:
+    # Code that may raise an exception
+    value = int("abc")
+except (ValueError, TypeError):
+    # Handling multiple exceptions
+    print("Invalid conversion to integer!")</code></pre>
+
+            <h2>Else and Finally Blocks:</h2>
+            <p>Use the <code>else</code> block to execute code when no exceptions occur, and the <code>finally</code> block for code that must always be executed, regardless of exceptions:</p>
+            <pre><code>try:
+    # Code that may raise an exception
+    result = 10 / 2
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+else:
+    print("Division successful!")
+finally:
+    print("This block always executes.")</code></pre>
+
+            <h2>Raising Custom Exceptions:</h2>
+            <p>Developers can raise custom exceptions using the <code>raise</code> statement, allowing for more precise error signaling in their applications:</p>
+            <pre><code>def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+
+try:
+    user_age = -5
+    validate_age(user_age)
+except ValueError as ve:
+    print(f"Invalid age: {ve}")</code></pre>
+
+            <h2>Creating Custom Exception Classes:</h2>
+            <p>For more complex scenarios, custom exception classes can be defined to encapsulate specific error conditions and enhance code readability:</p>
+            <pre><code>class CustomError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+try:
+    raise CustomError("This is a custom exception.")
+except CustomError as ce:
+    print(f"Caught custom exception: {ce.message}")</code></pre>
+
+            <p>Advanced exception handling is a fundamental skill for Python developers. It ensures that applications can gracefully handle unexpected situations, improving overall robustness and user experience.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 14:</day> Mastering Regular Expressions in Python</h1>
+
+            <h2>Introduction to Regular Expressions:</h2>
+            <p>Regular expressions (regex or regexp) are a powerful tool for pattern matching and manipulation in strings. They provide a concise and flexible syntax to define search patterns.</p>
+
+            <h2>Creating a Simple Regex Pattern:</h2>
+            <p>In Python, the <code>re</code> module is used for working with regular expressions. Here's an example of a simple regex pattern to match email addresses:</p>
+            <pre><code>import re
+
+pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+
+# Example usage
+text = "Contact us at info@example.com for more information."
+matches = re.findall(pattern, text)
+print(matches)</code></pre>
+
+            <h2>Common Regex Functions:</h2>
+            <p>The <code>re</code> module provides various functions like <code>search()</code>, <code>match()</code>, and <code>findall()</code> for working with regular expressions. Here's an example using <code>search()</code>:</p>
+            <pre><code>import re
+
+pattern = r'\b\d{3}-\d{2}-\d{4}\b'  # Match Social Security Numbers
+
+text = "John's SSN is 123-45-6789."
+
+match = re.search(pattern, text)
+if match:
+    print(f"Found SSN: {match.group()}")</code></pre>
+
+            <h2>Regex Groups and Capturing:</h2>
+            <p>Regex allows you to define groups in patterns to capture specific parts of the matched text. This is useful for extracting information. Example:</p>
+            <pre><code>import re
+
+pattern = r'(\d{2})/(\d{2})/(\d{4})'  # Match MM/DD/YYYY format
+
+text = "Date of birth: 05/20/1990"
+
+match = re.search(pattern, text)
+if match:
+    month, day, year = match.groups()
+    print(f"DOB: {month}-{day}-{year}")</code></pre>
+
+            <h2>Regex and String Manipulation:</h2>
+            <p>Regular expressions are powerful for string manipulation tasks like replacing, splitting, and validation. Here's an example of replacing matched text:</p>
+            <pre><code>import re
+
+pattern = r'\bapple\b'
+replacement = 'orange'
+
+text = "I have an apple and a red apple."
+
+new_text = re.sub(pattern, replacement, text)
+print(new_text)</code></pre>
+
+            <h2>Regex Flags and Options:</h2>
+            <p>Regex patterns can include flags for case-insensitive matching, multiline matching, and more. Example with case-insensitive matching:</p>
+            <pre><code>import re
+
+pattern = r'python'
+text = "Python is a popular programming language."
+
+match = re.search(pattern, text, re.IGNORECASE)
+if match:
+    print("Pattern found!")</code></pre>
+
+            <p>Regular expressions are a versatile tool for text processing tasks. Understanding and mastering regex empowers you to efficiently handle complex string patterns, making your Python programs more flexible and capable.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 15:</day> Exploring Modules and Packages in Python</h1>
+
+            <h2>Understanding Modules:</h2>
+            <p>In Python, a module is a file containing Python definitions and statements. It serves as a way to organize code into reusable files. Modules help in maintaining and scaling projects by breaking code into logical units.</p>
+            <pre><code># Example module named 'my_module.py'
+# Define variables
+variable_a = 10
+variable_b = "Hello, World!"
+
+# Define a function
+def greet(name):
+    return f"Hello, {name}!"</code></pre>
+
+            <h2>Importing Modules:</h2>
+            <p>To use the code from a module, you need to import it. Python provides various ways to import modules, including <code>import</code>, <code>from ... import ...</code>, and <code>import ... as ...</code>.</p>
+            <pre><code># Importing the entire module
+import my_module
+
+# Using variables and functions from the module
+print(my_module.variable_a)
+print(my_module.greet("Alice"))</code></pre>
+
+            <h2>Creating Packages:</h2>
+            <p>A package is a way of organizing related modules into a single directory hierarchy. This helps in creating a structured project. A package contains a special file named <code>__init__.py</code>, which can be empty but is necessary to treat
+                the directory as a package.</p>
+            <pre><code># Directory structure of a package named 'my_package'
+my_package/
+|-- __init__.py
+|-- module_a.py
+|-- module_b.py</code></pre>
+
+            <h2>Importing from Packages:</h2>
+            <p>You can import modules from a package using dot notation. This allows you to organize your code hierarchically and avoid naming conflicts.</p>
+            <pre><code># Importing modules from the package
+from my_package import module_a, module_b
+
+# Using variables and functions from the modules
+print(module_a.variable_x)
+print(module_b.perform_task())</code></pre>
+
+            <h2>Best Practices for Organizing Code:</h2>
+            <p>When working on larger projects, it's essential to follow best practices for organizing code. This includes creating meaningful module and package names, separating concerns, and following the PEP 8 style guide.</p>
+            <pre><code># Example directory structure of a well-organized project
+my_project/
+|-- main.py
+|-- my_package/
+|   |-- __init__.py
+|   |-- module_a.py
+|   |-- module_b.py
+|-- utils/
+|   |-- __init__.py
+|   |-- helper_functions.py</code></pre>
+
+            <p>Understanding modules and packages is crucial for structuring and organizing larger Python projects. It promotes code reusability, maintainability, and collaboration among developers. By following best practices, you ensure that your projects
+                are scalable and easy to manage.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 16:</day> Exploring Web Development with Flask and Django</h1>
+
+            <h2>Introduction to Web Development:</h2>
+            <p>Web development involves creating dynamic and interactive websites or web applications. In Python, Flask and Django are popular web frameworks that simplify the process of building robust and scalable web applications.</p>
+
+            <h2>Getting Started with Flask:</h2>
+            <p>Flask is a lightweight web framework that follows the WSGI (Web Server Gateway Interface) standard. It is easy to use and allows for quick development of web applications. Below is a simple example of a Flask web application:</p>
+            <pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return 'Hello, Flask!'
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+
+            <p>In this example, we create a basic Flask app with a route that returns 'Hello, Flask!' when the root URL is accessed. The <code>app.run()</code> statement starts the development server.</p>
+
+            <h2>Introduction to Django:</h2>
+            <p>Django is a high-level web framework that follows the MVC (Model-View-Controller) pattern. It provides a powerful and feature-rich environment for building complex web applications. Here's a simple example of a Django project:</p>
+            <pre><code># Install Django using: pip install Django
+django-admin startproject mysite
+
+cd mysite
+
+python manage.py runserver</code></pre>
+
+            <p>This creates a basic Django project and starts the development server. Django projects have a defined structure with models, views, and templates, making it well-suited for large-scale applications.</p>
+
+            <h2>Creating a Web Application:</h2>
+            <p>Both Flask and Django allow you to define routes, handle HTTP requests, and render dynamic content. They support templates for rendering HTML and provide tools for working with databases, authentication, and more. Below is an example of a
+                Flask route rendering an HTML template:</p>
+            <pre><code>from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html', title='Home', content='Welcome to my website!')</code></pre>
+
+            <p>In this example, the <code>render_template</code> function is used to render an HTML template with dynamic content. Django follows a similar pattern using its template engine.</p>
+
+            <h2>Conclusion:</h2>
+            <p>Web development in Python is a vast and exciting field, and Flask and Django are excellent choices for building web applications. They provide the tools and structure needed to create scalable and maintainable projects. As you explore web
+                development, you'll discover the flexibility and power these frameworks offer for creating diverse and dynamic web applications.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 17:</day> Database Interaction with Python</h1>
+
+            <h2>Introduction to Database Interaction:</h2>
+            <p>Python provides various libraries and modules for interacting with databases, allowing developers to seamlessly connect, query, and manipulate data. Common databases used with Python include MySQL, SQLite, and MongoDB.</p>
+
+            <h2>Connecting to a Database:</h2>
+            <p>To interact with a database, you first need to establish a connection. Different database management systems (DBMS) have specific libraries for Python. For example, you can use <code>mysql-connector</code> for MySQL, <code>sqlite3</code> for
+                SQLite, and <code>pymongo</code> for MongoDB.</p>
+            <pre><code># Example for connecting to MySQL
+import mysql.connector
+
+# Replace with your database credentials
+connection = mysql.connector.connect(
+    host="localhost",
+    user="username",
+    password="password",
+    database="dbname"
+)
+
+# Perform database operations...
+
+# Close the connection when done
+connection.close()</code></pre>
+
+            <h2>Executing SQL Queries:</h2>
+            <p>After establishing a connection, you can execute SQL queries to retrieve, insert, update, or delete data. Use the appropriate methods provided by the database library, such as <code>execute()</code> in <code>sqlite3</code> or <code>cursor()</code>                in <code>pymongo</code>.</p>
+            <pre><code># Example for executing SQL query in SQLite
+import sqlite3
+
+# Replace with your database file path
+connection = sqlite3.connect("example.db")
+
+# Create a cursor object
+cursor = connection.cursor()
+
+# Execute a SELECT query
+cursor.execute("SELECT * FROM users")
+
+# Fetch and print the results
+results = cursor.fetchall()
+for row in results:
+    print(row)
+
+# Close the connection when done
+connection.close()</code></pre>
+
+            <h2>Using ORM (Object-Relational Mapping):</h2>
+            <p>ORM libraries like SQLAlchemy simplify database interactions by allowing developers to work with Python objects instead of raw SQL queries. This provides a more intuitive and Pythonic way to handle databases.</p>
+            <pre><code># Example using SQLAlchemy
+from sqlalchemy import create_engine, Column, Integer, String, select
+from sqlalchemy.ext.declarative import declarative_base
+
+# Define a model
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    age = Column(Integer)
+
+# Create an SQLite database in memory
+engine = create_engine('sqlite:///:memory:')
+
+# Create tables
+Base.metadata.create_all(engine)
+
+# Create a session
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Add new user
+new_user = User(name='John Doe', age=30)
+session.add(new_user)
+session.commit()
+
+# Query users
+query = select(User)
+users = session.execute(query).fetchall()
+for user in users:
+    print(user)
+
+# Close the session when done
+session.close()</code></pre>
+
+            <h2>Interacting with MongoDB:</h2>
+            <p>For NoSQL databases like MongoDB, you can use libraries like <code>pymongo</code>. MongoDB stores data in JSON-like documents, making it flexible and easy to work with in a Python environment.</p>
+            <pre><code># Example for interacting with MongoDB using pymongo
+from pymongo import MongoClient
+
+# Replace with your MongoDB connection string
+client = MongoClient("mongodb+srv://<username>:<password>@cluster0.mongodb.net/test?retryWrites=true&w=majority")
+
+# Access a specific database and collection
+db = client['mydatabase']
+collection = db['mycollection']
+
+# Insert a document
+document = {"name": "John Doe", "age": 25}
+collection.insert_one(document)
+
+# Query documents
+result = collection.find({"age": {"$gt": 21}})
+for doc in result:
+    print(doc)
+
+# Close the MongoDB connection when done
+client.close()</code></pre>
+
+            <p>Database interaction is a fundamental skill for developers, enabling them to build applications that persistently store and retrieve data. Whether working with traditional SQL databases or modern NoSQL databases, Python provides versatile
+                tools for seamless integration.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 18:</day> Exploring Data Analysis with Pandas, NumPy, and Matplotlib</h1>
+
+            <h2>Introduction to Data Analysis:</h2>
+            <p>Data analysis is a crucial step in extracting meaningful insights from data. Python provides powerful libraries like <span class="highlight">Pandas</span>, <span class="highlight">NumPy</span>, and <span class="highlight">Matplotlib</span>                for efficient data manipulation, numerical computing, and visualization.</p>
+
+            <h2>Pandas for Data Manipulation:</h2>
+            <p><span class="highlight">Pandas</span> is a widely used library for handling and manipulating structured data. It provides data structures like DataFrames for efficient data organization and manipulation.</p>
+            <pre><code>import pandas as pd
+
+# Creating a DataFrame
+data = {'Name': ['Alice', 'Bob', 'Charlie'],
+        'Age': [25, 30, 22]}
+df = pd.DataFrame(data)
+
+# Displaying the DataFrame
+print(df)</code></pre>
+
+            <h2>NumPy for Numerical Computing:</h2>
+            <p><span class="highlight">NumPy</span> is essential for numerical computing in Python. It introduces the <code>numpy</code> array, which allows for efficient mathematical operations on large datasets.</p>
+            <pre><code>import numpy as np
+
+# Creating a NumPy array
+arr = np.array([1, 2, 3, 4, 5])
+
+# Performing mathematical operations
+result = arr * 2
+print(result)</code></pre>
+
+            <h2>Matplotlib for Data Visualization:</h2>
+            <p><span class="highlight">Matplotlib</span> is a versatile plotting library for creating various types of visualizations. It enables you to represent your data through charts, graphs, and plots.</p>
+            <pre><code>import matplotlib.pyplot as plt
+
+# Creating a simple plot
+x = [1, 2, 3, 4, 5]
+y = [10, 12, 5, 8, 7]
+plt.plot(x, y)
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Simple Plot')
+plt.show()</code></pre>
+
+            <h2>Data Analysis Workflow:</h2>
+            <p>An effective data analysis workflow involves importing data, cleaning and preprocessing, performing analysis, and visualizing results. These libraries provide tools to streamline each step of this process, making data analysis in Python efficient
+                and powerful.</p>
+
+            <p>By mastering these data analysis tools, you gain the ability to work with real-world datasets, draw meaningful conclusions, and communicate insights effectively. Whether you're in business, research, or any data-driven field, these skills
+                are highly valuable.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 19:</day> Exploring Machine Learning with Python and Scikit-Learn</h1>
+
+            <h2>Introduction to Machine Learning:</h2>
+            <p>Machine Learning is a field of artificial intelligence that focuses on the development of algorithms and models that allow computers to learn from and make predictions or decisions based on data. In Python, the <span class="highlight">Scikit-Learn</span>                library is a powerful tool for implementing machine learning algorithms.</p>
+
+            <h2>Basic Concepts of Machine Learning:</h2>
+            <p>Machine learning involves various concepts, such as supervised learning, unsupervised learning, and reinforcement learning. <span class="highlight">Supervised learning</span> deals with labeled data, while <span class="highlight">unsupervised learning</span>                involves unlabeled data, and <span class="highlight">reinforcement learning</span> focuses on decision-making in dynamic environments.</p>
+
+            <h2>Getting Started with Scikit-Learn:</h2>
+            <p>To begin with machine learning in Python, you need to install Scikit-Learn. You can use tools like <code>pip</code> to install it:</p>
+            <pre><code>pip install scikit-learn</code></pre>
+
+            <h2>Example: Linear Regression with Scikit-Learn:</h2>
+            <p>Linear regression is a simple machine learning algorithm used for predicting a continuous variable based on one or more predictor features. Here's an example using Scikit-Learn:</p>
+            <pre><code>from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Sample data
+X, y = [[1], [2], [3]], [2, 4, 5]
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create a linear regression model
+model = LinearRegression()
+
+# Train the model
+model.fit(X_train, y_train)
+
+# Make predictions
+predictions = model.predict(X_test)
+
+# Evaluate the model
+mse = mean_squared_error(y_test, predictions)
+print(f"Mean Squared Error: {mse}")</code></pre>
+
+            <h2>Key Concepts in the Example:</h2>
+            <ul>
+                <li><span class="highlight">train_test_split:</span> Splits the dataset into training and testing sets.</li>
+                <li><span class="highlight">LinearRegression:</span> Initializes a linear regression model.</li>
+                <li><span class="highlight">fit:</span> Trains the model with the training data.</li>
+                <li><span class="highlight">predict:</span> Makes predictions on the test data.</li>
+                <li><span class="highlight">mean_squared_error:</span> Evaluates the model performance.</li>
+            </ul>
+
+            <h2>Conclusion:</h2>
+            <p>Machine Learning with Python, particularly using Scikit-Learn, opens up exciting possibilities for predictive modeling and data analysis. Understanding the basic concepts and exploring hands-on examples empowers you to leverage machine learning
+                in your projects and applications.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 20:</day> Exploring GUI Programming in Python</h1>
+
+            <h2>Introduction to GUI Programming:</h2>
+            <p>Graphical User Interface (GUI) programming involves creating visual elements and interactive components for applications. Python provides several libraries for GUI development, with <span class="highlight">Tkinter</span> and <span class="highlight">PyQt</span>                being popular choices.</p>
+
+            <h2>Using Tkinter:</h2>
+            <p><span class="highlight">Tkinter</span> is the standard GUI toolkit that comes with Python. It is easy to use and suitable for creating simple to moderately complex GUI applications.</p>
+            <pre><code>import tkinter as tk
+
+# Create a basic Tkinter window
+window = tk.Tk()
+window.title("Hello, Tkinter!")
+label = tk.Label(window, text="Welcome to Tkinter!")
+label.pack()
+
+# Start the Tkinter event loop
+window.mainloop()</code></pre>
+
+            <h2>PyQt for Advanced GUIs:</h2>
+            <p><span class="highlight">PyQt</span> is a set of Python bindings for Qt libraries, providing a more extensive set of tools for GUI development. It is suitable for more complex applications and offers a modern, feature-rich framework.</p>
+            <pre><code>from PyQt5.QtWidgets import QApplication, QLabel, QWidget
+
+# Create a basic PyQt application
+app = QApplication([])
+window = QWidget()
+window.setWindowTitle("Hello, PyQt!")
+label = QLabel("Welcome to PyQt!")
+label.setAlignment(Qt.AlignCenter)
+window.show()
+
+# Start the PyQt event loop
+app.exec_()</code></pre>
+
+            <h2>Creating Buttons and Handling Events:</h2>
+            <p>Both Tkinter and PyQt allow you to create interactive elements like buttons. You can also define functions to handle events triggered by user actions.</p>
+            <pre><code># Tkinter example
+button_tk = tk.Button(window, text="Click Me!", command=lambda: print("Button clicked in Tkinter"))
+button_tk.pack()
+
+# PyQt example
+button_qt = QPushButton("Click Me!", clicked=lambda: print("Button clicked in PyQt"))
+layout.addWidget(button_qt)</code></pre>
+
+            <h2>Designing Layouts:</h2>
+            <p>GUI applications often require well-organized layouts. Both Tkinter and PyQt offer different layout managers to arrange widgets efficiently.</p>
+            <pre><code># Tkinter grid layout
+label1 = tk.Label(window, text="Label 1")
+label1.grid(row=0, column=0)
+label2 = tk.Label(window, text="Label 2")
+label2.grid(row=0, column=1)
+
+# PyQt grid layout
+layout = QGridLayout()
+layout.addWidget(QLabel("Label 1"), 0, 0)
+layout.addWidget(QLabel("Label 2"), 0, 1)</code></pre>
+
+            <h2>Handling User Input:</h2>
+            <p>Both libraries provide widgets for user input, such as text entry fields. You can retrieve and process user input to enhance the functionality of your applications.</p>
+            <pre><code># Tkinter entry widget
+entry_tk = tk.Entry(window)
+entry_tk.pack()
+
+# PyQt line edit widget
+line_edit_qt = QLineEdit()
+layout.addWidget(line_edit_qt)</code></pre>
+
+            <h2>Conclusion:</h2>
+            <p>GUI programming in Python opens up opportunities to create visually appealing and user-friendly applications. Whether you choose Tkinter for its simplicity or PyQt for advanced features, mastering GUI development enhances your ability to build
+                versatile software with interactive interfaces.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 21:</day> Deployment of Python Applications to Cloud Platforms</h1>
+
+            <h2>Introduction to Deployment:</h2>
+            <p>Deployment is the process of making a software application available for use. In the context of Python applications, deployment involves preparing your code, configuring the necessary resources, and hosting it on cloud platforms like Heroku
+                or AWS for public access.</p>
+
+            <h2>Choosing a Cloud Platform:</h2>
+            <p>There are various cloud platforms available for deploying Python applications, including Heroku, AWS (Amazon Web Services), Google Cloud, and Microsoft Azure. Each platform has its strengths and is suitable for different use cases.</p>
+
+            <h2>Setting Up Accounts:</h2>
+            <p>Before deploying your Python application, you need to create accounts on the chosen cloud platform. This involves signing up on the platform's website, providing necessary details, and setting up payment options if required.</p>
+
+            <h2>Preparing the Application:</h2>
+            <p>Ensure your Python application is ready for deployment. This includes organizing the code, handling environment variables, and configuring any database connections or external services your application depends on.</p>
+
+            <h2>Heroku Deployment:</h2>
+            <p>Heroku is a popular platform-as-a-service (PaaS) that simplifies the deployment process. You can deploy a Python app on Heroku by creating a <code>Procfile</code> specifying how to run the app and a <code>requirements.txt</code> file listing
+                dependencies.
+            </p>
+            <pre><code># Procfile
+web: gunicorn your_app:app
+
+# requirements.txt
+Flask==2.1.2
+gunicorn==20.1.0</code></pre>
+
+            <h2>AWS Deployment:</h2>
+            <p>AWS provides a comprehensive set of cloud services. For Python applications, you might use services like Elastic Beanstalk or Lambda. Elastic Beanstalk simplifies deployment, while Lambda allows you to run serverless functions.</p>
+
+            <h2>Monitoring and Scaling:</h2>
+            <p>Once deployed, it's essential to monitor your application's performance and scale resources as needed. Cloud platforms offer tools for monitoring metrics, setting up alerts, and adjusting resources based on demand.</p>
+
+            <h2>Continuous Integration and Deployment (CI/CD):</h2>
+            <p>Implementing CI/CD pipelines automates the process of testing and deploying your application whenever changes are made to the code. Tools like Jenkins, GitLab CI, or GitHub Actions can be integrated into your workflow.</p>
+
+            <h2>Security Considerations:</h2>
+            <p>Ensure your deployed Python application follows security best practices. This includes securing communication with HTTPS, managing access control, and regularly updating dependencies to address vulnerabilities.</p>
+
+            <h2>Conclusion:</h2>
+            <p>Deploying Python applications to cloud platforms is a crucial step in making your software accessible to users. Understanding the deployment process, choosing the right platform, and incorporating best practices for security and scalability
+                are key aspects of successful deployment.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 22:</day> Testing and Debugging in Python</h1>
+
+            <h2>Writing Test Cases:</h2>
+            <p>Testing is a crucial part of software development. Writing test cases helps ensure that your code works as expected and continues to work as you make changes. Python provides the <code>unittest</code> module for creating and running tests.</p>
+            <pre><code>import unittest
+
+def add(a, b):
+    return a + b
+
+class TestAddition(unittest.TestCase):
+    def test_add_positive_numbers(self):
+        self.assertEqual(add(2, 3), 5)
+
+    def test_add_negative_numbers(self):
+        self.assertEqual(add(-2, -3), -5)
+
+if __name__ == '__main__':
+    unittest.main()</code></pre>
+
+            <h2>Debugging Techniques:</h2>
+            <p>Debugging is the process of identifying and fixing errors or bugs in your code. Python offers various tools and techniques for debugging, such as using the built-in <code>pdb</code> (Python Debugger) module or integrated development environments
+                (IDEs) with debugging support.</p>
+            <pre><code>def divide(a, b):
+    result = a / b
+    return result
+
+# Using pdb for debugging
+import pdb; pdb.set_trace()
+result = divide(10, 2)
+print(result)</code></pre>
+
+            <h2>Best Practices for Testing and Debugging:</h2>
+            <ul>
+                <li><strong>Write Testable Code:</strong> Design your code in a way that makes it easy to write tests. Functions with clear inputs and outputs are easier to test.</li>
+                <li><strong>Test Edge Cases:</strong> Ensure your tests cover a variety of scenarios, including edge cases and boundary conditions.</li>
+                <li><strong>Use Assertions:</strong> Use assertions to check if the code behaves as expected. Assertions are an essential part of writing good test cases.</li>
+                <li><strong>Isolate Issues:</strong> When debugging, isolate the problem by using print statements, logging, or debugging tools. Focus on understanding and fixing one issue at a time.</li>
+                <li><strong>Version Control:</strong> Use version control systems like Git to track changes in your code. This allows you to revert to previous versions if needed.</li>
+            </ul>
+
+            <p>Testing and debugging are iterative processes that contribute to the overall reliability and quality of your software. By adopting best practices and incorporating testing and debugging into your development workflow, you can build more robust
+                and maintainable Python applications.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 23:</day> Performance Optimization in Python</h1>
+
+            <h2>Understanding Performance Optimization:</h2>
+            <p>Performance optimization involves improving the efficiency and speed of Python code. This day focuses on techniques to identify bottlenecks, measure performance, and apply optimization strategies.</p>
+
+            <h2>Profiling Tools:</h2>
+            <p>Profiling is the process of analyzing the runtime behavior of a program. Python provides various profiling tools like <code>cProfile</code> and <code>timeit</code>. These tools help identify which parts of the code consume the most time.</p>
+            <pre><code>import cProfile
+
+def example_function():
+    # Code to profile
+    ...
+
+# Profile the function
+cProfile.run('example_function()')</code></pre>
+
+            <h2>Time Complexity Analysis:</h2>
+            <p>Understanding time complexity is crucial for optimizing algorithms. Big O notation is commonly used to describe the upper bound on the running time of an algorithm in terms of its input size.</p>
+            <pre><code>def linear_search(arr, target):
+    for element in arr:
+        if element == target:
+            return True
+    return False
+
+# Linear search has a time complexity of O(n)</code></pre>
+
+            <h2>Memory Profiling:</h2>
+            <p>Optimizing memory usage is as important as optimizing runtime. Tools like <code>memory_profiler</code> can be used to profile memory usage and identify areas for improvement.</p>
+            <pre><code>from memory_profiler import profile
+
+@profile
+def memory_intensive_function():
+    data = [0] * 1000000
+    # Code that uses a significant amount of memory
+    ...
+
+memory_intensive_function()</code></pre>
+
+            <h2>Algorithmic Optimization:</h2>
+            <p>Optimizing algorithms involves making strategic changes to improve their efficiency. This may include using more efficient data structures, reducing redundant computations, or applying clever algorithms.</p>
+            <pre><code>def fibonacci_recursive(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+
+# The recursive Fibonacci has exponential time complexity</code></pre>
+
+            <h2>Caching and Memoization:</h2>
+            <p>Cache frequently computed results to avoid redundant calculations. Memoization is a technique where the results of expensive function calls are stored and returned when the same inputs occur again.</p>
+            <pre><code>from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fibonacci_memoized(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci_memoized(n-1) + fibonacci_memoized(n-2)
+
+# Improved Fibonacci using memoization</code></pre>
+
+            <h2>NumPy and Vectorization:</h2>
+            <p>For numerical computations, using libraries like NumPy and leveraging vectorization can significantly enhance performance by operating on entire arrays or matrices at once.</p>
+            <pre><code>import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+result = arr * 2
+
+# NumPy enables efficient array operations</code></pre>
+
+            <p>Performance optimization is an ongoing process, and understanding how to measure and improve the efficiency of your Python code is essential for building high-performance applications. Employing the right tools and techniques helps ensure
+                that your programs run smoothly and respond promptly to user interactions.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 24:</day> Exploring Concurrency and Parallelism in Python</h1>
+
+            <h2>Understanding Concurrency and Parallelism:</h2>
+            <p>Concurrency and parallelism are concepts in computing that involve executing multiple tasks or processes simultaneously. Concurrency refers to the ability of different parts of a program to execute independently, while parallelism involves
+                the simultaneous execution of multiple tasks to improve performance.</p>
+
+            <h2>Threading in Python:</h2>
+            <p>Threading is a way to run multiple threads (smaller units of a process) concurrently. Python's <code>threading</code> module allows you to create and manage threads.</p>
+            <pre><code>import threading
+
+def print_numbers():
+    for i in range(5):
+        print(f"Thread 1 - Number: {i}")
+
+def print_letters():
+    for letter in 'ABCDE':
+        print(f"Thread 2 - Letter: {letter}")
+
+# Create threads
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_letters)
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for both threads to finish
+thread1.join()
+thread2.join()</code></pre>
+
+            <h2>Multiprocessing in Python:</h2>
+            <p>Multiprocessing involves running multiple processes in parallel. The <code>multiprocessing</code> module in Python enables you to create and manage separate processes.</p>
+            <pre><code>import multiprocessing
+
+def square_numbers(numbers, result):
+    for i, num in enumerate(numbers):
+        result[i] = num * num
+
+if __name__ == "__main__":
+    numbers = [1, 2, 3, 4, 5]
+    result = multiprocessing.Array('i', 5)
+
+    # Create a process
+    process = multiprocessing.Process(target=square_numbers, args=(numbers, result))
+
+    # Start the process
+    process.start()
+
+    # Wait for the process to finish
+    process.join()
+
+    # Print the result
+    print("Squared numbers:", list(result))</code></pre>
+
+            <h2>Asynchronous Programming with Asyncio:</h2>
+            <p>Asyncio is a library in Python that provides support for writing asynchronous code using the async/await syntax. It allows you to write concurrent code that can handle a large number of I/O-bound tasks efficiently.</p>
+            <pre><code>import asyncio
+
+async def print_numbers():
+    for i in range(5):
+        print(f"Async Task - Number: {i}")
+        await asyncio.sleep(1)
+
+async def print_letters():
+    for letter in 'ABCDE':
+        print(f"Async Task - Letter: {letter}")
+        await asyncio.sleep(1)
+
+# Run asynchronous tasks
+asyncio.run(asyncio.gather(print_numbers(), print_letters()))</code></pre>
+
+            <h2>Choosing Between Concurrency and Parallelism:</h2>
+            <p>The choice between concurrency and parallelism depends on the nature of the tasks and the underlying hardware. Concurrency is suitable for I/O-bound tasks, while parallelism is effective for CPU-bound tasks. Understanding the characteristics
+                of your application is crucial for making the right design decisions.</p>
+
+            <p>Exploring concurrency models, threading, multiprocessing, and asynchronous programming in Python provides you with tools to build responsive and efficient applications. These techniques are essential for handling tasks concurrently, whether
+                it's for improving user interfaces, optimizing data processing, or enhancing overall system performance.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 25:</day> Mastering Pythonic Code</h1>
+
+            <h2>Introduction to Pythonic Code:</h2>
+            <p>Pythonic code refers to writing Python programs in a way that embraces the principles of the Python language. This involves following the PEP (Python Enhancement Proposal) guidelines, using idiomatic patterns, and leveraging the features that
+                make Python unique.</p>
+
+            <h2>Adhering to PEP Guidelines:</h2>
+            <p>PEP guidelines provide a set of rules and conventions for writing Python code. Adhering to these guidelines ensures consistency and readability across Python projects. Some common PEP guidelines include indentation, naming conventions, and
+                code layout.</p>
+            <pre><code># Example of adhering to PEP 8 naming conventions
+class MyClass:
+    def __init__(self, my_variable):
+        self.my_variable = my_variable
+
+# Proper indentation
+if condition:
+    print("Condition is True")
+else:
+    print("Condition is False")</code></pre>
+
+            <h2>Pythonic Patterns and Constructs:</h2>
+            <p>Python offers several patterns and constructs that make code concise and expressive. Examples include list comprehensions, generator expressions, and the use of context managers. These constructs allow you to write code that is not only shorter
+                but also more readable.</p>
+            <pre><code># List comprehension to create a list of squares
+squares = [x**2 for x in range(10)]
+
+# Using a context manager to open and close a file
+with open('example.txt', 'r') as file:
+    content = file.read()</code></pre>
+
+            <h2>Idiomatic Python Code:</h2>
+            <p>Writing idiomatic Python code involves using Python language features and libraries in a way that is natural and efficient. This often leads to more concise and elegant solutions to common problems.</p>
+            <pre><code># Idiomatic way to swap values in Python
+a, b = 5, 10
+a, b = b, a
+
+# Using the enumerate function for iterating with an index
+for index, value in enumerate(['a', 'b', 'c']):
+    print(f"Index: {index}, Value: {value}")</code></pre>
+
+            <h2>Benefits of Pythonic Code:</h2>
+            <p>Pythonic code is not just a matter of style; it comes with practical benefits. It enhances code readability, reduces boilerplate, and encourages a more efficient and expressive coding style. Following Pythonic principles makes your code more
+                maintainable and aligns with the philosophy of the Python language.</p>
+
+            <p>Mastering Pythonic code is a key aspect of becoming a proficient Python developer. It goes beyond syntax and conventions, emphasizing a mindset that leverages the strengths of the Python language to create clear, concise, and elegant solutions
+                to programming challenges.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 26:</day> Mastering Advanced Python Topics</h1>
+
+            <h2>Metaprogramming:</h2>
+            <p>Metaprogramming involves writing code that manipulates or extends the behavior of Python programs. Techniques include code generation, dynamic modification of classes, and introspection.</p>
+            <pre><code>class DynamicClass:
+    def __init__(self, name):
+        self.name = name
+
+dynamic_instance = DynamicClass("DynamicObject")
+print(dynamic_instance.name)</code></pre>
+            <p>Metaprogramming allows you to create classes and modify their behavior dynamically at runtime.</p>
+
+            <h2>Decorators:</h2>
+            <p>Decorators are a powerful way to modify or extend the behavior of functions or methods. They are applied using the <code>@decorator</code> syntax.</p>
+            <pre><code>def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()</code></pre>
+            <p>Decorators provide a clean and concise way to add functionality to functions or methods without modifying their code directly.</p>
+
+            <h2>Context Managers:</h2>
+            <p>Context managers are used for resource management, such as opening and closing files or acquiring and releasing locks. They are implemented using the <code>with</code> statement.</p>
+            <pre><code>with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)</code></pre>
+            <p>Context managers ensure proper resource cleanup, making code more readable and less error-prone.</p>
+
+            <h2>Descriptors:</h2>
+            <p>Descriptors are objects that define how attributes are accessed or modified in a class. They enable you to customize the behavior of attributes.</p>
+            <pre><code>class DescriptorExample:
+    def __init__(self, initial_value=None):
+        self._value = initial_value
+
+    def __get__(self, instance, owner):
+        return self._value
+
+    def __set__(self, instance, value):
+        if value < 0:
+            raise ValueError("Value cannot be negative")
+        self._value = value
+
+class MyClass:
+    descriptor_attr = DescriptorExample(10)
+
+obj = MyClass()
+print(obj.descriptor_attr)
+obj.descriptor_attr = 20
+print(obj.descriptor_attr)</code></pre>
+            <p>Descriptors provide a way to customize attribute access and modification behavior in Python classes.</p>
+
+            <p>Exploring these advanced topics expands your understanding of Python and equips you with powerful tools to write more expressive and maintainable code. Metaprogramming, decorators, context managers, and descriptors are essential concepts for
+                advanced Python developers.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 27:</day> Real-World Application Development: Building a Practical Application</h1>
+
+            <h2>Introduction:</h2>
+            <p>On Day 27, we embark on a journey to apply our Python skills to real-world application development. Building a practical application from scratch involves integrating various libraries and frameworks to create a robust and functional program.</p>
+
+            <h2>Selecting a Project:</h2>
+            <p>Choosing the right project is crucial. It should align with your interests and allow you to explore different aspects of Python development. Consider projects like a web application, data analysis tool, automation script, or any other application
+                that excites you.</p>
+
+            <h2>Setting Up the Development Environment:</h2>
+            <p>Before diving into coding, ensure your development environment is set up. This includes installing the necessary tools, libraries, and frameworks. Common tools include a code editor, version control system (e.g., Git), and virtual environment
+                for project isolation.</p>
+
+            <h2>Planning and Design:</h2>
+            <p>Start with a detailed plan and design for your application. Define the features, functionalities, and user interface. Consider creating wireframes or mockups to visualize the application's structure. A well-thought-out plan makes the development
+                process smoother.</p>
+
+            <h2>Coding the Application:</h2>
+            <p>Begin coding your application by implementing the planned features. Utilize Python libraries and frameworks that align with your project requirements. Whether it's Flask or Django for web development, Pandas for data analysis, or other specialized
+                libraries, choose wisely based on your project needs.</p>
+            <pre><code># Example: Flask Web Application
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+
+            <h2>Testing:</h2>
+            <p>Implement testing to ensure the reliability and correctness of your application. Write unit tests for individual components and integration tests to evaluate the system as a whole. Testing helps catch and fix bugs early in the development
+                process.
+            </p>
+            <pre><code># Example: Unit Test
+import unittest
+
+def add_numbers(a, b):
+    return a + b
+
+class TestAddition(unittest.TestCase):
+    def test_add_numbers(self):
+        self.assertEqual(add_numbers(2, 3), 5)
+        self.assertEqual(add_numbers(-1, 1), 0)
+
+if __name__ == '__main__':
+    unittest.main()</code></pre>
+
+            <h2>Documentation:</h2>
+            <p>Document your code to enhance readability and maintainability. Include information on how to set up the project, use the application, and contribute to its development. Well-documented code makes it easier for collaborators to understand and
+                extend your work.</p>
+
+            <h2>Version Control and Collaboration:</h2>
+            <p>Use version control, such as Git, to track changes in your project. Host your code on platforms like GitHub to facilitate collaboration. Collaborating with others allows for shared insights, faster development, and a more polished final product.</p>
+
+            <h2>Deployment:</h2>
+            <p>Prepare your application for deployment. Whether it's deploying a web application to a hosting platform or packaging a script for distribution, ensure that end-users can easily access and use your creation.</p>
+
+            <h2>Conclusion:</h2>
+            <p>Day 27 focuses on translating your Python knowledge into tangible results by developing a real-world application. Through careful planning, coding, testing, and collaboration, you'll gain valuable experience in application development, setting
+                the stage for future projects.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 28:</day> Code Review and Refactoring in Python</h1>
+
+            <h2>The Importance of Code Reviews:</h2>
+            <p>Code reviews are a crucial part of the software development process. They involve team members examining code changes to ensure quality, catch bugs, and promote collaboration. The process helps maintain code consistency and can lead to better
+                overall code quality.</p>
+
+            <h2>Conducting Effective Code Reviews:</h2>
+            <p>When conducting a code review, focus on readability, maintainability, and adherence to coding standards. Use constructive feedback to suggest improvements rather than criticizing. Ensure that the changes align with the project requirements
+                and coding guidelines.</p>
+            <pre><code>// Example of a code review comment
+// Original code
+function calculateTotal(items) {
+    // Calculate total price
+    let total = 0;
+    for (let item of items) {
+        total += item.price;
+    }
+    return total;
+}
+
+// Suggested improvement
+function calculateTotal(items) {
+    // Calculate total price
+    return items.reduce((total, item) => total + item.price, 0);
+}</code></pre>
+
+            <h2>Benefits of Code Reviews:</h2>
+            <ul>
+                <li><strong>Bug Detection:</strong> Code reviews help identify and fix bugs early in the development process.</li>
+                <li><strong>Knowledge Sharing:</strong> Team members share knowledge and insights, fostering a collaborative environment.</li>
+                <li><strong>Code Consistency:</strong> Ensures that the codebase follows consistent coding styles and conventions.</li>
+                <li><strong>Quality Assurance:</strong> Improves the overall quality and reliability of the software.</li>
+            </ul>
+
+            <h2>Introduction to Refactoring:</h2>
+            <p>Refactoring involves making improvements to the existing code without changing its external behavior. The goal is to enhance code maintainability, readability, and efficiency. Refactoring is an iterative process that helps in managing technical
+                debt.
+            </p>
+
+            <h2>Common Refactoring Techniques:</h2>
+            <ul>
+                <li><strong>Extract Method:</strong> Breaks down a complex function into smaller, more manageable ones.</li>
+                <li><strong>Rename Variables and Functions:</strong> Improves code clarity by using meaningful and descriptive names.</li>
+                <li><strong>Remove Duplicate Code:</strong> Eliminates redundancy to maintain a single source of truth.</li>
+                <li><strong>Optimize Loops and Conditions:</strong> Enhances code efficiency by optimizing loops and conditions.</li>
+            </ul>
+            <pre><code>// Example of refactoring: Extract Method
+// Original code
+function calculateTotal(items) {
+    let total = 0;
+    for (let item of items) {
+        total += calculateItemPrice(item);
+    }
+    return total;
+}
+
+function calculateItemPrice(item) {
+    return item.price * item.quantity;
+}
+
+// Refactored code
+function calculateTotal(items) {
+    return items.reduce((total, item) => total + calculateItemPrice(item), 0);
+}
+
+function calculateItemPrice(item) {
+    return item.price * item.quantity;
+}</code></pre>
+
+            <h2>Code Optimization:</h2>
+            <p>Code optimization involves making improvements to the code to enhance its performance. This includes optimizing algorithms, reducing time complexity, and minimizing resource usage.</p>
+            <pre><code>// Example of code optimization
+// Original code
+function findMax(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+// Optimized code using Math.max
+function findMax(arr) {
+    return Math.max(...arr);
+}</code></pre>
+
+            <h2>Conclusion:</h2>
+            <p>Code review and refactoring are integral parts of the software development lifecycle. Embracing these practices leads to better code quality, improved collaboration among team members, and the creation of robust, maintainable software solutions.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 29:</day> Documentation and Collaboration in Python Development</h1>
+
+            <h2>Importance of Documentation:</h2>
+            <p>Documentation is a critical aspect of software development. It involves creating comprehensive and understandable explanations of a program's structure, components, and usage. Good documentation helps developers, users, and collaborators understand
+                and contribute to a project.</p>
+
+            <h2>Documenting Python Code:</h2>
+            <p>In Python, documentation is often written using docstrings, which are triple-quoted strings placed at the beginning of a module, function, class, or method. These docstrings can be accessed using the <code>help()</code> function or tools like
+                Sphinx to generate HTML documentation.</p>
+            <pre><code>def greet(name):
+    """This function greets the user.
+
+    Args:
+        name (str): The name of the user.
+
+    Returns:
+        str: A greeting message.
+    """
+    return f"Hello, {name}!"</code></pre>
+
+            <h2>Collaboration with Git:</h2>
+            <p>Version control systems like Git are essential for collaborative software development. They allow multiple developers to work on a project simultaneously, keep track of changes, and manage different versions of the codebase. Git enables collaboration
+                by providing tools for branching, merging, and resolving conflicts.</p>
+
+            <h2>Basic Git Commands:</h2>
+            <p>Here are some fundamental Git commands:</p>
+            <pre><code># Clone a repository
+git clone <repository_url>
+
+# Create a new branch
+git checkout -b <branch_name>
+
+# Stage changes for commit
+git add .
+
+# Commit changes
+git commit -m "Commit message"
+
+# Push changes to a remote repository
+git push origin <branch_name></code></pre>
+
+            <h2>Collaborative Workflow:</h2>
+            <p>When collaborating with Git, developers typically follow a workflow that includes:</p>
+            <ol>
+                <li>Creating a new branch for a feature or bug fix.</li>
+                <li>Making changes, committing them, and pushing to the remote repository.</li>
+                <li>Creating a pull request for code review.</li>
+                <li>Merging changes into the main branch.</li>
+            </ol>
+
+            <h2>Code Review and Pull Requests:</h2>
+            <p>Code review is a crucial part of collaboration. Developers review each other's code to catch errors, ensure adherence to coding standards, and share knowledge. Pull requests are used to propose changes and initiate the code review process.</p>
+            <pre><code># Example pull request workflow
+# Developer creates a new branch
+git checkout -b feature-update
+
+# Developer makes changes, commits, and pushes
+git add .
+git commit -m "Implement feature"
+git push origin feature-update
+
+# Developer creates a pull request on the repository hosting platform (e.g., GitHub)
+# Team members review the code and provide feedback
+# Once approved, the changes are merged into the main branch</code></pre>
+
+            <p>Effective documentation and collaboration practices are key to successful software development projects. They enhance communication, code quality, and the overall efficiency of a development team. By mastering these skills, developers contribute
+                to creating maintainable, well-documented, and collaborative Python applications.</p>
+        </div>
+        <div class="python-card">
+            <h1>
+                <day>Day 30:</day> Capstone Project - Building a Comprehensive Python Project</h1>
+
+            <h2>Overview:</h2>
+            <p>On Day 30, you'll bring together all the knowledge and skills acquired throughout the month to work on a Capstone Project. The goal is to create a comprehensive Python project that integrates multiple concepts, showcasing your proficiency
+                in various areas of Python programming.</p>
+
+            <h2>Key Elements of the Capstone Project:</h2>
+            <ul>
+                <li><strong>Project Scope:</strong> Define the scope and objectives of your project. Clearly outline what your Python application aims to achieve.</li>
+                <li><strong>Concept Integration:</strong> Implement and integrate multiple Python concepts learned throughout the month. This could include topics like data manipulation, web development, file handling, or any other relevant areas.</li>
+                <li><strong>Code Organization:</strong> Practice good code organization and structure. Use appropriate design patterns and adhere to best practices for Python development.</li>
+                <li><strong>User Interaction:</strong> If applicable, incorporate user interaction through a command-line interface (CLI) or a graphical user interface (GUI).</li>
+                <li><strong>Error Handling:</strong> Implement robust error handling to ensure your application gracefully handles unexpected situations.</li>
+                <li><strong>Documentation:</strong> Provide clear and concise documentation for your project. Explain how to set up and run the project, and document key functionalities.</li>
+                <li><strong>Testing:</strong> Test your application thoroughly to identify and fix bugs. Consider implementing unit tests to validate individual components.</li>
+            </ul>
+
+            <h2>Example Capstone Project:</h2>
+            <p>As an example, let's consider a project that simulates a simple banking system. The project could involve creating classes for customers, accounts, and transactions. You might incorporate file handling to store customer data, implement user
+                authentication, and provide a command-line interface for account management.</p>
+            <pre><code class="python">
+class Customer:
+    def __init__(self, name, account_balance):
+        self.name = name
+        self.account_balance = account_balance
+
+class Bank:
+    def __init__(self):
+        self.customers = []
+
+    def add_customer(self, customer):
+        self.customers.append(customer)
+
+    # Additional methods for transactions, authentication, etc.
+
+# Your Capstone Project code goes here...
+        </code></pre>
+
+            <h2>Conclusion:</h2>
+            <p>The Capstone Project on Day 30 is a culmination of your Python learning journey throughout the month. It provides a practical opportunity to apply your skills, tackle real-world scenarios, and demonstrate your ability to build a complete and
+                functional Python project. Embrace the challenge, be creative, and enjoy the process of bringing your ideas to life through code!</p>
+        </div>
+    </div>
+
+
+
+    <!-- Assignments Script -->
+
+
+
+    <div id="assignments-container"></div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navbarLinks = document.querySelectorAll('.navbar-link');
+
+            navbarLinks.forEach(function(navbarLink) {
+                navbarLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var daysList = this.nextElementSibling;
+                    if (daysList.style.display === "block") {
+                        daysList.style.display = "none";
+                    } else {
+                        daysList.style.display = "block";
+                    }
+
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function Assignment() {
+            var assignmentCard = document.getElementById("assignmentCard");
+            // Toggle the display property of the assignment card
+            if (assignmentCard.style.display === "block") {
+                assignmentCard.style.display = "none"; // Hide the assignment card
+            } else {
+                assignmentCard.style.display = "block"; // Show the assignment card
+            }
+        }
+    </script>
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const flags = document.querySelectorAll('.flag-wrapper');
+
+            // Initially lock all flags
+            flags.forEach(flag => flag.classList.remove('unlocked'));
+
+            // Unlock flags one by one as needed
+            unlockFlag(document.getElementById('day-1-flag'));
+
+            function unlockFlag(flag) {
+                flag.classList.add('unlocked');
+                flag.onclick = function() {
+                    const dayNumber = flag.id.split("-")[1];
+                    window.location.href = "hsiukerh-CS1.html";
+                };
+            }
+        });
+    </script>
+
+    <script src="assets\js\script.js"></script>
+</body>
+
+</html>
