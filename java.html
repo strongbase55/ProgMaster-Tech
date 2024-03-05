@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Hub</title>
+    <link rel="shortcut icon" href="https://progmaster.in/logo-homepage.png" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Link to Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assignment.css">
+    <link rel="stylesheet" href="roadmap.css">
+
+
+    <style>
+        .direction-l .flag:before,
+        .direction-r .flag:before {
+            color: green;
+            /* Change color to green */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" data-header>
+        <div class="container">
+
+            <a href="#" class="logo">
+                <img src="./assets/images/logo.svg" width="32" height="32" alt="Cryptex logo"> ProgMaster
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link active" data-nav-link>Homepage</a>
+                    </li>
+
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Certificates</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Assignments</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link" data-nav-link>Forum</a>
+                    </li>
+
+
+                </ul>
+            </nav>
+            <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+            <!-- Use Font Awesome icon for the book -->
+            <!-- HTML -->
+            <!-- <button class="ass-btn" id="assignmentIcon" onclick="Assignment()"><i class="fa fa-book"></i></button> -->
+        </div>
+    </header>
+    <!-- <div class="assignment-card" id="assignmentCard">
+        <nav class="navbar1" data-navbar>
+            <ul class="navbar-list1">
+                <li class="navbar-item1">
+                    <a href="#" class="navbar-link" id="week1" data-nav-link>Week-1 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" id="week2" data-nav-link>Week-2 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" data-nav-link>Week-3 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link" data-nav-link>Week-4 Assignments</a>
+                    <ul class="days-list">
+                        <li><a href="#">Day-1 Assignment</a></li>
+                        <li><a href="#">Day-2 Assignment</a></li>
+                        <li><a href="#">Day-3 Assignment</a></li>
+                        <li><a href="#">Day-4 Assignment</a></li>
+                        <li><a href="#">Day-5 Assignment</a></li>
+                        <li><a href="#">Day-6 Assignment</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div> -->
+
+
+    <!-- The Timeline -->
+    <ul class="timeline">
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag" style="background:Yellow;color: black;">START</span>
+                </div>
+            </div>
+        </li>
+        <!-- Day 1 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper" id="day-1-flag">
+                    <span class="flag" style="background: red;">Day 1</span>
+                </div>
+                <div class="desc">
+                    <strong>Introduction to Java:</strong> Installation, Setup, and Your First Program.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 2 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper" id="day-2-flag">
+                    <span class="flag">Day 2</span>
+                </div>
+                <div class="desc">
+                    <strong>Variables, Data Types, and Operators:</strong> Understanding variables, different data types, and basic operators.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 3 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper" id="day-3-flag">
+                    <span class="flag">Day 3</span>
+                </div>
+                <div class="desc">
+                    <strong>Control Flow Statements:</strong> Understanding if-else, switch, and loops.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 4 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper" id="day-4-flag">
+                    <span class="flag">Day 4</span>
+                </div>
+                <div class="desc">
+                    <strong>Arrays and Strings:</strong> Working with arrays and strings in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 5 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper" id="day-5-flag">
+                    <span class="flag">Day 5</span>
+                </div>
+                <div class="desc">
+                    <strong>Methods and Functions:</strong> Defining and using methods and functions.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 6 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 6</span>
+                </div>
+                <div class="desc">
+                    <strong>Introduction to Object-Oriented Programming (OOP):</strong> Classes and Objects.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 7 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 7</span>
+                </div>
+                <div class="desc">
+                    <strong>Constructors and Overloading:</strong> Constructors and method overloading.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 8 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 8</span>
+                </div>
+                <div class="desc">
+                    <strong>Inheritance and Polymorphism:</strong> Inheritance and polymorphism concepts.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 9 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 9</span>
+                </div>
+                <div class="desc">
+                    <strong>Encapsulation and Access Modifiers:</strong> Encapsulation and access control in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 10 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 10</span>
+                </div>
+                <div class="desc">
+                    <strong>Abstract Classes and Interfaces:</strong> Abstract classes and interfaces in Java.
+                </div>
+            </div>
+        </li>
+        <!-- Day 11 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 11</span>
+                </div>
+                <div class="desc">
+                    <strong>Exception Handling:</strong> Handling exceptions in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 12 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 12</span>
+                </div>
+                <div class="desc">
+                    <strong>File I/O (Input/Output):</strong> Reading from and writing to files in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 13 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 13</span>
+                </div>
+                <div class="desc">
+                    <strong>Generics:</strong> Understanding generics in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 14 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 14</span>
+                </div>
+                <div class="desc">
+                    <strong>Collections Framework:</strong> Lists, Sets, and Maps in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 15 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 15</span>
+                </div>
+                <div class="desc">
+                    <strong>Multithreading and Concurrency:</strong> Multithreading and concurrency concepts in Java.
+                </div>
+            </div>
+        </li>
+        <!-- Day 16 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 16</span>
+                </div>
+                <div class="desc">
+                    <strong>Introduction to GUI Programming:</strong> Basics of GUI programming in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 17 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 17</span>
+                </div>
+                <div class="desc">
+                    <strong>JavaFX Basics:</strong> Introduction to JavaFX for building graphical user interfaces.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 18 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 18</span>
+                </div>
+                <div class="desc">
+                    <strong>Event Handling in JavaFX:</strong> Handling events in JavaFX applications.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 19 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 19</span>
+                </div>
+                <div class="desc">
+                    <strong>Layout Management:</strong> Managing layout and positioning in JavaFX.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 20 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 20</span>
+                </div>
+                <div class="desc">
+                    <strong>Advanced JavaFX Techniques:</strong> Advanced features and techniques in JavaFX.
+                </div>
+            </div>
+        </li>
+        <!-- Day 21 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 21</span>
+                </div>
+                <div class="desc">
+                    <strong>Introduction to JDBC:</strong> Basics of JDBC for database connectivity.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 22 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 22</span>
+                </div>
+                <div class="desc">
+                    <strong>Connecting to Databases:</strong> Connecting Java applications to databases.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 23 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 23</span>
+                </div>
+                <div class="desc">
+                    <strong>Executing SQL Statements:</strong> Executing SQL queries from Java applications.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 24 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 24</span>
+                </div>
+                <div class="desc">
+                    <strong>Handling Result Sets:</strong> Processing and handling result sets in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 25 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 25</span>
+                </div>
+                <div class="desc">
+                    <strong>Advanced JDBC Concepts:</strong> Advanced JDBC concepts like transactions and prepared statements.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 26 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 26</span>
+                </div>
+                <div class="desc">
+                    <strong>Introduction to Servlets:</strong> Basics of servlets for web development in Java.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 27 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 27</span>
+                </div>
+                <div class="desc">
+                    <strong>Servlet Lifecycle and Request Handling:</strong> Understanding servlet lifecycle and handling HTTP requests.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 28 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 28</span>
+                </div>
+                <div class="desc">
+                    <strong>JavaServer Pages (JSP):</strong> Basics of JSP for dynamic web content generation.
+                </div>
+            </div>
+        </li>
+
+        <!-- Day 29 -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 29</span>
+                </div>
+                <div class="desc">
+                    <strong>Session Management and Filters:</strong> Managing user sessions and using filters in Java web applications.
+                </div>
+            </div>
+        </li>
+
+
+        <!-- Day 30 -->
+        <li>
+            <div class="direction-l">
+                <div class="flag-wrapper">
+                    <span class="flag">Day 30</span>
+                </div>
+                <div class="desc">
+                    <strong>Introduction to Spring Framework:</strong> Basics of Spring Framework for enterprise Java development.
+                </div>
+            </div>
+        </li>
+
+
+        <!-- End -->
+        <li>
+            <div class="direction-r">
+                <div class="flag-wrapper">
+                    <span class="flag" style="background:Yellow;color: black;">END</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+
+    <!-- python content -->
+    <div class="python-content">
+        <div class="python-card">
+            <h1>
+                <day>Day 1:</day> Introduction to Java, Installation, Setup, and Your First Program</h1>
+
+            <h2>Introduction to Java</h2>
+            <p>Java is a widely-used, <span class="highlight">object-oriented programming language</span> developed by Sun Microsystems (now owned by Oracle Corporation). It is known for its <span class="highlight">platform independence</span>, which means
+                Java programs can run on any device that has a Java Virtual Machine (JVM) installed.</p>
+
+            <h2>Installation</h2>
+            <ol>
+                <li><strong>Download JDK:</strong> Go to the <a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">official Oracle website</a> and download the latest version of the Java Development Kit (JDK) for your operating system.</li>
+                <li><strong>Installation:</strong> Run the downloaded installer and follow the on-screen instructions to install JDK on your computer.</li>
+                <li><strong>Set up Environment Variables:</strong> Configure system variables such as <span class="highlight">JAVA_HOME</span> and <span class="highlight">PATH</span> to point to the JDK installation directory.</li>
+            </ol>
+
+            <h2>Your First Program</h2>
+            <p>Let's write a simple Java program to understand the basic syntax and structure of a Java program:</p>
+            <pre><code>public class <span class="highlight">HelloWorld</span> {
+        public static void <span class="highlight">main</span>(String[] args) {
+            System.out.<span class="highlight">println</span>("Hello, world!");
+        }
+    }</code></pre>
+
+            <p>Explanation of the code:</p>
+            <ul>
+                <li><code>public class <span class="highlight">HelloWorld</span></code>: This line declares a class named <code>HelloWorld</code>.</li>
+                <li><code>public static void <span class="highlight">main</span>(String[] args)</code>: This line declares the <code>main</code> method, which serves as the entry point for the Java program.</li>
+                <li><code>System.out.<span class="highlight">println</span>("Hello, world!");</code>: This line prints the string "Hello, world!" to the console.</li>
+            </ul>
+
+            <h2>Real-life Example</h2>
+            <p>Imagine you are developing a web application that greets users upon login. Java can be used to develop the backend logic, including handling user authentication and displaying personalized messages based on user data.</p>
+
+            <h2>Conclusion</h2>
+            <p>By following the above steps, you have been introduced to Java programming, installed the necessary software, set up your development environment, and written your first Java program. This lays the foundation for further exploration and learning
+                in Java programming.</p>
+        </div>
+    </div>
+
+    <!-- day 2 content -->
+
+
+
+    </div>
+
+
+
+    <!-- Assignments Script -->
+
+
+
+    <div id="assignments-container"></div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navbarLinks = document.querySelectorAll('.navbar-link');
+
+            navbarLinks.forEach(function(navbarLink) {
+                navbarLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var daysList = this.nextElementSibling;
+                    if (daysList.style.display === "block") {
+                        daysList.style.display = "none";
+                    } else {
+                        daysList.style.display = "block";
+                    }
+
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function Assignment() {
+            var assignmentCard = document.getElementById("assignmentCard");
+            // Toggle the display property of the assignment card
+            if (assignmentCard.style.display === "block") {
+                assignmentCard.style.display = "none"; // Hide the assignment card
+            } else {
+                assignmentCard.style.display = "block"; // Show the assignment card
+            }
+        }
+    </script>
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const flags = document.querySelectorAll('.flag-wrapper');
+
+            // Initially lock all flags
+            flags.forEach(flag => flag.classList.remove('unlocked'));
+
+            // Unlock flags one by one as needed
+            unlockFlag(document.getElementById('day-1-flag'));
+
+            function unlockFlag(flag) {
+                flag.classList.add('unlocked');
+                flag.onclick = function() {
+                    const dayNumber = flag.id.split("-")[1];
+                    window.location.href = "reweg-j1.html";
+                };
+            }
+        });
+    </script>
+
+    <script src="assets\js\script.js"></script>
+</body>
+
+</html>
