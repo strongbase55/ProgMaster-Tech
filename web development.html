@@ -526,13 +526,281 @@
             <p>Understanding the basics of web development, the client-server model, and web technologies is essential for anyone looking to build modern web applications. By combining these concepts with practical examples and code, you can create engaging
                 and interactive experiences for users on the web.</p>
         </div>
-    </div>
 
 
 
-    <!-- day 2 content -->
+        <!-- day 2 content -->
+        <div class="python-card">
+            <h1>
+                <day>Day 2:</day> HTML Basics (Structure, Tags, Elements)
+            </h1>
+
+            <h2>Structure</h2>
+            <p>
+                HTML documents follow a specific structure. They consist of an opening
+                <code>&lt;html&gt;</code> tag and a closing <code>&lt;/html&gt;</code> tag, which enclose the entire document. Inside the <code>&lt;html&gt;</code> tag, there are two main sections: the <code>&lt;head&gt;</code> and the
+                <code>&lt;body&gt;</code>. The <code>&lt;head&gt;</code> section contains metadata about the document, such as the title and links to external resources like CSS stylesheets and JavaScript files. The <code>&lt;body&gt;</code> section contains
+                the visible content of the webpage.
+            </p>
+
+            <h2>Tags</h2>
+            <p>
+                HTML uses tags to define different parts of a document. Tags are enclosed in angle brackets <code>&lt; &gt;</code>, and most come in pairs, with an opening tag and a closing tag. For example, <code>&lt;p&gt;</code> is the opening tag for
+                a paragraph, and <code>&lt;/p&gt;</code> is the closing tag.
+            </p>
+
+            <h2>Elements</h2>
+            <p>
+                Elements are made up of tags and the content they contain. They form the building blocks of an HTML document. For instance, a paragraph element consists of an opening <code>&lt;p&gt;</code> tag, the text content, and a closing <code>&lt;/p&gt;</code>                tag.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+            <code>
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                    &lt;title&gt;HTML Basics&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;h1&gt;Welcome to my Website&lt;/h1&gt;
+                    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+                    &lt;a href="https://www.example.com"&gt;This is a link&lt;/a&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </code>
+        </pre>
+
+            <p>
+                Explanation:
+                <br>- <code>&lt;!DOCTYPE html&gt;</code>: This declaration specifies the HTML version being used.
+                <br>- <code>&lt;html&gt;</code>: The root element that wraps the entire HTML document.
+                <br>- <code>&lt;head&gt;</code>: Contains metadata about the document.
+                <br>- <code>&lt;title&gt;</code>: Sets the title of the webpage, displayed in the browser's title bar or tab.
+                <br>- <code>&lt;body&gt;</code>: Contains the visible content of the webpage.
+                <br>- <code>&lt;h1&gt;</code>: Defines a heading level 1.
+                <br>- <code>&lt;p&gt;</code>: Defines a paragraph.
+                <br>- <code>&lt;a&gt;</code>: Defines a hyperlink, with the <code>href</code> attribute specifying the URL it links to.
+            </p>
+
+            <p>
+                Output:
+                <br>- The webpage will display a heading "Welcome to my Website", followed by a paragraph of text "This is a paragraph." Additionally, there will be a clickable link labeled "This is a link", which redirects to "https://www.example.com"
+                when clicked.
+            </p>
+        </div>
 
 
+
+        <div class="python-card">
+            <h1>
+                <day>Day 3:</day> HTML Forms and Input Elements
+            </h1>
+
+            <h2>Forms</h2>
+            <p>
+                HTML forms provide a way to collect user input and send it to a server for processing. They are created using the <code>&lt;form&gt;</code> element, which contains various input elements like text fields, checkboxes, radio buttons, and
+                submit buttons.
+            </p>
+
+            <h2>Input Elements</h2>
+            <p>
+                Input elements allow users to enter data into a form. Some common input types include:
+            </p>
+            <ul>
+                <li><strong>Text Fields:</strong> Allow users to input text.</li>
+                <li><strong>Checkboxes:</strong> Allow users to select multiple options.</li>
+                <li><strong>Radio Buttons:</strong> Allow users to select only one option from a list.</li>
+                <li><strong>Dropdown Menus:</strong> Allow users to select an option from a dropdown list.</li>
+                <li><strong>Submit Buttons:</strong> Allow users to submit the form data.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    &lt;form action="/submit" method="post"&gt;
+                        &lt;label for="username"&gt;Username:&lt;/label&gt;
+                        &lt;input type="text" id="username" name="username"&gt;&lt;br&gt;
+        
+                        &lt;label for="password"&gt;Password:&lt;/label&gt;
+                        &lt;input type="password" id="password" name="password"&gt;&lt;br&gt;
+        
+                        &lt;input type="checkbox" id="remember" name="remember"&gt;
+                        &lt;label for="remember"&gt;Remember me&lt;/label&gt;&lt;br&gt;
+        
+                        &lt;input type="radio" id="male" name="gender" value="male"&gt;
+                        &lt;label for="male"&gt;Male&lt;/label&gt;
+                        &lt;input type="radio" id="female" name="gender" value="female"&gt;
+                        &lt;label for="female"&gt;Female&lt;/label&gt;&lt;br&gt;
+        
+                        &lt;label for="cars"&gt;Choose a car:&lt;/label&gt;
+                        &lt;select id="cars" name="cars"&gt;
+                            &lt;option value="volvo"&gt;Volvo&lt;/option&gt;
+                            &lt;option value="saab"&gt;Saab&lt;/option&gt;
+                            &lt;option value="fiat"&gt;Fiat&lt;/option&gt;
+                            &lt;option value="audi"&gt;Audi&lt;/option&gt;
+                        &lt;/select&gt;&lt;br&gt;
+        
+                        &lt;input type="submit" value="Submit"&gt;
+                    &lt;/form&gt;
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>&lt;form&gt;</code> element defines the form.
+                <br>- Each <code>&lt;input&gt;</code> element represents a different type of user input.
+                <br>- The <code>type</code> attribute specifies the type of input (text, password, checkbox, radio, etc.).
+                <br>- The <code>id</code> and <code>name</code> attributes uniquely identify the input element.
+                <br>- For checkboxes and radio buttons, the <code>value</code> attribute specifies the value that will be sent to the server if the checkbox or radio button is checked.
+                <br>- The <code>&lt;select&gt;</code> element creates a dropdown menu with multiple options.
+                <br>- The <code>&lt;option&gt;</code> elements define the options within the dropdown menu.
+                <br>- The <code>&lt;input type="submit"&gt;</code> element creates a submit button that sends the form data to the server.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example form will display input fields for a username and password, a checkbox for "Remember me", radio buttons for selecting gender, a dropdown menu for choosing a car, and a submit button to submit the form data.
+            </p>
+        </div>
+
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 4:</day> CSS Basics (Selectors, Properties, Values)
+            </h1>
+
+            <h2>Selectors</h2>
+            <p>
+                CSS selectors are patterns used to select and style HTML elements. There are various types of selectors:
+            </p>
+            <ul>
+                <li><strong>Element Selector:</strong> Selects elements based on their tag name, e.g., <code>p</code> selects all paragraphs.</li>
+                <li><strong>Class Selector:</strong> Selects elements based on their class attribute, e.g., <code>.classname</code> selects all elements with the specified class.</li>
+                <li><strong>ID Selector:</strong> Selects a single element based on its unique ID attribute, e.g., <code>#idname</code> selects the element with the specified ID.</li>
+                <li><strong>Attribute Selector:</strong> Selects elements based on their attributes, e.g., <code>[type="text"]</code> selects all elements with the specified attribute and value.</li>
+            </ul>
+
+            <h2>Properties and Values</h2>
+            <p>
+                CSS properties define the visual style of HTML elements, while values specify the specific settings for those properties. Some common properties include:
+            </p>
+            <ul>
+                <li><strong>Color:</strong> Sets the text color.</li>
+                <li><strong>Font-Size:</strong> Sets the size of the font.</li>
+                <li><strong>Background-Color:</strong> Sets the background color of an element.</li>
+                <li><strong>Padding:</strong> Sets the space between the content and the border.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    /* CSS Style Sheet */
+                    p {
+                        color: blue;
+                        font-size: 16px;
+                    }
+        
+                    .classname {
+                        background-color: yellow;
+                    }
+        
+                    #idname {
+                        padding: 10px;
+                    }
+        
+                    [type="text"] {
+                        border: 1px solid black;
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- <code>p</code>: Applies styles to all paragraph elements.
+                <br>- <code>.classname</code>: Applies styles to all elements with the specified class.
+                <br>- <code>#idname</code>: Applies styles to the element with the specified ID.
+                <br>- <code>[type="text"]</code>: Applies styles to all elements with the specified attribute and value.
+            </p>
+
+            <p>
+                Output:
+                <br>- The CSS styles will be applied to the corresponding HTML elements, changing their appearance according to the specified properties and values.
+            </p>
+        </div>
+
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 5:</day> CSS Layout Techniques (Flexbox, Grid)
+            </h1>
+
+            <h2>Flexbox</h2>
+            <p>
+                Flexbox is a layout model that allows elements to align and distribute space within a container, regardless of their size. It provides a more efficient and predictable way to arrange items within a container, especially when dealing with dynamic or unknown
+                sizes.
+            </p>
+
+            <h2>Grid</h2>
+            <p>
+                CSS Grid Layout is a two-dimensional layout system that allows you to create complex grid-based layouts with rows and columns. It provides precise control over the placement and alignment of elements within the grid, making it ideal for designing responsive
+                and flexible layouts.
+            </p>
+
+            <h3>Flexbox Example</h3>
+            <pre>
+                <code>
+                    /* CSS Style Sheet */
+                    .container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 200px;
+                        border: 1px solid black;
+                    }
+        
+                    .item {
+                        width: 50px;
+                        height: 50px;
+                        background-color: blue;
+                        margin: 5px;
+                    }
+                </code>
+            </pre>
+
+            <h3>Grid Example</h3>
+            <pre>
+                <code>
+                    /* CSS Style Sheet */
+                    .container {
+                        display: grid;
+                        grid-template-columns: 100px 100px 100px;
+                        grid-gap: 10px;
+                    }
+        
+                    .item {
+                        background-color: blue;
+                        padding: 20px;
+                        text-align: center;
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>.container</code> class defines a container element.
+                <br>- For Flexbox, <code>display: flex;</code> sets the container to use flexbox layout, while <code>justify-content: center;</code> and <code>align-items: center;</code> center the items horizontally and vertically within the container.
+                <br>- For Grid, <code>display: grid;</code> sets the container to use grid layout, while <code>grid-template-columns</code> defines the number and size of columns, and <code>grid-gap</code> sets the gap between grid items.
+            </p>
+
+            <p>
+                Output:
+                <br>- The Flexbox example will center the blue boxes horizontally and vertically within the container.
+                <br>- The Grid example will create a grid layout with three columns, each containing a blue box with padding and centered text.
+            </p>
+        </div>
 
     </div>
 
