@@ -2480,13 +2480,13 @@ class Bank:
             flags.forEach(flag => flag.classList.remove('unlocked'));
 
             // Unlock flags one by one as needed
-            unlockFlag(document.getElementById('day-1-flag'));
+            unlockFlag(document.getElementById('day-2-flag'));
 
             function unlockFlag(flag) {
                 flag.classList.add('unlocked');
                 flag.onclick = function() {
                     const dayNumber = flag.id.split("-")[1];
-                    window.location.href = "asdeq-p1.html";
+                    window.location.href = "p2-iocja.html";
                 };
             }
         });
