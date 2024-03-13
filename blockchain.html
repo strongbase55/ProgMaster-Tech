@@ -140,7 +140,7 @@
         <li>
             <div class="direction-r">
                 <div class="flag-wrapper" id="day-1-flag">
-                    <span class="flag" style="background: red;">Day 1</span>
+                    <span class="flag">Day 1</span>
                 </div>
                 <div class="desc">
                     <strong>Introduction to Blockchain:</strong> Definition, Characteristics, and Components.
@@ -1699,7 +1699,9 @@
                 flags.forEach(flag => flag.classList.remove('unlocked'));
 
                 // Unlock flags one by one as needed
-                unlockFlag(document.getElementById('day-1-flag'));
+                unlockFlag(document.getElementById('day-2-flag'));
+                let fod = document.getElementById('day-2-flag')
+                fod.style.backgroundColor = "red"
 
                 function unlockFlag(flag) {
                     flag.classList.add('unlocked');
