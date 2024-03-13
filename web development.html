@@ -802,6 +802,1430 @@
             </p>
         </div>
 
+
+        <div class="python-card">
+            <h1>
+                <day>Day 6:</day> Intermediate HTML Elements (Tables, Lists, Semantic Markup)
+            </h1>
+
+            <h2>Tables</h2>
+            <p>
+                HTML tables are used to display data in a tabular format. They consist of rows and columns, with each cell containing data. Tables are created using the <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (table row), <code>&lt;th&gt;</code>                (table header), and <code>&lt;td&gt;</code> (table data) elements.
+            </p>
+
+            <h2>Lists</h2>
+            <p>
+                HTML lists are used to group related items together. There are three types of lists: ordered lists (<code>&lt;ol&gt;</code>), unordered lists (<code>&lt;ul&gt;</code>), and definition lists (<code>&lt;dl&gt;</code>). Each list item is
+                represented by the <code>&lt;li&gt;</code> (list item) element.
+            </p>
+
+            <h2>Semantic Markup</h2>
+            <p>
+                Semantic markup involves using HTML elements that convey meaning about the content they contain. It improves accessibility, search engine optimization (SEO), and readability. Examples of semantic elements include <code>&lt;header&gt;</code>,
+                <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;section&gt;</code>.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    &lt;table&gt;
+                        &lt;tr&gt;
+                            &lt;th&gt;Name&lt;/th&gt;
+                            &lt;th&gt;Age&lt;/th&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;John&lt;/td&gt;
+                            &lt;td&gt;30&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Jane&lt;/td&gt;
+                            &lt;td&gt;25&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+        
+                    &lt;ul&gt;
+                        &lt;li&gt;Item 1&lt;/li&gt;
+                        &lt;li&gt;Item 2&lt;/li&gt;
+                        &lt;li&gt;Item 3&lt;/li&gt;
+                    &lt;/ul&gt;
+        
+                    &lt;article&gt;
+                        &lt;h1&gt;Article Title&lt;/h1&gt;
+                        &lt;p&gt;Article content goes here.&lt;/p&gt;
+                    &lt;/article&gt;
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>&lt;table&gt;</code> element defines a table.
+                <br>- The <code>&lt;tr&gt;</code> element defines a table row.
+                <br>- The <code>&lt;th&gt;</code> element defines a table header cell.
+                <br>- The <code>&lt;td&gt;</code> element defines a table data cell.
+                <br>- The <code>&lt;ul&gt;</code> element defines an unordered list.
+                <br>- The <code>&lt;li&gt;</code> element defines a list item.
+                <br>- The <code>&lt;article&gt;</code> element defines an article.
+                <br>- The <code>&lt;h1&gt;</code> element defines a heading.
+                <br>- The <code>&lt;p&gt;</code> element defines a paragraph.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example code will display a table with two rows and two columns, an unordered list with three items, and an article with a title and content.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 7:</day> Intermediate CSS (Box Model, Positioning)
+            </h1>
+
+            <h2>Box Model</h2>
+            <p>
+                The CSS box model describes the design and layout of elements on a webpage. It consists of the content area, padding, border, and margin. Understanding the box model is crucial for controlling the spacing and layout of elements.
+            </p>
+
+            <h2>Positioning</h2>
+            <p>
+                CSS positioning allows you to precisely control the placement of elements on a webpage. There are several positioning properties:
+            </p>
+            <ul>
+                <li><strong>Static:</strong> The default positioning behavior, elements are positioned according to the normal flow of the document.</li>
+                <li><strong>Relative:</strong> Elements are positioned relative to their normal position.</li>
+                <li><strong>Absolute:</strong> Elements are positioned relative to their nearest positioned ancestor.</li>
+                <li><strong>Fixed:</strong> Elements are positioned relative to the browser window and do not move when the page is scrolled.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    /* CSS Style Sheet */
+                    .box {
+                        width: 200px;
+                        height: 200px;
+                        padding: 20px;
+                        border: 2px solid black;
+                        margin: 10px;
+                    }
+        
+                    .relative {
+                        position: relative;
+                        top: 20px;
+                        left: 20px;
+                    }
+        
+                    .absolute {
+                        position: absolute;
+                        top: 50px;
+                        left: 50px;
+                    }
+        
+                    .fixed {
+                        position: fixed;
+                        bottom: 10px;
+                        right: 10px;
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>.box</code> class defines a box with width, height, padding, border, and margin.
+                <br>- The <code>.relative</code> class positions the element relative to its normal position.
+                <br>- The <code>.absolute</code> class positions the element relative to its nearest positioned ancestor.
+                <br>- The <code>.fixed</code> class positions the element relative to the browser window.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example code will create boxes with different positioning properties, demonstrating the box model and CSS positioning techniques.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 8:</day> Responsive Web Design Principles
+            </h1>
+
+            <h2>What is Responsive Web Design?</h2>
+            <p>
+                Responsive web design is an approach to web design that ensures web pages render well on a variety of devices and window or screen sizes. This is achieved by using flexible layouts and grids, responsive images, and CSS media queries.
+            </p>
+
+            <h2>Key Principles</h2>
+            <ol>
+                <li><strong>Flexible Layouts:</strong> Use relative units like percentages or ems for widths, rather than fixed units like pixels, to allow content to adapt to different screen sizes.</li>
+                <li><strong>Media Queries:</strong> Use CSS media queries to apply different styles based on the characteristics of the device, such as screen width, height, or orientation.</li>
+                <li><strong>Fluid Images:</strong> Ensure images are flexible and scale appropriately to fit different screen sizes using CSS properties like <code>max-width: 100%;</code>.</li>
+                <li><strong>Mobile-First Approach:</strong> Start designing for mobile devices first, then progressively enhance the layout and features for larger screens using media queries.</li>
+                <li><strong>Viewport Meta Tag:</strong> Use the <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> tag to control how the webpage is displayed on mobile devices and set the initial zoom level.</li>
+            </ol>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    /* CSS Style Sheet */
+                    .container {
+                        width: 100%;
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 0 20px;
+                    }
+        
+                    @media screen and (max-width: 768px) {
+                        .container {
+                            padding: 0 10px;
+                        }
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>.container</code> class defines a container with a maximum width of 1200px and horizontal margins set to auto for centering.
+                <br>- The media query targets screens with a maximum width of 768px and adjusts the container's padding to 10px on smaller devices.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example CSS code demonstrates a responsive layout with a flexible container that adjusts its padding based on the screen width.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 9:</day> Media Queries and Mobile-First Design
+            </h1>
+
+            <h2>Media Queries</h2>
+            <p>
+                Media queries are CSS techniques used to apply different styles to a webpage based on the characteristics of the device, such as screen width, height, and orientation. They allow for responsive design, ensuring optimal viewing experiences across various
+                devices and screen sizes.
+            </p>
+
+            <h2>Mobile-First Design</h2>
+            <p>
+                Mobile-first design is a strategy where the initial design and development focus are on mobile devices. This approach prioritizes designing for smaller screens and slower connections, then progressively enhancing the design for larger screens using media
+                queries. It ensures a better user experience on mobile devices and simplifies the process of adapting to larger screens.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    /* CSS Style Sheet */
+                    .container {
+                        width: 100%;
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 0 20px;
+                    }
+        
+                    @media screen and (max-width: 768px) {
+                        .container {
+                            padding: 0 10px;
+                        }
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>.container</code> class defines a container with a maximum width of 1200px and horizontal margins set to auto for centering.
+                <br>- The media query targets screens with a maximum width of 768px and adjusts the container's padding to 10px on smaller devices.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example CSS code demonstrates a responsive layout with a flexible container that adjusts its padding based on the screen width.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 10:</day> CSS Frameworks (Bootstrap, Foundation)
+            </h1>
+
+            <h2>What are CSS Frameworks?</h2>
+            <p>
+                CSS frameworks are pre-written, standardized sets of CSS styles and components that facilitate the development of responsive and visually appealing web pages. They provide a foundation for building websites by offering a grid system, UI components, and
+                predefined styles for typography, forms, buttons, navigation, and more.
+            </p>
+
+            <h2>Popular CSS Frameworks</h2>
+            <ul>
+                <li><strong>Bootstrap:</strong> Developed by Twitter, Bootstrap is one of the most widely used CSS frameworks. It offers a responsive grid system, extensive component library, and customizable styles.</li>
+                <li><strong>Foundation:</strong> Developed by ZURB, Foundation is another popular CSS framework known for its mobile-first approach, flexibility, and modular architecture.</li>
+                <li><strong>Materialize:</strong> Based on Google's Material Design guidelines, Materialize is a modern CSS framework that provides a set of UI components with a sleek and intuitive design.</li>
+                <li><strong>Bulma:</strong> Bulma is a lightweight and modern CSS framework based on Flexbox. It offers a simple and flexible grid system and a modular structure that allows for easy customization.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <p>
+                To use Bootstrap in your project, you can include the following CDN link in your HTML file:
+            </p>
+            <pre>
+                <code>
+                    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"&gt;
+                </code>
+            </pre>
+
+            <p>
+                Similarly, for Foundation, you can include the following CDN link:
+            </p>
+            <pre>
+                <code>
+                    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css"&gt;
+                </code>
+            </pre>
+
+            <p>
+                These links will import the necessary CSS files for Bootstrap or Foundation into your project, allowing you to utilize their styles and components.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 11:</day> Introduction to JavaScript, Basic Syntax, and Variables
+            </h1>
+
+            <h2>What is JavaScript?</h2>
+            <p>
+                JavaScript is a high-level, interpreted programming language primarily used for creating interactive web pages. It adds behavior to web pages by allowing developers to manipulate the Document Object Model (DOM), handle events, and communicate with servers
+                asynchronously.
+            </p>
+
+            <h2>Basic Syntax</h2>
+            <p>
+                JavaScript syntax is similar to other programming languages like Java and C. It consists of statements, expressions, variables, operators, and functions. JavaScript code is typically embedded directly into HTML documents or included as separate external
+                files using the <code>&lt;script&gt;</code> element.
+            </p>
+
+            <h2>Variables</h2>
+            <p>
+                Variables in JavaScript are used to store and manipulate data. They are declared using the <code>var</code>, <code>let</code>, or <code>const</code> keywords followed by a variable name. Variables can hold various data types, including
+                numbers, strings, booleans, arrays, objects, and functions.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code
+                    var message = "Hello, world!";
+                    var count = 10;
+                    var isLogged = true;
+        
+                    function greet(name) {
+                        return "Hello, " + name + "!";
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>var</code> keyword is used to declare variables.
+                <br>- <code>message</code> is a string variable containing the message "Hello, world!".
+                <br>- <code>count</code> is a number variable initialized to 10.
+                <br>- <code>isLogged</code> is a boolean variable set to true.
+                <br>- The <code>greet</code> function takes a name parameter and returns a greeting message.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example JavaScript code declares variables and defines a function, demonstrating basic syntax and usage of variables in JavaScript.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 12:</day> Data Types, Operators, and Expressions
+            </h1>
+
+            <h2>Data Types</h2>
+            <p>
+                JavaScript supports several data types, including:
+            </p>
+            <ul>
+                <li><strong>Numbers:</strong> Integers and floating-point numbers.</li>
+                <li><strong>Strings:</strong> Textual data enclosed in single or double quotes.</li>
+                <li><strong>Booleans:</strong> True or false values.</li>
+                <li><strong>Arrays:</strong> Ordered collections of data.</li>
+                <li><strong>Objects:</strong> Collections of key-value pairs.</li>
+                <li><strong>Null:</strong> Represents the absence of value.</li>
+                <li><strong>Undefined:</strong> Represents an uninitialized variable.</li>
+            </ul>
+
+            <h2>Operators</h2>
+            <p>
+                JavaScript provides various operators for performing operations on data, including arithmetic, assignment, comparison, logical, and bitwise operators.
+            </p>
+
+            <h2>Expressions</h2>
+            <p>
+                Expressions are combinations of values, variables, and operators that evaluate to a single value. They can be simple or complex, and they are used to perform calculations, make decisions, and control program flow.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code
+                    var num1 = 10;
+                    var num2 = 5;
+                    var sum = num1 + num2;
+                    var isGreater = num1 > num2;
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- <code>num1</code> and <code>num2</code> are number variables.
+                <br>- <code>sum</code> stores the result of adding <code>num1</code> and <code>num2</code>.
+                <br>- <code>isGreater</code> stores the result of comparing if <code>num1</code> is greater than <code>num2</code>.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example JavaScript code demonstrates the usage of data types, operators, and expressions to perform calculations and comparisons.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 13:</day> Control Flow (Conditional Statements, Loops)
+            </h1>
+
+            <h2>Conditional Statements</h2>
+            <p>
+                Conditional statements allow you to execute different code blocks based on specified conditions. JavaScript supports various conditional statements, including:
+            </p>
+            <ul>
+                <li><strong>if Statement:</strong> Executes a block of code if a specified condition is true.</li>
+                <li><strong>else Statement:</strong> Executes a block of code if the same condition is false.</li>
+                <li><strong>else if Statement:</strong> Allows you to specify multiple conditions to execute different blocks of code.</li>
+                <li><strong>switch Statement:</strong> Evaluates an expression and executes different code blocks based on matching cases.</li>
+            </ul>
+
+            <h2>Loops</h2>
+            <p>
+                Loops are used to execute a block of code repeatedly as long as a specified condition is true. JavaScript supports different types of loops, including:
+            </p>
+            <ul>
+                <li><strong>for Loop:</strong> Executes a block of code a specified number of times.</li>
+                <li><strong>while Loop:</strong> Executes a block of code as long as a specified condition is true.</li>
+                <li><strong>do...while Loop:</strong> Executes a block of code once, then repeats the loop as long as a specified condition is true.</li>
+                <li><strong>for...in Loop:</strong> Iterates over the properties of an object.</li>
+                <li><strong>for...of Loop:</strong> Iterates over iterable objects like arrays, strings, or maps.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code
+                    var num = 10;
+        
+                    if (num > 0) {
+                        console.log("Number is positive");
+                    } else if (num < 0) {
+                        console.log("Number is negative");
+                    } else {
+                        console.log("Number is zero");
+                    }
+        
+                    for (var i = 0; i < 5; i++) {
+                        console.log("Iteration " + (i + 1));
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>if</code> statement checks if <code>num</code> is positive, negative, or zero and logs the result accordingly.
+                <br>- The <code>for</code> loop executes the code block five times, logging each iteration number.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example JavaScript code demonstrates the usage of conditional statements and loops to control program flow and execute code repetitively.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 14:</day> Functions and Scope
+            </h1>
+
+            <h2>Functions</h2>
+            <p>
+                Functions in JavaScript are reusable blocks of code that perform a specific task. They allow you to organize code, avoid repetition, and improve maintainability. Functions can take parameters as input and return values as output.
+            </p>
+
+            <h2>Scope</h2>
+            <p>
+                Scope in JavaScript refers to the visibility and accessibility of variables within a program. JavaScript has two main types of scope:
+            </p>
+            <ul>
+                <li><strong>Global Scope:</strong> Variables declared outside of any function are accessible from anywhere in the program.</li>
+                <li><strong>Local Scope:</strong> Variables declared within a function are only accessible within that function (local scope).</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code
+                    var globalVar = "I'm a global variable";
+        
+                    function greet(name) {
+                        var greeting = "Hello, " + name + "!";
+                        console.log(greeting);
+                    }
+        
+                    greet("John");
+                    console.log(globalVar);
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>greet</code> function takes a <code>name</code> parameter and logs a greeting message to the console.
+                <br>- The <code>globalVar</code> variable is declared outside any function and has global scope, so it can be accessed from anywhere in the program.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example JavaScript code demonstrates defining and calling a function, as well as variable scope within and outside functions.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 15:</day> Arrays and Objects
+            </h1>
+
+            <h2>Arrays</h2>
+            <p>
+                Arrays in JavaScript are used to store multiple values in a single variable. They can hold any data type, including numbers, strings, booleans, objects, and even other arrays. Arrays are zero-indexed, meaning the first element is at index 0, the second
+                element at index 1, and so on.
+            </p>
+
+            <h2>Objects</h2>
+            <p>
+                Objects in JavaScript are collections of key-value pairs, where each key is a unique string and each value can be any data type. Objects allow you to organize and manipulate data more efficiently, as you can access values using their corresponding keys.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code
+                    var numbers = [1, 2, 3, 4, 5];
+                    var person = {
+                        name: "John",
+                        age: 30,
+                        isAdmin: false
+                    };
+        
+                    console.log(numbers[0]); // Output: 1
+                    console.log(person.name); // Output: "John"
+                    console.log(person.age); // Output: 30
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>numbers</code> array contains five elements, accessed by their respective indices.
+                <br>- The <code>person</code> object has three properties: <code>name</code>, <code>age</code>, and <code>isAdmin</code>, accessed using dot notation.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example JavaScript code demonstrates the usage of arrays and objects to store and manipulate data in JavaScript.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 16:</day> Introduction to the Document Object Model (DOM)
+            </h1>
+
+            <h2>What is the DOM?</h2>
+            <p>
+                The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of an HTML document as a tree of objects, allowing JavaScript to interact with and manipulate HTML elements dynamically. The DOM provides methods
+                and properties for accessing, modifying, adding, or deleting elements and their attributes.
+            </p>
+
+            <h2>DOM Tree Structure</h2>
+            <p>
+                The DOM tree consists of nodes representing different parts of an HTML document:
+            </p>
+            <ul>
+                <li><strong>Document Node:</strong> Represents the entire HTML document.</li>
+                <li><strong>Element Nodes:</strong> Represent HTML elements, such as <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;span&gt;</code>, etc.</li>
+                <li><strong>Attribute Nodes:</strong> Represent attributes of HTML elements.</li>
+                <li><strong>Text Nodes:</strong> Represent text content within HTML elements.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    <!-- HTML code -->
+                    &lt;div id="container"&gt;
+                        &lt;p&gt;Hello, world!&lt;/p&gt;
+                    &lt;/div&gt;
+        
+                    // JavaScript code
+                    var container = document.getElementById("container");
+                    var paragraph = container.getElementsByTagName("p")[0];
+                    console.log(paragraph.innerHTML); // Output: "Hello, world!"
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The HTML code defines a <code>&lt;div&gt;</code> element with an <code>id</code> attribute of "container" containing a <code>&lt;p&gt;</code> element.
+                <br>- The JavaScript code selects the <code>&lt;div&gt;</code> element with <code>id="container"</code> using <code>getElementById()</code>, then retrieves the <code>&lt;p&gt;</code> element within it using <code>getElementsByTagName()</code>.
+                <br>- Finally, it logs the inner HTML content of the <code>&lt;p&gt;</code> element to the console.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example demonstrates accessing and manipulating HTML elements using the DOM in JavaScript.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 17:</day> DOM Manipulation (Selecting Elements, Modifying Content)
+            </h1>
+
+            <h2>Selecting Elements</h2>
+            <p>
+                DOM manipulation involves selecting HTML elements and modifying their properties, attributes, or content dynamically using JavaScript. There are various methods for selecting elements:
+            </p>
+            <ul>
+                <li><strong>getElementById():</strong> Selects an element by its unique id attribute.</li>
+                <li><strong>getElementsByClassName():</strong> Selects elements by their class name.</li>
+                <li><strong>getElementsByTagName():</strong> Selects elements by their tag name.</li>
+                <li><strong>querySelector():</strong> Selects the first element that matches a specified CSS selector.</li>
+                <li><strong>querySelectorAll():</strong> Selects all elements that match a specified CSS selector.</li>
+            </ul>
+
+            <h2>Modifying Content</h2>
+            <p>
+                Once elements are selected, their content, attributes, or styles can be modified using various properties and methods, such as <code>innerHTML</code>, <code>textContent</code>, <code>setAttribute()</code>, <code>style</code>, etc.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    <!-- HTML code -->
+                    &lt;div id="container"&gt;
+                        &lt;p id="paragraph"&gt;Hello, world!&lt;/p&gt;
+                    &lt;/div&gt;
+        
+                    // JavaScript code
+                    var paragraph = document.getElementById("paragraph");
+                    paragraph.innerHTML = "Goodbye, world!";
+                    paragraph.style.color = "blue";
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The JavaScript code selects the <code>&lt;p&gt;</code> element with <code>id="paragraph"</code> using <code>getElementById()</code>.
+                <br>- It then modifies the inner HTML content of the paragraph to "Goodbye, world!" using <code>innerHTML</code>.
+                <br>- Additionally, it changes the text color of the paragraph to blue using the <code>style</code> property.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example demonstrates selecting HTML elements and modifying their content and styles dynamically using JavaScript.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 18:</day> Events and Event Handling
+            </h1>
+
+            <h2>Events</h2>
+            <p>
+                Events in JavaScript are actions or occurrences that happen in the browser, such as a user clicking a button, hovering over an element, or resizing the window. Examples of events include click, mouseover, keydown, submit, etc.
+            </p>
+
+            <h2>Event Handling</h2>
+            <p>
+                Event handling involves writing code to respond to specific events triggered by users or the browser. JavaScript provides methods for adding event listeners to HTML elements, allowing you to execute functions when events occur.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    <!-- HTML code -->
+                    &lt;button id="myButton"&gt;Click Me&lt;/button&gt;
+        
+                    // JavaScript code
+                    var button = document.getElementById("myButton");
+        
+                    button.addEventListener("click", function() {
+                        alert("Button clicked!");
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The HTML code defines a button element with <code>id="myButton"</code>.
+                <br>- The JavaScript code selects the button element using <code>getElementById()</code>.
+                <br>- It then adds an event listener to the button for the click event using <code>addEventListener()</code>.
+                <br>- When the button is clicked, the specified function is executed, displaying an alert message.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example demonstrates event handling in JavaScript, where an alert message is shown when the button is clicked.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 19:</day> Asynchronous JavaScript (AJAX, Promises)
+            </h1>
+
+            <h2>Asynchronous JavaScript</h2>
+            <p>
+                Asynchronous JavaScript allows code execution to continue while waiting for certain operations to complete, such as fetching data from a server or reading files. This prevents blocking the main thread, improving the performance and responsiveness of web
+                applications.
+            </p>
+
+            <h2>AJAX (Asynchronous JavaScript and XML)</h2>
+            <p>
+                AJAX is a technique for sending and receiving data from a server asynchronously without reloading the entire page. It allows for dynamic updating of content, such as loading new data or submitting form data in the background.
+            </p>
+
+            <h2>Promises</h2>
+            <p>
+                Promises are a JavaScript feature introduced to handle asynchronous operations more effectively. They represent the eventual completion or failure of an asynchronous operation and allow you to chain multiple asynchronous operations sequentially.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code using Promises
+                    function fetchData() {
+                        return new Promise(function(resolve, reject) {
+                            // Simulate fetching data from a server
+                            setTimeout(function() {
+                                var data = { name: "John", age: 30 };
+                                resolve(data);
+                            }, 1000);
+                        });
+                    }
+        
+                    fetchData().then(function(data) {
+                        console.log(data); // Output: { name: "John", age: 30 }
+                    }).catch(function(error) {
+                        console.error(error);
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>fetchData</code> function returns a Promise that resolves with some data after a delay.
+                <br>- The <code>then</code> method is called when the Promise is resolved, logging the data to the console.
+                <br>- The <code>catch</code> method handles any errors that may occur during the Promise execution.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example demonstrates fetching data asynchronously using Promises in JavaScript.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 20:</day> Error Handling and Debugging Techniques
+            </h1>
+
+            <h2>Error Handling</h2>
+            <p>
+                Error handling in JavaScript involves identifying and responding to errors that occur during code execution. Proper error handling helps improve the reliability and robustness of applications. JavaScript provides mechanisms such as try-catch blocks and
+                throwing custom errors to handle exceptions gracefully.
+            </p>
+
+            <h2>Debugging Techniques</h2>
+            <p>
+                Debugging is the process of identifying and fixing errors or bugs in code. JavaScript developers use various debugging techniques and tools to troubleshoot issues, including:
+            </p>
+            <ul>
+                <li><strong>Logging:</strong> Using console.log() statements to output variable values or debug information to the console.</li>
+                <li><strong>Debugging Tools:</strong> Modern web browsers come with built-in developer tools (e.g., Chrome DevTools, Firefox Developer Tools) for debugging JavaScript code, inspecting DOM elements, setting breakpoints, and more.</li>
+                <li><strong>Debugger Statement:</strong> Placing a debugger statement in the code pauses execution and opens the browser's debugger when reached, allowing you to inspect variables and step through code.</li>
+                <li><strong>Code Review:</strong> Collaborating with peers to review code and identify potential issues or improvements.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code with error handling
+                    try {
+                        // Code that may throw an error
+                        var result = 10 / 0;
+                        console.log("Result:", result);
+                    } catch (error) {
+                        // Handle the error
+                        console.error("An error occurred:", error.message);
+                    }
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The <code>try</code> block contains code that may throw an error, such as dividing by zero.
+                <br>- If an error occurs, it is caught by the <code>catch</code> block, and the error message is logged to the console.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example demonstrates error handling in JavaScript using a try-catch block to handle division by zero.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 21:</day> Introduction to Node.js and npm
+            </h1>
+
+            <h2>Node.js</h2>
+            <p>
+                Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It allows developers to run JavaScript code outside of a web browser, enabling server-side development. Node.js provides a rich set of libraries and frameworks for building scalable,
+                networked applications.
+            </p>
+
+            <h2>npm (Node Package Manager)</h2>
+            <p>
+                npm is the default package manager for Node.js, used for managing dependencies and packages in JavaScript projects. It provides a command-line interface for installing, publishing, and managing packages, as well as managing project dependencies and scripts
+                defined in a package.json file.
+            </p>
+
+            <h3>Key Features of npm</h3>
+            <ul>
+                <li><strong>Dependency Management:</strong> npm simplifies the process of managing project dependencies and installing third-party packages.</li>
+                <li><strong>Package Publishing:</strong> Developers can publish their own packages to the npm registry for others to use.</li>
+                <li><strong>Versioning:</strong> npm allows specifying version constraints for packages, ensuring compatibility and stability.</li>
+                <li><strong>Scripts:</strong> npm supports defining and running custom scripts in the package.json file, such as build, test, start, etc.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // Command-line usage of npm
+                    // Install a package globally
+                    npm install -g express
+        
+                    // Install a package locally and save it as a project dependency
+                    npm install express --save
+        
+                    // Run a script defined in package.json
+                    npm run start
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The first command installs the Express framework globally, making it available as a command-line tool.
+                <br>- The second command installs Express locally and saves it as a dependency in the project's package.json file.
+                <br>- The third command runs a script named "start" defined in the package.json file.
+            </p>
+
+            <p>
+                Output:
+                <br>- The example demonstrates common npm commands used for package installation, project setup, and script execution.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 22:</day> Setting up a Node.js Development Environment
+            </h1>
+
+            <h2>Node.js Installation</h2>
+            <p>
+                To set up a Node.js development environment, follow these steps:
+            </p>
+            <ol>
+                <li>Download the Node.js installer from the official website (<a href="https://nodejs.org/">https://nodejs.org/</a>).</li>
+                <li>Run the installer and follow the installation instructions.</li>
+                <li>Verify the installation by opening a terminal or command prompt and typing <code>node -v</code> to check the Node.js version.</li>
+            </ol>
+
+            <h2>npm Installation</h2>
+            <p>
+                npm is included with Node.js, so once you install Node.js, npm is also installed automatically. You can verify npm installation by typing <code>npm -v</code> in the terminal.
+            </p>
+
+            <h2>Text Editor or IDE</h2>
+            <p>
+                Choose a text editor or integrated development environment (IDE) for writing Node.js code. Popular options include Visual Studio Code, Sublime Text, Atom, WebStorm, and others.
+            </p>
+
+            <h2>Project Initialization</h2>
+            <p>
+                Create a new directory for your Node.js project and navigate to it in the terminal. Then, initialize a new Node.js project by running <code>npm init</code> and follow the prompts to create a <code>package.json</code> file.
+            </p>
+
+            <h2>Dependencies</h2>
+            <p>
+                Install any dependencies required for your project using npm. For example, you can install Express.js for building web servers by running <code>npm install express</code>.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // Command-line usage
+                    // Create a new directory for the project
+                    mkdir my-node-project
+                    cd my-node-project
+        
+                    // Initialize a new Node.js project
+                    npm init
+        
+                    // Install Express.js as a project dependency
+                    npm install express
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The example demonstrates setting up a Node.js development environment, including Node.js and npm installation, choosing a text editor or IDE, initializing a new project, and installing project dependencies.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 23:</day> Building a Simple Server with Express.js
+            </h1>
+
+            <h2>Express.js</h2>
+            <p>
+                Express.js is a minimalist web framework for Node.js, designed for building web applications and APIs. It provides a robust set of features for handling HTTP requests, routing, middleware, and more, making it easy to build scalable and efficient server-side
+                applications.
+            </p>
+
+            <h2>Creating a Simple Server</h2>
+            <p>
+                Follow these steps to create a simple server using Express.js:
+            </p>
+            <ol>
+                <li>Install Express.js as a project dependency using npm: <code>npm install express</code></li>
+                <li>Create a new JavaScript file (e.g., <code>server.js</code>) in your project directory.</li>
+                <li>Import Express.js and create an instance of the Express application.</li>
+                <li>Define routes to handle different HTTP requests (GET, POST, etc.) using Express's routing methods.</li>
+                <li>Start the server by listening on a specified port using the <code>app.listen()</code> method.</li>
+            </ol>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code for server.js
+                    const express = require('express');
+                    const app = express();
+        
+                    // Define a route for the homepage
+                    app.get('/', function(req, res) {
+                        res.send('Welcome to my Express.js server!');
+                    });
+        
+                    // Start the server on port 3000
+                    app.listen(3000, function() {
+                        console.log('Server is running on http://localhost:3000');
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The example demonstrates creating a simple Express.js server that responds with a welcome message when accessing the homepage ('/') route.
+                <br>- The server listens on port 3000, and a message is logged to the console upon successful startup.
+            </p>
+
+            <p>
+                Output:
+                <br>- Accessing http://localhost:3000 in a web browser will display the welcome message served by the Express.js server.
+            </p>
+        </div>
+
+
+        ```html
+        <div class="python-card">
+            <h1>
+                <day>Day 24:</day> Routing and Middleware in Express
+            </h1>
+
+            <h2>Routing in Express</h2>
+            <p>
+                Routing in Express refers to defining the behavior of your application based on the URL and HTTP method of incoming requests. Express provides a simple and flexible routing mechanism that allows you to handle different routes and execute specific code
+                for each route.
+            </p>
+
+            <h2>Creating Routes</h2>
+            <p>
+                Routes in Express are defined using HTTP methods (e.g., GET, POST, PUT, DELETE) and URL patterns. You can define routes for different paths and methods using the <code>app.get()</code>, <code>app.post()</code>, <code>app.put()</code>,
+                and <code>app.delete()</code> methods, among others.
+            </p>
+
+            <h2>Middleware in Express</h2>
+            <p>
+                Middleware functions in Express are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle. Middleware functions can perform tasks such as parsing
+                request bodies, logging, authentication, and error handling.
+            </p>
+
+            <h3>Example</h3>
+            <pre>
+                <code>
+                    // JavaScript code for server.js
+                    const express = require('express');
+                    const app = express();
+        
+                    // Middleware function to log request details
+                    app.use(function(req, res, next) {
+                        console.log('Request received:', req.method, req.url);
+                        next(); // Call the next middleware function
+                    });
+        
+                    // Route handler for the homepage
+                    app.get('/', function(req, res) {
+                        res.send('Welcome to my Express.js server!');
+                    });
+        
+                    // Route handler for the about page
+                    app.get('/about', function(req, res) {
+                        res.send('About Us');
+                    });
+        
+                    // Start the server on port 3000
+                    app.listen(3000, function() {
+                        console.log('Server is running on http://localhost:3000');
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The example demonstrates routing and middleware usage in Express.js.
+                <br>- A middleware function is defined to log request details for every incoming request.
+                <br>- Route handlers are defined for the homepage ('/') and about page ('/about').
+            </p>
+
+            <p>
+                Output:
+                <br>- Accessing http://localhost:3000 and http://localhost:3000/about will display different responses served by the Express.js server.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 25:</day> Handling Requests and Responses, RESTful APIs
+            </h1>
+
+            <h2>Handling Requests and Responses</h2>
+            <p>
+                In web development, handling requests involves receiving HTTP requests from clients (e.g., web browsers) and sending back appropriate responses. With Node.js and Express.js, you can easily handle various types of requests (GET, POST, PUT, DELETE, etc.)
+                and send customized responses based on the request.
+            </p>
+
+            <h2>RESTful APIs</h2>
+            <p>
+                REST (Representational State Transfer) is an architectural style for designing networked applications. A RESTful API is an API (Application Programming Interface) that adheres to REST principles, using standard HTTP methods (GET, POST, PUT, DELETE) to
+                perform CRUD operations (Create, Read, Update, Delete) on resources.
+            </p>
+
+            <h3>Example</h3>
+            <p>
+                Below is an example of implementing a simple RESTful API using Express.js:
+            </p>
+            <pre>
+                <code>
+                    // JavaScript code for server.js
+                    const express = require('express');
+                    const app = express();
+        
+                    // Sample data (array of objects)
+                    let books = [
+                        { id: 1, title: 'Book 1' },
+                        { id: 2, title: 'Book 2' },
+                        { id: 3, title: 'Book 3' }
+                    ];
+        
+                    // GET route to retrieve all books
+                    app.get('/api/books', function(req, res) {
+                        res.json(books);
+                    });
+        
+                    // POST route to add a new book
+                    app.post('/api/books', function(req, res) {
+                        const newBook = req.body;
+                        books.push(newBook);
+                        res.status(201).json(newBook);
+                    });
+        
+                    // Start the server on port 3000
+                    app.listen(3000, function() {
+                        console.log('Server is running on http://localhost:3000');
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The example demonstrates defining routes for handling GET and POST requests to manage a collection of books.
+                <br>- GET route '/api/books' returns the list of books.
+                <br>- POST route '/api/books' adds a new book to the collection.
+                <br>- Express's <code>json()</code> method is used to send JSON responses.
+            </p>
+
+            <p>
+                Output:
+                <br>- Accessing the specified routes (e.g., '/api/books') will return the corresponding data or perform the specified action.
+            </p>
+        </div>
+
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 26:</day> Introduction to Databases (SQL vs. NoSQL)
+            </h1>
+
+            <h2>SQL Databases</h2>
+            <p>
+                SQL (Structured Query Language) databases are relational databases that store data in tables with rows and columns. They use a predefined schema to structure data and support ACID (Atomicity, Consistency, Isolation, Durability) transactions. Examples
+                of SQL databases include MySQL, PostgreSQL, SQLite, and Oracle.
+            </p>
+
+            <h2>NoSQL Databases</h2>
+            <p>
+                NoSQL (Not Only SQL) databases are non-relational databases that store data in flexible, schema-less formats like JSON, XML, or key-value pairs. They are designed for scalability, high availability, and performance, making them suitable for handling large
+                volumes of unstructured or semi-structured data. Examples of NoSQL databases include MongoDB, Couchbase, Cassandra, and Redis.
+            </p>
+
+            <h3>Key Differences</h3>
+            <ul>
+                <li><strong>Data Model:</strong> SQL databases use a structured, tabular data model, while NoSQL databases support various data models like document, key-value, wide-column, or graph.</li>
+                <li><strong>Schema:</strong> SQL databases have a fixed schema that defines the structure of data, whereas NoSQL databases are schema-less or have a dynamic schema, allowing for more flexibility.</li>
+                <li><strong>Scaling:</strong> NoSQL databases are designed for horizontal scalability and can handle large-scale distributed systems more effectively than SQL databases.</li>
+                <li><strong>Transactions:</strong> SQL databases support ACID transactions, ensuring data integrity and consistency, while NoSQL databases often sacrifice some transactional properties for scalability and performance.</li>
+            </ul>
+
+            <h3>Example Use Cases</h3>
+            <ul>
+                <li><strong>SQL:</strong> Traditional relational databases are commonly used for applications with structured data and complex queries, such as e-commerce platforms, banking systems, and enterprise applications.</li>
+                <li><strong>NoSQL:</strong> NoSQL databases are preferred for applications requiring flexible schemas, high throughput, and horizontal scalability, such as social media platforms, real-time analytics, and IoT (Internet of Things) applications.</li>
+            </ul>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 27:</day> Connecting Node.js/Express to a Database (MongoDB, MySQL, etc.)
+            </h1>
+
+            <h2>Database Integration with Node.js/Express</h2>
+            <p>
+                Node.js and Express provide various libraries and modules for integrating with different types of databases, including relational (SQL) and non-relational (NoSQL) databases. These libraries facilitate database connectivity, query execution, and data manipulation
+                within Node.js applications.
+            </p>
+
+            <h2>Example: Connecting to MongoDB with Mongoose</h2>
+            <p>
+                Mongoose is a popular ODM (Object Data Modeling) library for MongoDB and Node.js applications. It provides a straightforward way to define schemas, perform CRUD operations, and interact with MongoDB databases using JavaScript syntax.
+            </p>
+            <p>
+                Below is an example of connecting Node.js/Express to MongoDB using Mongoose:
+            </p>
+            <pre>
+                <code>
+                    // JavaScript code for server.js
+                    const express = require('express');
+                    const mongoose = require('mongoose');
+                    const app = express();
+        
+                    // Connect to MongoDB database
+                    mongoose.connect('mongodb://localhost/my_database', {
+                        useNewUrlParser: true,
+                        useUnifiedTopology: true
+                    }).then(() => {
+                        console.log('Connected to MongoDB');
+                    }).catch((error) => {
+                        console.error('Error connecting to MongoDB:', error);
+                    });
+        
+                    // Define schema and model
+                    const Schema = mongoose.Schema;
+                    const userSchema = new Schema({
+                        name: String,
+                        email: String
+                    });
+                    const User = mongoose.model('User', userSchema);
+        
+                    // Example route to fetch users from MongoDB
+                    app.get('/api/users', async (req, res) => {
+                        try {
+                            const users = await User.find();
+                            res.json(users);
+                        } catch (error) {
+                            console.error('Error fetching users:', error);
+                            res.status(500).json({ message: 'Internal Server Error' });
+                        }
+                    });
+        
+                    // Start the server on port 3000
+                    app.listen(3000, () => {
+                        console.log('Server is running on http://localhost:3000');
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The example demonstrates connecting Node.js/Express to a MongoDB database using Mongoose.
+                <br>- It defines a user schema and model, establishes a connection to the database, and defines a route to fetch users from MongoDB.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 28:</day> CRUD Operations with Node.js and Database
+            </h1>
+
+            <h2>CRUD Operations</h2>
+            <p>
+                CRUD stands for Create, Read, Update, and Delete, which are the basic operations performed on data in a database. In a Node.js application, CRUD operations are commonly implemented to interact with a database, allowing users to create, retrieve, update,
+                and delete data.
+            </p>
+
+            <h3>Example: Implementing CRUD Operations with MongoDB and Mongoose</h3>
+            <p>
+                Below is an example demonstrating CRUD operations with MongoDB using Mongoose in a Node.js/Express application:
+            </p>
+            <pre>
+                <code>
+                    // JavaScript code for server.js
+                    const express = require('express');
+                    const mongoose = require('mongoose');
+                    const app = express();
+        
+                    // Connect to MongoDB database
+                    mongoose.connect('mongodb://localhost/my_database', {
+                        useNewUrlParser: true,
+                        useUnifiedTopology: true
+                    }).then(() => {
+                        console.log('Connected to MongoDB');
+                    }).catch((error) => {
+                        console.error('Error connecting to MongoDB:', error);
+                    });
+        
+                    // Define schema and model
+                    const Schema = mongoose.Schema;
+                    const userSchema = new Schema({
+                        name: String,
+                        email: String
+                    });
+                    const User = mongoose.model('User', userSchema);
+        
+                    // Create a new user
+                    app.post('/api/users', async (req, res) => {
+                        try {
+                            const newUser = await User.create(req.body);
+                            res.status(201).json(newUser);
+                        } catch (error) {
+                            console.error('Error creating user:', error);
+                            res.status(500).json({ message: 'Internal Server Error' });
+                        }
+                    });
+        
+                    // Retrieve all users
+                    app.get('/api/users', async (req, res) => {
+                        try {
+                            const users = await User.find();
+                            res.json(users);
+                        } catch (error) {
+                            console.error('Error fetching users:', error);
+                            res.status(500).json({ message: 'Internal Server Error' });
+                        }
+                    });
+        
+                    // Update a user by ID
+                    app.put('/api/users/:id', async (req, res) => {
+                        try {
+                            const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+                            res.json(updatedUser);
+                        } catch (error) {
+                            console.error('Error updating user:', error);
+                            res.status(500).json({ message: 'Internal Server Error' });
+                        }
+                    });
+        
+                    // Delete a user by ID
+                    app.delete('/api/users/:id', async (req, res) => {
+                        try {
+                            await User.findByIdAndDelete(req.params.id);
+                            res.sendStatus(204);
+                        } catch (error) {
+                            console.error('Error deleting user:', error);
+                            res.status(500).json({ message: 'Internal Server Error' });
+                        }
+                    });
+        
+                    // Start the server on port 3000
+                    app.listen(3000, () => {
+                        console.log('Server is running on http://localhost:3000');
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The example demonstrates implementing CRUD operations (Create, Read, Update, Delete) for managing users in a MongoDB database using Mongoose.
+                <br>- It defines routes for creating, retrieving, updating, and deleting users.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 29:</day> Authentication and Authorization
+            </h1>
+
+            <h2>Authentication</h2>
+            <p>
+                Authentication is the process of verifying the identity of a user, typically by validating their credentials (e.g., username and password). In web applications, authentication is crucial for ensuring that only authorized users can access protected resources
+                or perform certain actions.
+            </p>
+
+            <h2>Authorization</h2>
+            <p>
+                Authorization is the process of determining what actions or resources a user is allowed to access after successful authentication. It involves defining access controls and permissions based on user roles, groups, or other criteria.
+            </p>
+
+            <h3>Authentication Methods</h3>
+            <ul>
+                <li><strong>Session-based Authentication:</strong> Users authenticate by providing credentials, and a session is established to track their authenticated state. Sessions are maintained server-side, typically using session cookies.</li>
+                <li><strong>Token-based Authentication:</strong> Users authenticate by providing credentials, and upon successful authentication, a token (e.g., JSON Web Token) is generated and sent to the client. The client includes the token in subsequent
+                    requests to access protected resources.</li>
+                <li><strong>OAuth:</strong> OAuth is an authentication protocol that allows users to grant third-party applications limited access to their resources without sharing their credentials. It is commonly used for social login and API authentication.</li>
+            </ul>
+
+            <h3>Authorization Techniques</h3>
+            <ul>
+                <li><strong>Role-based Access Control (RBAC):</strong> Users are assigned roles (e.g., admin, user) that define their permissions. Access control lists (ACLs) or role assignments determine which roles can access specific resources.</li>
+                <li><strong>Attribute-based Access Control (ABAC):</strong> Access decisions are based on attributes of the user, resource, and environment. Policies define rules that evaluate attributes to determine access permissions dynamically.</li>
+            </ul>
+
+            <h3>Example</h3>
+            <p>
+                Below is a simplified example of implementing token-based authentication and role-based authorization in a Node.js/Express application using JSON Web Tokens (JWT) and middleware:
+            </p>
+            <pre>
+                <code>
+                    // Example code for authentication middleware
+                    const jwt = require('jsonwebtoken');
+        
+                    function authenticateToken(req, res, next) {
+                        const token = req.headers['authorization'];
+        
+                        if (token == null) {
+                            return res.sendStatus(401); // Unauthorized
+                        }
+        
+                        jwt.verify(token, 'secret_key', (err, user) => {
+                            if (err) {
+                                return res.sendStatus(403); // Forbidden
+                            }
+                            req.user = user;
+                            next();
+                        });
+                    }
+        
+                    // Example route with authentication middleware
+                    app.get('/api/userinfo', authenticateToken, (req, res) => {
+                        res.json({ username: req.user.username, role: req.user.role });
+                    });
+                </code>
+            </pre>
+
+            <p>
+                Explanation:
+                <br>- The example demonstrates middleware for token-based authentication using JWT.
+                <br>- The <code>authenticateToken</code> middleware verifies the JWT token in the request header and sets <code>req.user</code> if the token is valid.
+                <br>- The <code>/api/userinfo</code> route is protected by the <code>authenticateToken</code> middleware, allowing access to authenticated users only.
+            </p>
+        </div>
+
+
+        <div class="python-card">
+            <h1>
+                <day>Day 30:</day> Deployment Strategies and Continuous Integration/Continuous Deployment (CI/CD)
+            </h1>
+
+            <h2>Deployment Strategies</h2>
+            <p>
+                Deployment is the process of making a web application accessible to users. There are various deployment strategies, each with its advantages and use cases:
+            </p>
+            <ul>
+                <li><strong>Traditional Deployment:</strong> Manual deployment where code changes are manually uploaded to a server or hosting provider.</li>
+                <li><strong>Continuous Deployment (CD):</strong> Automating the deployment process to release changes into production frequently, often multiple times a day.</li>
+                <li><strong>Blue-Green Deployment:</strong> Running two identical production environments (blue and green), with only one active at a time. New changes are deployed to the inactive environment and switched over after testing.</li>
+                <li><strong>Canary Deployment:</strong> Rolling out changes to a small subset of users or servers first to test for issues before deploying to the entire infrastructure.</li>
+                <li><strong>Serverless Deployment:</strong> Deploying applications as functions (e.g., AWS Lambda) without managing underlying infrastructure, providing scalability and cost-effectiveness.</li>
+            </ul>
+
+            <h2>Continuous Integration/Continuous Deployment (CI/CD)</h2>
+            <p>
+                CI/CD is a software development practice that combines continuous integration (CI) and continuous deployment (CD). It involves automating the process of integrating code changes, running tests, and deploying applications to production environments, often
+                multiple times a day.
+            </p>
+            <p>
+                CI/CD pipelines typically include the following stages:
+            </p>
+            <ol>
+                <li><strong>Code Integration:</strong> Developers push code changes to a version control system (e.g., Git), triggering automated tests and builds.</li>
+                <li><strong>Testing:</strong> Automated tests (unit tests, integration tests, etc.) are executed to validate code changes and ensure quality.</li>
+                <li><strong>Deployment:</strong> If tests pass successfully, the application is deployed to staging or production environments automatically.</li>
+                <li><strong>Monitoring and Feedback:</strong> Continuous monitoring and feedback loops provide insights into application performance and user experience, facilitating further improvements.</li>
+            </ol>
+
+            <h3>Tools for CI/CD</h3>
+            <ul>
+                <li><strong>CI:</strong> Jenkins, Travis CI, CircleCI, GitLab CI</li>
+                <li><strong>CD:</strong> AWS CodeDeploy, Azure DevOps, Google Cloud Build, GitHub Actions</li>
+                <li><strong>Infrastructure as Code (IaC):</strong> Terraform, AWS CloudFormation, Ansible, Puppet</li>
+            </ul>
+
+            <p>
+                Adopting CI/CD practices streamlines the software development lifecycle, improves collaboration between development and operations teams, and accelerates time-to-market for delivering high-quality software.
+            </p>
+        </div>
+
+
+
     </div>
 
 
