@@ -1773,7 +1773,7 @@
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     
                     // Establish connection
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "username", "password");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", <br> "username", <br> "password");
                     
                     // Create statement
                     Statement statement = connection.createStatement();
@@ -1822,7 +1822,7 @@
             public static void main(String[] args) {
                 try {
                     // Establish connection to the database
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "username", "password");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", <br> "username",<br> "password");
         
                     // Create a statement object
                     Statement statement = connection.createStatement();
@@ -1902,7 +1902,7 @@
         public class ResultSetExample {
             public static void main(String[] args) {
                 try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "username", "password");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", <br> "username",<br> "password");
                     Statement statement = connection.createStatement();
                     ResultSet resultSet = statement.executeQuery("SELECT * FROM employees");
         
@@ -2191,7 +2191,7 @@
             <h3>Creating a Filter</h3>
             <p>To create a filter in Java, you need to implement the javax.servlet.Filter interface and override its <code>doFilter()</code> method.</p>
             <pre><code>public class MyFilter implements Filter {
-            public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+            public void doFilter(ServletRequest request, ServletResponse response, <br> FilterChain chain) throws IOException, ServletException {
                 // Filter logic here
                 chain.doFilter(request, response); // Pass request along the filter chain
             }
