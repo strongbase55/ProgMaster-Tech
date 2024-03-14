@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Hub</title>
+    <title>ProgMaster Edu Hub</title>
     <link rel="shortcut icon" href="https://progmaster.in/logo-homepage.png" type="image/svg+xml">
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Link to Font Awesome CSS -->
@@ -117,6 +117,7 @@
     </div> -->
 
 
+    <!----------------------------------------------------------------------- The Timeline ----------------------------------------------------------->
     <!-- The Timeline -->
     <ul class="timeline">
         <li>
@@ -494,10 +495,7 @@
             </div>
         </li>
     </ul>
-
-
-
-    <!-- python content -->
+    <!------------------------------------------------------------------------- python content ------------------------------------------------------------->
     <div class="python-content">
         <div class="python-card">
             <h1>
@@ -539,6 +537,1695 @@
     </div>
 
     <!-- day 2 content -->
+    <div class="python-content">
+        <div class="python-card">
+            <h1>
+                <day>Day 2:</day> Variables, Data Types, and Operators</h1>
+    
+            <h2>Variables</h2>
+            <p>Variables in Java are used to store data values that can be manipulated and referenced throughout the program. They have a specific data type and a unique name.</p>
+            <pre><code>int age; // Declaration of an integer variable named 'age'
+    System.out.println("age: " + age); // Output: age: N/A (declaration)
+    age = 25; // Assignment of value 25 to the variable 'age'
+    System.out.println("age: " + age); // Output: age: 25 (assignment)
+    </code></pre>
+            <outputs>
+                <h2>Output</h2>
+                <p>age: N/A</p>
+                <p>age: 25</p>
+            </outputs>
+    
+            <h2>Data Types</h2>
+            <p>Data types define the type of data that can be stored in a variable. Java supports various data types including primitive and reference types.</p>
+            <ul>
+                <li>int: Integer data type</li>
+                <li>double: Double data type</li>
+                <li>boolean: Boolean data type</li>
+                <li>char: Character data type</li>
+                <li>String: String reference data type</li>
+            </ul>
+            <pre><code>int number = 10; // Integer data type
+    System.out.println("number: " + number); // Output: number: 10 (Integer data type)
+    
+    double price = 19.99; // Double data type
+    System.out.println("price: " + price); // Output: price: 19.99 (Double data type)
+    
+    boolean isJavaFun = true; // Boolean data type
+    System.out.println("isJavaFun: " + isJavaFun); // Output: isJavaFun: true (Boolean data type)
+    
+    char grade = 'A'; // Character data type
+    System.out.println("grade: " + grade); // Output: grade: A (Character data type)
+    
+    String message = "Hello, Java!"; // String reference data type
+    System.out.println("message: " + message); // Output: message: Hello, Java! (String reference data type)
+    </code></pre>
+            <outputs>
+                <h2>Output</h2>
+                <p>number: 10</p>
+                <p>price: 19.99</p>
+                <p>isJavaFun: true</p>
+                <p>grade: A</p>
+                <p>message: Hello, Java!</p>
+            </outputs>
+    
+            <h2>Operators</h2>
+            <p>Operators are symbols used to perform operations on variables and values. Java supports various types of operators such as arithmetic, relational, logical, assignment, etc.</p>
+            <ul>
+                <li>Addition (+)</li>
+                <li>Subtraction (-)</li>
+                <li>Multiplication (*)</li>
+                <li>Division (/)</li>
+                <li>Relational (> < >= <=)</li>
+                <li>Equality (== !=)</li>
+                <li>Logical (&& || !)</li>
+                <li>Assignment (=)</li>
+                <li>Increment (++)</li>
+                <li>Decrement (--)</li>
+            </ul>
+            <pre><code>int x = 10;
+    int y = 5;
+    int sum = x + y; // Addition operator (+)
+    System.out.println("sum: " + sum); // Output: sum: 15 (Addition operator)
+    
+    int difference = x - y; // Subtraction operator (-)
+    System.out.println("difference: " + difference); // Output: difference: 5 (Subtraction operator)
+    
+    int product = x * y; // Multiplication operator (*)
+    System.out.println("product: " + product); // Output: product: 50 (Multiplication operator)
+    
+    int quotient = x / y; // Division operator (/)
+    System.out.println("quotient: " + quotient); // Output: quotient: 2 (Division operator)
+    
+    boolean isGreaterThan = x > y; // Relational operator (>)
+    System.out.println("isGreaterThan: " + isGreaterThan); // Output: isGreaterThan: true (Relational operator)
+    
+    boolean isEqual = x == y; // Equality operator (==)
+    System.out.println("isEqual: " + isEqual); // Output: isEqual: false (Equality operator)
+    
+    boolean logicalAnd = (x > 0) && (y < 10); // Logical AND operator (&&)
+    System.out.println("logicalAnd: " + logicalAnd); // Output: logicalAnd: true (Logical AND operator)
+    </code></pre>
+            <outputs>
+                <h2>Output</h2>
+                <p>sum: 15</p>
+                <p>difference: 5</p>
+                <p>product: 50</p>
+                <p>quotient: 2</p>
+                <p>isGreaterThan: true</p>
+                <p>isEqual: false</p>
+                <p>logicalAnd: true</p>
+            </outputs>
+        </div>
+    </div>
+
+
+        <!-- paste the second content code here  -->
+         <!-- day 3 content -->
+         <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 3:</day> Control Flow Statements</h1>
+        
+                <h2>Control Flow Statements</h2>
+                <p>Control flow statements in Java are used to control the flow of execution in a program. They allow you to make decisions, repeat execution, and break the flow of execution.</p>
+        
+                <h3>if-else Statement</h3>
+                <p>The <code>if-else</code> statement is used to make decisions based on certain conditions. If the condition evaluates to true, the code inside the <code>if</code> block is executed; otherwise, the code inside the <code>else</code> block is executed.</p>
+                <pre><code>int x = 10;
+        if (x > 5) {
+            System.out.println("x is greater than 5");
+        } else {
+            System.out.println("x is not greater than 5");
+        }
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>x is greater than 5</p>
+                </outputs>
+        
+                <h3>Switch Statement</h3>
+                <p>The <code>switch</code> statement is used to perform different actions based on different conditions. It evaluates an expression and executes the corresponding case.</p>
+                <pre><code>int day = 3;
+        switch (day) {
+            case 1:
+                System.out.println("Sunday");
+                break;
+            case 2:
+                System.out.println("Monday");
+                break;
+            case 3:
+                System.out.println("Tuesday");
+                break;
+            default:
+                System.out.println("Invalid day");
+        }
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>Tuesday</p>
+                </outputs>
+        
+                <h3>Loops</h3>
+                <p>Loops in Java are used to execute a block of code repeatedly as long as a certain condition is true. Java supports different types of loops including <code>for</code>, <code>while</code>, and <code>do-while</code> loops.</p>
+        
+                <h4>for Loop</h4>
+                <p>The <code>for</code> loop is used to iterate over a range of values. It consists of three parts: initialization, condition, and increment/decrement.</p>
+                <pre><code>for (int i = 0; i < 5; i++) {
+            System.out.println("i: " + i);
+        }
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>i: 0</p>
+                    <p>i: 1</p>
+                    <p>i: 2</p>
+                    <p>i: 3</p>
+                    <p>i: 4</p>
+                </outputs>
+        
+                <h4>while Loop</h4>
+                <p>The <code>while</code> loop is used to repeatedly execute a block of code as long as a specified condition is true.</p>
+                <pre><code>int count = 0;
+        while (count < 5) {
+            System.out.println("count: " + count);
+            count++;
+        }
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>count: 0</p>
+                    <p>count: 1</p>
+                    <p>count: 2</p>
+                    <p>count: 3</p>
+                    <p>count: 4</p>
+                </outputs>
+        
+                <h4>do-while Loop</h4>
+                <p>The <code>do-while</code> loop is similar to the <code>while</code> loop, but the condition is evaluated after executing the block of code, meaning the block of code is executed at least once.</p>
+                <pre><code>int num = 0;
+        do {
+            System.out.println("num: " + num);
+            num++;
+        } while (num < 5);
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>num: 0</p>
+                    <p>num: 1</p>
+                    <p>num: 2</p>
+                    <p>num: 3</p>
+                    <p>num: 4</p>
+                </outputs>
+            </div>
+        </div>
+        
+
+
+        <!--------------------------------------------------------- day 4 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 4:</day> Arrays and Strings</h1>
+        
+                <h2>Arrays</h2>
+                <p>An array in Java is a collection of elements of the same data type. It allows you to store multiple values of the same type in a single variable.</p>
+        
+                <h3>Declaration and Initialization</h3>
+                <p>To declare and initialize an array in Java, you specify the data type of the elements followed by square brackets <code>[]</code>, and then the variable name. You can initialize the array with values inside curly braces <code>{}</code>.</p>
+                <pre><code>// Declaration and Initialization of an integer array
+        int[] numbers = {1, 2, 3, 4, 5};
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>No specific output. The array is initialized with values {1, 2, 3, 4, 5}.</p>
+                </outputs>
+        
+                <h3>Accessing Elements</h3>
+                <p>You can access elements of an array using their index. The index of the first element is 0, the index of the second element is 1, and so on.</p>
+                <pre><code>System.out.println("First element: " + numbers[0]); // Output: First element: 1
+        System.out.println("Second element: " + numbers[1]); // Output: Second element: 2
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>First element: 1</p>
+                    <p>Second element: 2</p>
+                </outputs>
+        
+                <h2>Strings</h2>
+                <p>A string in Java is a sequence of characters. It is represented by the <code>String</code> class in Java.</p>
+        
+                <h3>Declaration and Initialization</h3>
+                <p>To declare and initialize a string in Java, you can simply use the <code>String</code> keyword followed by the variable name and assign it a value enclosed in double quotes <code>" "</code>.</p>
+                <pre><code>// Declaration and Initialization of a string
+        String message = "Hello, Java!";
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>No specific output. The string is initialized with value "Hello, Java!"</p>
+                </outputs>
+        
+                <h3>Concatenation</h3>
+                <p>You can concatenate strings using the <code>+</code> operator or the <code>concat()</code> method.</p>
+                <pre><code>String name = "John";
+        String greeting = "Hello, " + name + "!";
+        System.out.println(greeting); // Output: Hello, John!
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>Hello, John!</p>
+                </outputs>
+            </div>
+        </div>
+    
+          <!--------------------------------------------------------- day 5 ------------------------------------------------------>
+          <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 5:</day> Methods and Functions</h1>
+        
+                <h2>Methods</h2>
+                <p>In Java, a method is a block of code that performs a specific task. It is a collection of statements that are grouped together to perform an operation.</p>
+        
+                <h3>Declaration and Invocation</h3>
+                <p>To declare a method in Java, you specify the return type of the method (if any), followed by the method name and parameters (if any). To invoke or call a method, you simply use the method name followed by parentheses <code>()</code>.</p>
+                <pre><code>// Method declaration
+        public void greet() {
+            System.out.println("Hello, World!");
+        }
+        
+        // Method invocation
+        greet(); // Output: Hello, World!
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>Hello, World!</p>
+                </outputs>
+        
+                <h3>Parameters and Return Values</h3>
+                <p>Methods can accept parameters and return values. Parameters are variables that are passed into the method when it is called, and return values are the result of the method's execution.</p>
+                <pre><code>// Method declaration with parameters and return value
+        public int add(int a, int b) {
+            return a + b;
+        }
+        
+        // Method invocation with parameters
+        int result = add(3, 5);
+        System.out.println("Result: " + result); // Output: Result: 8
+        </code></pre>
+                <outputs>
+                    <h2>Output</h2>
+                    <p>Result: 8</p>
+                </outputs>
+        
+                <h2>Functions</h2>
+                <p>In Java, a function is essentially the same as a method. The terms "function" and "method" are often used interchangeably in Java.</p>
+            </div>
+        </div>
+        
+     
+ 
+
+        <!--------------------------------------------------------- day 6 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 6:</day> Introduction to Object-Oriented Programming (OOP)</h1>
+        
+                <h2>Object-Oriented Programming (OOP)</h2>
+                <p>Object-Oriented Programming (OOP) is a programming paradigm that revolves around the concept of objects, which can contain data in the form of fields (attributes or properties) and code in the form of procedures (methods or functions). OOP focuses on modeling real-world entities as objects and their interactions.</p>
+        
+                <h3>Classes and Objects</h3>
+                <p>In Java, a class is a blueprint or template for creating objects. It defines the structure and behavior of objects of that type. An object is an instance of a class, and it represents a specific instance of the class with its own set of values for the class's fields.</p>
+                <pre><code>// Class definition
+        public class Car {
+            // Fields (attributes)
+            String brand;
+            String model;
+            int year;
+        
+            // Constructor
+            public Car(String brand, String model, int year) {
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+            }
+        
+            // Method
+            public void displayInfo() {
+                System.out.println("Brand: " + brand);
+                System.out.println("Model: " + model);
+                System.out.println("Year: " + year);
+            }
+        }</code></pre>
+                <p>In this example, <code>Car</code> is a class with three fields (<code>brand</code>, <code>model</code>, and <code>year</code>), a constructor to initialize these fields, and a method <code>displayInfo()</code> to display information about the car.</p>
+        
+                <h3>Creating Objects</h3>
+                <pre><code>// Creating objects of the Car class
+        Car car1 = new Car("Toyota", "Camry", 2020);
+        Car car2 = new Car("Honda", "Accord", 2019);</code></pre>
+                <p>Here, <code>car1</code> and <code>car2</code> are objects of the <code>Car</code> class, each with its own set of values for the fields <code>brand</code>, <code>model</code>, and <code>year</code>.</p>
+        
+                <h3>Accessing Fields and Methods</h3>
+                <pre><code>// Accessing fields and methods of objects
+        car1.displayInfo();
+        car2.displayInfo();</code></pre>
+                <p>This will display the information about <code>car1</code> and <code>car2</code> by calling the <code>displayInfo()</code> method of each object.</p>
+            </div>
+        </div>
+        
+        <!--------------------------------------------------------- day 7 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 7:</day> Constructors and Overloading</h1>
+        
+                <h2>Constructors</h2>
+                <p>In Java, a constructor is a special type of method that is automatically called when an object of a class is created. It is used to initialize the object's state.</p>
+        
+                <h3>Default Constructor</h3>
+                <p>If you don't provide any constructors in your class, Java automatically provides a default constructor (also known as no-argument constructor) with no parameters.</p>
+                <pre><code>// Default constructor
+        public class MyClass {
+            public MyClass() {
+                // Constructor code here
+            }
+        }</code></pre>
+                <p>This default constructor initializes the object with default values or performs any necessary setup.</p>
+        
+                <h3>Parameterized Constructor</h3>
+                <p>You can also define constructors with parameters to initialize the object with specific values.</p>
+                <pre><code>// Parameterized constructor
+        public class Person {
+            private String name;
+        
+            public Person(String name) {
+                this.name = name;
+            }
+        }</code></pre>
+                <p>In this example, the <code>Person</code> class has a parameterized constructor that takes a <code>name</code> parameter to initialize the <code>name</code> attribute of the <code>Person</code> object.</p>
+        
+                <h2>Constructor Overloading</h2>
+                <p>Java supports constructor overloading, which means you can define multiple constructors with different parameters in the same class.</p>
+                <pre><code>// Constructor overloading
+        public class Rectangle {
+            private int width;
+            private int height;
+        
+            public Rectangle() {
+                // Default constructor
+            }
+        
+            public Rectangle(int width, int height) {
+                this.width = width;
+                this.height = height;
+            }
+        
+            // Example method
+            public void display() {
+                System.out.println("Width: " + width + ", Height: " + height);
+            }
+        }</code></pre>
+                <p>In this example, the <code>Rectangle</code> class has two constructors: a default constructor with no parameters, and a parameterized constructor that takes <code>width</code> and <code>height</code> parameters to initialize the <code>Rectangle</code> object with specific dimensions.</p>
+                
+                <h2>Input</h2>
+                <pre><code>Rectangle rectangle = new Rectangle(10, 20);
+        rectangle.display();</code></pre>
+                
+                <h2>Output</h2>
+                <p>Width: 10, Height: 20</p>
+            </div>
+        </div>
+        
+        <!--------------------------------------------------------- day 8 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 8:</day> Inheritance and Polymorphism</h1>
+        
+                <h2>Inheritance</h2>
+                <p>Inheritance is a fundamental concept in object-oriented programming (OOP) where a class (subclass or derived class) inherits attributes and methods from another class (superclass or base class).</p>
+                <pre><code>// Superclass
+        public class Animal {
+            public void eat() {
+                System.out.println("Animal is eating.");
+            }
+        }
+        
+        // Subclass
+        public class Dog extends Animal {
+            public void bark() {
+                System.out.println("Dog is barking.");
+            }
+        }</code></pre>
+                <p>In this example, the <code>Dog</code> class inherits the <code>eat()</code> method from the <code>Animal</code> class.</p>
+        
+                <h2>Polymorphism</h2>
+                <p>Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables flexibility and extensibility in programming.</p>
+                <pre><code>// Superclass
+        public class Shape {
+            public void draw() {
+                System.out.println("Drawing shape.");
+            }
+        }
+        
+        // Subclass 1
+        public class Circle extends Shape {
+            public void draw() {
+                System.out.println("Drawing circle.");
+            }
+        }
+        
+        // Subclass 2
+        public class Rectangle extends Shape {
+            public void draw() {
+                System.out.println("Drawing rectangle.");
+            }
+        }</code></pre>
+                <p>In this example, both the <code>Circle</code> and <code>Rectangle</code> classes have overridden the <code>draw()</code> method of the <code>Shape</code> class to provide their own implementations.</p>
+        
+                <h2>Input</h2>
+                <pre><code>// Creating objects
+        Animal animal = new Animal();
+        Dog dog = new Dog();
+        
+        // Calling methods
+        animal.eat();
+        dog.eat();
+        dog.bark();</code></pre>
+                
+                <h2>Output</h2>
+                <p>Animal is eating.</p>
+                <p>Animal is eating.</p>
+                <p>Dog is barking.</p>
+            </div>
+        </div>
+        
+
+
+        <!--------------------------------------------------------- day 9 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 9:</day> Encapsulation and Access Modifiers</h1>
+        
+                <h2>Encapsulation</h2>
+                <p>Encapsulation is one of the four fundamental OOP concepts. It refers to the bundling of data and methods that operate on the data into a single unit or class. Encapsulation restricts direct access to some of the object's components, forcing other components to use accessor methods.</p>
+        
+                <h2>Access Modifiers</h2>
+                <p>Access modifiers define the visibility of classes, methods, and variables. Java provides several access modifiers:</p>
+                <ul>
+                    <li><code>public</code>: Accessible from anywhere</li>
+                    <li><code>protected</code>: Accessible within the same package or subclass</li>
+                    <li><code>default (no modifier)</code>: Accessible within the same package</li>
+                    <li><code>private</code>: Accessible only within the same class</li>
+                </ul>
+        
+                <h2>Example</h2>
+                <p>Let's create a class <code>Person</code> to demonstrate encapsulation and access modifiers:</p>
+                <pre><code>public class Person {
+            private String name;
+            private int age;
+        
+            public String getName() {
+                return name;
+            }
+        
+            public void setName(String name) {
+                this.name = name;
+            }
+        
+            public int getAge() {
+                return age;
+            }
+        
+            public void setAge(int age) {
+                if (age &gt;= 0 &amp;&amp; age &lt;= 120) {
+                    this.age = age;
+                } else {
+                    System.out.println("Invalid age.");
+                }
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <pre><code>Person person = new Person();
+        person.setName("John");
+        person.setAge(30);</code></pre>
+        
+                <h2>Output</h2>
+                <p>No specific output. Encapsulation ensures that the <code>name</code> and <code>age</code> attributes are accessed and modified using accessor methods.</p>
+            </div>
+        </div>
+    
+        <!--------------------------------------------------------- day 10 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 10:</day> Abstract Classes and Interfaces</h1>
+        
+                <h2>Abstract Classes</h2>
+                <p>An abstract class in Java is a class that cannot be instantiated on its own and is used as a blueprint for other classes. It can contain abstract methods, which are declared but not implemented, as well as concrete methods with implementations.</p>
+        
+                <pre><code>// Abstract class
+        public abstract class Animal {
+            // Abstract method
+            public abstract void makeSound();
+        
+            // Concrete method
+            public void sleep() {
+                System.out.println("Zzz");
+            }
+        }</code></pre>
+                <p>In this example, <code>Animal</code> is an abstract class with an abstract method <code>makeSound()</code> and a concrete method <code>sleep()</code>.</p>
+        
+                <h2>Interfaces</h2>
+                <p>An interface in Java is a reference type that contains only abstract methods, default methods, static methods, and constant declarations. It is similar to a class but specifies the behavior a class must implement.</p>
+        
+                <pre><code>// Interface
+        public interface Vehicle {
+            // Abstract method
+            void drive();
+        
+            // Default method
+            default void stop() {
+                System.out.println("Vehicle stopped");
+            }
+        }</code></pre>
+                <p>In this example, <code>Vehicle</code> is an interface with an abstract method <code>drive()</code> and a default method <code>stop()</code>.</p>
+        
+                <h2>Input</h2>
+                <pre><code>// Using abstract class
+        Animal animal = new Dog();
+        animal.makeSound(); // Output: Woof
+        animal.sleep();     // Output: Zzz
+        
+        // Using interface
+        Vehicle car = new Car();
+        car.drive(); // Output: Car is being driven
+        car.stop();  // Output: Vehicle stopped</code></pre>
+                
+                <h2>Output</h2>
+                <p>Woof</p>
+                <p>Zzz</p>
+                <p>Car is being driven</p>
+                <p>Vehicle stopped</p>
+            </div>
+        </div>
+        
+
+
+        <!--------------------------------------------------------- day 11 ------------------------------------------------------>
+        
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 11:</day> Exception Handling</h1>
+        
+                <h2>Introduction to Exception Handling</h2>
+                <p>Exception handling is a mechanism in Java to deal with runtime errors (exceptions) that may occur during the execution of a program. It allows you to gracefully handle unexpected situations and prevent your program from crashing.</p>
+        
+                <h2>Try-Catch Blocks</h2>
+                <p>In Java, exceptions are handled using try-catch blocks. The code that may throw an exception is placed inside the try block, and the corresponding catch block catches and handles the exception.</p>
+                <pre><code>try {
+            // Code that may throw an exception
+        } catch (ExceptionType e) {
+            // Handle the exception
+        }</code></pre>
+                <p>The catch block specifies the type of exception it can handle, and the exception object <code>e</code> provides information about the exception that occurred.</p>
+        
+                <h2>Example</h2>
+                <p>Let's consider an example where we divide two numbers and handle the <code>ArithmeticException</code> that may occur if the divisor is zero.</p>
+                <pre><code>try {
+            int numerator = 10;
+            int denominator = 0;
+            int result = numerator / denominator;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero.");
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>No specific input is required. The code demonstrates exception handling for division by zero.</p>
+        
+                <h2>Output</h2>
+                <p>Cannot divide by zero.</p>
+            </div>
+        </div>
+        
+
+        <!--------------------------------------------------------- day 12 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 12:</day> File I/O (Input/Output)</h1>
+        
+                <h2>File Input/Output in Java</h2>
+                <p>File Input/Output (I/O) operations are used to read from and write to files in Java. This allows programs to interact with external files for data storage, retrieval, and manipulation.</p>
+        
+                <h2>Reading from a File</h2>
+                <p>To read data from a file in Java, you can use various classes such as <code>File</code>, <code>FileReader</code>, and <code>BufferedReader</code>.</p>
+                <pre><code>import java.io.*;
+        
+        public class ReadFromFile {
+            public static void main(String[] args) {
+                try {
+                    File file = new File("input.txt");
+                    BufferedReader reader = new BufferedReader(new FileReader(file));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>Assume we have a file named <code>input.txt</code> with the following content:</p>
+                <pre><code>Hello, Java!
+        Welcome to File I/O.
+        This is a sample file for reading.</code></pre>
+        
+                <h2>Output</h2>
+                <p>The program will read the contents of <code>input.txt</code> and print them to the console:</p>
+                <pre><code>Hello, Java!
+        Welcome to File I/O.
+        This is a sample file for reading.</code></pre>
+        
+                <h2>Writing to a File</h2>
+                <p>To write data to a file in Java, you can use classes such as <code>FileWriter</code> and <code>BufferedWriter</code>.</p>
+                <pre><code>import java.io.*;
+        
+        public class WriteToFile {
+            public static void main(String[] args) {
+                try {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+                    writer.write("This is a sample text written to a file.");
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>No input required. The program will write the specified text to a file named <code>output.txt</code>.</p>
+        
+                <h2>Output</h2>
+                <p>After executing the program, the file <code>output.txt</code> will be created with the following content:</p>
+                <pre><code>This is a sample text written to a file.</code></pre>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 13 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 13:</day> Generics</h1>
+        
+                <h2>Generics in Java</h2>
+                <p>Generics in Java allow you to create classes, interfaces, and methods that operate with a type parameter. This enables you to define classes and methods that can work with any data type.</p>
+        
+                <h3>Generic Class</h3>
+                <p>You can create a generic class by specifying a type parameter in angle brackets (<code>&lt;&gt;</code>).</p>
+                <pre><code>// Generic class
+        public class Box&lt;T&gt; {
+            private T item;
+        
+            public void setItem(T item) {
+                this.item = item;
+            }
+        
+            public T getItem() {
+                return item;
+            }
+        }</code></pre>
+                <p>In this example, <code>T</code> is a type parameter that represents the type of the item stored in the <code>Box</code> object.</p>
+        
+                <h3>Generic Method</h3>
+                <p>You can also create generic methods that work with any data type.</p>
+                <pre><code>// Generic method
+        public &lt;T&gt; void printArray(T[] array) {
+            for (T element : array) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }</code></pre>
+                <p>This method prints all elements of an array regardless of its data type.</p>
+        
+                <h2>Input</h2>
+                <pre><code>// Create a generic box
+        Box&lt;Integer&gt; integerBox = new Box&lt;&gt;();
+        integerBox.setItem(10);
+        int number = integerBox.getItem();
+        
+        // Create a generic array
+        String[] names = {"John", "Doe", "Jane"};
+        printArray(names);</code></pre>
+        
+                <h2>Output</h2>
+                <p>10</p>
+                <p>John Doe Jane</p>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 14 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 14:</day> Collections Framework</h1>
+        
+                <h2>Introduction to Collections Framework</h2>
+                <p>The Java Collections Framework provides a set of classes and interfaces to store and manipulate groups of objects. It includes various data structures such as lists, sets, and maps.</p>
+        
+                <h2>Lists</h2>
+                <p>A list is an ordered collection of elements where each element is identified by an index. Java provides several implementations of the List interface, such as ArrayList and LinkedList.</p>
+                <pre><code>// Creating a list
+        List<String> myList = new ArrayList<>();
+        
+        // Adding elements to the list
+        myList.add("Apple");
+        myList.add("Banana");
+        myList.add("Orange");
+        
+        // Accessing elements by index
+        String firstElement = myList.get(0);
+        System.out.println("First element: " + firstElement);</code></pre>
+                
+                <h2>Output</h2>
+                <p>First element: Apple</p>
+        
+                <h2>Sets</h2>
+                <p>A set is a collection of unique elements where each element can occur only once. Java provides several implementations of the Set interface, such as HashSet and TreeSet.</p>
+                <pre><code>// Creating a set
+        Set<Integer> mySet = new HashSet<>();
+        
+        // Adding elements to the set
+        mySet.add(10);
+        mySet.add(20);
+        mySet.add(30);
+        mySet.add(20); // Duplicate element, will be ignored
+        
+        // Iterating over the set
+        for (int num : mySet) {
+            System.out.println(num);
+        }</code></pre>
+                
+                <h2>Output</h2>
+                <p>10</p>
+                <p>20</p>
+                <p>30</p>
+        
+                <h2>Maps</h2>
+                <p>A map is a collection of key-value pairs where each key is unique. Java provides several implementations of the Map interface, such as HashMap and TreeMap.</p>
+                <pre><code>// Creating a map
+        Map<String, Integer> myMap = new HashMap<>();
+        
+        // Adding key-value pairs to the map
+        myMap.put("One", 1);
+        myMap.put("Two", 2);
+        myMap.put("Three", 3);
+        
+        // Accessing values by key
+        int value = myMap.get("Two");
+        System.out.println("Value for key 'Two': " + value);</code></pre>
+                
+                <h2>Output</h2>
+                <p>Value for key 'Two': 2</p>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 15------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 15:</day> Multithreading and Concurrency</h1>
+        
+                <h2>Multithreading and Concurrency</h2>
+                <p>In Java, multithreading allows concurrent execution of two or more parts of a program for maximum utilization of CPU. It enables multiple tasks to be performed at the same time.</p>
+        
+                <h3>Multithreading</h3>
+                <p>Multithreading is a Java feature that allows concurrent execution of two or more threads. Each thread runs independently and can perform a different task simultaneously.</p>
+                <pre><code>// Multithreading example
+        public class MyThread extends Thread {
+            public void run() {
+                System.out.println("Thread is running...");
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                MyThread thread = new MyThread();
+                thread.start(); // Start the thread
+            }
+        }</code></pre>
+        
+                <h3>Concurrency</h3>
+                <p>Concurrency in Java is the ability of different parts of a program to be executed out-of-order or in partial order, without affecting the final outcome. It allows multiple tasks to be executed simultaneously.</p>
+                <pre><code>// Concurrency example
+        import java.util.concurrent.ExecutorService;
+        import java.util.concurrent.Executors;
+        
+        public class WorkerThread implements Runnable {
+            private String message;
+        
+            public WorkerThread(String message) {
+                this.message = message;
+            }
+        
+            public void run() {
+                System.out.println(Thread.currentThread().getName() + " (Start) message = " + message);
+                processMessage(); // Call the method to process the message
+                System.out.println(Thread.currentThread().getName() + " (End)"); // Print thread name
+            }
+        
+            private void processMessage() {
+                try {
+                    Thread.sleep(2000); // Simulate time-consuming task
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                ExecutorService executor = Executors.newFixedThreadPool(5); // Create a thread pool with 5 threads
+                for (int i = 0; i < 10; i++) {
+                    Runnable worker = new WorkerThread("" + i);
+                    executor.execute(worker); // Execute the worker thread
+                }
+                executor.shutdown(); // Shutdown the executor service
+                while (!executor.isTerminated()) {
+                }
+                System.out.println("All threads are finished.");
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>No specific input. Multithreading and concurrency involve managing threads and tasks simultaneously.</p>
+        
+                <h2>Output</h2>
+                <p>Thread-1 (Start) message = 0</p>
+                <p>Thread-2 (Start) message = 1</p>
+                <p>Thread-0 (Start) message = 2</p>
+                <p>Thread-3 (Start) message = 3</p>
+                <p>Thread-4 (Start) message = 4</p>
+                <p>Thread-0 (End)</p>
+                <p>Thread-1 (End)</p>
+                <p>Thread-2 (End)</p>
+                <p>Thread-3 (End)</p>
+                <p>Thread-4 (End)</p>
+                <p>Thread-5 (Start) message = 5</p>
+                <p>Thread-6 (Start) message = 6</p>
+                <p>Thread-7 (Start) message = 7</p>
+                <p>Thread-8 (Start) message = 8</p>
+                <p>Thread-9 (Start) message = 9</p>
+                <p>Thread-5 (End)</p>
+                <p>Thread-6 (End)</p>
+                <p>Thread-7 (End)</p>
+                <p>Thread-8 (End)</p>
+                <p>Thread-9 (End)</p>
+                <p>All threads are finished.</p>
+            </div>
+        </div>
+        
+
+
+        <!--------------------------------------------------------- day 16 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 16:</day> Introduction to GUI Programming</h1>
+        
+                <h2>Basics of GUI Programming in Java</h2>
+                <p>Graphical User Interface (GUI) programming involves creating interactive applications with graphical components such as buttons, text fields, and menus. In Java, GUI programming is commonly done using libraries like Swing or JavaFX.</p>
+        
+                <h2>Swing vs. JavaFX</h2>
+                <p>Java provides two main libraries for GUI programming:</p>
+                <ul>
+                    <li><strong>Swing:</strong> Swing is an older GUI toolkit provided by Java. It offers a rich set of components and is suitable for building desktop applications.</li>
+                    <li><strong>JavaFX:</strong> JavaFX is a newer GUI toolkit that provides a modern, rich graphical experience. It supports features like animations, effects, and multimedia, making it ideal for creating rich internet applications and multimedia applications.</li>
+                </ul>
+        
+                <h2>Setting Up JavaFX</h2>
+                <p>To get started with JavaFX, you need to set up your development environment:</p>
+                <ol>
+                    <li><strong>Download JavaFX SDK:</strong> Download the JavaFX SDK from the official website or use a build tool like Maven or Gradle to manage dependencies.</li>
+                    <li><strong>Set Up IDE:</strong> Configure your Integrated Development Environment (IDE) to include the JavaFX libraries in your project.</li>
+                    <li><strong>Start Coding:</strong> Once set up, you can start coding GUI applications using JavaFX components and APIs.</li>
+                </ol>
+        
+                <h2>Example Code</h2>
+                <p>Below is a simple JavaFX program that displays a window with a button:</p>
+                <pre><code>import javafx.application.Application;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Button;
+        import javafx.stage.Stage;
+        
+        public class HelloWorld extends Application {
+            public static void main(String[] args) {
+                launch(args);
+            }
+        
+            @Override
+            public void start(Stage primaryStage) {
+                Button button = new Button("Click Me!");
+                button.setOnAction(e -&gt; System.out.println("Button clicked!"));
+        
+                Scene scene = new Scene(button, 200, 100);
+                primaryStage.setScene(scene);
+                primaryStage.setTitle("Hello World");
+                primaryStage.show();
+            }
+        }</code></pre>
+        
+                <h2>Output</h2>
+                <p>A window titled "Hello World" appears with a button labeled "Click Me!". When the button is clicked, the message "Button clicked!" is printed to the console.</p>
+            </div>
+        </div>
+        
+
+        <!--------------------------------------------------------- day 17 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 17:</day> JavaFX Basics</h1>
+        
+                <h2>Introduction to JavaFX</h2>
+                <p>JavaFX is a set of graphics and media packages that enables developers to design, create, test, debug, and deploy rich client applications that operate consistently across diverse platforms.</p>
+        
+                <h2>JavaFX Features</h2>
+                <ul>
+                    <li>Rich Set of UI Controls: JavaFX provides a wide range of UI controls such as buttons, text fields, lists, tables, etc., for building interactive user interfaces.</li>
+                    <li>3D Graphics and Animation: JavaFX supports 3D graphics rendering and animation capabilities for creating visually appealing applications.</li>
+                    <li>Media Support: JavaFX includes support for playing audio and video files, as well as for capturing media from input devices.</li>
+                    <li>CSS Styling: JavaFX applications can be styled using Cascading Style Sheets (CSS) to achieve customized look and feel.</li>
+                    <li>FXML: JavaFX supports FXML (JavaFX Markup Language) for defining user interfaces in a declarative manner, separate from application logic.</li>
+                </ul>
+        
+                <h2>JavaFX Application Structure</h2>
+                <p>A basic JavaFX application typically consists of the following components:</p>
+                <ul>
+                    <li><strong>Main Class:</strong> The main class extends the <code>Application</code> class and serves as the entry point for the JavaFX application.</li>
+                    <li><strong>Stage:</strong> The primary stage represents the main window of the application.</li>
+                    <li><strong>Scene:</strong> A scene graph represents the hierarchical structure of the graphical user interface (GUI) components.</li>
+                    <li><strong>Nodes:</strong> Nodes represent visual elements such as buttons, labels, text fields, etc., within the scene graph.</li>
+                </ul>
+        
+                <h2>Input</h2>
+                <pre><code>public class Main extends Application {
+            @Override
+            public void start(Stage primaryStage) throws Exception {
+                // Application logic here
+            }
+        
+            public static void main(String[] args) {
+                launch(args);
+            }
+        }</code></pre>
+        
+                <h2>Output</h2>
+                <p>No specific output. JavaFX applications typically display a graphical user interface based on the defined scene graph and UI controls.</p>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 18 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 18:</day> Event Handling in JavaFX</h1>
+        
+                <h2>Introduction to Event Handling</h2>
+                <p>Event handling is a fundamental concept in graphical user interface (GUI) programming. It involves responding to user actions or events, such as mouse clicks or keyboard presses.</p>
+        
+                <h2>Event Handling in JavaFX</h2>
+                <p>JavaFX provides a comprehensive event-handling mechanism to handle various types of events generated by user interaction with graphical elements.</p>
+                <p>Here is an example of handling a button click event:</p>
+                <pre><code>import javafx.application.Application;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Button;
+        import javafx.scene.layout.StackPane;
+        import javafx.stage.Stage;
+        
+        public class Main extends Application {
+        
+            @Override
+            public void start(Stage primaryStage) {
+                Button button = new Button("Click Me!");
+                button.setOnAction(e -> System.out.println("Button Clicked!"));
+        
+                StackPane layout = new StackPane();
+                layout.getChildren().add(button);
+        
+                Scene scene = new Scene(layout, 300, 250);
+        
+                primaryStage.setScene(scene);
+                primaryStage.setTitle("Event Handling in JavaFX");
+                primaryStage.show();
+            }
+        
+            public static void main(String[] args) {
+                launch(args);
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>No specific input. This code demonstrates event handling in JavaFX.</p>
+        
+                <h2>Output</h2>
+                <p>When the button labeled "Click Me!" is clicked, the following message is printed to the console:</p>
+                <p>Button Clicked!</p>
+            </div>
+        </div>
+        
+
+
+        <!--------------------------------------------------------- day 19 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 19:</day> Layout Management</h1>
+        
+                <h2>Layout Management</h2>
+                <p>Layout management in JavaFX involves arranging and positioning GUI components within a container or a scene. It determines how the components are displayed and organized on the screen.</p>
+        
+                <h3>Types of Layout Managers</h3>
+                <p>JavaFX provides several layout managers to control the layout of GUI components:</p>
+                <ul>
+                    <li><strong>BorderPane:</strong> Divides the container into five regions: top, bottom, left, right, and center.</li>
+                    <li><strong>HBox:</strong> Arranges components in a horizontal row.</li>
+                    <li><strong>VBox:</strong> Arranges components in a vertical column.</li>
+                    <li><strong>FlowPane:</strong> Arranges components in a flow layout, wrapping them to the next row or column as needed.</li>
+                    <li><strong>GridPane:</strong> Arranges components in a grid layout with rows and columns.</li>
+                </ul>
+        
+                <h2>Input</h2>
+                <pre><code>// Example of using VBox layout manager
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(new Button("Button 1"), new Button("Button 2"), new Button("Button 3"));
+        Scene scene = new Scene(vbox, 300, 200);
+        stage.setScene(scene);
+        stage.show();</code></pre>
+        
+                <h2>Output</h2>
+                <p>A JavaFX window with three buttons arranged vertically.</p>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 20 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 20:</day> Advanced JavaFX Techniques</h1>
+        
+                <h2>Introduction to Advanced JavaFX Techniques</h2>
+                <p>Advanced JavaFX techniques involve utilizing more complex features and functionalities of the JavaFX library to create rich and interactive graphical user interfaces (GUIs).</p>
+        
+                <h2>Advanced Features and Techniques</h2>
+                <p>Some advanced features and techniques in JavaFX include:</p>
+                <ul>
+                    <li>Custom controls and components</li>
+                    <li>FXML for declarative UI design</li>
+                    <li>Animations and transitions</li>
+                    <li>Styling with CSS</li>
+                    <li>Internationalization and localization</li>
+                    <li>Event handling and bindings</li>
+                </ul>
+        
+                <h2>Example Program</h2>
+                <p>Here's an example JavaFX program demonstrating the use of advanced techniques:</p>
+                <pre><code>import javafx.application.Application;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Button;
+        import javafx.scene.layout.StackPane;
+        import javafx.stage.Stage;
+        
+        public class AdvancedJavaFX extends Application {
+        
+            @Override
+            public void start(Stage primaryStage) {
+                Button button = new Button("Click Me!");
+                button.setOnAction(e -> System.out.println("Button clicked!"));
+        
+                StackPane root = new StackPane();
+                root.getChildren().add(button);
+        
+                Scene scene = new Scene(root, 300, 250);
+        
+                primaryStage.setTitle("Advanced JavaFX Techniques");
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            }
+        
+            public static void main(String[] args) {
+                launch(args);
+            }
+        }</code></pre>
+        
+                <h2>Output</h2>
+                <p>A JavaFX window with a button labeled "Click Me!" will be displayed. When the button is clicked, the message "Button clicked!" will be printed to the console.</p>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 21 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 21:</day> Introduction to JDBC</h1>
+        
+                <h2>Introduction to JDBC</h2>
+                <p>JDBC (Java Database Connectivity) is an API for Java that allows Java programs to connect to and interact with databases. It provides methods for querying and updating data in relational databases.</p>
+        
+                <h2>Basics of JDBC</h2>
+                <p>Here are the basic steps involved in using JDBC:</p>
+                <ol>
+                    <li><strong>Load the JDBC driver:</strong> Load the JDBC driver for the specific database you want to connect to. This is done using the <code>Class.forName()</code> method.</li>
+                    <li><strong>Establish a connection:</strong> Use the <code>DriverManager.getConnection()</code> method to establish a connection to the database.</li>
+                    <li><strong>Create a statement:</strong> Create a <code>Statement</code> or <code>PreparedStatement</code> object to execute SQL queries.</li>
+                    <li><strong>Execute queries:</strong> Use the <code>executeQuery()</code> method to execute SELECT queries or the <code>executeUpdate()</code> method to execute INSERT, UPDATE, or DELETE queries.</li>
+                    <li><strong>Process results:</strong> Process the results returned by the query, if any.</li>
+                    <li><strong>Close the connection:</strong> Close the connection to the database using the <code>close()</code> method.</li>
+                </ol>
+        
+                <h2>Input</h2>
+                <p>Assuming we have a MySQL database named "employees" with a table named "employees_info" containing employee information:</p>
+                <pre><code>String url = "jdbc:mysql://localhost:3306/employees";
+        String username = "username";
+        String password = "password";
+        
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             Statement statement = connection.createStatement()) {
+            // Execute a SELECT query
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM employees_info");
+        
+            // Process the results
+            while (resultSet.next()) {
+                // Process each row
+                String employeeName = resultSet.getString("name");
+                int employeeId = resultSet.getInt("id");
+                System.out.println("Employee ID: " + employeeId + ", Name: " + employeeName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }</code></pre>
+        
+                <h2>Output</h2>
+                <p>Employee ID: 1, Name: John Doe</p>
+                <p>Employee ID: 2, Name: Jane Smith</p>
+                <!-- Additional rows of employee data as per the database -->
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 22 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 22:</day> Connecting to Databases</h1>
+        
+                <h2>Introduction to JDBC</h2>
+                <p>Java Database Connectivity (JDBC) is an API that allows Java applications to interact with databases. It provides methods for querying and updating data in a database using SQL statements.</p>
+        
+                <h2>Connecting to Databases</h2>
+                <p>To connect Java applications to databases, you need to follow these steps:</p>
+                <ol>
+                    <li><strong>Import JDBC Packages:</strong> Import the required JDBC packages.</li>
+                    <li><strong>Load and Register the JDBC Driver:</strong> Load and register the JDBC driver for your database.</li>
+                    <li><strong>Establish Connection:</strong> Establish a connection to the database using the DriverManager class.</li>
+                    <li><strong>Create Statement:</strong> Create a Statement object to execute SQL queries.</li>
+                    <li><strong>Execute SQL Queries:</strong> Execute SQL queries to interact with the database.</li>
+                    <li><strong>Close Connection:</strong> Close the connection to the database when done.</li>
+                </ol>
+        
+                <h2>Example</h2>
+                <p>Let's see an example of connecting to a MySQL database:</p>
+                <pre><code>import java.sql.*;
+        
+        public class DatabaseConnection {
+            public static void main(String[] args) {
+                try {
+                    // Load and register JDBC driver
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    
+                    // Establish connection
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "username", "password");
+                    
+                    // Create statement
+                    Statement statement = connection.createStatement();
+                    
+                    // Execute SQL query
+                    ResultSet resultSet = statement.executeQuery("SELECT * FROM employees");
+                    
+                    // Process result set
+                    while (resultSet.next()) {
+                        System.out.println(resultSet.getString("employee_id") + "\t" + resultSet.getString("employee_name"));
+                    }
+                    
+                    // Close connection
+                    resultSet.close();
+                    statement.close();
+                    connection.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }</code></pre>
+                
+                <h2>Output</h2>
+                <p>Assuming the database contains a table named 'employees' with columns 'employee_id' and 'employee_name', the output would be:</p>
+                <pre><code>101 Employee1
+        102 Employee2
+        103 Employee3</code></pre>
+            </div>
+        </div>
+
+        <!--------------------------------------------------------- day 23 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 23:</day> Executing SQL Statements</h1>
+        
+                <h2>Executing SQL Statements</h2>
+                <p>In Java, you can execute SQL statements to interact with databases using JDBC (Java Database Connectivity).</p>
+        
+                <h3>Example: Executing a SELECT Statement</h3>
+                <p>Here's an example of executing a SELECT statement to retrieve data from a database:</p>
+                <pre><code>// Import required packages
+        import java.sql.*;
+        
+        public class Main {
+            public static void main(String[] args) {
+                try {
+                    // Establish connection to the database
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "username", "password");
+        
+                    // Create a statement object
+                    Statement statement = connection.createStatement();
+        
+                    // Define SQL query
+                    String sql = "SELECT * FROM employees";
+        
+                    // Execute SQL query
+                    ResultSet resultSet = statement.executeQuery(sql);
+        
+                    // Process the result set
+                    while (resultSet.next()) {
+                        // Retrieve data from the result set
+                        int id = resultSet.getInt("id");
+                        String name = resultSet.getString("name");
+                        int age = resultSet.getInt("age");
+        
+                        // Display the data
+                        System.out.println("ID: " + id + ", Name: " + name + ", Age: " + age);
+                    }
+        
+                    // Close the resources
+                    resultSet.close();
+                    statement.close();
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }</code></pre>
+                
+                <h2>Input</h2>
+                <p>Assuming there is a table named <code>employees</code> in the database <code>mydatabase</code>, with columns <code>id</code>, <code>name</code>, and <code>age</code>.</p>
+                
+                <h2>Output</h2>
+                <p>Assuming the table <code>employees</code> contains the following data:</p>
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Alice</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Bob</td>
+                        <td>35</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+
+
+        <!--------------------------------------------------------- day 24 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 24:</day> Handling Result Sets</h1>
+        
+                <h2>Handling Result Sets</h2>
+                <p>In Java, when executing SQL queries that retrieve data from a database, the result is typically returned as a result set. Handling result sets involves iterating over the rows and processing the data.</p>
+        
+                <h3>Example: Handling Result Sets</h3>
+                <p>Let's consider a simple example where we retrieve data from a database table and print it:</p>
+                <pre><code>import java.sql.*;
+        
+        public class ResultSetExample {
+            public static void main(String[] args) {
+                try {
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "username", "password");
+                    Statement statement = connection.createStatement();
+                    ResultSet resultSet = statement.executeQuery("SELECT * FROM employees");
+        
+                    while (resultSet.next()) {
+                        int id = resultSet.getInt("id");
+                        String name = resultSet.getString("name");
+                        double salary = resultSet.getDouble("salary");
+                        System.out.println("ID: " + id + ", Name: " + name + ", Salary: " + salary);
+                    }
+        
+                    resultSet.close();
+                    statement.close();
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>No specific input required. The program connects to a database and retrieves data from the "employees" table.</p>
+        
+                <h2>Output</h2>
+                <p>Assuming the "employees" table in the database contains the following data:</p>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>50000.0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>60000.0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>David Johnson</td>
+                        <td>55000.0</td>
+                    </tr>
+                </table>
+                <p>The program will output:</p>
+                <pre><code>ID: 1, Name: John Doe, Salary: 50000.0
+        ID: 2, Name: Jane Smith, Salary: 60000.0
+        ID: 3, Name: David Johnson, Salary: 55000.0</code></pre>
+            </div>
+        </div>
+        
+
+
+        <!--------------------------------------------------------- day 25 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 25:</day> Advanced JDBC Concepts</h1>
+        
+                <h2>Introduction to Advanced JDBC Concepts</h2>
+                <p>Java Database Connectivity (JDBC) is a Java API used to interact with relational databases. In addition to basic operations like executing queries and handling result sets, JDBC also provides support for advanced concepts like transactions and prepared statements.</p>
+        
+                <h2>Transactions</h2>
+                <p>A transaction is a sequence of one or more SQL statements that are executed as a single unit of work. JDBC allows you to manage transactions in your Java application.</p>
+                <pre><code>Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            connection.setAutoCommit(false); // Start transaction
+            // Perform database operations
+            // Commit transaction
+            connection.commit();
+        } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback(); // Rollback transaction in case of exception
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }</code></pre>
+        
+                <h2>Prepared Statements</h2>
+                <p>A prepared statement is a precompiled SQL statement that can be executed multiple times with different parameters. It helps improve performance and prevents SQL injection attacks.</p>
+                <pre><code>Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            String sql = "SELECT * FROM employees WHERE department = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "IT");
+            resultSet = preparedStatement.executeQuery();
+            // Process result set
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }</code></pre>
+                
+                <h2>Input</h2>
+                <pre><code>// Assume JDBC connection details are provided earlier
+        // Transaction example
+        connection.setAutoCommit(false);
+        // Perform database operations
+        connection.commit();
+        
+        // Prepared statement example
+        String department = "IT";
+        String sql = "SELECT * FROM employees WHERE department = ?";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, department);
+        resultSet = preparedStatement.executeQuery();
+        // Process result set</code></pre>
+                
+                <h2>Output</h2>
+                <p>No specific output. Outputs depend on the actual database and data being queried.</p>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 26 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 26:</day> Introduction to Servlets</h1>
+        
+                <h2>Servlets</h2>
+                <p>Servlets are Java programming language classes used to extend the capabilities of servers that host applications accessed by means of a request-response programming model. Although servlets can respond to any type of request, they are commonly used to extend the applications hosted by web servers.</p>
+        
+                <h2>Basic Servlet Example</h2>
+                <p>Below is a basic example of a servlet that responds to an HTTP GET request:</p>
+                <pre><code>import javax.servlet.*;
+        import javax.servlet.http.*;
+        import java.io.*;
+        
+        public class HelloWorldServlet extends HttpServlet {
+            public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                response.setContentType("text/html");
+                PrintWriter out = response.getWriter();
+                out.println("&lt;html&gt;&lt;body&gt;");
+                out.println("&lt;h1&gt;Hello, World!&lt;/h1&gt;");
+                out.println("&lt;/body&gt;&lt;/html&gt;");
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>No specific input. Servlets respond to HTTP requests from clients.</p>
+                
+                <h2>Output</h2>
+                <p>When a client sends an HTTP GET request to the servlet, the servlet responds with an HTML page containing the message "Hello, World!".</p>
+            </div>
+        </div>
+        
+        <!--------------------------------------------------------- day 27 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 27:</day> Servlet Lifecycle and Request Handling</h1>
+        
+                <h2>Servlet Lifecycle</h2>
+                <p>A servlet in Java follows a lifecycle defined by the Servlet API. The lifecycle consists of several stages:</p>
+                <ol>
+                    <li><strong>Initialization:</strong> Servlet container loads the servlet class and calls its <code>init()</code> method to perform initialization tasks such as loading resources or establishing database connections.</li>
+                    <li><strong>Request Handling:</strong> Servlet container calls the <code>service()</code> method to handle client requests. The <code>service()</code> method dispatches the request to appropriate methods like <code>doGet()</code>, <code>doPost()</code>, etc., based on the request type.</li>
+                    <li><strong>Destroy:</strong> Servlet container calls the <code>destroy()</code> method to perform cleanup tasks such as releasing resources or closing database connections when the servlet is being unloaded.</li>
+                </ol>
+        
+                <h2>Request Handling</h2>
+                <p>Servlets handle client requests through the <code>service()</code> method. This method takes two parameters: <code>ServletRequest</code> and <code>ServletResponse</code>. Servlets can override this method to customize request handling.</p>
+        
+                <h2>Example</h2>
+                <p>Suppose we have a servlet named <code>HelloServlet</code> that responds with a simple greeting message:</p>
+                <pre><code>import javax.servlet.*;
+        import javax.servlet.http.*;
+        import java.io.*;
+        
+        public class HelloServlet extends HttpServlet {
+            public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                response.setContentType("text/html");
+                PrintWriter out = response.getWriter();
+                out.println("<html><head><title>Hello Servlet</title></head><body>");
+                out.println("Hello, Servlet!");
+                out.println("</body></html>");
+            }
+        }</code></pre>
+        
+                <h2>Input</h2>
+                <p>No specific input. The servlet handles HTTP GET requests by default.</p>
+        
+                <h2>Output</h2>
+                <p>When accessing the servlet URL, the browser displays:</p>
+                <p><em>Hello, Servlet!</em></p>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 28 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 28:</day> JavaServer Pages (JSP)</h1>
+        
+                <h2>JavaServer Pages (JSP)</h2>
+                <p>JavaServer Pages (JSP) is a technology that allows developers to create dynamic, platform-independent web pages based on HTML and XML. JSP pages contain HTML code along with embedded Java code that executes dynamically on the server to generate dynamic content.</p>
+        
+                <h3>Basic Syntax</h3>
+                <p>JSP files have a <code>.jsp</code> extension and contain a mix of HTML and JSP elements enclosed within <code>&lt;%</code> and <code>%&gt;</code> tags. JSP elements allow developers to embed Java code within HTML markup to create dynamic content.</p>
+                <pre><code>&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %&gt;
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;My First JSP Page&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Hello, JSP!&lt;/h1&gt;
+            &lt;%  // Java code block
+                String name = "John";
+                out.println("Welcome, " + name + "!");
+            %&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;</code></pre>
+        
+                <h2>Input</h2>
+                <p>No specific input is required. JSP pages are executed on the server and generate dynamic content based on the server-side logic.</p>
+        
+                <h2>Output</h2>
+                <p>The output will be an HTML page with the dynamic content generated by the embedded Java code. For example, if executed successfully, the output might be:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;My First JSP Page&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Hello, JSP!&lt;/h1&gt;
+            Welcome, John!
+        &lt;/body&gt;
+        &lt;/html&gt;</code></pre>
+            </div>
+        </div>
+        <!--------------------------------------------------------- day 29------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 29:</day> Session Management and Filters</h1>
+        
+                <h2>Session Management</h2>
+                <p>Session management in Java web applications involves maintaining stateful information about users across multiple HTTP requests. This is typically achieved using HttpSession objects.</p>
+        
+                <h3>Creating a Session</h3>
+                <p>To create a session in Java, you can use the <code>getSession()</code> method provided by the HttpServletRequest object.</p>
+                <pre><code>HttpSession session = request.getSession(true);</code></pre>
+                <p>This code creates a new session if one does not already exist, or returns the existing session otherwise.</p>
+        
+                <h3>Setting and Getting Session Attributes</h3>
+                <p>You can set and get session attributes using the <code>setAttribute()</code> and <code>getAttribute()</code> methods of the HttpSession object.</p>
+                <pre><code>// Setting session attribute
+        session.setAttribute("username", "john");
+        
+        // Getting session attribute
+        String username = (String) session.getAttribute("username");</code></pre>
+        
+                <h2>Filters</h2>
+                <p>Filters in Java web applications are components that can intercept and modify requests and responses. They are commonly used for tasks such as logging, authentication, authorization, and request modification.</p>
+        
+                <h3>Creating a Filter</h3>
+                <p>To create a filter in Java, you need to implement the javax.servlet.Filter interface and override its <code>doFilter()</code> method.</p>
+                <pre><code>public class MyFilter implements Filter {
+            public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+                // Filter logic here
+                chain.doFilter(request, response); // Pass request along the filter chain
+            }
+        }</code></pre>
+                <p>This example demonstrates a simple filter that passes the request along the filter chain without any modification.</p>
+        
+                <h2>Input</h2>
+                <p>No specific input required. Session management and filters are integrated into the Java web application logic and are handled by the servlet container.</p>
+        
+                <h2>Output</h2>
+                <p>No specific output. Session management and filter operations are transparent to the end user and are typically used for server-side processing.</p>
+            </div>
+        </div>
+
+        <!--------------------------------------------------------- day 30 ------------------------------------------------------>
+        <div class="python-content">
+            <div class="python-card">
+                <h1>
+                    <day>Day 30:</day> Introduction to Spring Framework</h1>
+        
+                <h2>Introduction to Spring Framework</h2>
+                <p>The Spring Framework is an open-source framework for building enterprise-level Java applications. It provides comprehensive infrastructure support for developing Java applications and makes it easier to create robust, scalable, and maintainable applications.</p>
+        
+                <h3>Key Features of Spring Framework</h3>
+                <ul>
+                    <li><strong>Inversion of Control (IoC) Container:</strong> Spring provides an IoC container that manages the lifecycle of Java objects and their dependencies. This helps in decoupling components and improves testability.</li>
+                    <li><strong>Dependency Injection (DI):</strong> Spring supports DI, allowing objects to be injected with their dependencies rather than creating them manually. This promotes loose coupling and makes components easier to test.</li>
+                    <li><strong>Aspect-Oriented Programming (AOP):</strong> Spring Framework supports AOP, which enables separation of cross-cutting concerns like logging, security, and transaction management from the business logic.</li>
+                    <li><strong>Transaction Management:</strong> Spring provides a powerful abstraction for managing transactions in Java applications. It supports both programmatic and declarative transaction management.</li>
+                    <li><strong>Integration with Other Frameworks:</strong> Spring seamlessly integrates with other popular frameworks and technologies like Hibernate, JPA, JDBC, JMS, and more.</li>
+                </ul>
+        
+                <h2>Input</h2>
+                <pre><code>// Example of using Spring Framework
+        public class MyApp {
+            public static void main(String[] args) {
+                ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+                MyService service = (MyService) context.getBean("myService");
+                String message = service.getMessage();
+                System.out.println("Message from service: " + message);
+            }
+        }</code></pre>
+        
+                <h2>Output</h2>
+                <p>Message from service: Hello, Spring!</p>
+            </div>
+        </div>
+        
 
 
 
@@ -602,7 +2289,7 @@
                 flag.classList.add('unlocked');
                 flag.onclick = function() {
                     const dayNumber = flag.id.split("-")[1];
-                    window.location.href = "reweg-j1.html";
+                    window.location.href = "asdeq-p1.html";
                 };
             }
         });
