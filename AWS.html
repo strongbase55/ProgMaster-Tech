@@ -39,7 +39,7 @@
                         <a href="#" class="navbar-link active" data-nav-link>Homepage</a>
                     </li>
 
-
+                    <!-- 
                     <li class="navbar-item">
                         <a href="#" class="navbar-link" data-nav-link>Certificates</a>
                     </li>
@@ -50,7 +50,7 @@
 
                     <li class="navbar-item">
                         <a href="#" class="navbar-link" data-nav-link>Forum</a>
-                    </li>
+                    </li> -->
 
 
                 </ul>
@@ -504,7 +504,8 @@
 
             <h2>Global Infrastructure</h2>
             <p>AWS operates a global network of data centers called Availability Zones, distributed across multiple regions worldwide. This infrastructure allows for low-latency and high-performance service delivery to customers, ensuring reliability and
-                availability.</p>
+                availability.
+            </p>
 
             <h2>Core Services</h2>
             <p>Some of the core services provided by AWS include:</p>
@@ -546,7 +547,8 @@
             <p>An Availability Zone (AZ) is a distinct data center within an AWS Region that is isolated from other zones in terms of power, cooling, and network connectivity. Key features of Availability Zones include:</p>
             <ul>
                 <li><strong>Fault Isolation:</strong> Availability Zones are designed to be independent of each other to minimize the impact of failures. Applications deployed across multiple AZs can withstand individual zone failures without affecting overall
-                    availability.</li>
+                    availability.
+                </li>
                 <li><strong>High Availability:</strong> Deploying resources across multiple AZs provides redundancy and ensures high availability for critical workloads, even in the event of AZ-level outages.</li>
                 <li><strong>Low-Latency Connectivity:</strong> AZs within the same region are connected via high-speed, redundant network links, enabling low-latency communication between resources deployed in different zones.</li>
             </ul>
@@ -617,7 +619,8 @@
                 <li>
                     <h3>Integration</h3>
                     <p>Amazon EC2 integrates seamlessly with other AWS services, enabling users to easily connect their instances to services such as Amazon S3 for object storage, Amazon RDS for managed databases, and Amazon VPC for network isolation and
-                        security.</p>
+                        security.
+                    </p>
                     <p><strong>Integration Examples:</strong></p>
                     <ul>
                         <li><strong>Web Application Architecture:</strong> Hosting web servers on EC2 instances and storing static assets in Amazon S3.</li>
@@ -948,7 +951,8 @@
             <ul>
                 <li><strong>Securing Web Applications:</strong> Implementing IAM roles and policies, encrypting data in transit and at rest, and configuring security groups to protect web applications from unauthorized access and cyber threats.</li>
                 <li><strong>Protecting Data Privacy:</strong> Implementing encryption and access controls to protect sensitive data, such as personally identifiable information (PII), financial records, and healthcare data, from unauthorized access and data
-                    breaches.</li>
+                    breaches.
+                </li>
                 <li><strong>Ensuring Regulatory Compliance:</strong> Implementing security controls and configurations to comply with industry regulations and standards, such as HIPAA for healthcare data, PCI DSS for payment card data, and GDPR for personal
                     data protection.</li>
                 <li><strong>Preventing Data Loss:</strong> Implementing backup and recovery solutions, encryption, and access controls to prevent data loss due to accidental deletion, hardware failure, or cyber attacks.</li>
@@ -1172,7 +1176,8 @@
                 <li><strong>Security Standards Compliance:</strong> AWS Security Hub supports security standards such as CIS AWS Foundations Benchmark and PCI DSS, enabling users to assess their AWS environments against predefined compliance standards and
                     best practices.</li>
                 <li><strong>Security Insights and Recommendations:</strong> AWS Security Hub provides actionable insights and recommendations to improve the security posture of AWS environments, helping users remediate security findings and mitigate risks
-                    effectively.</li>
+                    effectively.
+                </li>
                 <li><strong>Automated Remediation:</strong> Users can configure automated remediation actions using AWS Security Hub integrations with AWS Lambda and AWS Systems Manager, enabling automated response to security findings and compliance violations.</li>
             </ul>
 
@@ -1190,14 +1195,16 @@
             <p>Advanced Security and Compliance features such as AWS Config, AWS Security Hub, and AWS Shield are used by organizations to enhance the security and compliance posture of their AWS environments. Some common use cases include:</p>
             <ul>
                 <li><strong>Continuous Compliance Monitoring:</strong> Using AWS Config and AWS Security Hub to continuously monitor and assess the compliance of AWS environments against security standards and best practices, such as CIS benchmarks and industry
-                    regulations.</li>
+                    regulations.
+                </li>
                 <li><strong>Automated Threat Detection and Response:</strong> Leveraging AWS Security Hub's automated findings aggregation and response capabilities to detect security threats and vulnerabilities in real-time and automatically remediate them
                     using AWS Lambda and AWS Systems Manager.</li>
                 <li><strong>DDoS Protection for Web Applications:</strong> Deploying AWS Shield to protect web applications hosted on AWS against DDoS attacks, ensuring high availability, and reliability of web services.</li>
             </ul>
 
             <p>By leveraging AWS Config, AWS Security Hub, and AWS Shield, organizations can strengthen their security posture, maintain compliance with regulatory requirements, and protect their applications and data against security threats in the AWS
-                cloud.</p>
+                cloud.
+            </p>
         </div>
 
         <!--------- day 16----------->
@@ -1269,7 +1276,8 @@
                 <li><strong>Distributed Architecture:</strong> Redshift uses a distributed architecture that allows data to be distributed across multiple nodes in a cluster for parallel processing. This enables Redshift to handle large-scale data warehousing
                     workloads and support concurrent user queries.</li>
                 <li><strong>Massively Parallel Processing (MPP):</strong> Redshift leverages MPP to distribute query execution across multiple nodes in a cluster, allowing queries to be processed in parallel and delivering high performance for complex analytical
-                    queries.</li>
+                    queries.
+                </li>
                 <li><strong>Integration with BI Tools:</strong> Amazon Redshift integrates with popular business intelligence (BI) tools and analytics platforms, such as Tableau, Power BI, and Looker, allowing users to visualize and analyze data stored in
                     Redshift using familiar tools and interfaces.</li>
             </ul>
@@ -1278,10 +1286,12 @@
             <p>Amazon EMR and Amazon Redshift are widely used for big data processing and analytics in various industries. Some common use cases include:</p>
             <ul>
                 <li><strong>Data Warehousing and Business Intelligence:</strong> Building data warehouses and analytical platforms for performing ad-hoc queries, generating reports, and gaining insights from large volumes of structured and semi-structured
-                    data.</li>
+                    data.
+                </li>
                 <li><strong>Data Lake Analytics:</strong> Processing and analyzing data stored in data lakes on Amazon S3 using Amazon EMR for data processing and Amazon Redshift Spectrum for querying data directly from S3 without loading it into Redshift.</li>
                 <li><strong>Log Analysis and Clickstream Analytics:</strong> Analyzing logs, clickstream data, and event streams in real-time using Apache Spark on Amazon EMR to derive insights for improving website performance, user experience, and marketing
-                    campaigns.</li>
+                    campaigns.
+                </li>
                 <li><strong>Machine Learning and Predictive Analytics:</strong> Building machine learning models and performing predictive analytics on large data sets using Spark MLlib and other machine learning libraries on Amazon EMR, and storing analytical
                     results in Amazon Redshift for reporting and visualization.</li>
             </ul>
@@ -1470,7 +1480,8 @@
                 <li><strong>Containerized Workloads:</strong> Deploying containerized applications with Fargate for serverless compute and App Mesh for service discovery, routing, and observability, enabling seamless integration and operation of microservices.</li>
                 <li><strong>Microservices Architecture:</strong> Building distributed systems with App Mesh to manage complex service-to-service communication patterns, implement circuit breaking, and enforce security policies across microservices.</li>
                 <li><strong>Multi-Cloud and Hybrid Deployments:</strong> Leveraging Fargate and App Mesh to deploy and orchestrate microservices across multiple AWS regions, availability zones, and hybrid environments, ensuring consistent performance and
-                    resilience.</li>
+                    resilience.
+                </li>
                 <li><strong>Blue-Green Deployments:</strong> Using Fargate and App Mesh to implement blue-green deployment strategies for rolling out new versions of microservices with zero downtime, enabling seamless updates and rollback capabilities.</li>
             </ul>
 
@@ -1489,7 +1500,8 @@
                 in the cloud. Key features of AWS Outposts include:</p>
             <ul>
                 <li><strong>On-Premises Extension:</strong> Outposts allows customers to deploy fully managed AWS infrastructure, such as compute, storage, and networking resources, on-premises to address low-latency, data residency, and local data processing
-                    requirements.</li>
+                    requirements.
+                </li>
                 <li><strong>Consistent AWS Experience:</strong> Outposts provides a consistent hybrid experience by enabling customers to use the same AWS APIs, management console, SDKs, and automation tools they use in the cloud to deploy and manage applications
                     on Outposts.</li>
                 <li><strong>Local Data Processing:</strong> Outposts allows customers to process data locally on-premises while seamlessly integrating with AWS services in the cloud, enabling them to run latency-sensitive workloads, process sensitive data,
@@ -1503,7 +1515,8 @@
                 AWS Snow Family include:</p>
             <ul>
                 <li><strong>AWS Snowcone:</strong> Snowcone is a small, portable, and ruggedized device designed for edge computing, data collection, and data transfer in harsh environments, such as industrial sites, remote locations, and disaster recovery
-                    scenarios.</li>
+                    scenarios.
+                </li>
                 <li><strong>AWS Snowball:</strong> Snowball is a petabyte-scale data transport device that enables secure and efficient data migration to and from AWS, allowing customers to transfer large volumes of data offline using a ruggedized appliance.</li>
                 <li><strong>AWS Snowmobile:</strong> Snowmobile is an exabyte-scale data transfer service that enables customers to migrate extremely large datasets to AWS by transporting a shipping container-sized storage device to their data center, where
                     data can be transferred at high speed using a dedicated network connection.</li>
@@ -1516,7 +1529,8 @@
                 <li><strong>Data Migration:</strong> Transferring large volumes of data to and from AWS using Snowball and Snowmobile to overcome bandwidth limitations, reduce transfer times, and simplify the migration of petabyte-scale datasets.</li>
                 <li><strong>IoT and Industrial Applications:</strong> Deploying ruggedized IoT devices and sensors in remote or harsh environments using Snowcone for data collection, monitoring, and analytics without relying on constant network connectivity.</li>
                 <li><strong>Hybrid Cloud Workloads:</strong> Extending AWS infrastructure to customer premises using Outposts for running latency-sensitive workloads, maintaining data sovereignty, and meeting regulatory compliance requirements in hybrid cloud
-                    environments.</li>
+                    environments.
+                </li>
             </ul>
 
             <p>With AWS Outposts and AWS Snow Family, customers can seamlessly integrate on-premises environments with the AWS cloud, enabling them to build hybrid cloud architectures, extend AWS services to the edge, and address diverse use cases across
@@ -1531,14 +1545,16 @@
 
             <h2>AWS Step Functions</h2>
             <p>AWS Step Functions is a serverless orchestration service provided by AWS that allows users to coordinate and sequence AWS Lambda functions, microservices, and other AWS services into serverless workflows. Key features of AWS Step Functions
-                include:</p>
+                include:
+            </p>
             <ul>
                 <li><strong>Workflow Orchestration:</strong> Step Functions enables users to define and execute multi-step workflows, also known as state machines, using a visual workflow editor or JSON-based state machine language.</li>
                 <li><strong>State Transitions:</strong> Users can define states, specify transitions between states, and define conditions for transitioning between states, allowing for conditional branching and error handling within workflows.</li>
                 <li><strong>Integration with AWS Services:</strong> Step Functions integrates seamlessly with various AWS services, including Lambda functions, Amazon S3, Amazon DynamoDB, AWS Batch, AWS Glue, and more, enabling users to orchestrate complex
                     workflows across multiple services.</li>
                 <li><strong>Monitoring and Logging:</strong> Step Functions provides built-in monitoring and logging capabilities, allowing users to track the execution of workflows, monitor state transitions, and capture execution history and performance
-                    metrics.</li>
+                    metrics.
+                </li>
             </ul>
 
             <h2>AWS SAM (Serverless Application Model)</h2>
@@ -1651,7 +1667,8 @@
             <p>AWS Database Migration Service (DMS) is a fully managed service provided by AWS that enables seamless and secure migration of databases to AWS with minimal downtime. Key features of AWS DMS include:</p>
             <ul>
                 <li><strong>Homogeneous and Heterogeneous Migration:</strong> DMS supports migration between homogeneous (e.g., Oracle to Oracle) and heterogeneous (e.g., Oracle to Amazon Aurora) database platforms, facilitating a wide range of migration
-                    scenarios.</li>
+                    scenarios.
+                </li>
                 <li><strong>Continuous Data Replication:</strong> DMS uses continuous data replication technology to capture changes from source databases in real-time and apply them to target databases with minimal latency, ensuring data consistency and
                     integrity throughout the migration process.</li>
                 <li><strong>Schema Conversion:</strong> DMS can automatically convert schema objects (e.g., tables, indexes, constraints) between different database engines, simplifying the migration process and reducing manual effort.</li>
@@ -1663,12 +1680,14 @@
             <p>AWS Snowball is a petabyte-scale data transport service provided by AWS that enables secure and efficient transfer of large volumes of data to and from the AWS cloud. Key features of AWS Snowball include:</p>
             <ul>
                 <li><strong>Physical Data Transfer:</strong> Snowball devices are ruggedized, tamper-resistant storage appliances that customers can use to transfer data to AWS offline, bypassing the limitations of internet bandwidth and reducing data transfer
-                    time.</li>
+                    time.
+                </li>
                 <li><strong>Scalable Data Transfer:</strong> Snowball supports data transfer rates of up to 80 TB per device, allowing customers to transfer large datasets quickly and cost-effectively without incurring high network fees or data transfer charges.</li>
                 <li><strong>Encryption and Security:</strong> Snowball devices encrypt data at rest using 256-bit encryption keys and support AWS Key Management Service (KMS) integration for additional security controls, ensuring data protection during transit
                     and storage.</li>
                 <li><strong>Integration with AWS Services:</strong> Snowball seamlessly integrates with other AWS services, such as Amazon S3 and Amazon Glacier, enabling customers to import data into AWS for further processing, analysis, and storage in the
-                    cloud.</li>
+                    cloud.
+                </li>
             </ul>
 
             <h2>Use Cases and Examples</h2>
@@ -1695,7 +1714,8 @@
                 <li><strong>Natural Language Understanding:</strong> Lex uses advanced natural language processing (NLP) algorithms to understand and interpret user input, allowing developers to create conversational experiences that mimic human interactions.</li>
                 <li><strong>Speech Recognition:</strong> Lex supports speech recognition for both text-based and voice-based interactions, enabling users to interact with chatbots using spoken language.</li>
                 <li><strong>Integration with AWS Services:</strong> Lex seamlessly integrates with other AWS services, such as Amazon Lambda, Amazon Connect, and Amazon Polly, to enable developers to build sophisticated conversational applications with minimal
-                    effort.</li>
+                    effort.
+                </li>
                 <li><strong>Scalability and Flexibility:</strong> Lex scales automatically to handle thousands of concurrent interactions and provides flexible deployment options, including web-based chat interfaces, mobile apps, and messaging platforms like
                     Slack and Facebook Messenger.</li>
             </ul>
@@ -1727,7 +1747,8 @@
                 <li><strong>Media Analysis:</strong> Analyzing images and videos with Amazon Rekognition to automatically tag and classify content, generate metadata, and extract insights for content management and recommendation systems.</li>
                 <li><strong>Accessibility:</strong> Converting text-based content into speech with Amazon Polly to provide audio descriptions, screen readers, and language translation for individuals with visual impairments or language barriers.</li>
                 <li><strong>Security and Surveillance:</strong> Implementing facial recognition and object detection with Amazon Rekognition to enhance security monitoring, identity verification, and access control in public spaces, facilities, and smart
-                    devices.</li>
+                    devices.
+                </li>
             </ul>
 
             <p>By leveraging AI and Machine Learning Services provided by AWS, organizations can enhance their applications with advanced capabilities such as natural language understanding, speech synthesis, and computer vision, enabling them to deliver
@@ -1747,7 +1768,8 @@
                 <li><strong>Fully Managed:</strong> Amazon ES is fully managed by AWS, eliminating the operational overhead of deploying and managing Elasticsearch clusters, including provisioning, scaling, patching, and backups.</li>
                 <li><strong>Elasticsearch Compatibility:</strong> Amazon ES is compatible with open-source Elasticsearch, allowing users to leverage familiar Elasticsearch APIs, query languages, and integration with popular tools and libraries.</li>
                 <li><strong>Scalability and Performance:</strong> Amazon ES offers scalable and high-performance Elasticsearch clusters with built-in support for auto-scaling, multi-AZ deployments, and integration with AWS services such as Amazon S3 and Amazon
-                    CloudWatch.</li>
+                    CloudWatch.
+                </li>
                 <li><strong>Security and Compliance:</strong> Amazon ES provides built-in security features, including VPC support, encryption at rest and in transit, fine-grained access control with IAM, and integration with AWS Key Management Service (KMS).</li>
             </ul>
 
@@ -1759,14 +1781,16 @@
                 <li><strong>Amazon Kinesis Data Firehose:</strong> Kinesis Data Firehose simplifies the process of ingesting, transforming, and delivering streaming data to AWS data lakes, data warehouses, and analytics services, with built-in support for
                     data compression, encryption, and transformation.</li>
                 <li><strong>Amazon Kinesis Data Analytics:</strong> Kinesis Data Analytics enables users to perform real-time analytics on streaming data using standard SQL queries, allowing them to uncover insights, detect anomalies, and trigger alerts in
-                    real-time.</li>
+                    real-time.
+                </li>
                 <li><strong>Integration with AWS Services:</strong> Amazon Kinesis integrates seamlessly with other AWS services, such as Amazon S3, Amazon Redshift, Amazon Elasticsearch Service, and AWS Lambda, enabling users to build end-to-end streaming
                     data pipelines and applications.</li>
             </ul>
 
             <h2>Use Cases and Examples</h2>
             <p>AWS Advanced Services, including Amazon Elasticsearch Service and Amazon Kinesis, are used by organizations to build real-time analytics, monitoring, and data processing applications across various domains. Some common use cases and examples
-                include:</p>
+                include:
+            </p>
             <ul>
                 <li><strong>Real-Time Log and Event Analytics:</strong> Using Amazon Elasticsearch Service and Amazon Kinesis Data Streams to ingest, analyze, and visualize log and event data from applications, servers, and IoT devices for operational monitoring,
                     troubleshooting, and performance optimization.</li>
@@ -1815,11 +1839,13 @@
                 <li><strong>Data Analytics:</strong> Leveraging the Well-Architected Framework to design and optimize data analytics pipelines and architectures for processing, storing, and analyzing large volumes of data, ensuring reliability, accuracy,
                     and cost-effectiveness.</li>
                 <li><strong>DevOps Practices:</strong> Integrating Operational Excellence principles into DevOps practices and workflows to streamline development, deployment, and operations, enabling rapid innovation, continuous delivery, and feedback-driven
-                    improvement.</li>
+                    improvement.
+                </li>
             </ul>
 
             <p>By adopting the AWS Well-Architected Framework and Operational Excellence best practices, organizations can design, build, and operate reliable and efficient systems that meet their business objectives while minimizing risk and maximizing
-                value.</p>
+                value.
+            </p>
         </div>
 
         <!--------- day 30----------->

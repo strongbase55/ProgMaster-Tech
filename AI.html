@@ -40,7 +40,7 @@
                     </li>
 
 
-                    <li class="navbar-item">
+                    <!-- <li class="navbar-item">
                         <a href="#" class="navbar-link" data-nav-link>Certificates</a>
                     </li>
 
@@ -50,7 +50,7 @@
 
                     <li class="navbar-item">
                         <a href="#" class="navbar-link" data-nav-link>Forum</a>
-                    </li>
+                    </li> -->
 
 
                 </ul>
@@ -732,7 +732,8 @@
 
                 <li><strong>Principal component analysis (PCA):</strong> PCA is an unsupervised learning technique used for dimensionality reduction.</li>
                 <p><strong>Example:</strong> In a scientific study, PCA could be applied to gene expression data to identify the most important genes contributing to a particular trait or disease, aiding researchers in understanding underlying biological
-                    mechanisms.</p>
+                    mechanisms.
+                </p>
 
                 <li><strong>Autoencoders:</strong> Autoencoders are neural network architectures used for unsupervised learning and dimensionality reduction.</li>
                 <p><strong>Example:</strong> For example, in finance, autoencoders could be utilized to detect fraudulent transactions by reconstructing normal transaction patterns and flagging any deviations from the expected behavior.</p>
@@ -744,7 +745,8 @@
             <ul>
                 <li><strong>Q-learning:</strong> Q-learning is a reinforcement learning algorithm used for making decisions in a Markov decision process (MDP).</li>
                 <p><strong>Example:</strong> In a robotics scenario, Q-learning could be used to teach a robot to navigate through a maze by rewarding successful movement and penalizing collisions, enabling the robot to learn an optimal path to reach the
-                    goal.</p>
+                    goal.
+                </p>
 
                 <li><strong>Deep Q-networks (DQN):</strong> DQN is a deep learning-based reinforcement learning algorithm used for playing games.</li>
                 <p><strong>Example:</strong> In an educational context, DQN could be applied to develop intelligent tutoring systems that adaptively adjust the difficulty level of exercises based on students' performance and learning progress, facilitating
@@ -916,9 +918,11 @@
             <h2>Model Selection</h2>
             <ul>
                 <li>Model selection is the process of choosing the best machine learning model for a specific task based on its performance on a validation dataset. It involves considering various factors such as model complexity, interpretability, and computational
-                    efficiency.</li>
+                    efficiency.
+                </li>
                 <li>Common techniques for model selection include cross-validation, where the dataset is divided into multiple subsets for training and validation, and hyperparameter tuning, where the hyperparameters of the model are optimized to improve
-                    performance.</li>
+                    performance.
+                </li>
 
                 <li>By evaluating different models using appropriate evaluation metrics and selecting the one that performs best on unseen data, we can build robust and accurate machine learning systems.</li>
             </ul>
@@ -941,7 +945,8 @@
 
             <h2>Neural Networks</h2>
             <p>Neural networks are computational models inspired by the structure and functioning of the human brain. They consist of interconnected layers of artificial neurons (nodes), capable of learning complex patterns from data through a process called
-                training.</p>
+                training.
+            </p>
 
             <h3>Components of Neural Networks:</h3>
             <ul>
@@ -1022,7 +1027,8 @@
 
             <h2>Backpropagation</h2>
             <p>Backpropagation is a fundamental algorithm used for training neural networks. It enables the network to learn from data by adjusting the weights and biases in the network based on the error or loss between the predicted output and the actual
-                target.</p>
+                target.
+            </p>
 
             <h2>Forward Pass</h2>
             <p>The forward pass computes the predicted output \( \hat{y} \) given the input \( X \) and current parameters \( W \) and \( b \). It involves multiplying the input by the weights, adding the bias, and applying an activation function \( \sigma
@@ -1060,7 +1066,8 @@
 
             <h3>Architecture and Components:</h3>
             <p>RNNs have recurrent connections that enable them to maintain information across time steps. The hidden state \( h_t \) at time step \( t \) is computed based on the input \( x_t \) at that time step and the previous hidden state \( h_{t-1}
-                \).</p>
+                \).
+            </p>
             <p>The hidden state of an RNN captures information from previous time steps and serves as input to the next time step. It is calculated using the following equation:</p>
             <p><strong>\( h_t = \sigma(W_{hx} x_t + W_{hh} h_{t-1} + b_h) \)</strong></p>
             <p>Where:</p>
@@ -1084,7 +1091,8 @@
             <p>Some notable examples of RNN applications include:</p>
             <ol>
                 <li><strong>Text Generation:</strong> RNNs can generate text character by character based on a given input sequence, producing coherent and contextually relevant output. Examples include auto-generating captions for images and generating song
-                    lyrics.</li>
+                    lyrics.
+                </li>
                 <li><strong>Gesture Recognition:</strong> RNNs can recognize and interpret gestures in sequential data, enabling applications like sign language recognition, motion capture, and gesture-based interfaces for virtual reality.</li>
                 <li><strong>Time Series Forecasting:</strong> RNNs can predict future values in time series data, aiding in forecasting stock prices, weather patterns, sales trends, and demand forecasting in various industries.</li>
             </ol>
@@ -1104,7 +1112,8 @@
             <ul>
                 <li><strong>Language Translation:</strong> LSTMs are integral components of machine translation systems, allowing models to translate text between languages by capturing contextual information and maintaining long-term dependencies.</li>
                 <li><strong>Handwriting Recognition:</strong> LSTMs can recognize handwritten characters or digits in sequential data, enabling applications like optical character recognition (OCR), digitization of handwritten documents, and digitizing historical
-                    records.</li>
+                    records.
+                </li>
                 <li><strong>Speech Synthesis:</strong> LSTMs can generate human-like speech based on input text, facilitating applications such as text-to-speech (TTS) systems, virtual assistants, and audiobook narration.</li>
             </ul>
 
@@ -1282,7 +1291,8 @@
             <ol>
                 <li><strong>Initialize Model:</strong> Load a pre-trained model that was previously trained on a large dataset, such as ImageNet for image classification.</li>
                 <li><strong>Modify Architecture:</strong> Replace or append new layers to the pre-trained model to adapt it to the target task. For example, replace the output layer of a CNN with a new set of output neurons for a different classification
-                    task.</li>
+                    task.
+                </li>
                 <li><strong>Train on New Data:</strong> Fine-tune the modified model on a small dataset specific to the target task, adjusting the model's parameters through backpropagation and gradient descent.</li>
                 <li><strong>Evaluate Performance:</strong> Evaluate the fine-tuned model on a separate validation or test dataset to assess its performance and generalize ability.</li>
             </ol>
@@ -1392,7 +1402,8 @@
 
             <h2>Q-Learning</h2>
             <p>Q-Learning is a model-free RL algorithm used to learn the optimal action-selection policy for a given environment. It involves estimating the value of taking a particular action in a specific state and updating these estimates based on observed
-                rewards.</p>
+                rewards.
+            </p>
 
             <h3>Algorithm:</h3>
             <p>The Q-Learning algorithm can be summarized as follows:</p>
@@ -1475,7 +1486,8 @@
                 <li><strong>Named Entity Recognition (NER):</strong> NER is the task of identifying and classifying named entities, such as names of people, organizations, locations, dates, etc., within a text. It is useful for extracting structured information
                     from unstructured text data.</li>
                 <li><strong>Text Classification:</strong> Text classification involves categorizing text documents into predefined categories or classes based on their content. It is commonly used for tasks like sentiment analysis, spam detection, topic classification,
-                    etc.</li>
+                    etc.
+                </li>
             </ul>
 
             <h3>Applications:</h3>
