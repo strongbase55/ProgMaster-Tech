@@ -77,22 +77,6 @@
             }
         }
         
-        @keyframes discount {
-            0% {
-                transform: scale(1.1);
-                color: lightseagreen;
-            }
-            10% {
-                color: yellowgreen;
-            }
-            20% {
-                color: rgb(117, 151, 149);
-            }
-            30% {
-                color: rgb(21, 79, 145);
-            }
-        }
-        
         .payment-card {
             display: flex;
             flex-wrap: wrap;
@@ -200,12 +184,68 @@
             font-size: 40px;
         }
         
+        .images {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+        
         img {
-            height: 400px;
-            width: 400px;
+            height: 300px;
+            width: 300px;
             border-radius: 20px;
-            animation: discount 1s infinite;
             margin-top: 2em;
+            margin-left: 10px;
+        }
+        
+        img:nth-child(1) {
+            animation: aicte 1s infinite;
+            animation-delay: .5s;
+            transition: .5s;
+        }
+        
+        img:nth-child(2) {
+            animation: discount .5s infinite;
+            animation-delay: 1s;
+            transition: .5s;
+        }
+        
+        img:nth-child(3) {
+            animation: msme .5s infinite;
+            animation-delay: 1.5s;
+            transition: 1s;
+        }
+        /* aicte animation  */
+        
+        @keyframes aicte {
+            0% {
+                transform: translateY(-20px);
+            }
+            0% {
+                transform: translateY(10px);
+            }
+        }
+        /* discount image animation  */
+        
+        @keyframes discount {
+            0% {
+                transform: translateX(-10px);
+            }
+            0% {
+                transform: translateX(10px);
+            }
+        }
+        /* msme image animation  */
+        
+        @keyframes msme {
+            0% {
+                transform: translateY(-20px);
+            }
+            0% {
+                transform: translateY(10px);
+            }
         }
         
         .details-section {
@@ -239,12 +279,67 @@
                 width: 100%;
             }
         }
+        
+        .perks {
+            margin-bottom: 2em;
+        }
+        
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        li {
+            position: relative;
+            right: 2em;
+            list-style: none;
+            font-weight: 1000;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        li:nth-child(1) {
+            background: #541d88;
+            color: white;
+        }
+        
+        li:nth-child(2) {
+            background: #881d78;
+            color: white;
+        }
+        
+        li:nth-child(3) {
+            background: #1d8839;
+            color: white;
+        }
+        
+        li:nth-child(4) {
+            background: #81881d;
+            color: white;
+        }
+        
+        li:nth-child(5) {
+            background: #5b2b3e;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <img src="https://s3.ap-south-1.amazonaws.com/rzp-prod-merchant-assets/payment-link/description/img-20240404-wa0005_nuv7elyjg9gxyg.jpeg" alt="">
+        <div class="images">
+
+            <!-- AICTE IMAGE -->
+            <img src="https://pgims.org.in/images/affliation/1.png" alt="">
+            <!-- discount image -->
+            <img src="https://s3.ap-south-1.amazonaws.com/rzp-prod-merchant-assets/payment-link/description/img-20240404-wa0005_nuv7elyjg9gxyg.jpeg" alt="">
+            <!-- MSME Image -->
+            <img src="https://www.balajiippractice.com/img/msme.png" alt="">
+        </div>
         <!-- <h1>50% DISCOUNT <br> <del> ₹3000</del> ₹1500 </h1> -->
         <div class="details-section">
             <div class="internship-details">
@@ -277,6 +372,17 @@
                     <p> Collabrate with the developer to develop the website or application <br> during the 3 months</p>
                 </div>
             </div>
+
+        </div>
+        <div class="perks">
+            <h2>Perks of Joining ProgMaster Internships 🎉</h2>
+            <ul>
+                <li>Daily 1 hr Live Sessions</li>
+                <li>Internship Offer Letter</li>
+                <li>Course Completion Certificate</li>
+                <li>Internship Completion Certificate </li>
+                <li>Real Time Projects</li>
+            </ul>
         </div>
         <span>PAY ₹750 NOW & GET YOUR OFFER LETTER WITHIN 2 HOURS, AND PAY REMAINING ₹750 AT THE END OF THE INTERNSHIPS</span>
 
