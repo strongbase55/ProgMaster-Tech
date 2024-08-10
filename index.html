@@ -1,41 +1,220 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Firebase_form</title>
+    <title>Firebase Form</title>
     <link rel="stylesheet" href="style.css">
-
     <style>
-        /* Your existing CSS */
-        #iframeContainer {
-            display: none;
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            overflow: hidden;
+        }
+
+        /* Container styles */
+        .box {
+            width: 360px;
+            padding: 30px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
+        }
+
+        /* Form styles */
+        .form,
+        .profile {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .inputbox {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .inputbox input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .inputbox span {
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            font-size: 14px;
+            color: #777;
+            background: #fff;
+            padding: 0 5px;
+        }
+
+        /* Button styles */
+        .sub,
+        #toggleForm,
+        #logout {
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #4a90e2;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .sub:hover,
+        #toggleForm:hover,
+        #logout:hover {
+            background: #357abd;
+        }
+
+        /* Profile details */
+        .profile .details p {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .profile .details p strong {
+            color: #4a90e2;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .modal-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #4a90e2;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal-content button:hover {
+            background: #357abd;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="box">
-        <div class="form">
+        <div class="form" id="authFormContainer">
             <h2 id="formTitle">Login Form</h2>
             <form id="authForm">
                 <div class="inputbox">
-                    <input type="text" id="userId" required>
-                    <span>User ID</span>
+                    <input type="text" id="internId" required>
+                    <span>Intern ID</span>
                 </div>
                 <div class="inputbox">
                     <input type="password" id="password" required>
                     <span>Password</span>
                 </div>
+                <div class="inputbox hidden" id="nameInput">
+                    <input type="text" id="name">
+                    <span>Name</span>
+                </div>
+                <div class="inputbox hidden" id="emailInput">
+                    <input type="email" id="email">
+                    <span>Email</span>
+                </div>
+                <div class="inputbox hidden" id="phoneInput">
+                    <input type="text" id="phone">
+                    <span>Phone Number</span>
+                </div>
                 <input type="submit" value="Submit" class="sub" id="submit">
                 <button type="button" id="toggleForm">Switch to Registration</button>
             </form>
         </div>
+
+        <div class="profile hidden" id="profileContainer">
+            <h2>Student Profile</h2>
+            <div class="details">
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Intern ID:</strong> <span id="profileInternId"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Phone Number:</strong> <span id="profilePhone"></span></p>
+            </div>
+            <button class="sub" id="logout">Logout</button>
+        </div>
     </div>
-    <div id="iframeContainer">
-        <iframe
-            src="https://optimhire.com/d/Search-job-iframe?ref_code=purushotham-kandheri-1323559&skill=&positions=&dark_color=3f73ee&light_color=000000"
-            width="100%" height="800"></iframe>
+
+    <!-- Modal HTML -->
+    <div id="alertModal" class="modal">
+        <div class="modal-content">
+            <p id="alertMessage"></p>
+            <button id="alertOkButton">OK</button>
+        </div>
     </div>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
         import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
@@ -54,40 +233,87 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
+        function showLogin() {
+            document.getElementById("authFormContainer").classList.remove('hidden');
+            document.getElementById("profileContainer").classList.add('hidden');
+        }
+
+        function showProfile(data) {
+            document.getElementById("profileName").textContent = data.name || "N/A";
+            document.getElementById("profileInternId").textContent = data.internId;
+            document.getElementById("profileEmail").textContent = data.email || "N/A";
+            document.getElementById("profilePhone").textContent = data.phone || "N/A";
+            document.getElementById("authFormContainer").classList.add('hidden');
+            document.getElementById("profileContainer").classList.remove('hidden');
+        }
+
+        function showAlert(message, reload = false) {
+            const modal = document.getElementById("alertModal");
+            document.getElementById("alertMessage").textContent = message;
+            modal.classList.add('show');
+
+            document.getElementById("alertOkButton").onclick = function () {
+                modal.classList.remove('show');
+                if (reload) {
+                    window.location.reload();
+                }
+            };
+        }
+
+        async function checkAuthentication() {
+            const internId = localStorage.getItem("internId");
+            if (internId) {
+                try {
+                    const snapshot = await get(ref(db, 'users/' + internId));
+                    if (snapshot.exists() && snapshot.val().password) {
+                        showProfile(snapshot.val());
+                    } else {
+                        localStorage.removeItem("internId");
+                        showLogin(); // Show login form if user data is not found or invalid
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
+                    localStorage.removeItem("internId");
+                    showLogin(); // Show login form on error
+                }
+            } else {
+                showLogin(); // No internId found, show login form
+            }
+        }
+
         document.getElementById("submit").addEventListener('click', async function (e) {
             e.preventDefault();
-
-            const userId = document.getElementById("userId").value;
-            const password = document.getElementById("password").value;
-
+            const internId = document.getElementById("internId").value.trim();
+            const password = document.getElementById("password").value.trim();
             const formTitle = document.getElementById("formTitle").textContent;
+
             if (formTitle === 'Login Form') {
-                // Check login
                 try {
-                    const snapshot = await get(child(ref(db), 'users/' + userId));
+                    const snapshot = await get(child(ref(db), 'users/' + internId));
                     if (snapshot.exists() && snapshot.val().password === password) {
-                        document.querySelector(".box").style.display = "none";
-                        document.querySelector("#iframeContainer").style.display = "block";
+                        localStorage.setItem("internId", internId);
+                        showProfile(snapshot.val()); // Display profile on the same page
+                        showAlert(`${internId} Login Successfully`);
                     } else {
-                        alert("Login Failed. Please check your credentials.");
+                        showAlert("Login Failed. Please check your credentials.");
                     }
                 } catch (error) {
                     console.error("Error checking login:", error);
                 }
             } else {
-                // Register new user
                 try {
-                    const snapshot = await get(child(ref(db), 'users/' + userId));
+                    const snapshot = await get(child(ref(db), 'users/' + internId));
                     if (snapshot.exists()) {
-                        alert("User already exists!");
+                        showAlert("User already exists!");
                     } else {
-                        await set(ref(db, 'users/' + userId), {
-                            userId: userId,
-                            password: password
+                        await set(ref(db, 'users/' + internId), {
+                            internId: internId,
+                            password: password,
+                            name: document.getElementById("name").value.trim(),
+                            email: document.getElementById("email").value.trim(),
+                            phone: document.getElementById("phone").value.trim()
                         });
-                        alert("Registration Successful!");
-                        document.getElementById("formTitle").textContent = 'Login Form';
-                        document.getElementById("toggleForm").textContent = 'Switch to Registration';
+                        showAlert(`${internId} Registration Successfully`, true);
                     }
                 } catch (error) {
                     console.error("Error registering user:", error);
@@ -100,11 +326,25 @@
             if (formTitle === 'Login Form') {
                 document.getElementById("formTitle").textContent = 'Registration Form';
                 document.getElementById("toggleForm").textContent = 'Switch to Login';
+                document.getElementById("nameInput").classList.remove('hidden');
+                document.getElementById("emailInput").classList.remove('hidden');
+                document.getElementById("phoneInput").classList.remove('hidden');
             } else {
                 document.getElementById("formTitle").textContent = 'Login Form';
                 document.getElementById("toggleForm").textContent = 'Switch to Registration';
+                document.getElementById("nameInput").classList.add('hidden');
+                document.getElementById("emailInput").classList.add('hidden');
+                document.getElementById("phoneInput").classList.add('hidden');
             }
         });
+
+        document.getElementById("logout").addEventListener('click', function () {
+            localStorage.removeItem("internId");
+            showLogin(); // Show login form after logout
+            showAlert(`Logout Successfully`, true);
+        });
+
+        checkAuthentication(); // Check authentication status on page load
     </script>
 </body>
 
