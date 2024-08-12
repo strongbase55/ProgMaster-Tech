@@ -3,8 +3,10 @@
 
 <head>
     <title>Firebase Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Reset and base styles */
         /* Reset and base styles */
         * {
             margin: 0;
@@ -23,20 +25,20 @@
         }
 
         /* Container styles */
-        .box {
-            width: 360px;
-            padding: 30px;
-            border-radius: 10px;
-            background: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
 
         /* Form styles */
         .form,
         .profile {
             display: flex;
             flex-direction: column;
+            max-width: 100%;
+        }
+
+        .form {
+            width: 100%;
+            max-width: 400px;
+            background: #e9f1ff;
+            padding: 10px;
         }
 
         h2 {
@@ -72,7 +74,9 @@
         /* Button styles */
         .sub,
         #toggleForm,
-        #logout {
+        #logout,
+        #edit,
+        #save {
             padding: 12px;
             border: none;
             border-radius: 5px;
@@ -85,7 +89,9 @@
 
         .sub:hover,
         #toggleForm:hover,
-        #logout:hover {
+        #logout:hover,
+        #edit:hover,
+        #save:hover {
             background: #357abd;
         }
 
@@ -162,49 +168,384 @@
                 opacity: 1;
             }
         }
+
+        #profilePicture {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .dashboard {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            max-width: 1700px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1a1a2e;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .sidebar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar nav ul li {
+            width: 100%;
+            margin: 10px 0;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .sidebar nav ul li a:hover {
+            background-color: #162447;
+            border-radius: 10px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
+            overflow-y: auto;
+            transition: padding 0.3s ease-in-out;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            animation: dropDown 0.8s ease-in-out;
+        }
+
+        .header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header .welcome {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .header .date-time {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .content {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.6s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-card h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .profile-card p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .edit-btn {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .edit-btn:hover {
+            background-color: #162447;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes dropDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 0;
+                box-shadow: none;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                z-index: 999;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                padding-top: 0;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        #profileContainer {
+            width: 100%;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1a1a2e;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+                /* Show menu icon on mobile */
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                /* Hide sidebar by default on mobile */
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="box">
-        <div class="form" id="authFormContainer">
-            <h2 id="formTitle">Login Form</h2>
-            <form id="authForm">
-                <div class="inputbox">
-                    <input type="text" id="internId" required>
-                    <span>Intern ID</span>
+    <div class="form" id="authFormContainer">
+        <h2 id="formTitle">Login Form</h2>
+        <form id="authForm">
+            <div class="inputbox">
+                <input type="text" id="internId" required>
+                <span>Intern ID</span>
+            </div>
+            <div class="inputbox">
+                <input type="password" id="password" required>
+                <span>Password</span>
+            </div>
+            <div class="inputbox hidden" id="nameInput">
+                <input type="text" id="name">
+                <span>Name</span>
+            </div>
+            <div class="inputbox hidden" id="emailInput">
+                <input type="email" id="email">
+                <span>Email</span>
+            </div>
+            <div class="inputbox hidden" id="phoneInput">
+                <input type="text" id="phone">
+                <span>Phone Number</span>
+            </div>
+            <input type="submit" value="Submit" class="sub" id="submit">
+            <button type="button" id="toggleForm">Switch to Registration</button>
+        </form>
+    </div>
+
+
+    <div class="profile hidden" id="profileContainer">
+        <div class="dashboard">
+            <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+
+            <aside id="sidebar" class="sidebar">
+                <div class="logo"
+                    style="width: 100%;display:flex;align-items:center;justify-content:center;flex-direction:column">
+                    <img id="profilePicture"
+                        src="https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?s=612x612&w=0&k=20&c=uS4knmZ88zNA_OjNaE_JCRuq9qn3ycgtHKDKdJSnGdY="
+                        alt="Profile Picture" style="border-radius: 50%; width: 150px; height: 150px;">
+                    <button id="editPhoto" class="sub">Change Photo</button>
+
                 </div>
-                <div class="inputbox">
-                    <input type="password" id="password" required>
-                    <span>Password</span>
-                </div>
-                <div class="inputbox hidden" id="nameInput">
-                    <input type="text" id="name">
-                    <span>Name</span>
-                </div>
-                <div class="inputbox hidden" id="emailInput">
-                    <input type="email" id="email">
-                    <span>Email</span>
-                </div>
-                <div class="inputbox hidden" id="phoneInput">
-                    <input type="text" id="phone">
-                    <span>Phone Number</span>
-                </div>
-                <input type="submit" value="Submit" class="sub" id="submit">
-                <button type="button" id="toggleForm">Switch to Registration</button>
-            </form>
+
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showSection('home')">Home</a></li>
+                        <li><a href="#" onclick="showSection('profile')">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <button class="sub" id="logout">Logout</button>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+
+                <section id="home" class="content">
+                    <h2>Dashboard Home</h2>
+                    <p>Welcome to the dashboard home section. Add your widgets, charts, and other content here.</p>
+                </section>
+
+                <section id="profile" class="content active">
+                    <h2>Student Profile</h2>
+                    <div class="details">
+                        <!-- <img id="profilePicture"
+                            src="https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
+                            alt="Profile Picture" style="border-radius: 50%; width: 100px; height: 100px;"> -->
+                        <p><strong>Name:</strong> <span id="profileName"></span></p>
+                        <p><strong>Intern ID:</strong> <span id="profileInternId"></span></p>
+                        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                        <p><strong>Phone Number:</strong> <span id="profilePhone"></span></p>
+                    </div>
+                    <button class="sub" id="edit">Edit</button>
+                    <button class="sub hidden" id="save">Save</button>
+                    <input type="file" id="photoUpload" class="hidden">
+                </section>
+
+            </main>
         </div>
 
-        <div class="profile hidden" id="profileContainer">
-            <h2>Student Profile</h2>
-            <div class="details">
-                <p><strong>Name:</strong> <span id="profileName"></span></p>
-                <p><strong>Intern ID:</strong> <span id="profileInternId"></span></p>
-                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-                <p><strong>Phone Number:</strong> <span id="profilePhone"></span></p>
-            </div>
-            <button class="sub" id="logout">Logout</button>
-        </div>
+
     </div>
 
     <!-- Modal HTML -->
@@ -217,7 +558,8 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+        import { getDatabase, ref, set, get, child, update } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+        import { getStorage, ref as storageRef, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAX6Tqoqt7rlVH4pW6XAkJdqOvFF-ZmfMw",
@@ -231,121 +573,278 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+        const database = getDatabase(app);
+        const storage = getStorage(app);
 
-        function showLogin() {
-            document.getElementById("authFormContainer").classList.remove('hidden');
-            document.getElementById("profileContainer").classList.add('hidden');
+        const authFormContainer = document.getElementById("authFormContainer");
+        const profileContainer = document.getElementById("profileContainer");
+        const alertModal = document.getElementById("alertModal");
+        const alertMessage = document.getElementById("alertMessage");
+        const alertOkButton = document.getElementById("alertOkButton");
+
+        let isLoginForm = true;
+        document.getElementById("toggleForm").addEventListener("click", function () {
+            isLoginForm = !isLoginForm;
+            toggleForm();
+        });
+
+        document.getElementById("authForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (isLoginForm) {
+                login();
+            } else {
+                register();
+            }
+        });
+
+        document.getElementById("edit").addEventListener("click", function () {
+            enableEditing(true);
+        });
+
+        document.getElementById("save").addEventListener("click", function () {
+            updateProfile();
+        });
+
+        document.getElementById("logout").addEventListener("click", function () {
+            logout();
+        });
+
+        document.getElementById("alertOkButton").addEventListener("click", function () {
+            closeModal();
+        });
+
+        document.getElementById("editPhoto").addEventListener("click", function () {
+            document.getElementById("photoUpload").click();
+        });
+
+        // Handle photo upload and preview
+        document.getElementById("photoUpload").addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = function () {
+                    document.getElementById("profilePicture").src = reader.result;
+                    uploadProfilePicture(file);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function toggleForm() {
+            if (isLoginForm) {
+                document.getElementById("formTitle").innerText = "Login Form";
+                document.getElementById("nameInput").classList.add("hidden");
+                document.getElementById("emailInput").classList.add("hidden");
+                document.getElementById("phoneInput").classList.add("hidden");
+                document.getElementById("toggleForm").innerText = "Switch to Registration";
+            } else {
+                document.getElementById("formTitle").innerText = "Registration Form";
+                document.getElementById("nameInput").classList.remove("hidden");
+                document.getElementById("emailInput").classList.remove("hidden");
+                document.getElementById("phoneInput").classList.remove("hidden");
+                document.getElementById("toggleForm").innerText = "Switch to Login";
+            }
         }
 
-        function showProfile(data) {
-            document.getElementById("profileName").textContent = data.name || "N/A";
-            document.getElementById("profileInternId").textContent = data.internId;
-            document.getElementById("profileEmail").textContent = data.email || "N/A";
-            document.getElementById("profilePhone").textContent = data.phone || "N/A";
-            document.getElementById("authFormContainer").classList.add('hidden');
-            document.getElementById("profileContainer").classList.remove('hidden');
+        function login() {
+            const internId = document.getElementById("internId").value;
+            const password = document.getElementById("password").value;
+
+            const dbRef = ref(database);
+            get(child(dbRef, `users/${internId}`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const userData = snapshot.val();
+                    if (userData.password === password) {
+                        showProfile(userData);
+                        showModal(`${internId} Login Successfully`);
+                    } else {
+                        showModal(`Incorrect Password`);
+                    }
+                } else {
+                    showModal(`User ID not found`);
+                }
+            }).catch((error) => {
+                showModal(`Error: ${error.message}`);
+            });
         }
 
-        function showAlert(message, reload = false) {
-            const modal = document.getElementById("alertModal");
-            document.getElementById("alertMessage").textContent = message;
-            modal.classList.add('show');
+        function register() {
+            const internId = document.getElementById("internId").value;
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const password = document.getElementById("password").value;
 
-            document.getElementById("alertOkButton").onclick = function () {
-                modal.classList.remove('show');
-                if (reload) {
-                    window.location.reload();
+            const dbRef = ref(database);
+            get(child(dbRef, `users/${internId}`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    showModal(`User ID ${internId} already exists`);
+                } else {
+                    set(ref(database, 'users/' + internId), {
+                        internId: internId,
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        password: password,
+                        photoUrl: "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
+                    }).then(() => {
+                        showModal(`Registration Successful`);
+                        resetForm();
+                    }).catch((error) => {
+                        showModal(`Error: ${error.message}`);
+                    });
+                }
+            });
+        }
+
+        // Function to show profile with correct editing rules
+        function showProfile(userData) {
+            authFormContainer.classList.add("hidden");
+            profileContainer.classList.remove("hidden");
+
+            document.getElementById("profileName").innerText = userData.name;
+            document.getElementById("profileInternId").innerText = userData.internId;
+            document.getElementById("profileEmail").innerText = userData.email;
+            document.getElementById("profilePhone").innerText = userData.phone;
+            document.getElementById("profilePicture").src = userData.photoUrl;
+        }
+
+        // Function to enable editing, but restrict editing of `Intern ID`
+        function enableEditing(enable) {
+            document.getElementById("edit").classList.toggle("hidden", enable);
+            document.getElementById("save").classList.toggle("hidden", !enable);
+
+            // Make all fields editable except Intern ID
+            const editableFields = ["profileName", "profileEmail", "profilePhone"];
+            editableFields.forEach(id => {
+                const element = document.getElementById(id);
+                element.contentEditable = enable.toString();
+                element.style.border = enable ? "1px solid #ddd" : "none";
+            });
+        }
+
+        // Function to update the profile information in the database
+        function updateProfile() {
+            const internId = document.getElementById("profileInternId").innerText; // Don't change this
+            const name = document.getElementById("profileName").innerText;
+            const email = document.getElementById("profileEmail").innerText;
+            const phone = document.getElementById("profilePhone").innerText;
+
+            // Update only the name, email, and phone number
+            update(ref(database, 'users/' + internId), {
+                name: name,
+                email: email,
+                phone: phone
+            }).then(() => {
+                showModal(`${internId} Profile Updated Successfully`);
+                enableEditing(false); // Disable editing after saving
+            }).catch((error) => {
+                showModal(`Error: ${error.message}`);
+            });
+        }
+
+
+        function logout() {
+            authFormContainer.classList.remove("hidden");
+            profileContainer.classList.add("hidden");
+            resetForm();
+            showModal("Logout Successful", true);
+        }
+
+        function uploadProfilePicture(file) {
+            const internId = document.getElementById("profileInternId").innerText;
+            const storageReference = storageRef(storage, `profilePictures/${internId}`);
+            const reader = new FileReader();
+
+            reader.onloadend = function () {
+                const base64Data = reader.result.split(",")[1];
+                uploadString(storageReference, base64Data, 'base64').then((snapshot) => {
+                    return getDownloadURL(snapshot.ref);
+                }).then((url) => {
+                    update(ref(database, 'users/' + internId), {
+                        photoUrl: url
+                    }).then(() => {
+                        showModal(`Profile picture updated successfully`);
+                    });
+                }).catch((error) => {
+                    showModal(`Error: ${error.message}`);
+                });
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function showModal(message, refreshPage = false) {
+            alertMessage.innerText = message;
+            alertModal.classList.add("show");
+            alertOkButton.onclick = function () {
+                closeModal();
+                if (refreshPage) {
+                    location.reload();
                 }
             };
         }
 
-        async function checkAuthentication() {
-            const internId = localStorage.getItem("internId");
-            if (internId) {
-                try {
-                    const snapshot = await get(ref(db, 'users/' + internId));
-                    if (snapshot.exists() && snapshot.val().password) {
-                        showProfile(snapshot.val());
-                    } else {
-                        localStorage.removeItem("internId");
-                        showLogin(); // Show login form if user data is not found or invalid
-                    }
-                } catch (error) {
-                    console.error("Error fetching user data:", error);
-                    localStorage.removeItem("internId");
-                    showLogin(); // Show login form on error
-                }
-            } else {
-                showLogin(); // No internId found, show login form
-            }
+        function closeModal() {
+            alertModal.classList.remove("show");
         }
 
-        document.getElementById("submit").addEventListener('click', async function (e) {
-            e.preventDefault();
-            const internId = document.getElementById("internId").value.trim();
-            const password = document.getElementById("password").value.trim();
-            const formTitle = document.getElementById("formTitle").textContent;
+        function resetForm() {
+            document.getElementById("authForm").reset();
+        }
 
-            if (formTitle === 'Login Form') {
-                try {
-                    const snapshot = await get(child(ref(db), 'users/' + internId));
-                    if (snapshot.exists() && snapshot.val().password === password) {
-                        localStorage.setItem("internId", internId);
-                        showProfile(snapshot.val()); // Display profile on the same page
-                        showAlert(`${internId} Login Successfully`);
-                    } else {
-                        showAlert("Login Failed. Please check your credentials.");
-                    }
-                } catch (error) {
-                    console.error("Error checking login:", error);
-                }
-            } else {
-                try {
-                    const snapshot = await get(child(ref(db), 'users/' + internId));
-                    if (snapshot.exists()) {
-                        showAlert("User already exists!");
-                    } else {
-                        await set(ref(db, 'users/' + internId), {
-                            internId: internId,
-                            password: password,
-                            name: document.getElementById("name").value.trim(),
-                            email: document.getElementById("email").value.trim(),
-                            phone: document.getElementById("phone").value.trim()
-                        });
-                        showAlert(`${internId} Registration Successfully`, true);
-                    }
-                } catch (error) {
-                    console.error("Error registering user:", error);
-                }
-            }
-        });
-
-        document.getElementById("toggleForm").addEventListener('click', function () {
-            const formTitle = document.getElementById("formTitle").textContent;
-            if (formTitle === 'Login Form') {
-                document.getElementById("formTitle").textContent = 'Registration Form';
-                document.getElementById("toggleForm").textContent = 'Switch to Login';
-                document.getElementById("nameInput").classList.remove('hidden');
-                document.getElementById("emailInput").classList.remove('hidden');
-                document.getElementById("phoneInput").classList.remove('hidden');
-            } else {
-                document.getElementById("formTitle").textContent = 'Login Form';
-                document.getElementById("toggleForm").textContent = 'Switch to Registration';
-                document.getElementById("nameInput").classList.add('hidden');
-                document.getElementById("emailInput").classList.add('hidden');
-                document.getElementById("phoneInput").classList.add('hidden');
-            }
-        });
-
-        document.getElementById("logout").addEventListener('click', function () {
-            localStorage.removeItem("internId");
-            showLogin(); // Show login form after logout
-            showAlert(`Logout Successfully`, true);
-        });
-
-        checkAuthentication(); // Check authentication status on page load
     </script>
+
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in, proceed with the file upload
+                uploadProfilePicture(user.uid);
+            } else {
+                // No user is signed in, redirect to login or show an error
+                console.log("User is not authenticated");
+            }
+        });
+
+        function uploadProfilePicture(userId) {
+            const file = document.getElementById('profilePictureInput').files[0];
+            const storageRef = firebase.storage().ref();
+            const profilePicRef = storageRef.child('profilePictures/' + userId);
+
+            profilePicRef.put(file).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            }).catch((error) => {
+                console.error('Upload failed:', error);
+            });
+        }
+
+    </script>
+
+
+    <script>
+        const testFile = new File(['Hello World'], 'hello.txt', { type: 'text/plain' });
+        const storageReference = storageRef(storage, 'testUploads/hello.txt');
+        uploadString(storageReference, testFile).then(() => {
+            console.log('Test file uploaded successfully');
+        }).catch((error) => {
+            console.error('Upload failed:', error);
+        });
+
+    </script>
+
+    <script>
+
+
+          
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('show');
+            }
+            
+        
+
+    </script>
+
 </body>
 
 </html>
