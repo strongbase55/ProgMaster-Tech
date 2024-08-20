@@ -2,12 +2,11 @@
 <html>
 
 <head>
-    <title>Firebase Form</title>
+    <title> PROGMASTER PRIVATE LIMITED INTERN PORTAL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="loli.css">
-    <style>
-
-    </style>
+    <html lang="en" data-theme="light"> <!-- Default theme here -->
+    <link rel="icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png" type="image/jpg" sizes="16x16">
 </head>
 
 <body>
@@ -67,24 +66,31 @@
 
             <aside id="sidebar" class="sidebar">
                 <div class="menu-icon" onclick="toggleSidebar()" id="close-icon">X</div>
-
+                <div class="company-logo">
+                    <img class="login-logo" src="https://progmaster.in/logo-homepage.png" alt="">
+                </div>
                 <div class="logo"
                     style="width: 100%;display:flex;align-items:center;justify-content:center;flex-direction:column">
                     <img id="profilePicture"
                         src="https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?s=612x612&w=0&k=20&c=uS4knmZ88zNA_OjNaE_JCRuq9qn3ycgtHKDKdJSnGdY="
                         alt="Profile Picture" style="border-radius: 50%; width: 150px; height: 150px;">
-                    <button id="editPhoto" class="sub">Change Photo</button>
+                    <button id="editPhoto" class="sub"
+                        style="background-image: radial-gradient(circle, #873d77, #6c538e, #506495, #437091, #4d7887);">Change
+                        Photo</button>
 
                 </div>
 
                 <nav>
                     <ul>
-                        <!-- <li><a href="#" onclick="showSection('home')">Home</a></li> -->
                         <li><a href="#" onclick="showSection('profile')">Profile</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <button class="sub" id="logout">Logout</button>
+                        <li><a href="#" onclick="openThemeModal()">Themes</a></li>
+                        <li><a href="#" id="settingsTab">Placements</a></li>
+                        <li><a href="#" id="settingsTab">Leader Board</a></li>
+                        <button class="sub" id="logout"
+                            style="padding:5px 10px;background-image: radial-gradient(circle, #20487c, #1f5581, #296184, #3a6d85, #4d7887);">SignOut</button>
                     </ul>
                 </nav>
+
             </aside>
 
             <main class="main-content">
@@ -111,7 +117,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="sub" id="edit">Edit</button>
+                    <button class="sub" id="edit"
+                        style="background-image: radial-gradient(circle, #a867b1, #8a5ea2, #6f5491, #564a7f, #3f3f6b);">Edit</button>
                     <button class="sub hidden" id="save">Save</button>
                     <input type="file" id="photoUpload" class="hidden">
 
@@ -144,12 +151,35 @@
                     </div>
 
                 </section>
+                <!-- Overlay for Blurred Background -->
+                <div class="theme-overlay"></div>
+
+                <!-- Theme Selection Modal -->
+                <div id="themeModal" class="theme-popup">
+                    <div class="theme-content">
+                        <span class="close" onclick="closeThemeModal()">&times;</span>
+                        <h2>Select a Theme</h2>
+                        <ul>
+                            <li class="theme-option" data-theme="theme-dark">Dark Theme</li>
+                            <li class="theme-option" data-theme="theme-pink-black">Pink with Black Theme</li>
+                            <li class="theme-option" data-theme="theme-blue-green">Blue & Green Theme</li>
+                            <li class="theme-option" data-theme="theme-red-white">Red & White Theme</li>
+                            <li class="theme-option" data-theme="theme-purple-gold">Purple & Gold Theme</li>
+                            <li class="theme-option" data-theme="theme-teal-orange">Teal & Orange Theme</li>
+                            <li class="theme-option" data-theme="theme-grey-yellow">Grey & Yellow Theme</li>
+                            <li class="theme-option" data-theme="theme-navy-pink">Navy & Pink Theme</li>
+                            <li class="theme-option" data-theme="theme-brown-beige">Brown & Beige Theme</li>
+                            <li class="theme-option" data-theme="theme-olive-mint">Olive & Mint Theme</li>
+                        </ul>
+                    </div>
+                </div>
+
+
 
             </main>
         </div>
-
-
     </div>
+
 
     <!-- Modal HTML -->
     <div id="alertModal" class="modal">
@@ -479,6 +509,156 @@
         // Update the overall progress bar with the calculated average
         document.querySelector('.average-progress .progress').style.width = averageProgress + '%';
         document.querySelector('.average-progress .progress-label').textContent = `Overall Progress: ${averageProgress}%`;
+    </script>
+
+    <!-- this is for settings -->
+    <script>
+        function showSection(sectionId) {
+            // Add your section showing logic here
+        }
+
+        function openThemeModal() {
+            document.getElementById('themeModal').style.display = 'block';
+        }
+
+        function closeThemeModal() {
+            document.getElementById('themeModal').style.display = 'none';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.className = theme;
+            // Optionally save the theme preference to localStorage
+            localStorage.setItem('theme', theme);
+            closeThemeModal();
+        }
+
+        // Load saved theme from localStorage
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.className = savedTheme;
+            }
+        });
+
+    </script>
+
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            // Load the stored theme from localStorage
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                document.documentElement.setAttribute('data-theme', storedTheme);
+            }
+
+            // Theme toggle event listener
+            document.getElementById('theme-toggle').addEventListener('change', (event) => {
+                const selectedTheme = event.target.value;
+                document.documentElement.setAttribute('data-theme', selectedTheme);
+                localStorage.setItem('theme', selectedTheme);
+            });
+        });
+    </script>
+
+
+    <script>
+        // Function to open the theme popup
+        function openThemeModal() {
+            document.querySelector('.theme-overlay').style.display = 'block';
+            document.querySelector('.theme-popup').style.display = 'block';
+            document.body.classList.add('no-scroll'); // Disable body scrolling
+        }
+
+        // Function to close the theme popup
+        function closeThemeModal() {
+            document.querySelector('.theme-overlay').style.display = 'none';
+            document.querySelector('.theme-popup').style.display = 'none';
+            document.body.classList.remove('no-scroll'); // Enable body scrolling
+        }
+
+        // Attach the event listeners to the buttons
+        document.querySelector('.open-popup-btn').addEventListener('click', openThemeModal);
+        document.querySelector('.theme-overlay').addEventListener('click', closeThemeModal);
+        document.querySelector('.theme-popup .close').addEventListener('click', closeThemeModal);
+
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const overlay = document.querySelector('.theme-overlay');
+            const themePopup = document.querySelector('.theme-popup');
+            const body = document.body;
+
+            themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const themeClass = option.getAttribute('data-theme');
+                    body.classList.forEach(cls => {
+                        if (cls.startsWith('theme-')) {
+                            body.classList.remove(cls);
+                        }
+                    });
+                    body.classList.add(themeClass);
+                    themePopup.style.display = 'none';
+                    overlay.style.display = 'none';
+                    body.classList.remove('no-scroll');
+                });
+            });
+
+            document.querySelector('.theme-button').addEventListener('click', () => {
+                overlay.style.display = 'block';
+                themePopup.style.display = 'block';
+                body.classList.add('no-scroll');
+            });
+
+            document.querySelector('.theme-overlay').addEventListener('click', () => {
+                themePopup.style.display = 'none';
+                overlay.style.display = 'none';
+                body.classList.remove('no-scroll');
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const overlay = document.querySelector('.theme-overlay');
+            const themePopup = document.querySelector('.theme-popup');
+            const body = document.body;
+
+            themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const themeClass = option.getAttribute('data-theme');
+
+                    // Remove any existing theme classes
+                    body.classList.forEach(cls => {
+                        if (cls.startsWith('theme-')) {
+                            body.classList.remove(cls);
+                        }
+                    });
+
+                    // Add the selected theme class
+                    body.classList.add(themeClass);
+
+                    // Hide the popup and overlay
+                    themePopup.style.display = 'none';
+                    overlay.style.display = 'none';
+                    body.classList.remove('no-scroll');
+                });
+            });
+
+            document.querySelector('.theme-button').addEventListener('click', () => {
+                overlay.style.display = 'block';
+                themePopup.style.display = 'block';
+                body.classList.add('no-scroll');
+            });
+
+            document.querySelector('.theme-overlay').addEventListener('click', () => {
+                themePopup.style.display = 'none';
+                overlay.style.display = 'none';
+                body.classList.remove('no-scroll');
+            });
+        });
     </script>
 
 
