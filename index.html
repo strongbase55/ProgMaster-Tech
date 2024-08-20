@@ -4,492 +4,58 @@
 <head>
     <title>Firebase Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loli.css">
     <style>
-        /* Reset and base styles */
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            overflow: hidden;
-        }
-
-        /* Container styles */
-
-        /* Form styles */
-        .form,
-        .profile {
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-        }
-
-        .form {
-            width: 100%;
-            max-width: 400px;
-            background: #e9f1ff;
-            padding: 10px;
-        }
-
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .inputbox {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .inputbox input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            outline: none;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .inputbox span {
-            position: absolute;
-            top: -15px;
-            left: 15px;
-            font-size: 14px;
-            color: #777;
-            background: #fff;
-            padding: 0 5px;
-        }
-
-        /* Button styles */
-        .sub,
-        #toggleForm,
-        #logout,
-        #edit,
-        #save {
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background: #4a90e2;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        .sub:hover,
-        #toggleForm:hover,
-        #logout:hover,
-        #edit:hover,
-        #save:hover {
-            background: #357abd;
-        }
-
-        /* Profile details */
-        .profile .details p {
-            font-size: 16px;
-            color: #333;
-            margin: 10px 0;
-        }
-
-        .profile .details p strong {
-            color: #4a90e2;
-        }
-
-        /* Hidden class */
-        .hidden {
-            display: none;
-        }
-
-        /* Modal styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-
-        .modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .modal-content button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background: #4a90e2;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .modal-content button:hover {
-            background: #357abd;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        #profilePicture {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-        }
-
-        .dashboard {
-            display: flex;
-            height: 100vh;
-            width: 100%;
-            max-width: 1700px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #1a1a2e;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: width 0.3s ease-in-out;
-        }
-
-        .sidebar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .sidebar nav ul {
-            list-style: none;
-            padding: 0;
-            width: 100%;
-            text-align: center;
-        }
-
-        .sidebar nav ul li {
-            width: 100%;
-            margin: 10px 0;
-            animation: slideIn 0.5s ease-in-out;
-        }
-
-        .sidebar nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            padding: 10px 20px;
-            display: block;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .sidebar nav ul li a:hover {
-            background-color: #162447;
-            border-radius: 10px;
-        }
-
-        .main-content {
-            flex-grow: 1;
-            padding: 20px;
-            background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
-            overflow-y: auto;
-            transition: padding 0.3s ease-in-out;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1a1a2e;
-            color: #fff;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            animation: dropDown 0.8s ease-in-out;
-        }
-
-        .header .user-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .header .welcome {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .header .date-time {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .content {
-            display: none;
-            margin-top: 30px;
-        }
-
-        .content.active {
-            display: block;
-        }
-
-        .profile-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.6s ease-in-out;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .profile-card h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .profile-card p {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .edit-btn {
-            background-color: #1a1a2e;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .edit-btn:hover {
-            background-color: #162447;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes dropDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Media Queries */
-        @media (max-width: 1200px) {
-            .sidebar {
-                width: 200px;
-            }
-
-            .main-content {
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .dashboard {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                padding: 0;
-                box-shadow: none;
-            }
-
-            .main-content {
-                padding: 10px;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sidebar {
-                width: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                z-index: 999;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
-            }
-
-            .sidebar.show {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                padding-top: 0;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        #profileContainer {
-            width: 100%;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            display: none;
-            /* Hidden by default */
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #1a1a2e;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: width 0.3s ease-in-out;
-        }
-
-        .sidebar.show {
-            transform: translateX(0);
-        }
-
-        .section {
-            padding: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-                /* Show menu icon on mobile */
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-                /* Hide sidebar by default on mobile */
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="form" id="authFormContainer">
-        <h2 id="formTitle">Login Form</h2>
+
+        <img class="login-logo" src="https://progmaster.in/another-broucher-logo-removebg-preview.png" alt="">
+        <h2 id="formTitle">Intern Login</h2>
+        <br>
         <form id="authForm">
             <div class="inputbox">
-                <input type="text" id="internId" required>
+                <input type="text" id="internId" value="PROG" required>
                 <span>Intern ID</span>
             </div>
-            <div class="inputbox">
-                <input type="password" id="password" required>
+            <div class="inputbox" required>
+                <input type="password" id="password">
                 <span>Password</span>
             </div>
-            <div class="inputbox hidden" id="nameInput">
+            <div class="inputbox hidden" id="nameInput" required>
                 <input type="text" id="name">
                 <span>Name</span>
             </div>
-            <div class="inputbox hidden" id="emailInput">
+            <div class="inputbox hidden" id="emailInput" required>
                 <input type="email" id="email">
                 <span>Email</span>
             </div>
             <div class="inputbox hidden" id="phoneInput">
-                <input type="text" id="phone">
+                <input type="text" id="phone" value="+91 " required>
                 <span>Phone Number</span>
             </div>
-            <input type="submit" value="Submit" class="sub" id="submit">
+
+            <div class="inputbox hidden" id="roleInput">
+                <input type="text" id="role" value="Application Developer">
+                <span>Intern Role</span>
+            </div>
+            <div class="inputbox hidden" id="skillsInput">
+                <input type="text" id="skills" value="Java">
+                <span>Technical Skills</span>
+            </div>
+            <div class="inputbox hidden" id="yearofpassingInput">
+                <input type="text" id="YOP" value="2024">
+                <span>Year Of Passing</span>
+            </div>
+            <div class="inputbox hidden" id="joningInput" required>
+                <input type="date" id="joning" value="2024-09-01">
+                <span>Date Of Joning</span>
+            </div>
+
+            <input type="submit" value="Login" class="sub" id="submit">
             <button type="button" id="toggleForm">Switch to Registration</button>
         </form>
     </div>
@@ -497,9 +63,11 @@
 
     <div class="profile hidden" id="profileContainer">
         <div class="dashboard">
-            <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+            <div class="menu-icon" id="open-icon" onclick="toggleSidebar()">☰</div>
 
             <aside id="sidebar" class="sidebar">
+                <div class="menu-icon" onclick="toggleSidebar()" id="close-icon">X</div>
+
                 <div class="logo"
                     style="width: 100%;display:flex;align-items:center;justify-content:center;flex-direction:column">
                     <img id="profilePicture"
@@ -511,7 +79,7 @@
 
                 <nav>
                     <ul>
-                        <li><a href="#" onclick="showSection('home')">Home</a></li>
+                        <!-- <li><a href="#" onclick="showSection('home')">Home</a></li> -->
                         <li><a href="#" onclick="showSection('profile')">Profile</a></li>
                         <li><a href="#">Settings</a></li>
                         <button class="sub" id="logout">Logout</button>
@@ -520,26 +88,61 @@
             </aside>
 
             <main class="main-content">
-
-                <section id="home" class="content">
-                    <h2>Dashboard Home</h2>
-                    <p>Welcome to the dashboard home section. Add your widgets, charts, and other content here.</p>
-                </section>
-
                 <section id="profile" class="content active">
                     <h2>Student Profile</h2>
-                    <div class="details">
-                        <!-- <img id="profilePicture"
-                            src="https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
-                            alt="Profile Picture" style="border-radius: 50%; width: 100px; height: 100px;"> -->
-                        <p><strong>Name:</strong> <span id="profileName"></span></p>
-                        <p><strong>Intern ID:</strong> <span id="profileInternId"></span></p>
-                        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-                        <p><strong>Phone Number:</strong> <span id="profilePhone"></span></p>
+                    <div class="student-details">
+                        <div class="personal-details">
+                            <div class="details">
+                                <p><strong>Name :</strong> <span id="profileName"></span></p>
+                                <!-- <p><strong>Intern ID:</strong> <span id="profileInternId"></span></p> -->
+                                <p><strong>Email :</strong> <span id="profileEmail"></span></p>
+                                <p><strong>Phone Number :</strong> <span id="profilePhone"></span></p>
+                                <p><strong>Year Of Passing :</strong> <span id="yearofPassing"
+                                        style="padding: 5px 10px;border-radius:10px;">2024</span></p>
+                            </div>
+                        </div>
+                        <div class="profitinal-details">
+                            <div class="details">
+                                <p><strong>Intern ID :</strong> <span id="profileInternId"></span></p>
+                                <p><strong>Intern Role :</strong> <span id="internRole"></span></p>
+                                <p><strong>Date Of Joning :</strong> <span id="dateofJoning"></span></p>
+                                <p><strong>Techinical Skils :</strong> <span id="techSkills"
+                                        style="padding: 5px 10px;border-radius:10px;"></span></p>
+                            </div>
+                        </div>
                     </div>
                     <button class="sub" id="edit">Edit</button>
                     <button class="sub hidden" id="save">Save</button>
                     <input type="file" id="photoUpload" class="hidden">
+
+                    <h3 class="progress-title">Intern Progress</h3>
+
+                    <div class="progress-section">
+                        <div class="progress-bar programming">
+                            <div class="progress" style="--progress: 85%; width: 85%;"></div>
+                            <div class="progress-label">Programming: 85%</div>
+                        </div>
+                        <div class="progress-bar communication">
+                            <div class="progress" style="--progress: 75%; width: 75%;"></div>
+                            <div class="progress-label">Communication: 75%</div>
+                        </div>
+                        <div class="progress-bar teamwork">
+                            <div class="progress" style="--progress: 90%; width: 90%;"></div>
+                            <div class="progress-label">Teamwork: 90%</div>
+                        </div>
+                        <div class="progress-bar creativity">
+                            <div class="progress" style="--progress: 80%; width: 80%;"></div>
+                            <div class="progress-label">Creativity: 80%</div>
+                        </div>
+                    </div>
+
+                    <div class="average-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="--progress: 82.5%; width: 82.5%;"></div>
+                            <div class="progress-label">Overall Progress: 82.5%</div>
+                        </div>
+                    </div>
+
                 </section>
 
             </main>
@@ -632,16 +235,26 @@
 
         function toggleForm() {
             if (isLoginForm) {
-                document.getElementById("formTitle").innerText = "Login Form";
+                document.getElementById("formTitle").innerText = "Intern Login";
+                document.getElementById("submit").value = "Login";
                 document.getElementById("nameInput").classList.add("hidden");
                 document.getElementById("emailInput").classList.add("hidden");
                 document.getElementById("phoneInput").classList.add("hidden");
+                document.getElementById("roleInput").classList.add("hidden");
+                document.getElementById("joningInput").classList.add("hidden");
+                document.getElementById("skillsInput").classList.add("hidden");
+                document.getElementById("yearofpassingInput").classList.add("hidden");
                 document.getElementById("toggleForm").innerText = "Switch to Registration";
             } else {
-                document.getElementById("formTitle").innerText = "Registration Form";
+                document.getElementById("formTitle").innerText = "Intern Registration";
+                document.getElementById("submit").value = "Registration";
                 document.getElementById("nameInput").classList.remove("hidden");
                 document.getElementById("emailInput").classList.remove("hidden");
                 document.getElementById("phoneInput").classList.remove("hidden");
+                document.getElementById("roleInput").classList.remove("hidden");
+                document.getElementById("joningInput").classList.remove("hidden");
+                document.getElementById("skillsInput").classList.remove("hidden");
+                document.getElementById("yearofpassingInput").classList.remove("hidden");
                 document.getElementById("toggleForm").innerText = "Switch to Login";
             }
         }
@@ -674,6 +287,10 @@
             const email = document.getElementById("email").value;
             const phone = document.getElementById("phone").value;
             const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+            const joning = document.getElementById("joning").value;
+            const skills = document.getElementById("skills").value;
+            const YOP = document.getElementById("YOP").value;
 
             const dbRef = ref(database);
             get(child(dbRef, `users/${internId}`)).then((snapshot) => {
@@ -686,6 +303,10 @@
                         email: email,
                         phone: phone,
                         password: password,
+                        role: role,
+                        joning: joning,
+                        skills: skills,
+                        YOP: YOP,
                         photoUrl: "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
                     }).then(() => {
                         showModal(`Registration Successful`);
@@ -706,6 +327,10 @@
             document.getElementById("profileInternId").innerText = userData.internId;
             document.getElementById("profileEmail").innerText = userData.email;
             document.getElementById("profilePhone").innerText = userData.phone;
+            document.getElementById("internRole").innerText = userData.role;
+            document.getElementById("dateofJoning").innerText = userData.joning;
+            document.getElementById("techSkills").innerText = userData.skills;
+            document.getElementById("yearofPassing").innerText = userData.YOP;
             document.getElementById("profilePicture").src = userData.photoUrl;
         }
 
@@ -715,7 +340,7 @@
             document.getElementById("save").classList.toggle("hidden", !enable);
 
             // Make all fields editable except Intern ID
-            const editableFields = ["profileName", "profileEmail", "profilePhone"];
+            const editableFields = ["yearofPassing", "techSkills"];
             editableFields.forEach(id => {
                 const element = document.getElementById(id);
                 element.contentEditable = enable.toString();
@@ -726,15 +351,13 @@
         // Function to update the profile information in the database
         function updateProfile() {
             const internId = document.getElementById("profileInternId").innerText; // Don't change this
-            const name = document.getElementById("profileName").innerText;
-            const email = document.getElementById("profileEmail").innerText;
-            const phone = document.getElementById("profilePhone").innerText;
+            const yp = document.getElementById("yearofPassing").innerText;
+            const ts = document.getElementById("techSkills").innerText;
 
             // Update only the name, email, and phone number
             update(ref(database, 'users/' + internId), {
-                name: name,
-                email: email,
-                phone: phone
+                YOP: yp,
+                skills: ts
             }).then(() => {
                 showModal(`${internId} Profile Updated Successfully`);
                 enableEditing(false); // Disable editing after saving
@@ -835,15 +458,29 @@
     <script>
 
 
-          
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                sidebar.classList.toggle('show');
-            }
-            
-        
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+
 
     </script>
+
+    <!-- PROGRASS BAR SCRIPT -->
+
+
+    <script>
+        // Example script to calculate the average progress
+        const progressValues = [85, 75, 90, 80];
+        const averageProgress = progressValues.reduce((a, b) => a + b, 0) / progressValues.length;
+
+        // Update the overall progress bar with the calculated average
+        document.querySelector('.average-progress .progress').style.width = averageProgress + '%';
+        document.querySelector('.average-progress .progress-label').textContent = `Overall Progress: ${averageProgress}%`;
+    </script>
+
 
 </body>
 
