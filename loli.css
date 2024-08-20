@@ -1128,7 +1128,7 @@ button {
 
 /* Theme Popup Styles */
 .theme-popup {
-    max-width: 400px;
+    max-width: 500px;
     /* Set a maximum width */
     max-height: 60vh;
     /* Set a maximum height for scrolling */
