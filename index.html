@@ -2,99 +2,318 @@
 <html>
 
 <head>
-    <title> PROGMASTER PRIVATE LIMITED INTERN PORTAL</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PROGMASTER PRIVATE LIMITED INTERN PORTAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="leadearboard.css">
     <link rel="stylesheet" href="loli.css">
-    <html lang="en" data-theme="light"> <!-- Default theme here -->
-    <link rel="icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png" type="image/jpg" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
-    <div class="form" id="authFormContainer">
+    <div class="total-form" id="authFormContainer">
+        <div class="form">
 
-        <img class="login-logo" src="https://progmaster.in/another-broucher-logo-removebg-preview.png" alt="">
-        <h2 id="formTitle">Intern Login</h2>
-        <br>
-        <form id="authForm">
-            <div class="inputbox">
-                <input type="text" id="internId" value="PROG" required>
-                <span>Intern ID</span>
-            </div>
-            <div class="inputbox" required>
-                <input type="password" id="password">
-                <span>Password</span>
-            </div>
-            <div class="inputbox hidden" id="nameInput" required>
-                <input type="text" id="name">
-                <span>Name</span>
-            </div>
-            <div class="inputbox hidden" id="emailInput" required>
-                <input type="email" id="email">
-                <span>Email</span>
-            </div>
-            <div class="inputbox hidden" id="phoneInput">
-                <input type="text" id="phone" value="+91 " required>
-                <span>Phone Number</span>
-            </div>
+            <img class="login-logo" src="https://progmaster.in/another-broucher-logo-removebg-preview.png" alt="">
+            <h2 id="formTitle">Intern Login</h2>
+            <br>
+            <form id="authForm">
+                <div class="inputbox">
+                    <input type="text" id="internId" value="PROG" required>
+                    <span>Intern ID</span>
+                </div>
+                <div class="inputbox" required>
+                    <input type="password" id="password">
+                    <span>Password</span>
+                </div>
+                <div class="inputbox hidden" id="nameInput" required>
+                    <input type="text" id="name">
+                    <span>Name</span>
+                </div>
+                <div class="inputbox hidden" id="emailInput" required>
+                    <input type="email" id="email">
+                    <span>Email</span>
+                </div>
+                <div class="inputbox hidden" id="phoneInput">
+                    <input type="text" id="phone" value="+91 " required>
+                    <span>Phone Number</span>
+                </div>
 
-            <div class="inputbox hidden" id="roleInput">
-                <input type="text" id="role" value="Application Developer">
-                <span>Intern Role</span>
-            </div>
-            <div class="inputbox hidden" id="skillsInput">
-                <input type="text" id="skills" value="Java">
-                <span>Technical Skills</span>
-            </div>
-            <div class="inputbox hidden" id="yearofpassingInput">
-                <input type="text" id="YOP" value="2024">
-                <span>Year Of Passing</span>
-            </div>
-            <div class="inputbox hidden" id="joningInput" required>
-                <input type="date" id="joning" value="2024-09-01">
-                <span>Date Of Joning</span>
-            </div>
+                <div class="inputbox hidden" id="roleInput">
+                    <input type="text" id="role" value="Application Developer">
+                    <span>Intern Role</span>
+                </div>
+                <div class="inputbox hidden" id="skillsInput">
+                    <input type="text" id="skills" value="Java">
+                    <span>Technical Skills</span>
+                </div>
+                <!-- <div class="inputbox hidden" id="webInput">
+                    <input type="text" id="Website" value="www.com">
+                    <span>Website</span>
+                </div>  -->
+                <div class="inputbox hidden" id="githubInput">
+                    <input type="text" id="github" value="www.com">
+                    <span>Github Link</span>
+                </div>
+                <div class="inputbox hidden" id="nakuriInput">
+                    <input type="text" id="naukari" value="www.com">
+                    <span>Naukari Link</span>
+                </div>
+                <div class="inputbox hidden" id="linkedinInput">
+                    <input type="text" id="linkedin" value="www.com">
+                    <span>Linkedin Link</span>
+                </div>
+                <div class="inputbox hidden" id="yearofpassingInput">
+                    <input type="text" id="YOP" value="2024">
+                    <span>Year Of Passing</span>
+                </div>
+                <div class="inputbox hidden" id="joningInput" required>
+                    <input type="date" id="joning" value="2024-09-01">
+                    <span>Date Of Joning</span>
+                </div>
 
-            <input type="submit" value="Login" class="sub" id="submit">
-            <button type="button" id="toggleForm">Switch to Registration</button>
-        </form>
+                <input type="submit" value="Login" class="sub" id="submit">
+                <button type="button" id="toggleForm">Switch to Registration</button>
+            </form>
+        </div>
+
     </div>
 
-
     <div class="profile hidden" id="profileContainer">
-        <div class="dashboard">
-            <div class="menu-icon" id="open-icon" onclick="toggleSidebar()">☰</div>
+        <div class="main-body">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
+            <!-- /Breadcrumb -->
 
-            <aside id="sidebar" class="sidebar">
-                <div class="menu-icon" onclick="toggleSidebar()" id="close-icon">X</div>
-                <div class="company-logo">
-                    <img class="login-logo" src="https://progmaster.in/logo-homepage.png" alt="">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img id="profilePicture"
+                                    src="https://media4.giphy.com/media/zpf2yGvLyLokwd1SWG/200w.gif?cid=6c09b952h7tt89fxsrmhitvybixgeqn7lo9ald9zbdey9cxy&ep=v1_gifs_search&rid=200w.gif&ct=g"
+                                    alt="Profile Picture" style="border-radius: 50%; width: 150px; height: 150px;">
+                                <div class="mt-3">
+                                    <p class="text-secondary mb-1">Application Developer</p>
+                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                    <button id="editPhoto" class="btn btn-outline-primary">Change Photo</button>
+                                    <button class="btn btn-outline-primary"
+                                        style="padding: 7px 20px; margin-bottom:10px;" id="edit">Edit</button>
+                                    <button class="sub hidden" id="save"
+                                        style="padding: 6px 20px; margin-top:4px;">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-3">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-github mr-2 icon-inline">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
+                                    </svg> Github</h6>
+                                <span class="text-secondary" id="git-link"></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-globe mr-2 icon-inline">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                    </path>
+                                </svg> Naukari</h6>
+                                <span class="text-secondary" id="naukari-link"></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24">
+                                        <path
+                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                    </svg> Linkedin</h6>
+                                <span class="text-secondary" id="linkedin-link"></span>
+                            </li>
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-facebook mr-2 icon-inline text-primary">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                        </path>
+                                    </svg>Facebook</h6>
+                                <span class="text-secondary">bootdey</span>
+                            </li> -->
+                        </ul>
+                    </div>
                 </div>
-                <div class="logo"
-                    style="width: 100%;display:flex;align-items:center;justify-content:center;flex-direction:column">
-                    <img id="profilePicture"
-                        src="https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.jpg?s=612x612&w=0&k=20&c=uS4knmZ88zNA_OjNaE_JCRuq9qn3ycgtHKDKdJSnGdY="
-                        alt="Profile Picture" style="border-radius: 50%; width: 150px; height: 150px;">
-                    <button id="editPhoto" class="sub"
-                        style="background-image: radial-gradient(circle, #873d77, #6c538e, #506495, #437091, #4d7887);">Change
-                        Photo</button>
-
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Full Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="profileName"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="profileEmail"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Phone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="profilePhone"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Intern Id</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="profileInternId"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Intern Role</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="internRole"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Date Of Joning</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="dateofJoning"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Year Of Passing</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="yearofPassing">2024</div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Techinical Skills</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary" id="techSkills"></div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-outline-primary" id="edit">Edit</button>
+                                    <button class="sub hidden" id="save">Save</button>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="row gutters-sm">
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="d-flex align-items-center mb-3"><i
+                                            class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                                    <small>Web Design</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>Website Markup</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
+                                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>One Page</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
+                                            aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>Mobile Template</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
+                                            aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>Backend API</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
+                                            aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="d-flex align-items-center mb-3"><i
+                                            class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                                    <small>Web Design</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>Website Markup</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
+                                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>One Page</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
+                                            aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>Mobile Template</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
+                                            aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <small>Backend API</small>
+                                    <div class="progress mb-3" style="height: 5px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
+                                            aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <nav>
-                    <ul>
-                        <li><a href="#" onclick="showSection('profile')">Profile</a></li>
-                        <li><a href="#" onclick="openThemeModal()">Themes</a></li>
-                        <li><a href="#" id="settingsTab">Placements</a></li>
-                        <li><a href="#" id="settingsTab">Leader Board</a></li>
-                        <button class="sub" id="logout"
-                            style="padding:5px 10px;background-image: radial-gradient(circle, #20487c, #1f5581, #296184, #3a6d85, #4d7887);">SignOut</button>
-                    </ul>
-                </nav>
-
-            </aside>
-
-            <main class="main-content">
+            <main class="main-content" style="display:none">
                 <section id="profile" class="content active">
+                    <nav>
+                        <ul>
+                            <li><a href="#" id="profile-section" onclick="showSection('profile')">Profile</a></li>
+                            <li><a href="#" onclick="openThemeModal()">Themes</a></li>
+                            <li><a href="#" id="placements-btn">Placements</a></li>
+                            <li><a href="#" id="leader-board">Leader Board</a></li>
+                            <button class="sub" id="logout"
+                                style="padding:5px 10px;background-image: radial-gradient(circle, #20487c, #1f5581, #296184, #3a6d85, #4d7887);">SignOut</button>
+                        </ul>
+                    </nav>
                     <h2>Student Profile</h2>
                     <div class="student-details">
                         <div class="personal-details">
@@ -102,80 +321,37 @@
                                 <p><strong>Name :</strong> <span id="profileName"></span></p>
                                 <!-- <p><strong>Intern ID:</strong> <span id="profileInternId"></span></p> -->
                                 <p><strong>Email :</strong> <span id="profileEmail"></span></p>
-                                <p><strong>Phone Number :</strong> <span id="profilePhone"></span></p>
+                                <p><strong>Phone Number :</strong> <span id="profilePhone"></span>
+                                </p>
                                 <p><strong>Year Of Passing :</strong> <span id="yearofPassing"
-                                        style="padding: 5px 10px;border-radius:10px;">2024</span></p>
+                                        style="padding: 5px 10px;border-radius:10px;">2024</span>
+                                </p>
                             </div>
                         </div>
                         <div class="profitinal-details">
                             <div class="details">
-                                <p><strong>Intern ID :</strong> <span id="profileInternId"></span></p>
+                                <p><strong>Intern ID :</strong> <span id="profileInternId"></span>
+                                </p>
                                 <p><strong>Intern Role :</strong> <span id="internRole"></span></p>
-                                <p><strong>Date Of Joning :</strong> <span id="dateofJoning"></span></p>
+                                <p><strong>Date Of Joning :</strong> <span id="dateofJoning"></span>
+                                </p>
                                 <p><strong>Techinical Skils :</strong> <span id="techSkills"
                                         style="padding: 5px 10px;border-radius:10px;"></span></p>
                             </div>
                         </div>
                     </div>
-                    <button class="sub" id="edit"
-                        style="background-image: radial-gradient(circle, #a867b1, #8a5ea2, #6f5491, #564a7f, #3f3f6b);">Edit</button>
+                    <button class="sub" id="edit" class="btn btn-outline-primary">Edit</button>
                     <button class="sub hidden" id="save">Save</button>
                     <input type="file" id="photoUpload" class="hidden">
 
-                    <h3 class="progress-title">Intern Progress</h3>
-
-                    <div class="progress-section">
-                        <div class="progress-bar programming">
-                            <div class="progress" style="--progress: 85%; width: 85%;"></div>
-                            <div class="progress-label">Programming: 85%</div>
-                        </div>
-                        <div class="progress-bar communication">
-                            <div class="progress" style="--progress: 75%; width: 75%;"></div>
-                            <div class="progress-label">Communication: 75%</div>
-                        </div>
-                        <div class="progress-bar teamwork">
-                            <div class="progress" style="--progress: 90%; width: 90%;"></div>
-                            <div class="progress-label">Teamwork: 90%</div>
-                        </div>
-                        <div class="progress-bar creativity">
-                            <div class="progress" style="--progress: 80%; width: 80%;"></div>
-                            <div class="progress-label">Creativity: 80%</div>
-                        </div>
-                    </div>
-
-                    <div class="average-progress">
-                        <div class="progress-bar">
-                            <div class="progress" style="--progress: 82.5%; width: 82.5%;"></div>
-                            <div class="progress-label">Overall Progress: 82.5%</div>
-                        </div>
-                    </div>
-
                 </section>
-                <!-- Overlay for Blurred Background -->
-                <div class="theme-overlay"></div>
 
-                <!-- Theme Selection Modal -->
-                <div id="themeModal" class="theme-popup">
-                    <div class="theme-content">
-                        <span class="close" onclick="closeThemeModal()">&times;</span>
-                        <h2>Select a Theme</h2>
-                        <ul>
-                            <li class="theme-option" data-theme="theme-dark">Dark Theme</li>
-                            <li class="theme-option" data-theme="theme-pink-black">Pink with Black Theme</li>
-                            <li class="theme-option" data-theme="theme-blue-green">Blue & Green Theme</li>
-                            <li class="theme-option" data-theme="theme-red-white">Red & White Theme</li>
-                            <li class="theme-option" data-theme="theme-purple-gold">Purple & Gold Theme</li>
-                            <li class="theme-option" data-theme="theme-teal-orange">Teal & Orange Theme</li>
-                            <li class="theme-option" data-theme="theme-grey-yellow">Grey & Yellow Theme</li>
-                            <li class="theme-option" data-theme="theme-navy-pink">Navy & Pink Theme</li>
-                            <li class="theme-option" data-theme="theme-brown-beige">Brown & Beige Theme</li>
-                            <li class="theme-option" data-theme="theme-olive-mint">Olive & Mint Theme</li>
-                        </ul>
-                    </div>
+                <!-- Hidden Div for iframe -- palcements -->
+                <div id="iframe-container" style="display: none;">
+                    <iframe
+                        src="https://optimhire.com/d/Search-job-iframe?ref_code=purushotham-kandheri-1323559&skill=&positions=&dark_color=3f73ee&light_color=3b74e8"
+                        width="100%" height="800"></iframe>
                 </div>
-
-
-
             </main>
         </div>
     </div>
@@ -188,6 +364,7 @@
             <button id="alertOkButton">OK</button>
         </div>
     </div>
+
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
@@ -274,6 +451,9 @@
                 document.getElementById("joningInput").classList.add("hidden");
                 document.getElementById("skillsInput").classList.add("hidden");
                 document.getElementById("yearofpassingInput").classList.add("hidden");
+                document.getElementById("githubInput").classList.add("hidden");
+                document.getElementById("nakuriInput").classList.add("hidden");
+                document.getElementById("linkedinInput").classList.add("hidden");
                 document.getElementById("toggleForm").innerText = "Switch to Registration";
             } else {
                 document.getElementById("formTitle").innerText = "Intern Registration";
@@ -285,6 +465,9 @@
                 document.getElementById("joningInput").classList.remove("hidden");
                 document.getElementById("skillsInput").classList.remove("hidden");
                 document.getElementById("yearofpassingInput").classList.remove("hidden");
+                document.getElementById("githubInput").classList.remove("hidden");
+                document.getElementById("nakuriInput").classList.remove("hidden");
+                document.getElementById("linkedinInput").classList.remove("hidden");
                 document.getElementById("toggleForm").innerText = "Switch to Login";
             }
         }
@@ -321,6 +504,9 @@
             const joning = document.getElementById("joning").value;
             const skills = document.getElementById("skills").value;
             const YOP = document.getElementById("YOP").value;
+            const github = document.getElementById("github").value;
+            const naukari = document.getElementById("naukari").value;
+            const linkedin = document.getElementById("linkedin").value;
 
             const dbRef = ref(database);
             get(child(dbRef, `users/${internId}`)).then((snapshot) => {
@@ -337,7 +523,10 @@
                         joning: joning,
                         skills: skills,
                         YOP: YOP,
-                        photoUrl: "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
+                        github: github,
+                        naukari: naukari,
+                        linkedin: linkedin,
+                        photoUrl: "https://media4.giphy.com/media/zpf2yGvLyLokwd1SWG/200w.gif?cid=6c09b952h7tt89fxsrmhitvybixgeqn7lo9ald9zbdey9cxy&ep=v1_gifs_search&rid=200w.gif&ct=g"
                     }).then(() => {
                         showModal(`Registration Successful`);
                         resetForm();
@@ -361,6 +550,9 @@
             document.getElementById("dateofJoning").innerText = userData.joning;
             document.getElementById("techSkills").innerText = userData.skills;
             document.getElementById("yearofPassing").innerText = userData.YOP;
+            document.getElementById("git-link").innerText = userData.github;
+            document.getElementById("naukari-link").innerText = userData.naukari;
+            document.getElementById("linkedin-link").innerText = userData.linkedin;
             document.getElementById("profilePicture").src = userData.photoUrl;
         }
 
@@ -370,11 +562,15 @@
             document.getElementById("save").classList.toggle("hidden", !enable);
 
             // Make all fields editable except Intern ID
-            const editableFields = ["yearofPassing", "techSkills"];
+            const editableFields = ["yearofPassing", "techSkills", "git-link", "linkedin-link", "naukari-link"];
             editableFields.forEach(id => {
                 const element = document.getElementById(id);
                 element.contentEditable = enable.toString();
-                element.style.border = enable ? "1px solid #ddd" : "none";
+                element.style.border = enable ? "1px solid #000" : "none";
+                element.style.backgroundColor = enable ? "springgreen" : "none";
+                element.style.padding = enable ? "5px 10px" : "none";
+                element.style.color = enable ? "black" : "none";
+                element.style.fontWeight = enable ? "700" : "none";
             });
         }
 
@@ -383,11 +579,17 @@
             const internId = document.getElementById("profileInternId").innerText; // Don't change this
             const yp = document.getElementById("yearofPassing").innerText;
             const ts = document.getElementById("techSkills").innerText;
+            const gl = document.getElementById("git-link").innerText;
+            const nl = document.getElementById("naukari-link").innerText;
+            const ll = document.getElementById("linkedin-link").innerText;
 
             // Update only the name, email, and phone number
             update(ref(database, 'users/' + internId), {
                 YOP: yp,
-                skills: ts
+                skills: ts,
+                github: gl,
+                naukari: nl,
+                linkedin: ll,
             }).then(() => {
                 showModal(`${internId} Profile Updated Successfully`);
                 enableEditing(false); // Disable editing after saving
@@ -487,14 +689,10 @@
 
     <script>
 
-
-
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('show');
         }
-
-
 
     </script>
 
@@ -511,157 +709,51 @@
         document.querySelector('.average-progress .progress-label').textContent = `Overall Progress: ${averageProgress}%`;
     </script>
 
-    <!-- this is for settings -->
+
+
+    <!-- JavaScript to handle PLACEMEMTS -->
     <script>
-        function showSection(sectionId) {
-            // Add your section showing logic here
-        }
+        document.getElementById('placements-btn').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.getElementById('iframe-container').style.display = 'block';
+            // Hide the profile section
+            document.getElementById('profile').style.display = 'none';
+            document.getElementById('leaderboard').style.display = 'none';
 
-        function openThemeModal() {
-            document.getElementById('themeModal').style.display = 'block';
-        }
-
-        function closeThemeModal() {
-            document.getElementById('themeModal').style.display = 'none';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.className = theme;
-            // Optionally save the theme preference to localStorage
-            localStorage.setItem('theme', theme);
-            closeThemeModal();
-        }
-
-        // Load saved theme from localStorage
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.className = savedTheme;
-            }
+            // Show the iframe container
         });
 
     </script>
 
-
-    <script>document.addEventListener('DOMContentLoaded', () => {
-            // Load the stored theme from localStorage
-            const storedTheme = localStorage.getItem('theme');
-            if (storedTheme) {
-                document.documentElement.setAttribute('data-theme', storedTheme);
-            }
-
-            // Theme toggle event listener
-            document.getElementById('theme-toggle').addEventListener('change', (event) => {
-                const selectedTheme = event.target.value;
-                document.documentElement.setAttribute('data-theme', selectedTheme);
-                localStorage.setItem('theme', selectedTheme);
-            });
-        });
-    </script>
-
+    <!-- JavaScript to handle PROFILE SECTIONS -->
 
     <script>
-        // Function to open the theme popup
-        function openThemeModal() {
-            document.querySelector('.theme-overlay').style.display = 'block';
-            document.querySelector('.theme-popup').style.display = 'block';
-            document.body.classList.add('no-scroll'); // Disable body scrolling
-        }
+        document.getElementById('profile-section').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.getElementById('profile').style.display = 'block';
+            // Hide the profile section
+            document.getElementById('iframe-container').style.display = 'none';
+            document.getElementById('leaderboard').style.display = 'none';
 
-        // Function to close the theme popup
-        function closeThemeModal() {
-            document.querySelector('.theme-overlay').style.display = 'none';
-            document.querySelector('.theme-popup').style.display = 'none';
-            document.body.classList.remove('no-scroll'); // Enable body scrolling
-        }
-
-        // Attach the event listeners to the buttons
-        document.querySelector('.open-popup-btn').addEventListener('click', openThemeModal);
-        document.querySelector('.theme-overlay').addEventListener('click', closeThemeModal);
-        document.querySelector('.theme-popup .close').addEventListener('click', closeThemeModal);
+            // Show the iframe container
+        });
 
     </script>
 
+    <!-- JavaScript to handle Leader board SECTIONS -->
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeOptions = document.querySelectorAll('.theme-option');
-            const overlay = document.querySelector('.theme-overlay');
-            const themePopup = document.querySelector('.theme-popup');
-            const body = document.body;
+        document.getElementById('leader-board').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.getElementById('leaderboard').style.display = 'block';
+            // Hide the profile section
+            document.getElementById('iframe-container').style.display = 'none';
+            document.getElementById('profile').style.display = 'none';
 
-            themeOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    const themeClass = option.getAttribute('data-theme');
-                    body.classList.forEach(cls => {
-                        if (cls.startsWith('theme-')) {
-                            body.classList.remove(cls);
-                        }
-                    });
-                    body.classList.add(themeClass);
-                    themePopup.style.display = 'none';
-                    overlay.style.display = 'none';
-                    body.classList.remove('no-scroll');
-                });
-            });
-
-            document.querySelector('.theme-button').addEventListener('click', () => {
-                overlay.style.display = 'block';
-                themePopup.style.display = 'block';
-                body.classList.add('no-scroll');
-            });
-
-            document.querySelector('.theme-overlay').addEventListener('click', () => {
-                themePopup.style.display = 'none';
-                overlay.style.display = 'none';
-                body.classList.remove('no-scroll');
-            });
+            // Show the iframe container
         });
+
     </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeOptions = document.querySelectorAll('.theme-option');
-            const overlay = document.querySelector('.theme-overlay');
-            const themePopup = document.querySelector('.theme-popup');
-            const body = document.body;
-
-            themeOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    const themeClass = option.getAttribute('data-theme');
-
-                    // Remove any existing theme classes
-                    body.classList.forEach(cls => {
-                        if (cls.startsWith('theme-')) {
-                            body.classList.remove(cls);
-                        }
-                    });
-
-                    // Add the selected theme class
-                    body.classList.add(themeClass);
-
-                    // Hide the popup and overlay
-                    themePopup.style.display = 'none';
-                    overlay.style.display = 'none';
-                    body.classList.remove('no-scroll');
-                });
-            });
-
-            document.querySelector('.theme-button').addEventListener('click', () => {
-                overlay.style.display = 'block';
-                themePopup.style.display = 'block';
-                body.classList.add('no-scroll');
-            });
-
-            document.querySelector('.theme-overlay').addEventListener('click', () => {
-                themePopup.style.display = 'none';
-                overlay.style.display = 'none';
-                body.classList.remove('no-scroll');
-            });
-        });
-    </script>
-
-
 </body>
 
 </html>
