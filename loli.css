@@ -1,9 +1,16 @@
-*{
-    margin:0;paddig:0;border:0;
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 ::-webkit-scrollbar {
     width: 0px;
+}
+
+html,
+body {
+    overflow-x: hidden;
 }
 
 body {
@@ -86,6 +93,7 @@ h2 {
 .hidden {
     display: none;
 }
+
 /* Button styles */
 .sub,
 #toggleForm,
@@ -153,7 +161,7 @@ h2 {
     box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     animation: slideIn 0.5s ease-out;
-    width: 500px;
+    width: 300px;
 }
 
 .modal-content button {
