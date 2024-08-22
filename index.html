@@ -87,18 +87,41 @@
 
     <div class="profile hidden" id="profileContainer">
         <div class="main-body">
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb" class="main-breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                </ol>
+            <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="javascript:void(0)"><img class="login-logo"
+                            src="https://progmaster.in/another-broucher-logo-removebg-preview.png" alt=""> </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mynavbar">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="" id="profile-tab">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" id="placements-tab">Placements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" id="leaderboard-tab">LeaderBoard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" id="setting-tab">Settings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" id="forum-tab">Forum</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="text" placeholder="Search">
+                            <button class="btn btn-primary" type="button">Search</button>
+                        </form>
+                    </div>
+                </div>
             </nav>
-            <!-- /Breadcrumb -->
-            <!-- /Breadcrumb -->
 
-            <div class="row gutters-sm">
+
+            <div class="row gutters-sm" style="margin-top: 7em;" id="Total-Container">
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
@@ -133,20 +156,20 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="feather feather-globe mr-2 icon-inline">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path
-                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                    </path>
-                                </svg> Naukari</h6>
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-globe mr-2 icon-inline">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                        </path>
+                                    </svg> Naukari</h6>
                                 <span class="text-secondary" id="naukari-link"></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24">
+                                        viewBox="0 0 24 24">
                                         <path
                                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                                     </svg> Linkedin</h6>
@@ -302,6 +325,13 @@
                 </div>
             </div>
 
+            <!-- Hidden Div for iframe -- palcements -->
+            <div id="iframe-container" style="display: none;">
+                <iframe
+                    src="https://optimhire.com/d/Search-job-iframe?ref_code=purushotham-kandheri-1323559&skill=&positions=&dark_color=587ed0&light_color=3b74e8"
+                    width="100%" height="800"></iframe>
+            </div>
+
             <main class="main-content" style="display:none">
                 <section id="profile" class="content active">
                     <nav>
@@ -345,13 +375,6 @@
                     <input type="file" id="photoUpload" class="hidden">
 
                 </section>
-
-                <!-- Hidden Div for iframe -- palcements -->
-                <div id="iframe-container" style="display: none;">
-                    <iframe
-                        src="https://optimhire.com/d/Search-job-iframe?ref_code=purushotham-kandheri-1323559&skill=&positions=&dark_color=3f73ee&light_color=3b74e8"
-                        width="100%" height="800"></iframe>
-                </div>
             </main>
         </div>
     </div>
@@ -709,36 +732,43 @@
         document.querySelector('.average-progress .progress-label').textContent = `Overall Progress: ${averageProgress}%`;
     </script>
 
-
-
-    <!-- JavaScript to handle PLACEMEMTS -->
-    <script>
-        document.getElementById('placements-btn').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default anchor behavior
-            document.getElementById('iframe-container').style.display = 'block';
-            // Hide the profile section
-            document.getElementById('profile').style.display = 'none';
-            document.getElementById('leaderboard').style.display = 'none';
-
-            // Show the iframe container
-        });
-
-    </script>
-
     <!-- JavaScript to handle PROFILE SECTIONS -->
 
     <script>
-        document.getElementById('profile-section').addEventListener('click', function (event) {
+        document.getElementById('profile-tab').addEventListener('click', function (event) {
             event.preventDefault(); // Prevent the default anchor behavior
-            document.getElementById('profile').style.display = 'block';
+            document.getElementById('Total-Container').style.display = 'flex';
+            document.getElementById('profile-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+
             // Hide the profile section
             document.getElementById('iframe-container').style.display = 'none';
-            document.getElementById('leaderboard').style.display = 'none';
+            document.getElementById('leaderboard-tab').style.display = 'none';
+            document.getElementById('placements-tab').style.backgroundImage = ' none';
+            document.getElementById('profile-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+            // Show the iframe container
+        });
+
+    </script>
+
+    <!-- JavaScript to handle PLACEMEMTS -->
+    <script>
+        document.getElementById('placements-tab').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.getElementById('iframe-container').style.display = 'block';
+            document.getElementById('placements-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+            // Hide the profile section
+            document.getElementById('Total-Container').style.display = 'none';
+            document.getElementById('leaderboard-tab').style.display = 'none';
+            document.getElementById('profile-tab').style.backgroundImage = ' none';
+            document.getElementById('placements-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+
 
             // Show the iframe container
         });
 
     </script>
+
+
 
     <!-- JavaScript to handle Leader board SECTIONS -->
 
