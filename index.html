@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
 
 </head>
 
@@ -106,7 +107,7 @@
                                 <a class="nav-link" href="" id="leaderboard-tab">LeaderBoard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" id="setting-tab">Settings</a>
+                                <a class="nav-link" href="" id="settings-tab">Settings</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="" id="forum-tab">Forum</a>
@@ -121,7 +122,7 @@
             </nav>
 
 
-            <div class="row gutters-sm" style="margin-top: 7em;" id="Total-Container">
+            <div class="row gutters-sm" style="margin-top: 10em;" id="Total-Container">
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
@@ -168,11 +169,8 @@
                                 <span class="text-secondary" id="naukari-link"></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                    </svg> Linkedin</h6>
+                                <h6 class="mb-0"><i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    Linkedin</h6>
                                 <span class="text-secondary" id="linkedin-link"></span>
                             </li>
                             <!-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -332,6 +330,51 @@
                     width="100%" height="800"></iframe>
             </div>
 
+            <!-- setings tab -->
+
+            <div id="settings-Container">
+                <div class="settings-content">
+                    <div class="theme-settings">
+                        <button id="settingsButton" class="settings-icon">
+                            Change Theme
+                        </button>
+                        <div id="themeIcon" class="theme-option">
+                            <img src="airplane-mode.png" alt="Theme Icon" width="24" height="24">
+                        </div>
+                    </div>
+                    <div class="password-settings">
+                        <button id="changepassword">Change Password</button>
+                    </div>
+
+                    <!-- Modal for Changing Password -->
+                    <div id="changePasswordModal" class="modal-pass">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <form id="changePasswordForm">
+                                <label for="oldPassword">Old Password:</label>
+                                <input type="password" id="oldPassword" required><br><br>
+                                <label for="newPassword">New Password:</label>
+                                <input type="password" id="newPassword" required><br><br>
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <!-- Modal HTML -->
+            <div id="alertModal" class="modal">
+                <div class="modal-content">
+                    <p id="alertMessage"></p>
+                    <button id="alertOkButton">OK</button>
+                </div>
+            </div>
+
+
+            <!-- wastte code -->
             <main class="main-content" style="display:none">
                 <section id="profile" class="content active">
                     <nav>
@@ -380,13 +423,7 @@
     </div>
 
 
-    <!-- Modal HTML -->
-    <div id="alertModal" class="modal">
-        <div class="modal-content">
-            <p id="alertMessage"></p>
-            <button id="alertOkButton">OK</button>
-        </div>
-    </div>
+
 
 
     <script type="module">
@@ -408,6 +445,8 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
         const storage = getStorage(app);
+        //const auth = firebase.auth(app); 
+
 
         const authFormContainer = document.getElementById("authFormContainer");
         const profileContainer = document.getElementById("profileContainer");
@@ -559,6 +598,72 @@
                 }
             });
         }
+
+        // Get the modal
+        const modal = document.getElementById("changePasswordModal");
+
+        // Get the button that opens the modal
+        const btn = document.getElementById("changepassword");
+
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Handle the form submission for changing password
+        document.getElementById("changePasswordForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            console.log("Form submitted"); // Debugging line
+
+            const oldPassword = document.getElementById("oldPassword").value;
+            const newPassword = document.getElementById("newPassword").value;
+
+            console.log("Old Password:", oldPassword); // Debugging line
+            console.log("New Password:", newPassword); // Debugging line
+
+            // Re-authenticate the user
+            const user = auth.currentUser;
+            if (user) {
+                const credential = firebase.auth.EmailAuthProvider.credential(
+                    user.email,
+                    oldPassword
+                );
+
+                user.reauthenticateWithCredential(credential).then(function () {
+                    // User successfully re-authenticated.
+                    user.updatePassword(newPassword).then(function () {
+                        alert("Password updated successfully!");
+                        modal.style.display = "none";
+                    }).catch(function (error) {
+                        // An error occurred
+                        console.error("Error updating password:", error.message); // Debugging line
+                        alert("Error updating password: " + error.message);
+                    });
+                }).catch(function (error) {
+                    // An error occurred
+                    console.error("Re-authentication failed:", error.message); // Debugging line
+                    alert("Re-authentication failed: " + error.message);
+                });
+            } else {
+                alert("No user is currently logged in.");
+            }
+        });
 
         // Function to show profile with correct editing rules
         function showProfile(userData) {
@@ -738,13 +843,13 @@
         document.getElementById('profile-tab').addEventListener('click', function (event) {
             event.preventDefault(); // Prevent the default anchor behavior
             document.getElementById('Total-Container').style.display = 'flex';
-            document.getElementById('profile-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
-
+            document.getElementById('profile-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
             // Hide the profile section
+            document.getElementById('settings-tab').style.backgroundImage = 'none';
+            document.getElementById('placements-tab').style.backgroundImage = 'none';
             document.getElementById('iframe-container').style.display = 'none';
-            document.getElementById('leaderboard-tab').style.display = 'none';
-            document.getElementById('placements-tab').style.backgroundImage = ' none';
-            document.getElementById('profile-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+            document.getElementById('settings-Container').style.display = 'none';
+            document.getElementById('profile-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
             // Show the iframe container
         });
 
@@ -755,21 +860,37 @@
         document.getElementById('placements-tab').addEventListener('click', function (event) {
             event.preventDefault(); // Prevent the default anchor behavior
             document.getElementById('iframe-container').style.display = 'block';
-            document.getElementById('placements-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+            document.getElementById('placements-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
             // Hide the profile section
             document.getElementById('Total-Container').style.display = 'none';
-            document.getElementById('leaderboard-tab').style.display = 'none';
-            document.getElementById('profile-tab').style.backgroundImage = ' none';
-            document.getElementById('placements-tab').style.backgroundImage = ' linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+            document.getElementById('settings-Container').style.display = 'none';
+            document.getElementById('profile-tab').style.backgroundImage = 'none';
+            document.getElementById('settings-tab').style.backgroundImage = 'none';
+            document.getElementById('placements-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
 
 
             // Show the iframe container
         });
 
     </script>
+    <!-- JavaScript to  handle settings tab -->
 
+    <script>
+        document.getElementById('settings-tab').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.getElementById('settings-Container').style.display = 'flex';
+            document.getElementById('settings-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
 
+            // Hide the profile section
+            document.getElementById('iframe-container').style.display = 'none';
+            document.getElementById('Total-Container').style.display = 'none';
+            document.getElementById('placements-tab').style.backgroundImage = 'none';
+            document.getElementById('profile-tab').style.backgroundImage = 'none';
+            document.getElementById('settings-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
+            // Show the iframe container
+        });
 
+    </script>
     <!-- JavaScript to handle Leader board SECTIONS -->
 
     <script>
@@ -782,6 +903,33 @@
 
             // Show the iframe container
         });
+
+    </script>
+
+
+    <script>
+        // Show/hide settings menu
+        document.getElementById('settingsButton').addEventListener('click', function () {
+            document.getElementById('settingsMenu').classList.toggle('hidden');
+        });
+
+        // Toggle theme when theme option is clicked
+        document.getElementById('themeIcon').addEventListener('click', function () {
+            document.body.classList.toggle('dark-theme');
+            document.getElementById('settingsMenu').classList.toggle('dark-theme');
+        });
+
+
+        document.getElementById('toggleTheme').addEventListener('click', function () {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
+
+
+    <!-- change password -->
+
+
+    <script>
 
     </script>
 </body>
