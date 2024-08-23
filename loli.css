@@ -190,3 +190,21 @@ h2 {
         opacity: 1;
     }
 }
+
+/* nav items */
+.nav-item a {
+    border-radius: 20px;
+    transform: scale(1.1);
+
+    transition: .5s;
+    margin: 1em;
+    padding: 5px 10px;
+    font-weight: bolder;
+    color: navy;
+}
+
+.nav-item a:hover {
+    border-radius: 20px;
+    transform: scale(1.1);
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
