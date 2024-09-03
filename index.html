@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> PROGMASTER PRIVATE LIMITED INTERN PORTAL</title>
-    <link rel="icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png" type="image/jpg" sizes="16x16">
+    <title>PROGMASTER PVT LTD LMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -14,8 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
 
+        <link rel="icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png" type="image/jpg" sizes="16x16">
 </head>
 
 <body>
@@ -31,7 +30,7 @@
                     <span>Intern ID</span>
                 </div>
                 <div class="inputbox" required>
-                    <input type="password" id="password">
+                    <input type="password" id="password" required>
                     <span>Password</span>
                 </div>
                 <div class="inputbox hidden" id="nameInput" required>
@@ -55,10 +54,15 @@
                     <input type="text" id="skills" value="Java">
                     <span>Technical Skills</span>
                 </div>
-                <!-- <div class="inputbox hidden" id="webInput">
-                    <input type="text" id="Website" value="www.com">
-                    <span>Website</span>
-                </div>  -->
+                <div class="inputbox hidden" id="yearofpassingInput">
+                    <input type="text" id="YOP" value="2024">
+                    <span>Year Of Passing</span>
+                </div>
+                <div class="inputbox hidden" id="joningInput" required>
+                    <input type="date" id="joning" value="2024-09-01">
+                    <span>Date Of Joning</span>
+                </div>
+
                 <div class="inputbox hidden" id="githubInput">
                     <input type="text" id="github" value="www.com">
                     <span>Github Link</span>
@@ -71,16 +75,14 @@
                     <input type="text" id="linkedin" value="www.com">
                     <span>Linkedin Link</span>
                 </div>
-                <div class="inputbox hidden" id="yearofpassingInput">
-                    <input type="text" id="YOP" value="2024">
-                    <span>Year Of Passing</span>
-                </div>
-                <div class="inputbox hidden" id="joningInput" required>
-                    <input type="date" id="joning" value="2024-09-01">
-                    <span>Date Of Joning</span>
+
+                <div class="inputbox hidden" id="classURL" required>
+                    <input type="url" id="websiteUrl" name="websiteUrl">
+                    <span>URL</span>
                 </div>
 
                 <input type="submit" value="Login" class="sub" id="submit">
+                <button type="button" id="toggleForm">Switch to Registration</button>
             </form>
         </div>
 
@@ -97,32 +99,69 @@
                     </button>
                     <div class="collapse navbar-collapse" id="mynavbar">
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="" id="profile-tab">Profile</a>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link Disable" href="" id="profile-tab">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" id="placements-tab">Placements</a>
+                                <a class="nav-link Disable" href="" id="placements-tab">Placements</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" id="leaderboard-tab">LeaderBoard</a>
+                                <a class="nav-link Disable" href="" id="leaderboard-tab">LeaderBoard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" id="settings-tab">Settings</a>
+                                <a class="nav-link Disable" href="" id="settings-tab">Settings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" id="forum-tab">Forum</a>
+                                <a class="nav-link Disable" href="" id="forum-tab">Forum</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a href="#" id="joinClassButton">Join Class</a>
                             </li>
                         </ul>
-                        <form class="d-flex">
+                        <!-- <form class="d-flex">
                             <input class="form-control me-2" type="text" placeholder="Search">
                             <button class="btn btn-primary" type="button">Search</button>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </nav>
 
+            <!-- meetings deatils -->
+            <div id="meetingDetails" class="meeting-details hidden">
+                <h2 class="meeting-title">Meeting Details</h2>
+                <div class="meeting-info">
+                    <div class="info-item">
+                        <i class="fa fa-clock icon"></i>
+                        <span class="info-label">Meeting Timings:</span>
+                        <span class="info-value">7pm to 8pm</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa fa-calendar icon"></i>
+                        <span class="info-label">Daily Date:</span>
+                        <span class="info-value">03-09-2024</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa fa-laptop icon"></i>
+                        <span class="info-label">Domain:</span>
+                        <span class="info-value">Java Full Stack</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa fa-info-circle icon"></i>
+                        <span class="info-label">Description:</span>
+                        <p class="info-value">Progmaster Pvt. Ltd. offers hands-on experience to students, bridging the
+                            gap between theory and practice. Their programs focus on real-world applications, equipping
+                            students with practical skills and industry-relevant knowledge for career success.
+                        </p>
+                    </div>
+                    <div class="meeting-button">
+                        <li style="list-style: none;">
+                            <a href="#" id="joinClassLink" target="_blank" class="btn btn-primary">Join Meeting Now</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
 
-            <div class="row gutters-sm" style="margin-top: 10em;" id="Total-Container">
+            <div class="row gutters-sm" id="total-card">
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
@@ -257,30 +296,30 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h6 class="d-flex align-items-center mb-3"><i
-                                            class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                                    <small>Web Design</small>
+                                            class="material-icons text-info mr-2">assignment </i> Status</h6>
+                                    <small>Week-1</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <small>Website Markup</small>
+                                    <small>Week-2</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <small>One Page</small>
+                                    <small>Week-3</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <small>Mobile Template</small>
+                                    <small>Week-4</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <small>Backend API</small>
+                                    <small>Week-5</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -290,30 +329,30 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h6 class="d-flex align-items-center mb-3"><i
-                                            class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                                            class="material-icons text-info mr-2">Project </i> Status</h6>
                                     <small>Web Design</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <small>Website Markup</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <small>One Page</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <small>Mobile Template</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <small>Backend API</small>
                                     <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%"
                                             aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -323,58 +362,6 @@
                 </div>
             </div>
 
-            <!-- Hidden Div for iframe -- palcements -->
-            <div id="iframe-container" style="display: none;">
-                <iframe
-                    src="https://optimhire.com/d/Search-job-iframe?ref_code=purushotham-kandheri-1323559&skill=&positions=&dark_color=587ed0&light_color=3b74e8"
-                    width="100%" height="800"></iframe>
-            </div>
-
-            <!-- setings tab -->
-
-            <div id="settings-Container">
-                <div class="settings-content">
-                    <div class="theme-settings">
-                        <button id="settingsButton" class="settings-icon">
-                            Change Theme
-                        </button>
-                        <div id="themeIcon" class="theme-option">
-                            <img src="airplane-mode.png" alt="Theme Icon" width="24" height="24">
-                        </div>
-                    </div>
-                    <div class="password-settings">
-                        <button id="changepassword">Change Password</button>
-                    </div>
-
-                    <!-- Modal for Changing Password -->
-                    <div id="changePasswordModal" class="modal-pass">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <form id="changePasswordForm">
-                                <label for="oldPassword">Old Password:</label>
-                                <input type="password" id="oldPassword" required><br><br>
-                                <label for="newPassword">New Password:</label>
-                                <input type="password" id="newPassword" required><br><br>
-                                <button type="submit">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-
-
-            <!-- Modal HTML -->
-            <div id="alertModal" class="modal">
-                <div class="modal-content">
-                    <p id="alertMessage"></p>
-                    <button id="alertOkButton">OK</button>
-                </div>
-            </div>
-
-
-            <!-- wastte code -->
             <main class="main-content" style="display:none">
                 <section id="profile" class="content active">
                     <nav>
@@ -418,12 +405,25 @@
                     <input type="file" id="photoUpload" class="hidden">
 
                 </section>
+
+                <!-- Hidden Div for iframe -- palcements -->
+                <div id="iframe-container" style="display: none;">
+                    <iframe
+                        src="https://optimhire.com/d/Search-job-iframe?ref_code=purushotham-kandheri-1323559&skill=&positions=&dark_color=3f73ee&light_color=3b74e8"
+                        width="100%" height="800"></iframe>
+                </div>
             </main>
         </div>
     </div>
 
 
-
+    <!-- Modal HTML -->
+    <div id="alertModal" class="modal">
+        <div class="modal-content">
+            <p id="alertMessage"></p>
+            <button id="alertOkButton">OK</button>
+        </div>
+    </div>
 
 
     <script type="module">
@@ -445,8 +445,6 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
         const storage = getStorage(app);
-        //const auth = firebase.auth(app); 
-
 
         const authFormContainer = document.getElementById("authFormContainer");
         const profileContainer = document.getElementById("profileContainer");
@@ -513,6 +511,7 @@
                 document.getElementById("joningInput").classList.add("hidden");
                 document.getElementById("skillsInput").classList.add("hidden");
                 document.getElementById("yearofpassingInput").classList.add("hidden");
+                document.getElementById("classURL").classList.add("hidden");
                 document.getElementById("githubInput").classList.add("hidden");
                 document.getElementById("nakuriInput").classList.add("hidden");
                 document.getElementById("linkedinInput").classList.add("hidden");
@@ -527,6 +526,7 @@
                 document.getElementById("joningInput").classList.remove("hidden");
                 document.getElementById("skillsInput").classList.remove("hidden");
                 document.getElementById("yearofpassingInput").classList.remove("hidden");
+                document.getElementById("classURL").classList.remove("hidden");
                 document.getElementById("githubInput").classList.remove("hidden");
                 document.getElementById("nakuriInput").classList.remove("hidden");
                 document.getElementById("linkedinInput").classList.remove("hidden");
@@ -545,6 +545,10 @@
                     if (userData.password === password) {
                         showProfile(userData);
                         showModal(`${internId} Login Successfully`);
+                        // Update the anchor tag with the URL stored in Firebase
+                        if (userData.websiteUrl) {
+                            document.getElementById("joinClassLink").href = userData.websiteUrl;
+                        }
                     } else {
                         showModal(`Incorrect Password`);
                     }
@@ -569,12 +573,15 @@
             const github = document.getElementById("github").value;
             const naukari = document.getElementById("naukari").value;
             const linkedin = document.getElementById("linkedin").value;
+            const websiteUrl = document.getElementById("websiteUrl").value; // Retrieve the URL from the input
 
             const dbRef = ref(database);
+
             get(child(dbRef, `users/${internId}`)).then((snapshot) => {
                 if (snapshot.exists()) {
                     showModal(`User ID ${internId} already exists`);
                 } else {
+                    // Store the URL in Firebase
                     set(ref(database, 'users/' + internId), {
                         internId: internId,
                         name: name,
@@ -585,85 +592,24 @@
                         joning: joning,
                         skills: skills,
                         YOP: YOP,
+                        photoUrl: "https://media4.giphy.com/media/zpf2yGvLyLokwd1SWG/200w.gif?cid=6c09b952h7tt89fxsrmhitvybixgeqn7lo9ald9zbdey9cxy&ep=v1_gifs_search&rid=200w.gif&ct=g",
+                        websiteUrl: websiteUrl, // Store the URL in Firebase,
                         github: github,
                         naukari: naukari,
                         linkedin: linkedin,
-                        photoUrl: "https://media4.giphy.com/media/zpf2yGvLyLokwd1SWG/200w.gif?cid=6c09b952h7tt89fxsrmhitvybixgeqn7lo9ald9zbdey9cxy&ep=v1_gifs_search&rid=200w.gif&ct=g"
                     }).then(() => {
                         showModal(`Registration Successful`);
                         resetForm();
+
+                        // Update the anchor tag with the URL
+                        // After successful registration and URL storage in Firebase
+                        document.getElementById("joinClassLink").href = websiteUrl;
                     }).catch((error) => {
                         showModal(`Error: ${error.message}`);
                     });
                 }
             });
         }
-
-        // Get the modal
-        const modal = document.getElementById("changePasswordModal");
-
-        // Get the button that opens the modal
-        const btn = document.getElementById("changepassword");
-
-        // Get the <span> element that closes the modal
-        const span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Handle the form submission for changing password
-        document.getElementById("changePasswordForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            console.log("Form submitted"); // Debugging line
-
-            const oldPassword = document.getElementById("oldPassword").value;
-            const newPassword = document.getElementById("newPassword").value;
-
-            console.log("Old Password:", oldPassword); // Debugging line
-            console.log("New Password:", newPassword); // Debugging line
-
-            // Re-authenticate the user
-            const user = auth.currentUser;
-            if (user) {
-                const credential = firebase.auth.EmailAuthProvider.credential(
-                    user.email,
-                    oldPassword
-                );
-
-                user.reauthenticateWithCredential(credential).then(function () {
-                    // User successfully re-authenticated.
-                    user.updatePassword(newPassword).then(function () {
-                        alert("Password updated successfully!");
-                        modal.style.display = "none";
-                    }).catch(function (error) {
-                        // An error occurred
-                        console.error("Error updating password:", error.message); // Debugging line
-                        alert("Error updating password: " + error.message);
-                    });
-                }).catch(function (error) {
-                    // An error occurred
-                    console.error("Re-authentication failed:", error.message); // Debugging line
-                    alert("Re-authentication failed: " + error.message);
-                });
-            } else {
-                alert("No user is currently logged in.");
-            }
-        });
 
         // Function to show profile with correct editing rules
         function showProfile(userData) {
@@ -683,7 +629,6 @@
             document.getElementById("linkedin-link").innerText = userData.linkedin;
             document.getElementById("profilePicture").src = userData.photoUrl;
         }
-
         // Function to enable editing, but restrict editing of `Intern ID`
         function enableEditing(enable) {
             document.getElementById("edit").classList.toggle("hidden", enable);
@@ -701,7 +646,6 @@
                 element.style.fontWeight = enable ? "700" : "none";
             });
         }
-
         // Function to update the profile information in the database
         function updateProfile() {
             const internId = document.getElementById("profileInternId").innerText; // Don't change this
@@ -725,6 +669,8 @@
                 showModal(`Error: ${error.message}`);
             });
         }
+
+
 
 
         function logout() {
@@ -837,99 +783,214 @@
         document.querySelector('.average-progress .progress-label').textContent = `Overall Progress: ${averageProgress}%`;
     </script>
 
-    <!-- JavaScript to handle PROFILE SECTIONS -->
+    <!-- this is for settings -->
+    <script>
+        function showSection(sectionId) {
+            // Add your section showing logic here
+        }
+
+        function openThemeModal() {
+            document.getElementById('themeModal').style.display = 'block';
+        }
+
+        function closeThemeModal() {
+            document.getElementById('themeModal').style.display = 'none';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.className = theme;
+            // Optionally save the theme preference to localStorage
+            localStorage.setItem('theme', theme);
+            closeThemeModal();
+        }
+
+        // Load saved theme from localStorage
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.className = savedTheme;
+            }
+        });
+
+    </script>
+
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            // Load the stored theme from localStorage
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                document.documentElement.setAttribute('data-theme', storedTheme);
+            }
+
+            // Theme toggle event listener
+            document.getElementById('theme-toggle').addEventListener('change', (event) => {
+                const selectedTheme = event.target.value;
+                document.documentElement.setAttribute('data-theme', selectedTheme);
+                localStorage.setItem('theme', selectedTheme);
+            });
+        });
+    </script>
+
 
     <script>
-        document.getElementById('profile-tab').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default anchor behavior
-            document.getElementById('Total-Container').style.display = 'flex';
-            document.getElementById('profile-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
-            // Hide the profile section
-            document.getElementById('settings-tab').style.backgroundImage = 'none';
-            document.getElementById('placements-tab').style.backgroundImage = 'none';
-            document.getElementById('iframe-container').style.display = 'none';
-            document.getElementById('settings-Container').style.display = 'none';
-            document.getElementById('profile-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
-            // Show the iframe container
+        // Function to open the theme popup
+        function openThemeModal() {
+            document.querySelector('.theme-overlay').style.display = 'block';
+            document.querySelector('.theme-popup').style.display = 'block';
+            document.body.classList.add('no-scroll'); // Disable body scrolling
+        }
+
+        // Function to close the theme popup
+        function closeThemeModal() {
+            document.querySelector('.theme-overlay').style.display = 'none';
+            document.querySelector('.theme-popup').style.display = 'none';
+            document.body.classList.remove('no-scroll'); // Enable body scrolling
+        }
+
+        // Attach the event listeners to the buttons
+        document.querySelector('.open-popup-btn').addEventListener('click', openThemeModal);
+        document.querySelector('.theme-overlay').addEventListener('click', closeThemeModal);
+        document.querySelector('.theme-popup .close').addEventListener('click', closeThemeModal);
+
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const overlay = document.querySelector('.theme-overlay');
+            const themePopup = document.querySelector('.theme-popup');
+            const body = document.body;
+
+            themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const themeClass = option.getAttribute('data-theme');
+                    body.classList.forEach(cls => {
+                        if (cls.startsWith('theme-')) {
+                            body.classList.remove(cls);
+                        }
+                    });
+                    body.classList.add(themeClass);
+                    themePopup.style.display = 'none';
+                    overlay.style.display = 'none';
+                    body.classList.remove('no-scroll');
+                });
+            });
+
+            document.querySelector('.theme-button').addEventListener('click', () => {
+                overlay.style.display = 'block';
+                themePopup.style.display = 'block';
+                body.classList.add('no-scroll');
+            });
+
+            document.querySelector('.theme-overlay').addEventListener('click', () => {
+                themePopup.style.display = 'none';
+                overlay.style.display = 'none';
+                body.classList.remove('no-scroll');
+            });
         });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeOptions = document.querySelectorAll('.theme-option');
+            const overlay = document.querySelector('.theme-overlay');
+            const themePopup = document.querySelector('.theme-popup');
+            const body = document.body;
+
+            themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const themeClass = option.getAttribute('data-theme');
+
+                    // Remove any existing theme classes
+                    body.classList.forEach(cls => {
+                        if (cls.startsWith('theme-')) {
+                            body.classList.remove(cls);
+                        }
+                    });
+
+                    // Add the selected theme class
+                    body.classList.add(themeClass);
+
+                    // Hide the popup and overlay
+                    themePopup.style.display = 'none';
+                    overlay.style.display = 'none';
+                    body.classList.remove('no-scroll');
+                });
+            });
+
+            document.querySelector('.theme-button').addEventListener('click', () => {
+                overlay.style.display = 'block';
+                themePopup.style.display = 'block';
+                body.classList.add('no-scroll');
+            });
+
+            document.querySelector('.theme-overlay').addEventListener('click', () => {
+                themePopup.style.display = 'none';
+                overlay.style.display = 'none';
+                body.classList.remove('no-scroll');
+            });
+        });
+        function toggleTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+        }
 
     </script>
 
     <!-- JavaScript to handle PLACEMEMTS -->
     <script>
-        document.getElementById('placements-tab').addEventListener('click', function (event) {
+        document.getElementById('placements-btn').addEventListener('click', function (event) {
             event.preventDefault(); // Prevent the default anchor behavior
             document.getElementById('iframe-container').style.display = 'block';
-            document.getElementById('placements-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
             // Hide the profile section
-            document.getElementById('Total-Container').style.display = 'none';
-            document.getElementById('settings-Container').style.display = 'none';
-            document.getElementById('profile-tab').style.backgroundImage = 'none';
-            document.getElementById('settings-tab').style.backgroundImage = 'none';
-            document.getElementById('placements-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
-
-
-            // Show the iframe container
-        });
-
-    </script>
-    <!-- JavaScript to  handle settings tab -->
-
-    <script>
-        document.getElementById('settings-tab').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default anchor behavior
-            document.getElementById('settings-Container').style.display = 'flex';
-            document.getElementById('settings-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
-
-            // Hide the profile section
-            document.getElementById('iframe-container').style.display = 'none';
-            document.getElementById('Total-Container').style.display = 'none';
-            document.getElementById('placements-tab').style.backgroundImage = 'none';
-            document.getElementById('profile-tab').style.backgroundImage = 'none';
-            document.getElementById('settings-tab').style.backgroundImage = 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)';
-            // Show the iframe container
-        });
-
-    </script>
-    <!-- JavaScript to handle Leader board SECTIONS -->
-
-    <script>
-        document.getElementById('leader-board').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default anchor behavior
-            document.getElementById('leaderboard').style.display = 'block';
-            // Hide the profile section
-            document.getElementById('iframe-container').style.display = 'none';
             document.getElementById('profile').style.display = 'none';
+            document.getElementById('leaderboard').style.display = 'none';
 
             // Show the iframe container
         });
 
     </script>
 
+    <!-- JavaScript to handle PROFILE SECTIONS -->
 
     <script>
-        // Show/hide settings menu
-        document.getElementById('settingsButton').addEventListener('click', function () {
-            document.getElementById('settingsMenu').classList.toggle('hidden');
+        document.getElementById('profile-section').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.getElementById('profile').style.display = 'block';
+            // Hide the profile section
+            document.getElementById('iframe-container').style.display = 'none';
+            document.getElementById('leaderboard').style.display = 'none';
+
+            // Show the iframe container
         });
 
-        // Toggle theme when theme option is clicked
-        document.getElementById('themeIcon').addEventListener('click', function () {
-            document.body.classList.toggle('dark-theme');
-            document.getElementById('settingsMenu').classList.toggle('dark-theme');
-        });
-
-
-        document.getElementById('toggleTheme').addEventListener('click', function () {
-            document.body.classList.toggle('dark-theme');
-        });
     </script>
 
-
-    <!-- change password -->
-
+    <!-- JavaScript to handle MEETING DEATAILS -->
 
     <script>
+        document.getElementById('joinClassButton').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.getElementById('meetingDetails').style.display = 'block';
+            joinClassButton.innerText = "Exit Class";
+            // Hide the profile section
+            document.getElementById('total-card').style.display = 'none';
+        });
+
+    </script>
+
+    <!-- to disable the button  -->
+    <script>
+        document.querySelectorAll('.nav-link.Disable').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default action (navigation)
+                e.stopPropagation(); // Stop event from propagating
+            });
+        });
 
     </script>
 </body>
