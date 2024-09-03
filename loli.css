@@ -208,3 +208,102 @@ h2 {
     transform: scale(1.1);
     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
+
+/* disable the buttons */
+
+.nav-link .Disable {
+    pointer-events: none;
+    color: gray; /* Optional: Change text color to indicate it's disabled */
+    cursor: default; /* Optional: Change cursor to indicate it's not clickable */
+}
+
+
+/* meetings destial */
+
+
+.hidden {
+    display: none;
+}
+
+.meeting-details {
+    background: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    max-width: 800px; /* Set a max-width for larger screens */
+    margin: 20px auto; /* Center the div horizontally */
+    margin-top: 10em;
+}
+
+.meeting-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.meeting-info {
+    font-size: 18px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.info-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.info-value {
+    color: #555;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .nav-link {
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .meeting-details {
+        padding: 15px;
+        margin: 10px;
+        margin-top: 15em;
+
+    }
+
+    .meeting-title {
+        font-size: 20px;
+    }
+
+    .info-item {
+        flex-direction: column; /* Stack label and value vertically */
+        align-items: flex-start;
+    }
+
+    .icon {
+        margin-right: 0;
+        margin-bottom: 5px; /* Space between icon and text */
+    }
+}
