@@ -14,7 +14,8 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png" type="image/jpg" sizes="16x16">
+    <link rel="icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png" type="image/jpg"
+        sizes="16x16">
 </head>
 
 <body>
@@ -80,7 +81,7 @@
                     <input type="url" id="websiteUrl" name="websiteUrl" value="https://meet.google.com/inz-yqwu-fiw">
                     <span>URL</span>
                 </div>
-       
+
                 <input type="submit" value="Login" class="sub" id="submit">
                 <button type="button" id="toggleForm">Switch to Registration</button>
             </form>
@@ -90,7 +91,7 @@
 
     <div class="profile hidden" id="profileContainer">
         <div class="main-body">
-            <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+            <nav class="navbar navbar-expand-sm navbar-light fixed-top">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="javascript:void(0)"><img class="login-logo"
                             src="https://progmaster.in/another-broucher-logo-removebg-preview.png" alt=""> </a>
@@ -114,8 +115,8 @@
                             <li class="nav-item">
                                 <a class="nav-link Disable" href="" id="forum-tab">Forum</a>
                             </li> -->
-                            <li class="nav-item">
-                                <a href="#" id="joinClassButton">Join Class</a>
+                            <li class="nav-item" id="meet-btn">
+                                <a href="#" class="btn btn-outline-primary" id="joinClassButton">Join Class</a>
                             </li>
                         </ul>
                         <!-- <form class="d-flex">
@@ -170,8 +171,8 @@
                                     src="https://media4.giphy.com/media/zpf2yGvLyLokwd1SWG/200w.gif?cid=6c09b952h7tt89fxsrmhitvybixgeqn7lo9ald9zbdey9cxy&ep=v1_gifs_search&rid=200w.gif&ct=g"
                                     alt="Profile Picture" style="border-radius: 50%; width: 150px; height: 150px;">
                                 <div class="mt-3">
-                                    <p class="text-secondary mb-1">Application Developer</p>
-                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                    <p class="text-secondary mb-1">Intern</p>
+                                    <!-- <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> -->
                                     <button id="editPhoto" class="btn btn-outline-primary">Change Photo</button>
                                     <button class="btn btn-outline-primary"
                                         style="padding: 7px 20px; margin-bottom:10px;" id="edit">Edit</button>
@@ -975,11 +976,24 @@
     <script>
         document.getElementById('joinClassButton').addEventListener('click', function (event) {
             event.preventDefault(); // Prevent the default anchor behavior
-            document.getElementById('meetingDetails').style.display = 'block';
-            joinClassButton.innerText = "Exit Class";
-            // Hide the profile section
-            document.getElementById('total-card').style.display = 'none';
+
+            const meetingDetails = document.getElementById('meetingDetails');
+            const totalCard = document.getElementById('total-card');
+            const joinClassButton = document.getElementById('joinClassButton');
+
+            if (meetingDetails.style.display === 'block') {
+                // If meeting details are visible, hide them and show the total-card
+                meetingDetails.style.display = 'none';
+                totalCard.style.display = 'flex';
+                joinClassButton.innerText = 'Join Class';
+            } else {
+                // If meeting details are hidden, show them and hide the total-card
+                meetingDetails.style.display = 'block';
+                totalCard.style.display = 'none';
+                joinClassButton.innerText = 'Exit Class';
+            }
         });
+
 
     </script>
 
