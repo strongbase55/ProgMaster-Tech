@@ -276,11 +276,15 @@ h2 {
     to {
         opacity: 1;
     }
+}   #total-card{
+    margin-top: 7em;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
-
+    #total-card{
+        margin-top: 10em;
+    }
     .nav-link {
         display: block;
         padding: 10px;
