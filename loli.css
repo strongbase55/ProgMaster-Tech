@@ -213,8 +213,10 @@ h2 {
 
 .nav-link .Disable {
     pointer-events: none;
-    color: gray; /* Optional: Change text color to indicate it's disabled */
-    cursor: default; /* Optional: Change cursor to indicate it's not clickable */
+    color: gray;
+    /* Optional: Change text color to indicate it's disabled */
+    cursor: default;
+    /* Optional: Change cursor to indicate it's not clickable */
 }
 
 
@@ -232,8 +234,10 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease-in-out;
-    max-width: 800px; /* Set a max-width for larger screens */
-    margin: 20px auto; /* Center the div horizontally */
+    max-width: 800px;
+    /* Set a max-width for larger screens */
+    margin: 20px auto;
+    /* Center the div horizontally */
     margin-top: 10em;
 }
 
@@ -251,7 +255,8 @@ h2 {
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
 }
 
 .icon {
@@ -273,18 +278,22 @@ h2 {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
-}   #total-card{
+}
+
+#total-card {
     margin-top: 7em;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    #total-card{
+    #total-card {
         margin-top: 10em;
     }
+
     .nav-link {
         display: block;
         padding: 10px;
@@ -303,13 +312,31 @@ h2 {
     }
 
     .info-item {
-        flex-direction: column; /* Stack label and value vertically */
+        flex-direction: column;
+        /* Stack label and value vertically */
         align-items: flex-start;
     }
 
     .icon {
         margin-right: 0;
-        margin-bottom: 5px; /* Space between icon and text */
+        margin-bottom: 5px;
+        /* Space between icon and text */
     }
 }
 
+
+
+#meet-btn {
+    position: absolute;
+    float: right;
+    right: 1em;
+    top: 1em;
+}
+
+@media (max-width:768px) {
+    #meet-btn {
+        position: relative;
+     
+    }
+
+}
