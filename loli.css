@@ -280,9 +280,7 @@ h2 {
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    #total-card{
-        margin-top: 10em;
-    }
+
     .nav-link {
         display: block;
         padding: 10px;
