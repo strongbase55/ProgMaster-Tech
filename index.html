@@ -28,12 +28,16 @@
         }
 
         .meeting-card {
-            max-width: 250px;
-            min-height: 200px;
+            max-width: 300px;
+            min-height: 180px;
             background: #000;
             color: wheat;
-            padding: 5px;
-            border-radius: 20px;display: flex;align-items: center;justify-content: center;flex-direction: column;
+            padding: 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
         }
     </style>
 </head>
@@ -221,7 +225,8 @@
                                 <span class="info-value">AWS & DevOps</span>
                             </div>
                         </div>
-                    </div><br> <hr>
+                    </div><br>
+                    <hr>
                     <div class="info-item">
                         <i class="fa fa-info-circle icon"></i>
                         <span class="info-label">Description:</span>
@@ -1084,30 +1089,30 @@
 
     </script>
 
-<!-- dayly date -->
-<script>
-    function updateDate() {
-    const dateElement1 = document.getElementById('dynamic-date1');
-    const dateElement2 = document.getElementById('dynamic-date2');
-    const dateElement3 = document.getElementById('dynamic-date3');
-    const dateElement4 = document.getElementById('dynamic-date4');
-    const today = new Date();
+    <!-- dayly date -->
+    <script>
+        function updateDate() {
+            const dateElement1 = document.getElementById('dynamic-date1');
+            const dateElement2 = document.getElementById('dynamic-date2');
+            const dateElement3 = document.getElementById('dynamic-date3');
+            const dateElement4 = document.getElementById('dynamic-date4');
+            const today = new Date();
 
-    const day = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-    const year = today.getFullYear();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const year = today.getFullYear();
 
-    const formattedDate = `${day}-${month}-${year}`;
-    dateElement1.textContent = formattedDate;
-    dateElement2.textContent = formattedDate;
-    dateElement3.textContent = formattedDate;
-    dateElement4.textContent = formattedDate;
-}
+            const formattedDate = `${day}-${month}-${year}`;
+            dateElement1.textContent = formattedDate;
+            dateElement2.textContent = formattedDate;
+            dateElement3.textContent = formattedDate;
+            dateElement4.textContent = formattedDate;
+        }
 
-// Call the function to update the date when the page loads
-updateDate();
+        // Call the function to update the date when the page loads
+        updateDate();
 
-</script>
+    </script>
 </body>
 
 </html>
