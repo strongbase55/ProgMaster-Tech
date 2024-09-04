@@ -161,13 +161,13 @@
                             </div>
                             <div class="info-item">
                                 <i class="fa fa-calendar icon"></i>
-                                <span class="info-label">Date:</span>
+                                <span class="info-label">Daily Date:</span>
                                 <span class="info-value" id="dynamic-date1"></span>
                             </div>
                             <div class="info-item">
                                 <i class="fa fa-laptop icon"></i>
                                 <span class="info-label">Domain:</span>
-                                <span class="info-value">Java Full Stack</span>
+                                <span class="info-value">Java</span>
                             </div>
                         </div>
                         <div class="meeting-card">
@@ -179,12 +179,12 @@
                             <div class="info-item">
                                 <i class="fa fa-calendar icon"></i>
                                 <span class="info-label">Daily Date:</span>
-                                <span class="info-value">03-09-2024</span>
+                                <span class="info-value" id="dynamic-date2"></span>
                             </div>
                             <div class="info-item">
                                 <i class="fa fa-laptop icon"></i>
                                 <span class="info-label">Domain:</span>
-                                <span class="info-value">Python Full Stack</span>
+                                <span class="info-value">Python</span>
                             </div>
                         </div>
                         <div class="meeting-card">
@@ -196,12 +196,12 @@
                             <div class="info-item">
                                 <i class="fa fa-calendar icon"></i>
                                 <span class="info-label">Daily Date:</span>
-                                <span class="info-value">03-09-2024</span>
+                                <span class="info-value" id="dynamic-date3"></span>
                             </div>
                             <div class="info-item">
                                 <i class="fa fa-laptop icon"></i>
                                 <span class="info-label">Domain:</span>
-                                <span class="info-value">Web Development</span>
+                                <span class="info-value">Web Dev</span>
                             </div>
                         </div>
                         <div class="meeting-card">
@@ -213,7 +213,7 @@
                             <div class="info-item">
                                 <i class="fa fa-calendar icon"></i>
                                 <span class="info-label">Daily Date:</span>
-                                <span class="info-value">03-09-2024</span>
+                                <span class="info-value" id="dynamic-date4"></span>
                             </div>
                             <div class="info-item">
                                 <i class="fa fa-laptop icon"></i>
@@ -221,7 +221,7 @@
                                 <span class="info-value">AWS & DevOps</span>
                             </div>
                         </div>
-                    </div>
+                    </div><br> <hr>
                     <div class="info-item">
                         <i class="fa fa-info-circle icon"></i>
                         <span class="info-label">Description:</span>
@@ -1087,7 +1087,10 @@
 <!-- dayly date -->
 <script>
     function updateDate() {
-    const dateElement = document.getElementById('dynamic-date1');
+    const dateElement1 = document.getElementById('dynamic-date1');
+    const dateElement2 = document.getElementById('dynamic-date2');
+    const dateElement3 = document.getElementById('dynamic-date3');
+    const dateElement4 = document.getElementById('dynamic-date4');
     const today = new Date();
 
     const day = String(today.getDate()).padStart(2, '0');
@@ -1095,7 +1098,10 @@
     const year = today.getFullYear();
 
     const formattedDate = `${day}-${month}-${year}`;
-    dateElement.textContent = formattedDate;
+    dateElement1.textContent = formattedDate;
+    dateElement2.textContent = formattedDate;
+    dateElement3.textContent = formattedDate;
+    dateElement4.textContent = formattedDate;
 }
 
 // Call the function to update the date when the page loads
