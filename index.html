@@ -23,10 +23,17 @@
             align-items: center;
             justify-content: center;
             flex-direction: row;
-            flex-wrap: wrap;gap: 1em;
+            flex-wrap: wrap;
+            gap: 1em;
         }
-        .meeting-card{
-            max-width: 250px;min-height: 200px;background: #000;color: wheat;padding: 5px;border-radius: 20px;
+
+        .meeting-card {
+            max-width: 250px;
+            min-height: 200px;
+            background: #000;
+            color: wheat;
+            padding: 5px;
+            border-radius: 20px;display: flex;align-items: center;justify-content: center;flex-direction: column;
         }
     </style>
 </head>
@@ -154,13 +161,47 @@
                             </div>
                             <div class="info-item">
                                 <i class="fa fa-calendar icon"></i>
+                                <span class="info-label">Date:</span>
+                                <span class="info-value" id="dynamic-date1"></span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa fa-laptop icon"></i>
+                                <span class="info-label">Domain:</span>
+                                <span class="info-value">Java Full Stack</span>
+                            </div>
+                        </div>
+                        <div class="meeting-card">
+                            <div class="info-item">
+                                <i class="fa fa-clock icon"></i>
+                                <span class="info-label">Meeting Timings:</span>
+                                <span class="info-value">9pm to 10pm</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa fa-calendar icon"></i>
                                 <span class="info-label">Daily Date:</span>
                                 <span class="info-value">03-09-2024</span>
                             </div>
                             <div class="info-item">
                                 <i class="fa fa-laptop icon"></i>
                                 <span class="info-label">Domain:</span>
-                                <span class="info-value">Java Full Stack</span>
+                                <span class="info-value">Python Full Stack</span>
+                            </div>
+                        </div>
+                        <div class="meeting-card">
+                            <div class="info-item">
+                                <i class="fa fa-clock icon"></i>
+                                <span class="info-label">Meeting Timings:</span>
+                                <span class="info-value">8pm to 9pm</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa fa-calendar icon"></i>
+                                <span class="info-label">Daily Date:</span>
+                                <span class="info-value">03-09-2024</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fa fa-laptop icon"></i>
+                                <span class="info-label">Domain:</span>
+                                <span class="info-value">Web Development</span>
                             </div>
                         </div>
                         <div class="meeting-card">
@@ -177,24 +218,7 @@
                             <div class="info-item">
                                 <i class="fa fa-laptop icon"></i>
                                 <span class="info-label">Domain:</span>
-                                <span class="info-value">Java Full Stack</span>
-                            </div>
-                        </div>
-                        <div class="meeting-card">
-                            <div class="info-item">
-                                <i class="fa fa-clock icon"></i>
-                                <span class="info-label">Meeting Timings:</span>
-                                <span class="info-value">7pm to 8pm</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fa fa-calendar icon"></i>
-                                <span class="info-label">Daily Date:</span>
-                                <span class="info-value">03-09-2024</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fa fa-laptop icon"></i>
-                                <span class="info-label">Domain:</span>
-                                <span class="info-value">Java Full Stack</span>
+                                <span class="info-value">AWS & DevOps</span>
                             </div>
                         </div>
                     </div>
@@ -1059,6 +1083,25 @@
         });
 
     </script>
+
+<!-- dayly date -->
+<script>
+    function updateDate() {
+    const dateElement = document.getElementById('dynamic-date');
+    const today = new Date();
+
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = today.getFullYear();
+
+    const formattedDate = `${day}-${month}-${year}`;
+    dateElement.textContent = formattedDate;
+}
+
+// Call the function to update the date when the page loads
+updateDate();
+
+</script>
 </body>
 
 </html>
