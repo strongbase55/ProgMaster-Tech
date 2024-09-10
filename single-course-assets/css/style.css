@@ -30984,7 +30984,7 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
     transform: translateX(50%);
     display: flex;
     left: unset;
-    max-width: max-content;
+    max-width: min-content;
 }
 
 .ms-main .single-product .ms-single-product .banner-horizental .slider-pagination-area .swiper-pagination .swiper-pagination-bullet {
