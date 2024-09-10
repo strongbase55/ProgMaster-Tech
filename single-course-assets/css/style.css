@@ -19249,6 +19249,12 @@ nav ul li a {
     position: relative;
 }
 
+@media(max-width:768px) {
+    .single-course-style-three {
+        width: 355px;
+    }
+}
+
 .single-course-style-three:hover .thumbnail img {
     transform: scale(1.1);
 }
@@ -30973,6 +30979,12 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
     width: 100%;
 }
 
+@media(max-width:768px) {
+    .ms-main .single-product .ms-single-product .banner-horizental .swiper .swiper-wrapper .swiper-slide .slider-inner img {
+        width: 300px;
+    }
+}
+
 .ms-main .single-product .ms-single-product .banner-horizental .slider-pagination-area {
     position: relative;
 }
@@ -30984,7 +30996,7 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
     transform: translateX(50%);
     display: flex;
     left: unset;
-    max-width: min-content;
+    max-width: max-content;
 }
 
 .ms-main .single-product .ms-single-product .banner-horizental .slider-pagination-area .swiper-pagination .swiper-pagination-bullet {
