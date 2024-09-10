@@ -7476,6 +7476,15 @@ body::-webkit-scrollbar-thumb:hover {
     display: block !important;
 }
 
+
+/* faq */
+
+@media(max-width:768px) {
+    #rts-faq {
+        margin-top: 2em;
+    }
+}
+
 .rts-faq .title-sec {
     text-align: center;
     font-size: 48px;
