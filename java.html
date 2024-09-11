@@ -27,13 +27,20 @@
 
         .total-content {
             min-height: 100vh;
-            min-width: 100%;
+            max-width: 800px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             flex-wrap: wrap;
             gap: 1em;
+        }
+
+        @media (max-width:768px) {
+            .total-content {
+                max-width: 100%;
+            }
+
         }
 
         body {
