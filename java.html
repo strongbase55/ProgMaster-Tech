@@ -27,7 +27,7 @@
 
         .total-content {
             min-height: 100vh;
-            max-width: 800px;
+            min-width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -44,7 +44,8 @@
             justify-content: center;
             flex-direction: column;
         }
-        .roadmap-container{
+
+        .roadmap-container {
             min-height: 100vh;
             max-width: 100%;
             display: flex;
@@ -2513,67 +2514,6 @@
 
     <!-- Assignments Script -->
 
-
-
-    <div id="assignments-container"></div>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var navbarLinks = document.querySelectorAll('.navbar-link');
-
-            navbarLinks.forEach(function (navbarLink) {
-                navbarLink.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    var daysList = this.nextElementSibling;
-                    if (daysList.style.display === "block") {
-                        daysList.style.display = "none";
-                    } else {
-                        daysList.style.display = "block";
-                    }
-
-                });
-            });
-        });
-    </script>
-
-    <script>
-        function Assignment() {
-            var assignmentCard = document.getElementById("assignmentCard");
-            // Toggle the display property of the assignment card
-            if (assignmentCard.style.display === "block") {
-                assignmentCard.style.display = "none"; // Hide the assignment card
-            } else {
-                assignmentCard.style.display = "block"; // Show the assignment card
-            }
-        }
-    </script>
-
-
-
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const flags = document.querySelectorAll('.flag-wrapper');
-
-            // Initially lock all flags
-            flags.forEach(flag => flag.classList.remove('unlocked'));
-
-            // Unlock flags one by one as needed
-            unlockFlag(document.getElementById('day-3-flag'));
-
-            function unlockFlag(flag) {
-                flag.classList.add('unlocked');
-                flag.onclick = function () {
-                    const dayNumber = flag.id.split("-")[1];
-                    window.location.href = "J6-task6.html";
-                };
-            }
-        });
-    </script>
-
-    <script src="assets\js\script.js"></script>
 </body>
 
 </html>
