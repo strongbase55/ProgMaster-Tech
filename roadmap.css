@@ -328,16 +328,3 @@ h1 {
         border-radius: 0pc;
     }
 }
-
-/* total content */
-
-.total-content {
-    min-height: 100vh;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 1em;
-}
