@@ -1029,17 +1029,33 @@
 
     <!-- JavaScript to handle PLACEMEMTS -->
     <script>
-        document.getElementById('placements-btn').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default anchor behavior
-            
-            // Show the iframe container
-            document.getElementById('iframe-container').style.display = 'block';
-            document.getElementById('placements-btn').innerText="Exit";
-            // Hide the profile section
-            document.getElementById('total-card').style.display = 'none';
-            // document.getElementById('leaderboard').style.display = 'none';
+        const toggleButton = document.getElementById('toggle-btn');
+        const iframeContainer = document.getElementById('iframe-container');
+        const profileSection = document.getElementById('profile');
+        const leaderboardSection = document.getElementById('leaderboard');
 
-            // Show the iframe container
+        // Initial states
+        let isIframeVisible = false;
+
+        toggleButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+
+            if (isIframeVisible) {
+                // Hide the iframe and show the profile section
+                iframeContainer.style.display = 'none';
+                profileSection.style.display = 'block';
+                leaderboardSection.style.display = 'block'; // Assuming you want to show this as well
+                toggleButton.textContent = 'Placements'; // Update button text
+            } else {
+                // Show the iframe and hide the profile section
+                iframeContainer.style.display = 'block';
+                profileSection.style.display = 'none';
+                leaderboardSection.style.display = 'none'; // Assuming you want to hide this as well
+                toggleButton.textContent = 'Profile'; // Update button text
+            }
+
+            // Toggle the state
+            isIframeVisible = !isIframeVisible;
         });
 
     </script>
