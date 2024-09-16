@@ -144,7 +144,7 @@
                             </li>
 
                             <li class="nav-item" id="hello">
-                                <a href="#" class="btn btn-outline-primary" id="toggle-btn">Placements</a>
+                                <a href="#" class="btn btn-outline-primary" id="apply-btn">Placements</a>
                             </li>
                         </ul>
                         <!-- <form class="d-flex">
@@ -1029,34 +1029,26 @@
 
     <!-- JavaScript to handle PLACEMEMTS -->
     <script>
-        const toggleButton = document.getElementById('toggle-btn');
-        const iframeContainer = document.getElementById('iframe-container');
-        const profileSection = document.getElementById('profile');
-        const leaderboardSection = document.getElementById('leaderboard');
-
-        // Initial states
-        let isIframeVisible = false;
-
-        toggleButton.addEventListener('click', function (event) {
+         document.getElementById('apply-btn').addEventListener('click', function (event) {
             event.preventDefault(); // Prevent the default anchor behavior
 
-            if (isIframeVisible) {
-                // Hide the iframe and show the profile section
-                iframeContainer.style.display = 'none';
-                profileSection.style.display = 'block';
-                leaderboardSection.style.display = 'block'; // Assuming you want to show this as well
-                toggleButton.textContent = 'Placements'; // Update button text
-            } else {
-                // Show the iframe and hide the profile section
-                iframeContainer.style.display = 'block';
-                profileSection.style.display = 'none';
-                leaderboardSection.style.display = 'none'; // Assuming you want to hide this as well
-                toggleButton.textContent = 'Profile'; // Update button text
-            }
+            const frame = document.getElementById('iframe-container');
+            const totalCards = document.getElementById('total-card');
+            const applyClassButton = document.getElementById('apply-btn');
 
-            // Toggle the state
-            isIframeVisible = !isIframeVisible;
+            if (frame.style.display === 'block') {
+                // If meeting details are visible, hide them and show the total-card
+                frame.style.display = 'none';
+                totalCards.style.display = 'flex';
+                applyClassButton.innerText = 'Placements';
+            } else {
+                // If meeting details are hidden, show them and hide the total-card
+                frame.style.display = 'block';
+                totalCards.style.display = 'none';
+                applyClassButton.innerText = 'Exit Placements';
+            }
         });
+
 
     </script>
 
