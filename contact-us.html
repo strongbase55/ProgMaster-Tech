@@ -1,0 +1,223 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" type="text/css">
+
+	<style>
+		body {
+	font-family: Arial;
+	background-image: url('images/bg.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.container {
+	border-radius: 16px;
+	max-width: 1180px;
+	margin: 0 30px;
+}
+
+a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.header-content {
+	font-weight: bold;
+	width: 800px;
+	margin: 20px auto;
+}
+
+#header-right-menu {
+	float: right;
+}
+
+#header-right-menu a {
+	padding: 12px;
+}
+
+.header-active{
+	color:#000;
+}
+
+.inner-container {
+	width: 750px;
+	margin: 80px auto;
+	display: flex;
+	background-color: white;
+	border-radius: 12px;
+	padding: 30px
+}
+
+.tile1 {
+	width: 350px;
+}
+
+.tile2 {
+	flex: 1 1 auto;
+	padding: 0px 40px;
+}
+
+.tile1-heading {
+	background: -webkit-linear-gradient(#0aa6bd, #f126bd);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.form-row {
+	padding: 20px 0px 0px 0px;
+}
+
+.form-field {
+	border-radius: 4px;
+	width: 100%;
+	padding: 15px;
+	background-color: #f5f4fa;
+	border: 0px;
+}
+
+.contact-image {
+	padding: 10px;
+	border-radius: 35px;
+	border: 1px solid #a8a4a4;
+	vertical-align: middle;
+	margin-right: 20px;
+	width: 16px;
+	height: 16px;
+}
+
+textarea {
+	height: 100px;
+	font-family: Arial;
+}
+
+.btn {
+	color: white;
+	background: linear-gradient(to right, #0aa6bd, #f126bd);
+}
+
+.tile2-image img {
+	width: 321px;
+	height: 211px;
+}
+
+#menu-icon {
+	display: none;
+	float: right;
+}
+
+@media all and (max-width: 900px) {
+	.inner-container {
+		width: auto;
+		display: block;
+		margin: 30px auto;
+	}
+	.header-content {
+		width: auto;
+	}
+	.tile1 {
+		width: 100%;
+	}
+	.tile2 {
+		padding: 0px;
+	}
+	.tile2-image img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media all and (max-width: 540px) {
+	#header-right-menu {
+		float: none;
+		display: none;
+	}
+	#header-right-menu a {
+		display: block;
+		padding: 10px 0px;
+	}
+	
+	#menu-icon {
+		display: block;
+		float: right;
+	}
+}
+
+@media all and (max-width: 400px) {
+	.container {
+		padding: 10px;
+	}
+}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header-content">
+			<a href="">Logo</a>
+			<span id="menu-icon" onClick="toggleMenu()"><img src="images/menu.svg" /></span>
+			<span id="header-right-menu">
+				<a href="#">Services</a>
+				<a href="#">Products</a>
+				<a href="#">Pricing</a>
+				<a href="#" class="header-active">Contact Us</a>
+			</span>
+		</div>
+		<div class="inner-container">
+			<div class="tile1">
+				<div class="tile1-heading">Get in touch</div>
+				<div class="form-row">We are here for you! How can we help?</div>
+				<form>
+					<div class="form-row">
+						<input type="text" class="form-field" placeholder="Enter your name">
+					</div>
+					<div class="form-row">
+						<input type="text" class="form-field" placeholder="Enter your email address">
+					</div>
+					<div class="form-row">
+						<textarea class="form-field" placeholder="Go ahead we are listening..."></textarea>
+					</div>
+					<div class="form-row">
+						<input type="button" class="form-field btn" value="Submit">
+					</div>
+				</form>
+			</div>
+			<div class="tile2">
+				<div class="tile2-image">
+					<img src="images/contact.png">
+				</div>
+				<div>
+					<div class="form-row">
+						<img src="images/loaction.png" class="contact-image"><span>564
+							Alabama Avenue</span>
+					</div>
+					<div class="form-row">
+						<img src="images/phone.png" class="contact-image"><span>+466723723666</span>
+					</div>
+					<div class="form-row">
+						<img src="images/mail.png" class="contact-image"><span>contact@admin.com</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function toggleMenu() {
+			var menuElement = document.getElementById("header-right-menu");
+			if (menuElement.style.display === "block") {
+				menuElement.style.display = "none";
+			} else {
+				menuElement.style.display = "block";
+			}
+		}
+	</script>
+
+</body>
+
+</html>
