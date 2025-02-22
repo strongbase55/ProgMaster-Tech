@@ -25,8 +25,7 @@
       top: 20px;
       right: 30px;
       font-size: 50px;
-      color: #fff;
-      background: #05d9e8;
+      color: wheat;
       padding-bottom: 7px;
       border-radius: 5px;
       min-height: 30px;
@@ -38,7 +37,7 @@
   }
   
   .close-btn:hover {
-      color: #05d9e8;
+      color: whitesmoke;
   }
   /* Slider container */
   
@@ -91,8 +90,9 @@
       /* background: rgba(0, 0, 0, 0.5); */
       border-radius: 50%;
       background: aqua;
-      color: white;
+      color: black;
       transition: 0.3s ease-in-out;
+      font-weight: bolder;
   }
   
   #leftArrow {
