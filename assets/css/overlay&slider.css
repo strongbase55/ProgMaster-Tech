@@ -1,0 +1,134 @@
+  /* Disable body scrolling when overlay is open */
+  
+  body.no-scroll {
+      overflow: hidden;
+  }
+  /* Overlay styles */
+  
+  .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+  }
+  /* Close button styling */
+  
+  .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s ease;
+  }
+  
+  .close-btn:hover {
+      color: #05d9e8;
+  }
+  /* Slider container */
+  
+  .lolipop {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      margin: 40px auto;
+      /* Adds top and bottom gap */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      overflow: hidden;
+      padding: 10px;
+  }
+  /* Image styling */
+  
+  .image {
+      width: 900px;
+      height: 390px;
+      border-radius: 10px;
+      animation: fadeIn 0.5s ease-in-out;
+  }
+  /* Slide-in animation */
+  
+  @keyframes fadeIn {
+      0% {
+          opacity: 0;
+          transform: scale(0.9);
+      }
+      100% {
+          opacity: 1;
+          transform: scale(1);
+      }
+  }
+  /* Navigation arrows */
+  
+  #leftArrow,
+  #rightArrow {
+      all: unset;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px;
+      color: #05d9e8;
+      font-size: 2rem;
+      cursor: pointer;
+      /* background: rgba(0, 0, 0, 0.5); */
+      border-radius: 50%;
+      background: aqua;
+      color: white;
+      transition: 0.3s ease-in-out;
+  }
+  
+  #leftArrow {
+      left: 10px;
+  }
+  
+  #rightArrow {
+      right: 10px;
+  }
+  
+  #leftArrow:hover,
+  #rightArrow:hover {
+      background: rgba(5, 217, 232, 0.7);
+      color: #fff;
+  }
+  /* Make it responsive */
+  
+  @media (max-width: 768px) {
+      .lolipop {
+          width: 90%;
+          height: 300px;
+      }
+      #leftArrow,
+      #rightArrow {
+          font-size: 1.5rem;
+      }
+      .close-btn {
+          font-size: 24px;
+          top: 10px;
+          right: 20px;
+      }
+  }
+  
+  body.no-scroll {
+      height: 100vh;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+  }
+  
+  #article-container {
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
