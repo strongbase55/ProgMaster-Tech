@@ -3,13 +3,13 @@
         "_comment": "Here we need to give names in alphabetic order",
 
         "resume_1": {
-            "name": "John Doe",
-            "file_url": "https://github.com/strongbase55/ProgMaster-Tech/blob/1c44ec0f7fa6f9cfc9aa2d65cdd6f6cf44e083cb/Resumes/PAVANI_KALLA_RESUME.pdf",
+            "name": "Ananya",
+            "file_url": "https://docs.google.com/document/d/183yj2ipT2ZamxLgAQ-okz081QAy2erR2/edit?usp=sharing&ouid=101755688720195637810&rtpof=true&sd=true",
             "experience": "Fresher"
         },
         "resume_2": {
             "name": "Jane Smith",
-            "file_url": "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/resume2.pdf",
+            "file_url": "https://docs.google.com/document/d/1_UShE6ZegUiIc9q3QKZD2VAHZfRl7JfZ/edit?usp=sharing&ouid=101755688720195637810&rtpof=true&sd=true",
             "experience": "Experienced"
         },
         "resume_3": {
