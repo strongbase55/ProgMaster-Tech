@@ -294,3 +294,19 @@ form .button input:hover {
     color: white;
     cursor: pointer;
 }
+
+
+/* company details hold */
+
+.company-details-hold {
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.company-details-hold img {
+    height: 100px;
+    width: 100px;
+}
