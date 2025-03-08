@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Portal</title>
+    <style>
+        /* General Styles */
+        
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        /* Container */
+        
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        /* Header */
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        /* Search & Filter */
+        
+        .search-filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        input,
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+        /* Resume List */
+        
+        #resume-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        /* Resume Cards */
+        
+        .resume-card {
+            background: white;
+            padding: 20px;
+            margin: 15px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .resume-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .resume-card h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .resume-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        /* Download Button */
+        
+        .resume-card a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+        
+        .resume-card a:hover {
+            background: #0056b3;
+        }
+        /* Load More Button */
+        
+        #load-more {
+            padding: 12px 18px;
+            font-size: 16px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+        
+        #load-more:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📄 Resume Portal</h1>
+
+        <!-- Search and Filter Section -->
+        <div class="search-filter-container">
+            <input type="text" id="search" placeholder="🔍 Search by name..." autocomplete="off">
+
+            <select id="filter">
+                <option value="all">All</option>
+                <option value="Fresher">Freshers</option>
+                <option value="Experienced">Experienced</option>
+            </select>
+        </div>
+
+        <!-- Resume List -->
+        <div id="resume-list"></div>
+
+        <!-- Load More Button -->
+        <button id="load-more">Load More ⏬</button>
+    </div>
+
+
+    <script src="resume.js" type="module"></script>
+</body>
+
+</html>

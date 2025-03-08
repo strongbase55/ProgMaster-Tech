@@ -1,0 +1,14 @@
+{
+    "resumes": {
+        "resume_1": {
+            "name": "John Doe",
+            "file_url": "https://github.com/strongbase55/ProgMaster-Tech/blob/1c44ec0f7fa6f9cfc9aa2d65cdd6f6cf44e083cb/Resumes/PAVANI_KALLA_RESUME.pdf",
+            "experience": "Fresher"
+        },
+        "resume_2": {
+            "name": "Jane Smith",
+            "file_url": "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/resume2.pdf",
+            "experience": "Experienced"
+        }
+    }
+}
