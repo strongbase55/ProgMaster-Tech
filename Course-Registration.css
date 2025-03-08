@@ -33,6 +33,7 @@ body {
     padding: 25px 30px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
 }
 
 .container .title {
@@ -188,6 +189,25 @@ form .button input:hover {
 }
 
 
+/* back button  */
+
+.backbtn {
+    position: absolute;
+    float: right;
+    right: 1em;
+    top: 1.4em;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.backbtn:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+
 /* Responsive media query code for mobile devices */
 
 @media(max-width: 584px) {
@@ -309,4 +329,28 @@ form .button input:hover {
 .company-details-hold img {
     height: 100px;
     width: 100px;
+}
+
+
+/* Default: Disabled Button */
+
+input[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Enabled Button: Change Cursor to Pointer */
+
+input[type="submit"].enabled {
+    background-color: #4CAF50;
+    /* Green color */
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
 }

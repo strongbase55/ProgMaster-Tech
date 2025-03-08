@@ -41,6 +41,8 @@
     <div class="container">
         <!-- Title section -->
         <div class="title">Training Registration</div>
+        <a class="backbtn" href="index.html">Back</a>
+
         <div class="content">
             <!-- Registration form -->
             <form method="post" action="" name="contact-form">
@@ -49,7 +51,7 @@
                     <div class="input-box">
                         <span class="details">Full Name</span>
                         <input type="text" placeholder="Enter your name" name="Name" id="name" required oninput="validateForm()">
-                        <small class="error" id="nameError"></small>
+                        <small id="nameError" class="error-message"></small>
                     </div>
 
                     <!-- Input for Email -->
@@ -62,21 +64,21 @@
                     <div class="input-box">
                         <span class="details">Phone Number</span>
                         <input type="tel" placeholder="Enter your number" name="Number" id="phone" required oninput="validateForm()">
-                        <small class="error" id="phoneError"></small>
+                        <small id="phoneError" class="error-message"></small>
                     </div>
 
                     <!-- Input for College Name -->
                     <div class="input-box">
                         <span class="details">College</span>
                         <input type="text" placeholder="Enter your college name" name="College" id="college" required oninput="validateForm()">
-                        <small class="error" id="collegeError"></small>
+                        <small id="collegeError" class="error-message"></small>
                     </div>
 
                     <!-- Input for College Roll Number -->
                     <div class="input-box">
                         <span class="details">College Roll Number</span>
                         <input type="text" placeholder="Enter your roll number" name="Roll Number" id="rollNumber" required oninput="validateForm()">
-                        <small class="error" id="rollError"></small>
+                        <small id="rollNumberError" class="error-message"></small>
                     </div>
 
                     <!-- Domain Selection -->

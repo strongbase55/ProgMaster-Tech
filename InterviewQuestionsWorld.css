@@ -1,0 +1,202 @@
+/* General page styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+
+/* Container for all content */
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+
+/* Heading styles */
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #2C3E50;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+/* Search container styles */
+
+.search-container input {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #B0BEC5;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: #333;
+    font-weight: 500;
+}
+
+.search-container input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.3);
+}
+
+
+/* Filter dropdown styles */
+
+.filter-container {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.filter-container select {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid #B0BEC5;
+    background-color: #ffffff;
+    width: auto;
+    max-width: 250px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-container select:hover {
+    border-color: #3498db;
+}
+
+
+/* Questions list styling */
+
+#questionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.question-item {
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem;
+    color: #555;
+}
+
+.question-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.question-item h3 {
+    font-size: 1.5rem;
+    color: #2C3E50;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.question-item p {
+    font-size: 1rem;
+    color: #7F8C8D;
+    line-height: 1.6;
+}
+
+
+/* Load More Button Styles */
+
+.load-more-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.load-more-button {
+    padding: 15px 28px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 220px;
+    font-weight: 500;
+}
+
+.load-more-button:hover {
+    background-color: #2980b9;
+}
+
+.load-more-button:disabled {
+    background-color: #BDC3C7;
+    cursor: not-allowed;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    .search-container input,
+    .filter-container select {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .question-item {
+        padding: 20px;
+    }
+    .load-more-button {
+        width: 180px;
+    }
+}
+
+
+/* Additional Global Styles for Modern Look */
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* Smooth hover transition for all buttons and links */
+
+button,
+a {
+    transition: all 0.3s ease;
+}
+
+
+/* Elegant border and subtle hover effect for links */
+
+a:hover {
+    color: #3498db;
+    text-decoration: underline;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 300+ Interview Questions</title>
+    <link rel="stylesheet" href="InterviewQuestionsWorld.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Top 300+ Interview Questions</h1>
+
+            <!-- Search box -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search questions...">
+            </div>
+            <!-- Filter dropdown -->
+            <div class="filter-container">
+                <select id="languageFilter" onchange="filterQuestions()">
+                    <option value="">Select Language</option>
+                    <option value="Java">Java</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Python">Python</option>
+                </select>
+            </div>
+
+            <!-- Questions list -->
+            <div id="questionsList"></div>
+
+
+        </header>
+    </div>
+    <script src="InterviewQuestionsWorld.js"></script>
+</body>
+
+</html>
