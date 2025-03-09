@@ -1,0 +1,22 @@
+tags {
+    background-color: navy;
+    color: wheat;
+    padding: 0px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    position: relative;
+    bottom: 5px;
+    animation: freeTag .5s infinite;
+}
+
+@keyframes freeTag {
+    form {
+        background: navy;
+        transform: scale(5);
+    }
+    to {
+        background: rebeccapurple;
+        color: whitesmoke;
+        transform: scale(1);
+    }
+}
