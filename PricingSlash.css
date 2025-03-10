@@ -1,0 +1,44 @@
+.price-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    color: navy;
+}
+
+.none {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff3d00;
+}
+
+
+/* Creating a diagonal slash using pseudo-element */
+
+.none::after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: -05%;
+    width: 130%;
+    height: 3px;
+    background: red;
+    transform: rotate(-15deg);
+}
+
+.discount {
+    background: linear-gradient(45deg, #ffcc00, #ff5733);
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
