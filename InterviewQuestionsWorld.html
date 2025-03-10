@@ -11,20 +11,24 @@
 <body>
     <div class="container">
         <header>
-            <h1>Top 300+ Interview Questions</h1>
+            <div class="fixed-card">
+                <h1>Top 300+ Interview Questions</h1>
 
-            <!-- Search box -->
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search questions...">
-            </div>
-            <!-- Filter dropdown -->
-            <div class="filter-container">
-                <select id="languageFilter" onchange="filterQuestions()">
+                <div class="total-filter-hold">
+                    <!-- Search box -->
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search questions...">
+                    </div>
+                    <!-- Filter dropdown -->
+                    <div class="filter-container">
+                        <select id="languageFilter" onchange="filterQuestions()">
                     <option value="">Select Language</option>
                     <option value="Java">Java</option>
                     <option value="Web Development">Web Development</option>
                     <option value="Python">Python</option>
                 </select>
+                    </div>
+                </div>
             </div>
 
             <!-- Questions list -->
