@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJT52BJRP2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-QJT52BJRP2');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +33,6 @@
             color: green;
             /* Change color to green */
         }
-
-
     </style>
 </head>
 
@@ -58,8 +68,7 @@
                         <span class="flag">Day 2</span>
                     </div>
                     <div class="desc">
-                        <strong>Variables, Data Types, and Operators:</strong> Understanding variables, different data
-                        types, and basic operators.
+                        <strong>Variables, Data Types, and Operators:</strong> Understanding variables, different data types, and basic operators.
                     </div>
                 </div>
             </li>
@@ -214,8 +223,7 @@
                         <span class="flag">Day 15</span>
                     </div>
                     <div class="desc">
-                        <strong>Multithreading and Concurrency:</strong> Multithreading and concurrency concepts in
-                        Java.
+                        <strong>Multithreading and Concurrency:</strong> Multithreading and concurrency concepts in Java.
                     </div>
                 </div>
             </li>
@@ -333,8 +341,7 @@
                         <span class="flag">Day 25</span>
                     </div>
                     <div class="desc">
-                        <strong>Advanced JDBC Concepts:</strong> Advanced JDBC concepts like transactions and prepared
-                        statements.
+                        <strong>Advanced JDBC Concepts:</strong> Advanced JDBC concepts like transactions and prepared statements.
                     </div>
                 </div>
             </li>
@@ -358,8 +365,7 @@
                         <span class="flag">Day 27</span>
                     </div>
                     <div class="desc">
-                        <strong>Servlet Lifecycle and Request Handling:</strong> Understanding servlet lifecycle and
-                        handling HTTP requests.
+                        <strong>Servlet Lifecycle and Request Handling:</strong> Understanding servlet lifecycle and handling HTTP requests.
                     </div>
                 </div>
             </li>
@@ -383,9 +389,7 @@
                         <span class="flag">Day 29</span>
                     </div>
                     <div class="desc">
-                        <strong>Session Management and Filters:</strong> Managing user sessions and using filters in
-                        Java
-                        web applications.
+                        <strong>Session Management and Filters:</strong> Managing user sessions and using filters in Java web applications.
                     </div>
                 </div>
             </li>
@@ -398,9 +402,7 @@
                         <span class="flag">Day 30</span>
                     </div>
                     <div class="desc">
-                        <strong>Introduction to Spring Framework:</strong> Basics of Spring Framework for enterprise
-                        Java
-                        development.
+                        <strong>Introduction to Spring Framework:</strong> Basics of Spring Framework for enterprise Java development.
                     </div>
                 </div>
             </li>
@@ -426,27 +428,16 @@
                 </h1>
 
                 <h2>Introduction to Java</h2>
-                <p>Java is a widely-used, <span class="highlight">object-oriented programming language</span> developed
-                    by
-                    Sun Microsystems (now owned by Oracle Corporation). It is known for its <span
-                        class="highlight">platform
-                        independence</span>, which means
-                    Java programs can run on any device that has a Java Virtual Machine (JVM) installed.</p>
+                <p>Java is a widely-used, <span class="highlight">object-oriented programming language</span> developed by Sun Microsystems (now owned by Oracle Corporation). It is known for its <span class="highlight">platform
+                        independence</span>, which means Java programs can run on any device that has a Java Virtual Machine (JVM) installed.</p>
 
                 <h2>Installation</h2>
                 <ol>
-                    <li><strong>Download JDK:</strong> Go to the <a
-                            href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">official Oracle
-                            website</a> and download the latest version of the Java Development Kit (JDK) for your
-                        operating
-                        system.</li>
-                    <li><strong>Installation:</strong> Run the downloaded installer and follow the on-screen
-                        instructions to
-                        install JDK on your computer.</li>
-                    <li><strong>Set up Environment Variables:</strong> Configure system variables such as <span
-                            class="highlight">JAVA_HOME</span> and <span class="highlight">PATH</span> to point to the
-                        JDK
-                        installation directory.</li>
+                    <li><strong>Download JDK:</strong> Go to the <a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">official Oracle
+                            website</a> and download the latest version of the Java Development Kit (JDK) for your operating system.
+                    </li>
+                    <li><strong>Installation:</strong> Run the downloaded installer and follow the on-screen instructions to install JDK on your computer.</li>
+                    <li><strong>Set up Environment Variables:</strong> Configure system variables such as <span class="highlight">JAVA_HOME</span> and <span class="highlight">PATH</span> to point to the JDK installation directory.</li>
                 </ol>
 
                 <h2>Your First Program</h2>
@@ -459,28 +450,18 @@
 
                 <p>Explanation of the code:</p>
                 <ul>
-                    <li><code>public class <span class="highlight">HelloWorld</span></code>: This line declares a class
-                        named <code>HelloWorld</code>.</li>
-                    <li><code>public static void <span class="highlight">main</span>(String[] args)</code>: This line
-                        declares the <code>main</code> method, which serves as the entry point for the Java program.
+                    <li><code>public class <span class="highlight">HelloWorld</span></code>: This line declares a class named <code>HelloWorld</code>.</li>
+                    <li><code>public static void <span class="highlight">main</span>(String[] args)</code>: This line declares the <code>main</code> method, which serves as the entry point for the Java program.
                     </li>
-                    <li><code>System.out.<span class="highlight">println</span>("Hello, world!");</code>: This line
-                        prints
-                        the string "Hello, world!" to the console.</li>
+                    <li><code>System.out.<span class="highlight">println</span>("Hello, world!");</code>: This line prints the string "Hello, world!" to the console.</li>
                 </ul>
 
                 <h2>Real-life Example</h2>
-                <p>Imagine you are developing a web application that greets users upon login. Java can be used to
-                    develop
-                    the backend logic, including handling user authentication and displaying personalized messages based
-                    on
-                    user data.</p>
+                <p>Imagine you are developing a web application that greets users upon login. Java can be used to develop the backend logic, including handling user authentication and displaying personalized messages based on user data.</p>
 
                 <h2>Conclusion</h2>
-                <p>By following the above steps, you have been introduced to Java programming, installed the necessary
-                    software, set up your development environment, and written your first Java program. This lays the
-                    foundation for further exploration and learning
-                    in Java programming.</p>
+                <p>By following the above steps, you have been introduced to Java programming, installed the necessary software, set up your development environment, and written your first Java program. This lays the foundation for further exploration and
+                    learning in Java programming.</p>
             </div>
         </div>
 
@@ -492,8 +473,7 @@
                 </h1>
 
                 <h2>Variables</h2>
-                <p>Variables in Java are used to store data values that can be manipulated and referenced throughout the
-                    program. They have a specific data type and a unique name.</p>
+                <p>Variables in Java are used to store data values that can be manipulated and referenced throughout the program. They have a specific data type and a unique name.</p>
                 <pre><code>int age; // Declaration of an integer variable named 'age'
     System.out.println("age: " + age); // Output: age: N/A (declaration)
     age = 25; // Assignment of value 25 to the variable 'age'
@@ -506,8 +486,7 @@
                 </outputs>
 
                 <h2>Data Types</h2>
-                <p>Data types define the type of data that can be stored in a variable. Java supports various data types
-                    including primitive and reference types.</p>
+                <p>Data types define the type of data that can be stored in a variable. Java supports various data types including primitive and reference types.</p>
                 <ul>
                     <li>int: Integer data type</li>
                     <li>double: Double data type</li>
@@ -540,9 +519,7 @@
                 </outputs>
 
                 <h2>Operators</h2>
-                <p>Operators are symbols used to perform operations on variables and values. Java supports various types
-                    of
-                    operators such as arithmetic, relational, logical, assignment, etc.</p>
+                <p>Operators are symbols used to perform operations on variables and values. Java supports various types of operators such as arithmetic, relational, logical, assignment, etc.</p>
                 <ul>
                     <li>Addition (+)</li>
                     <li>Subtraction (-)</li>
@@ -551,11 +528,11 @@
                     <li>Relational (>
                         <>=
                             <=)< /li>
-                    <li>Equality (== !=)</li>
-                    <li>Logical (&& || !)</li>
-                    <li>Assignment (=)</li>
-                    <li>Increment (++)</li>
-                    <li>Decrement (--)</li>
+                                <li>Equality (== !=)</li>
+                                <li>Logical (&& || !)</li>
+                                <li>Assignment (=)</li>
+                                <li>Increment (++)</li>
+                                <li>Decrement (--)</li>
                 </ul>
                 <pre><code>int x = 10;
     int y = 5;
@@ -603,16 +580,11 @@
                 </h1>
 
                 <h2>Control Flow Statements</h2>
-                <p>Control flow statements in Java are used to control the flow of execution in a program. They allow
-                    you to
-                    make decisions, repeat execution, and break the flow of execution.</p>
+                <p>Control flow statements in Java are used to control the flow of execution in a program. They allow you to make decisions, repeat execution, and break the flow of execution.</p>
 
                 <h3>if-else Statement</h3>
-                <p>The <code>if-else</code> statement is used to make decisions based on certain conditions. If the
-                    condition evaluates to true, the code inside the <code>if</code> block is executed; otherwise, the
-                    code
-                    inside the <code>else</code> block is
-                    executed.
+                <p>The <code>if-else</code> statement is used to make decisions based on certain conditions. If the condition evaluates to true, the code inside the <code>if</code> block is executed; otherwise, the code inside the <code>else</code> block
+                    is executed.
                 </p>
                 <pre><code>int x = 10;
         if (x > 5) {
@@ -627,9 +599,7 @@
                 </outputs>
 
                 <h3>Switch Statement</h3>
-                <p>The <code>switch</code> statement is used to perform different actions based on different conditions.
-                    It
-                    evaluates an expression and executes the corresponding case.</p>
+                <p>The <code>switch</code> statement is used to perform different actions based on different conditions. It evaluates an expression and executes the corresponding case.</p>
                 <pre><code>int day = 3;
         switch (day) {
             case 1:
@@ -651,15 +621,12 @@
                 </outputs>
 
                 <h3>Loops</h3>
-                <p>Loops in Java are used to execute a block of code repeatedly as long as a certain condition is true.
-                    Java
-                    supports different types of loops including <code>for</code>, <code>while</code>, and
+                <p>Loops in Java are used to execute a block of code repeatedly as long as a certain condition is true. Java supports different types of loops including <code>for</code>, <code>while</code>, and
                     <code>do-while</code> loops.
                 </p>
 
                 <h4>for Loop</h4>
-                <p>The <code>for</code> loop is used to iterate over a range of values. It consists of three parts:
-                    initialization, condition, and increment/decrement.</p>
+                <p>The <code>for</code> loop is used to iterate over a range of values. It consists of three parts: initialization, condition, and increment/decrement.</p>
                 <pre><code>for (int i = 0; i < 5; i++) {
             System.out.println("i: " + i);
         }
@@ -674,8 +641,7 @@
                 </outputs>
 
                 <h4>while Loop</h4>
-                <p>The <code>while</code> loop is used to repeatedly execute a block of code as long as a specified
-                    condition is true.</p>
+                <p>The <code>while</code> loop is used to repeatedly execute a block of code as long as a specified condition is true.</p>
                 <pre><code>int count = 0;
         while (count < 5) {
             System.out.println("count: " + count);
@@ -692,9 +658,7 @@
                 </outputs>
 
                 <h4>do-while Loop</h4>
-                <p>The <code>do-while</code> loop is similar to the <code>while</code> loop, but the condition is
-                    evaluated
-                    after executing the block of code, meaning the block of code is executed at least once.</p>
+                <p>The <code>do-while</code> loop is similar to the <code>while</code> loop, but the condition is evaluated after executing the block of code, meaning the block of code is executed at least once.</p>
                 <pre><code>int num = 0;
         do {
             System.out.println("num: " + num);
@@ -722,15 +686,10 @@
                 </h1>
 
                 <h2>Arrays</h2>
-                <p>An array in Java is a collection of elements of the same data type. It allows you to store multiple
-                    values of the same type in a single variable.</p>
+                <p>An array in Java is a collection of elements of the same data type. It allows you to store multiple values of the same type in a single variable.</p>
 
                 <h3>Declaration and Initialization</h3>
-                <p>To declare and initialize an array in Java, you specify the data type of the elements followed by
-                    square
-                    brackets <code>[]</code>, and then the variable name. You can initialize the array with values
-                    inside
-                    curly braces <code>{}</code>.</p>
+                <p>To declare and initialize an array in Java, you specify the data type of the elements followed by square brackets <code>[]</code>, and then the variable name. You can initialize the array with values inside curly braces <code>{}</code>.</p>
                 <pre><code>// Declaration and Initialization of an integer array
         int[] numbers = {1, 2, 3, 4, 5};
         </code></pre>
@@ -740,9 +699,7 @@
                 </outputs>
 
                 <h3>Accessing Elements</h3>
-                <p>You can access elements of an array using their index. The index of the first element is 0, the index
-                    of
-                    the second element is 1, and so on.</p>
+                <p>You can access elements of an array using their index. The index of the first element is 0, the index of the second element is 1, and so on.</p>
                 <pre><code>System.out.println("First element: " + numbers[0]); // Output: First element: 1
         System.out.println("Second element: " + numbers[1]); // Output: Second element: 2
         </code></pre>
@@ -753,14 +710,11 @@
                 </outputs>
 
                 <h2>Strings</h2>
-                <p>A string in Java is a sequence of characters. It is represented by the <code>String</code> class in
-                    Java.
+                <p>A string in Java is a sequence of characters. It is represented by the <code>String</code> class in Java.
                 </p>
 
                 <h3>Declaration and Initialization</h3>
-                <p>To declare and initialize a string in Java, you can simply use the <code>String</code> keyword
-                    followed
-                    by the variable name and assign it a value enclosed in double quotes <code>" "</code>.</p>
+                <p>To declare and initialize a string in Java, you can simply use the <code>String</code> keyword followed by the variable name and assign it a value enclosed in double quotes <code>" "</code>.</p>
                 <pre><code>// Declaration and Initialization of a string
         String message = "Hello, Java!";
         </code></pre>
@@ -791,15 +745,10 @@
                 </h1>
 
                 <h2>Methods</h2>
-                <p>In Java, a method is a block of code that performs a specific task. It is a collection of statements
-                    that
-                    are grouped together to perform an operation.</p>
+                <p>In Java, a method is a block of code that performs a specific task. It is a collection of statements that are grouped together to perform an operation.</p>
 
                 <h3>Declaration and Invocation</h3>
-                <p>To declare a method in Java, you specify the return type of the method (if any), followed by the
-                    method
-                    name and parameters (if any). To invoke or call a method, you simply use the method name followed by
-                    parentheses <code>()</code>.</p>
+                <p>To declare a method in Java, you specify the return type of the method (if any), followed by the method name and parameters (if any). To invoke or call a method, you simply use the method name followed by parentheses <code>()</code>.</p>
                 <pre><code>// Method declaration
         public void greet() {
             System.out.println("Hello, World!");
@@ -814,9 +763,7 @@
                 </outputs>
 
                 <h3>Parameters and Return Values</h3>
-                <p>Methods can accept parameters and return values. Parameters are variables that are passed into the
-                    method
-                    when it is called, and return values are the result of the method's execution.</p>
+                <p>Methods can accept parameters and return values. Parameters are variables that are passed into the method when it is called, and return values are the result of the method's execution.</p>
                 <pre><code>// Method declaration with parameters and return value
         public int add(int a, int b) {
             return a + b;
@@ -832,9 +779,7 @@
                 </outputs>
 
                 <h2>Functions</h2>
-                <p>In Java, a function is essentially the same as a method. The terms "function" and "method" are often
-                    used
-                    interchangeably in Java.</p>
+                <p>In Java, a function is essentially the same as a method. The terms "function" and "method" are often used interchangeably in Java.</p>
             </div>
         </div>
 
@@ -849,19 +794,12 @@
                 </h1>
 
                 <h2>Object-Oriented Programming (OOP)</h2>
-                <p>Object-Oriented Programming (OOP) is a programming paradigm that revolves around the concept of
-                    objects,
-                    which can contain data in the form of fields (attributes or properties) and code in the form of
-                    procedures (methods or functions). OOP
-                    focuses on modeling real-world entities as objects and their interactions.</p>
+                <p>Object-Oriented Programming (OOP) is a programming paradigm that revolves around the concept of objects, which can contain data in the form of fields (attributes or properties) and code in the form of procedures (methods or functions).
+                    OOP focuses on modeling real-world entities as objects and their interactions.</p>
 
                 <h3>Classes and Objects</h3>
-                <p>In Java, a class is a blueprint or template for creating objects. It defines the structure and
-                    behavior
-                    of objects of that type. An object is an instance of a class, and it represents a specific instance
-                    of
-                    the class with its own set of values
-                    for the class's fields.</p>
+                <p>In Java, a class is a blueprint or template for creating objects. It defines the structure and behavior of objects of that type. An object is an instance of a class, and it represents a specific instance of the class with its own set of
+                    values for the class's fields.</p>
                 <pre><code>// Class definition
         public class Car {
             // Fields (attributes)
@@ -884,19 +822,15 @@
             }
         }</code></pre>
                 <p>In this example, <code>Car</code> is a class with three fields (<code>brand</code>,
-                    <code>model</code>,
-                    and <code>year</code>), a constructor to initialize these fields, and a method
-                    <code>displayInfo()</code> to display information about
-                    the car.
+                    <code>model</code>, and <code>year</code>), a constructor to initialize these fields, and a method
+                    <code>displayInfo()</code> to display information about the car.
                 </p>
 
                 <h3>Creating Objects</h3>
                 <pre><code>// Creating objects of the Car class
         Car car1 = new Car("Toyota", "Camry", 2020);
         Car car2 = new Car("Honda", "Accord", 2019);</code></pre>
-                <p>Here, <code>car1</code> and <code>car2</code> are objects of the <code>Car</code> class, each with
-                    its
-                    own set of values for the fields <code>brand</code>, <code>model</code>, and <code>year</code>.</p>
+                <p>Here, <code>car1</code> and <code>car2</code> are objects of the <code>Car</code> class, each with its own set of values for the fields <code>brand</code>, <code>model</code>, and <code>year</code>.</p>
 
                 <h3>Accessing Fields and Methods</h3>
                 <pre><code>// Accessing fields and methods of objects
@@ -916,14 +850,10 @@
                 </h1>
 
                 <h2>Constructors</h2>
-                <p>In Java, a constructor is a special type of method that is automatically called when an object of a
-                    class
-                    is created. It is used to initialize the object's state.</p>
+                <p>In Java, a constructor is a special type of method that is automatically called when an object of a class is created. It is used to initialize the object's state.</p>
 
                 <h3>Default Constructor</h3>
-                <p>If you don't provide any constructors in your class, Java automatically provides a default
-                    constructor
-                    (also known as no-argument constructor) with no parameters.</p>
+                <p>If you don't provide any constructors in your class, Java automatically provides a default constructor (also known as no-argument constructor) with no parameters.</p>
                 <pre><code>// Default constructor
         public class MyClass {
             public MyClass() {
@@ -944,14 +874,11 @@
             }
         }</code></pre>
                 <p>In this example, the <code>Person</code> class has a parameterized constructor that takes a
-                    <code>name</code> parameter to initialize the <code>name</code> attribute of the <code>Person</code>
-                    object.
+                    <code>name</code> parameter to initialize the <code>name</code> attribute of the <code>Person</code> object.
                 </p>
 
                 <h2>Constructor Overloading</h2>
-                <p>Java supports constructor overloading, which means you can define multiple constructors with
-                    different
-                    parameters in the same class.</p>
+                <p>Java supports constructor overloading, which means you can define multiple constructors with different parameters in the same class.</p>
                 <pre><code>// Constructor overloading
         public class Rectangle {
             private int width;
@@ -971,9 +898,7 @@
                 System.out.println("Width: " + width + ", Height: " + height);
             }
         }</code></pre>
-                <p>In this example, the <code>Rectangle</code> class has two constructors: a default constructor with no
-                    parameters, and a parameterized constructor that takes <code>width</code> and <code>height</code>
-                    parameters to initialize the <code>Rectangle</code> object with specific dimensions.</p>
+                <p>In this example, the <code>Rectangle</code> class has two constructors: a default constructor with no parameters, and a parameterized constructor that takes <code>width</code> and <code>height</code> parameters to initialize the <code>Rectangle</code>                    object with specific dimensions.</p>
 
                 <h2>Input</h2>
                 <pre><code>Rectangle rectangle = new Rectangle(10, 20);
@@ -992,8 +917,7 @@
                 </h1>
 
                 <h2>Inheritance</h2>
-                <p>Inheritance is a fundamental concept in object-oriented programming (OOP) where a class (subclass or
-                    derived class) inherits attributes and methods from another class (superclass or base class).</p>
+                <p>Inheritance is a fundamental concept in object-oriented programming (OOP) where a class (subclass or derived class) inherits attributes and methods from another class (superclass or base class).</p>
                 <pre><code>// Superclass
         public class Animal {
             public void eat() {
@@ -1012,8 +936,7 @@
                 </p>
 
                 <h2>Polymorphism</h2>
-                <p>Polymorphism allows objects of different classes to be treated as objects of a common superclass. It
-                    enables flexibility and extensibility in programming.</p>
+                <p>Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables flexibility and extensibility in programming.</p>
                 <pre><code>// Superclass
         public class Shape {
             public void draw() {
@@ -1065,17 +988,12 @@
                 </h1>
 
                 <h2>Encapsulation</h2>
-                <p>Encapsulation is one of the four fundamental OOP concepts. It refers to the bundling of data and
-                    methods
-                    that operate on the data into a single unit or class. Encapsulation restricts direct access to some
-                    of
-                    the object's components, forcing
+                <p>Encapsulation is one of the four fundamental OOP concepts. It refers to the bundling of data and methods that operate on the data into a single unit or class. Encapsulation restricts direct access to some of the object's components, forcing
                     other components to use accessor methods.</p>
 
                 <h2>Access Modifiers</h2>
-                <p>Access modifiers define the visibility of classes, methods, and variables. Java provides several
-                    access
-                    modifiers:</p>
+                <p>Access modifiers define the visibility of classes, methods, and variables. Java provides several access modifiers:
+                </p>
                 <ul>
                     <li><code>public</code>: Accessible from anywhere</li>
                     <li><code>protected</code>: Accessible within the same package or subclass</li>
@@ -1116,9 +1034,7 @@
         person.setAge(30);</code></pre>
 
                 <h2>Output</h2>
-                <p>No specific output. Encapsulation ensures that the <code>name</code> and <code>age</code> attributes
-                    are
-                    accessed and modified using accessor methods.</p>
+                <p>No specific output. Encapsulation ensures that the <code>name</code> and <code>age</code> attributes are accessed and modified using accessor methods.</p>
             </div>
         </div>
 
@@ -1130,11 +1046,7 @@
                 </h1>
 
                 <h2>Abstract Classes</h2>
-                <p>An abstract class in Java is a class that cannot be instantiated on its own and is used as a
-                    blueprint
-                    for other classes. It can contain abstract methods, which are declared but not implemented, as well
-                    as
-                    concrete methods with implementations.</p>
+                <p>An abstract class in Java is a class that cannot be instantiated on its own and is used as a blueprint for other classes. It can contain abstract methods, which are declared but not implemented, as well as concrete methods with implementations.</p>
 
                 <pre><code>// Abstract class
         public abstract class Animal {
@@ -1151,9 +1063,8 @@
                 </p>
 
                 <h2>Interfaces</h2>
-                <p>An interface in Java is a reference type that contains only abstract methods, default methods, static
-                    methods, and constant declarations. It is similar to a class but specifies the behavior a class must
-                    implement.</p>
+                <p>An interface in Java is a reference type that contains only abstract methods, default methods, static methods, and constant declarations. It is similar to a class but specifies the behavior a class must implement.
+                </p>
 
                 <pre><code>// Interface
         public interface Vehicle {
@@ -1165,9 +1076,7 @@
                 System.out.println("Vehicle stopped");
             }
         }</code></pre>
-                <p>In this example, <code>Vehicle</code> is an interface with an abstract method <code>drive()</code>
-                    and a
-                    default method <code>stop()</code>.</p>
+                <p>In this example, <code>Vehicle</code> is an interface with an abstract method <code>drive()</code> and a default method <code>stop()</code>.</p>
 
                 <h2>Input</h2>
                 <pre><code>// Using abstract class
@@ -1199,29 +1108,21 @@
                 </h1>
 
                 <h2>Introduction to Exception Handling</h2>
-                <p>Exception handling is a mechanism in Java to deal with runtime errors (exceptions) that may occur
-                    during
-                    the execution of a program. It allows you to gracefully handle unexpected situations and prevent
-                    your
-                    program from crashing.</p>
+                <p>Exception handling is a mechanism in Java to deal with runtime errors (exceptions) that may occur during the execution of a program. It allows you to gracefully handle unexpected situations and prevent your program from crashing.</p>
 
                 <h2>Try-Catch Blocks</h2>
-                <p>In Java, exceptions are handled using try-catch blocks. The code that may throw an exception is
-                    placed
-                    inside the try block, and the corresponding catch block catches and handles the exception.</p>
+                <p>In Java, exceptions are handled using try-catch blocks. The code that may throw an exception is placed inside the try block, and the corresponding catch block catches and handles the exception.</p>
                 <pre><code>try {
             // Code that may throw an exception
         } catch (ExceptionType e) {
             // Handle the exception
         }</code></pre>
                 <p>The catch block specifies the type of exception it can handle, and the exception object
-                    <code>e</code>
-                    provides information about the exception that occurred.
+                    <code>e</code> provides information about the exception that occurred.
                 </p>
 
                 <h2>Example</h2>
-                <p>Let's consider an example where we divide two numbers and handle the <code>ArithmeticException</code>
-                    that may occur if the divisor is zero.</p>
+                <p>Let's consider an example where we divide two numbers and handle the <code>ArithmeticException</code> that may occur if the divisor is zero.</p>
                 <pre><code>try {
             int numerator = 10;
             int denominator = 0;
@@ -1248,9 +1149,7 @@
                 </h1>
 
                 <h2>File Input/Output in Java</h2>
-                <p>File Input/Output (I/O) operations are used to read from and write to files in Java. This allows
-                    programs
-                    to interact with external files for data storage, retrieval, and manipulation.</p>
+                <p>File Input/Output (I/O) operations are used to read from and write to files in Java. This allows programs to interact with external files for data storage, retrieval, and manipulation.</p>
 
                 <h2>Reading from a File</h2>
                 <p>To read data from a file in Java, you can use various classes such as <code>File</code>,
@@ -1309,8 +1208,7 @@
                 </p>
 
                 <h2>Output</h2>
-                <p>After executing the program, the file <code>output.txt</code> will be created with the following
-                    content:
+                <p>After executing the program, the file <code>output.txt</code> will be created with the following content:
                 </p>
                 <pre><code>This is a sample text written to a file.</code></pre>
             </div>
@@ -1323,13 +1221,11 @@
                 </h1>
 
                 <h2>Generics in Java</h2>
-                <p>Generics in Java allow you to create classes, interfaces, and methods that operate with a type
-                    parameter.
-                    This enables you to define classes and methods that can work with any data type.</p>
+                <p>Generics in Java allow you to create classes, interfaces, and methods that operate with a type parameter. This enables you to define classes and methods that can work with any data type.</p>
 
                 <h3>Generic Class</h3>
-                <p>You can create a generic class by specifying a type parameter in angle brackets
-                    (<code>&lt;&gt;</code>).
+                <p>You can create a generic class by specifying a type parameter in angle brackets (
+                    <code>&lt;&gt;</code>).
                 </p>
                 <pre><code>// Generic class
         public class Box&lt;T&gt; {
@@ -1343,8 +1239,7 @@
                 return item;
             }
         }</code></pre>
-                <p>In this example, <code>T</code> is a type parameter that represents the type of the item stored in
-                    the
+                <p>In this example, <code>T</code> is a type parameter that represents the type of the item stored in the
                     <code>Box</code> object.
                 </p>
 
@@ -1382,14 +1277,10 @@
                 </h1>
 
                 <h2>Introduction to Collections Framework</h2>
-                <p>The Java Collections Framework provides a set of classes and interfaces to store and manipulate
-                    groups of
-                    objects. It includes various data structures such as lists, sets, and maps.</p>
+                <p>The Java Collections Framework provides a set of classes and interfaces to store and manipulate groups of objects. It includes various data structures such as lists, sets, and maps.</p>
 
                 <h2>Lists</h2>
-                <p>A list is an ordered collection of elements where each element is identified by an index. Java
-                    provides
-                    several implementations of the List interface, such as ArrayList and LinkedList.</p>
+                <p>A list is an ordered collection of elements where each element is identified by an index. Java provides several implementations of the List interface, such as ArrayList and LinkedList.</p>
                 <pre><code>// Creating a list
         List<String> myList = new ArrayList<>();
         
@@ -1406,9 +1297,7 @@
                 <p>First element: Apple</p>
 
                 <h2>Sets</h2>
-                <p>A set is a collection of unique elements where each element can occur only once. Java provides
-                    several
-                    implementations of the Set interface, such as HashSet and TreeSet.</p>
+                <p>A set is a collection of unique elements where each element can occur only once. Java provides several implementations of the Set interface, such as HashSet and TreeSet.</p>
                 <pre><code>// Creating a set
         Set<Integer> mySet = new HashSet<>();
         
@@ -1429,9 +1318,7 @@
                 <p>30</p>
 
                 <h2>Maps</h2>
-                <p>A map is a collection of key-value pairs where each key is unique. Java provides several
-                    implementations
-                    of the Map interface, such as HashMap and TreeMap.</p>
+                <p>A map is a collection of key-value pairs where each key is unique. Java provides several implementations of the Map interface, such as HashMap and TreeMap.</p>
                 <pre><code>// Creating a map
         Map<String, Integer> myMap = new HashMap<>();
         
@@ -1456,12 +1343,10 @@
                 </h1>
 
                 <h2>Multithreading and Concurrency</h2>
-                <p>In Java, multithreading allows concurrent execution of two or more parts of a program for maximum
-                    utilization of CPU. It enables multiple tasks to be performed at the same time.</p>
+                <p>In Java, multithreading allows concurrent execution of two or more parts of a program for maximum utilization of CPU. It enables multiple tasks to be performed at the same time.</p>
 
                 <h3>Multithreading</h3>
-                <p>Multithreading is a Java feature that allows concurrent execution of two or more threads. Each thread
-                    runs independently and can perform a different task simultaneously.</p>
+                <p>Multithreading is a Java feature that allows concurrent execution of two or more threads. Each thread runs independently and can perform a different task simultaneously.</p>
                 <pre><code>// Multithreading example
         public class MyThread extends Thread {
             public void run() {
@@ -1477,9 +1362,8 @@
         }</code></pre>
 
                 <h3>Concurrency</h3>
-                <p>Concurrency in Java is the ability of different parts of a program to be executed out-of-order or in
-                    partial order, without affecting the final outcome. It allows multiple tasks to be executed
-                    simultaneously.</p>
+                <p>Concurrency in Java is the ability of different parts of a program to be executed out-of-order or in partial order, without affecting the final outcome. It allows multiple tasks to be executed simultaneously.
+                </p>
                 <pre><code>// Concurrency example
         import java.util.concurrent.ExecutorService;
         import java.util.concurrent.Executors;
@@ -1559,18 +1443,13 @@
                 </h1>
 
                 <h2>Basics of GUI Programming in Java</h2>
-                <p>Graphical User Interface (GUI) programming involves creating interactive applications with graphical
-                    components such as buttons, text fields, and menus. In Java, GUI programming is commonly done using
-                    libraries like Swing or JavaFX.</p>
+                <p>Graphical User Interface (GUI) programming involves creating interactive applications with graphical components such as buttons, text fields, and menus. In Java, GUI programming is commonly done using libraries like Swing or JavaFX.</p>
 
                 <h2>Swing vs. JavaFX</h2>
                 <p>Java provides two main libraries for GUI programming:</p>
                 <ul>
-                    <li><strong>Swing:</strong> Swing is an older GUI toolkit provided by Java. It offers a rich set of
-                        components and is suitable for building desktop applications.</li>
-                    <li><strong>JavaFX:</strong> JavaFX is a newer GUI toolkit that provides a modern, rich graphical
-                        experience. It supports features like animations, effects, and multimedia, making it ideal for
-                        creating rich internet applications and multimedia
+                    <li><strong>Swing:</strong> Swing is an older GUI toolkit provided by Java. It offers a rich set of components and is suitable for building desktop applications.</li>
+                    <li><strong>JavaFX:</strong> JavaFX is a newer GUI toolkit that provides a modern, rich graphical experience. It supports features like animations, effects, and multimedia, making it ideal for creating rich internet applications and multimedia
                         applications.
                     </li>
                 </ul>
@@ -1578,13 +1457,9 @@
                 <h2>Setting Up JavaFX</h2>
                 <p>To get started with JavaFX, you need to set up your development environment:</p>
                 <ol>
-                    <li><strong>Download JavaFX SDK:</strong> Download the JavaFX SDK from the official website or use a
-                        build tool like Maven or Gradle to manage dependencies.</li>
-                    <li><strong>Set Up IDE:</strong> Configure your Integrated Development Environment (IDE) to include
-                        the
-                        JavaFX libraries in your project.</li>
-                    <li><strong>Start Coding:</strong> Once set up, you can start coding GUI applications using JavaFX
-                        components and APIs.</li>
+                    <li><strong>Download JavaFX SDK:</strong> Download the JavaFX SDK from the official website or use a build tool like Maven or Gradle to manage dependencies.</li>
+                    <li><strong>Set Up IDE:</strong> Configure your Integrated Development Environment (IDE) to include the JavaFX libraries in your project.</li>
+                    <li><strong>Start Coding:</strong> Once set up, you can start coding GUI applications using JavaFX components and APIs.</li>
                 </ol>
 
                 <h2>Example Code</h2>
@@ -1612,9 +1487,7 @@
         }</code></pre>
 
                 <h2>Output</h2>
-                <p>A window titled "Hello World" appears with a button labeled "Click Me!". When the button is clicked,
-                    the
-                    message "Button clicked!" is printed to the console.</p>
+                <p>A window titled "Hello World" appears with a button labeled "Click Me!". When the button is clicked, the message "Button clicked!" is printed to the console.</p>
             </div>
         </div>
 
@@ -1627,40 +1500,24 @@
                 </h1>
 
                 <h2>Introduction to JavaFX</h2>
-                <p>JavaFX is a set of graphics and media packages that enables developers to design, create, test,
-                    debug,
-                    and deploy rich client applications that operate consistently across diverse platforms.</p>
+                <p>JavaFX is a set of graphics and media packages that enables developers to design, create, test, debug, and deploy rich client applications that operate consistently across diverse platforms.</p>
 
                 <h2>JavaFX Features</h2>
                 <ul>
-                    <li>Rich Set of UI Controls: JavaFX provides a wide range of UI controls such as buttons, text
-                        fields,
-                        lists, tables, etc., for building interactive user interfaces.</li>
-                    <li>3D Graphics and Animation: JavaFX supports 3D graphics rendering and animation capabilities for
-                        creating visually appealing applications.</li>
-                    <li>Media Support: JavaFX includes support for playing audio and video files, as well as for
-                        capturing
-                        media from input devices.</li>
-                    <li>CSS Styling: JavaFX applications can be styled using Cascading Style Sheets (CSS) to achieve
-                        customized look and feel.</li>
-                    <li>FXML: JavaFX supports FXML (JavaFX Markup Language) for defining user interfaces in a
-                        declarative
-                        manner, separate from application logic.</li>
+                    <li>Rich Set of UI Controls: JavaFX provides a wide range of UI controls such as buttons, text fields, lists, tables, etc., for building interactive user interfaces.</li>
+                    <li>3D Graphics and Animation: JavaFX supports 3D graphics rendering and animation capabilities for creating visually appealing applications.</li>
+                    <li>Media Support: JavaFX includes support for playing audio and video files, as well as for capturing media from input devices.</li>
+                    <li>CSS Styling: JavaFX applications can be styled using Cascading Style Sheets (CSS) to achieve customized look and feel.</li>
+                    <li>FXML: JavaFX supports FXML (JavaFX Markup Language) for defining user interfaces in a declarative manner, separate from application logic.</li>
                 </ul>
 
                 <h2>JavaFX Application Structure</h2>
                 <p>A basic JavaFX application typically consists of the following components:</p>
                 <ul>
-                    <li><strong>Main Class:</strong> The main class extends the <code>Application</code> class and
-                        serves as
-                        the entry point for the JavaFX application.</li>
+                    <li><strong>Main Class:</strong> The main class extends the <code>Application</code> class and serves as the entry point for the JavaFX application.</li>
                     <li><strong>Stage:</strong> The primary stage represents the main window of the application.</li>
-                    <li><strong>Scene:</strong> A scene graph represents the hierarchical structure of the graphical
-                        user
-                        interface (GUI) components.</li>
-                    <li><strong>Nodes:</strong> Nodes represent visual elements such as buttons, labels, text fields,
-                        etc.,
-                        within the scene graph.</li>
+                    <li><strong>Scene:</strong> A scene graph represents the hierarchical structure of the graphical user interface (GUI) components.</li>
+                    <li><strong>Nodes:</strong> Nodes represent visual elements such as buttons, labels, text fields, etc., within the scene graph.</li>
                 </ul>
 
                 <h2>Input</h2>
@@ -1676,9 +1533,7 @@
         }</code></pre>
 
                 <h2>Output</h2>
-                <p>No specific output. JavaFX applications typically display a graphical user interface based on the
-                    defined
-                    scene graph and UI controls.</p>
+                <p>No specific output. JavaFX applications typically display a graphical user interface based on the defined scene graph and UI controls.</p>
             </div>
         </div>
         <!--------------------------------------------------------- day 18 ------------------------------------------------------>
@@ -1689,13 +1544,10 @@
                 </h1>
 
                 <h2>Introduction to Event Handling</h2>
-                <p>Event handling is a fundamental concept in graphical user interface (GUI) programming. It involves
-                    responding to user actions or events, such as mouse clicks or keyboard presses.</p>
+                <p>Event handling is a fundamental concept in graphical user interface (GUI) programming. It involves responding to user actions or events, such as mouse clicks or keyboard presses.</p>
 
                 <h2>Event Handling in JavaFX</h2>
-                <p>JavaFX provides a comprehensive event-handling mechanism to handle various types of events generated
-                    by
-                    user interaction with graphical elements.</p>
+                <p>JavaFX provides a comprehensive event-handling mechanism to handle various types of events generated by user interaction with graphical elements.</p>
                 <p>Here is an example of handling a button click event:</p>
                 <pre><code>import javafx.application.Application;
         import javafx.scene.Scene;
@@ -1744,20 +1596,16 @@
                 </h1>
 
                 <h2>Layout Management</h2>
-                <p>Layout management in JavaFX involves arranging and positioning GUI components within a container or a
-                    scene. It determines how the components are displayed and organized on the screen.</p>
+                <p>Layout management in JavaFX involves arranging and positioning GUI components within a container or a scene. It determines how the components are displayed and organized on the screen.</p>
 
                 <h3>Types of Layout Managers</h3>
                 <p>JavaFX provides several layout managers to control the layout of GUI components:</p>
                 <ul>
-                    <li><strong>BorderPane:</strong> Divides the container into five regions: top, bottom, left, right,
-                        and
-                        center.</li>
+                    <li><strong>BorderPane:</strong> Divides the container into five regions: top, bottom, left, right, and center.
+                    </li>
                     <li><strong>HBox:</strong> Arranges components in a horizontal row.</li>
                     <li><strong>VBox:</strong> Arranges components in a vertical column.</li>
-                    <li><strong>FlowPane:</strong> Arranges components in a flow layout, wrapping them to the next row
-                        or
-                        column as needed.</li>
+                    <li><strong>FlowPane:</strong> Arranges components in a flow layout, wrapping them to the next row or column as needed.</li>
                     <li><strong>GridPane:</strong> Arranges components in a grid layout with rows and columns.</li>
                 </ul>
 
@@ -1781,8 +1629,7 @@
                 </h1>
 
                 <h2>Introduction to Advanced JavaFX Techniques</h2>
-                <p>Advanced JavaFX techniques involve utilizing more complex features and functionalities of the JavaFX
-                    library to create rich and interactive graphical user interfaces (GUIs).</p>
+                <p>Advanced JavaFX techniques involve utilizing more complex features and functionalities of the JavaFX library to create rich and interactive graphical user interfaces (GUIs).</p>
 
                 <h2>Advanced Features and Techniques</h2>
                 <p>Some advanced features and techniques in JavaFX include:</p>
@@ -1826,8 +1673,7 @@
         }</code></pre>
 
                 <h2>Output</h2>
-                <p>A JavaFX window with a button labeled "Click Me!" will be displayed. When the button is clicked, the
-                    message "Button clicked!" will be printed to the console.</p>
+                <p>A JavaFX window with a button labeled "Click Me!" will be displayed. When the button is clicked, the message "Button clicked!" will be printed to the console.</p>
             </div>
         </div>
         <!--------------------------------------------------------- day 21 ------------------------------------------------------>
@@ -1838,24 +1684,17 @@
                 </h1>
 
                 <h2>Introduction to JDBC</h2>
-                <p>JDBC (Java Database Connectivity) is an API for Java that allows Java programs to connect to and
-                    interact
-                    with databases. It provides methods for querying and updating data in relational databases.</p>
+                <p>JDBC (Java Database Connectivity) is an API for Java that allows Java programs to connect to and interact with databases. It provides methods for querying and updating data in relational databases.</p>
 
                 <h2>Basics of JDBC</h2>
                 <p>Here are the basic steps involved in using JDBC:</p>
                 <ol>
-                    <li><strong>Load the JDBC driver:</strong> Load the JDBC driver for the specific database you want
-                        to
-                        connect to. This is done using the <code>Class.forName()</code> method.</li>
-                    <li><strong>Establish a connection:</strong> Use the <code>DriverManager.getConnection()</code>
-                        method
-                        to establish a connection to the database.</li>
+                    <li><strong>Load the JDBC driver:</strong> Load the JDBC driver for the specific database you want to connect to. This is done using the <code>Class.forName()</code> method.</li>
+                    <li><strong>Establish a connection:</strong> Use the <code>DriverManager.getConnection()</code> method to establish a connection to the database.</li>
                     <li><strong>Create a statement:</strong> Create a <code>Statement</code> or
                         <code>PreparedStatement</code> object to execute SQL queries.
                     </li>
-                    <li><strong>Execute queries:</strong> Use the <code>executeQuery()</code> method to execute SELECT
-                        queries or the <code>executeUpdate()</code> method to execute INSERT, UPDATE, or DELETE queries.
+                    <li><strong>Execute queries:</strong> Use the <code>executeQuery()</code> method to execute SELECT queries or the <code>executeUpdate()</code> method to execute INSERT, UPDATE, or DELETE queries.
                     </li>
                     <li><strong>Process results:</strong> Process the results returned by the query, if any.</li>
                     <li><strong>Close the connection:</strong> Close the connection to the database using the
@@ -1864,8 +1703,7 @@
                 </ol>
 
                 <h2>Input</h2>
-                <p>Assuming we have a MySQL database named "employees" with a table named "employees_info" containing
-                    employee information:</p>
+                <p>Assuming we have a MySQL database named "employees" with a table named "employees_info" containing employee information:</p>
                 <pre><code>String url = "jdbc:mysql://localhost:3306/employees";
         String username = "username";
         String password = "password";
@@ -1900,18 +1738,15 @@
                 </h1>
 
                 <h2>Introduction to JDBC</h2>
-                <p>Java Database Connectivity (JDBC) is an API that allows Java applications to interact with databases.
-                    It
-                    provides methods for querying and updating data in a database using SQL statements.</p>
+                <p>Java Database Connectivity (JDBC) is an API that allows Java applications to interact with databases. It provides methods for querying and updating data in a database using SQL statements.</p>
 
                 <h2>Connecting to Databases</h2>
                 <p>To connect Java applications to databases, you need to follow these steps:</p>
                 <ol>
                     <li><strong>Import JDBC Packages:</strong> Import the required JDBC packages.</li>
-                    <li><strong>Load and Register the JDBC Driver:</strong> Load and register the JDBC driver for your
-                        database.</li>
-                    <li><strong>Establish Connection:</strong> Establish a connection to the database using the
-                        DriverManager class.</li>
+                    <li><strong>Load and Register the JDBC Driver:</strong> Load and register the JDBC driver for your database.
+                    </li>
+                    <li><strong>Establish Connection:</strong> Establish a connection to the database using the DriverManager class.</li>
                     <li><strong>Create Statement:</strong> Create a Statement object to execute SQL queries.</li>
                     <li><strong>Execute SQL Queries:</strong> Execute SQL queries to interact with the database.</li>
                     <li><strong>Close Connection:</strong> Close the connection to the database when done.</li>
@@ -1952,9 +1787,7 @@
         }</code></pre>
 
                 <h2>Output</h2>
-                <p>Assuming the database contains a table named 'employees' with columns 'employee_id' and
-                    'employee_name',
-                    the output would be:</p>
+                <p>Assuming the database contains a table named 'employees' with columns 'employee_id' and 'employee_name', the output would be:</p>
                 <pre><code>101 Employee1
         102 Employee2
         103 Employee3</code></pre>
@@ -1969,8 +1802,8 @@
                 </h1>
 
                 <h2>Executing SQL Statements</h2>
-                <p>In Java, you can execute SQL statements to interact with databases using JDBC (Java Database
-                    Connectivity).</p>
+                <p>In Java, you can execute SQL statements to interact with databases using JDBC (Java Database Connectivity).
+                </p>
 
                 <h3>Example: Executing a SELECT Statement</h3>
                 <p>Here's an example of executing a SELECT statement to retrieve data from a database:</p>
@@ -2014,8 +1847,7 @@
         }</code></pre>
 
                 <h2>Input</h2>
-                <p>Assuming there is a table named <code>employees</code> in the database <code>mydatabase</code>, with
-                    columns <code>id</code>, <code>name</code>, and <code>age</code>.</p>
+                <p>Assuming there is a table named <code>employees</code> in the database <code>mydatabase</code>, with columns <code>id</code>, <code>name</code>, and <code>age</code>.</p>
 
                 <h2>Output</h2>
                 <p>Assuming the table <code>employees</code> contains the following data:</p>
@@ -2054,9 +1886,7 @@
                 </h1>
 
                 <h2>Handling Result Sets</h2>
-                <p>In Java, when executing SQL queries that retrieve data from a database, the result is typically
-                    returned
-                    as a result set. Handling result sets involves iterating over the rows and processing the data.</p>
+                <p>In Java, when executing SQL queries that retrieve data from a database, the result is typically returned as a result set. Handling result sets involves iterating over the rows and processing the data.</p>
 
                 <h3>Example: Handling Result Sets</h3>
                 <p>Let's consider a simple example where we retrieve data from a database table and print it:</p>
@@ -2086,9 +1916,8 @@
         }</code></pre>
 
                 <h2>Input</h2>
-                <p>No specific input required. The program connects to a database and retrieves data from the
-                    "employees"
-                    table.</p>
+                <p>No specific input required. The program connects to a database and retrieves data from the "employees" table.
+                </p>
 
                 <h2>Output</h2>
                 <p>Assuming the "employees" table in the database contains the following data:</p>
@@ -2131,15 +1960,11 @@
                 </h1>
 
                 <h2>Introduction to Advanced JDBC Concepts</h2>
-                <p>Java Database Connectivity (JDBC) is a Java API used to interact with relational databases. In
-                    addition
-                    to basic operations like executing queries and handling result sets, JDBC also provides support for
-                    advanced concepts like transactions
+                <p>Java Database Connectivity (JDBC) is a Java API used to interact with relational databases. In addition to basic operations like executing queries and handling result sets, JDBC also provides support for advanced concepts like transactions
                     and prepared statements.</p>
 
                 <h2>Transactions</h2>
-                <p>A transaction is a sequence of one or more SQL statements that are executed as a single unit of work.
-                    JDBC allows you to manage transactions in your Java application.</p>
+                <p>A transaction is a sequence of one or more SQL statements that are executed as a single unit of work. JDBC allows you to manage transactions in your Java application.</p>
                 <pre><code>Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -2168,9 +1993,7 @@
         }</code></pre>
 
                 <h2>Prepared Statements</h2>
-                <p>A prepared statement is a precompiled SQL statement that can be executed multiple times with
-                    different
-                    parameters. It helps improve performance and prevents SQL injection attacks.</p>
+                <p>A prepared statement is a precompiled SQL statement that can be executed multiple times with different parameters. It helps improve performance and prevents SQL injection attacks.</p>
                 <pre><code>Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -2223,11 +2046,8 @@
                 </h1>
 
                 <h2>Servlets</h2>
-                <p>Servlets are Java programming language classes used to extend the capabilities of servers that host
-                    applications accessed by means of a request-response programming model. Although servlets can
-                    respond to
-                    any type of request, they are commonly
-                    used to extend the applications hosted by web servers.</p>
+                <p>Servlets are Java programming language classes used to extend the capabilities of servers that host applications accessed by means of a request-response programming model. Although servlets can respond to any type of request, they are
+                    commonly used to extend the applications hosted by web servers.</p>
 
                 <h2>Basic Servlet Example</h2>
                 <p>Below is a basic example of a servlet that responds to an HTTP GET request:</p>
@@ -2249,9 +2069,7 @@
                 <p>No specific input. Servlets respond to HTTP requests from clients.</p>
 
                 <h2>Output</h2>
-                <p>When a client sends an HTTP GET request to the servlet, the servlet responds with an HTML page
-                    containing
-                    the message "Hello, World!".</p>
+                <p>When a client sends an HTTP GET request to the servlet, the servlet responds with an HTML page containing the message "Hello, World!".</p>
             </div>
         </div>
 
@@ -2263,32 +2081,23 @@
                 </h1>
 
                 <h2>Servlet Lifecycle</h2>
-                <p>A servlet in Java follows a lifecycle defined by the Servlet API. The lifecycle consists of several
-                    stages:</p>
+                <p>A servlet in Java follows a lifecycle defined by the Servlet API. The lifecycle consists of several stages:
+                </p>
                 <ol>
                     <li><strong>Initialization:</strong> Servlet container loads the servlet class and calls its
-                        <code>init()</code> method to perform initialization tasks such as loading resources or
-                        establishing
-                        database connections.
+                        <code>init()</code> method to perform initialization tasks such as loading resources or establishing database connections.
                     </li>
-                    <li><strong>Request Handling:</strong> Servlet container calls the <code>service()</code> method to
-                        handle client requests. The <code>service()</code> method dispatches the request to appropriate
-                        methods like <code>doGet()</code>, <code>doPost()</code>,
+                    <li><strong>Request Handling:</strong> Servlet container calls the <code>service()</code> method to handle client requests. The <code>service()</code> method dispatches the request to appropriate methods like <code>doGet()</code>, <code>doPost()</code>,
                         etc., based on the request type.</li>
-                    <li><strong>Destroy:</strong> Servlet container calls the <code>destroy()</code> method to perform
-                        cleanup tasks such as releasing resources or closing database connections when the servlet is
-                        being
-                        unloaded.</li>
+                    <li><strong>Destroy:</strong> Servlet container calls the <code>destroy()</code> method to perform cleanup tasks such as releasing resources or closing database connections when the servlet is being unloaded.
+                    </li>
                 </ol>
 
                 <h2>Request Handling</h2>
-                <p>Servlets handle client requests through the <code>service()</code> method. This method takes two
-                    parameters: <code>ServletRequest</code> and <code>ServletResponse</code>. Servlets can override this
-                    method to customize request handling.</p>
+                <p>Servlets handle client requests through the <code>service()</code> method. This method takes two parameters: <code>ServletRequest</code> and <code>ServletResponse</code>. Servlets can override this method to customize request handling.</p>
 
                 <h2>Example</h2>
-                <p>Suppose we have a servlet named <code>HelloServlet</code> that responds with a simple greeting
-                    message:
+                <p>Suppose we have a servlet named <code>HelloServlet</code> that responds with a simple greeting message:
                 </p>
                 <pre><code>import javax.servlet.*;
         import javax.servlet.http.*;
@@ -2320,18 +2129,12 @@
                 </h1>
 
                 <h2>JavaServer Pages (JSP)</h2>
-                <p>JavaServer Pages (JSP) is a technology that allows developers to create dynamic, platform-independent
-                    web
-                    pages based on HTML and XML. JSP pages contain HTML code along with embedded Java code that executes
-                    dynamically on the server to generate
-                    dynamic content.</p>
+                <p>JavaServer Pages (JSP) is a technology that allows developers to create dynamic, platform-independent web pages based on HTML and XML. JSP pages contain HTML code along with embedded Java code that executes dynamically on the server to
+                    generate dynamic content.</p>
 
                 <h3>Basic Syntax</h3>
-                <p>JSP files have a <code>.jsp</code> extension and contain a mix of HTML and JSP elements enclosed
-                    within
-                    <code>&lt;%</code> and <code>%&gt;</code> tags. JSP elements allow developers to embed Java code
-                    within
-                    HTML markup to create dynamic content.
+                <p>JSP files have a <code>.jsp</code> extension and contain a mix of HTML and JSP elements enclosed within
+                    <code>&lt;%</code> and <code>%&gt;</code> tags. JSP elements allow developers to embed Java code within HTML markup to create dynamic content.
                 </p>
                 <pre><code>&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %&gt;
         &lt;!DOCTYPE html&gt;
@@ -2349,13 +2152,10 @@
         &lt;/html&gt;</code></pre>
 
                 <h2>Input</h2>
-                <p>No specific input is required. JSP pages are executed on the server and generate dynamic content
-                    based on
-                    the server-side logic.</p>
+                <p>No specific input is required. JSP pages are executed on the server and generate dynamic content based on the server-side logic.</p>
 
                 <h2>Output</h2>
-                <p>The output will be an HTML page with the dynamic content generated by the embedded Java code. For
-                    example, if executed successfully, the output might be:</p>
+                <p>The output will be an HTML page with the dynamic content generated by the embedded Java code. For example, if executed successfully, the output might be:</p>
                 <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
         &lt;head&gt;
@@ -2376,16 +2176,12 @@
                 </h1>
 
                 <h2>Session Management</h2>
-                <p>Session management in Java web applications involves maintaining stateful information about users
-                    across
-                    multiple HTTP requests. This is typically achieved using HttpSession objects.</p>
+                <p>Session management in Java web applications involves maintaining stateful information about users across multiple HTTP requests. This is typically achieved using HttpSession objects.</p>
 
                 <h3>Creating a Session</h3>
-                <p>To create a session in Java, you can use the <code>getSession()</code> method provided by the
-                    HttpServletRequest object.</p>
+                <p>To create a session in Java, you can use the <code>getSession()</code> method provided by the HttpServletRequest object.</p>
                 <pre><code>HttpSession session = request.getSession(true);</code></pre>
-                <p>This code creates a new session if one does not already exist, or returns the existing session
-                    otherwise.
+                <p>This code creates a new session if one does not already exist, or returns the existing session otherwise.
                 </p>
 
                 <h3>Setting and Getting Session Attributes</h3>
@@ -2399,9 +2195,8 @@
         String username = (String) session.getAttribute("username");</code></pre>
 
                 <h2>Filters</h2>
-                <p>Filters in Java web applications are components that can intercept and modify requests and responses.
-                    They are commonly used for tasks such as logging, authentication, authorization, and request
-                    modification.</p>
+                <p>Filters in Java web applications are components that can intercept and modify requests and responses. They are commonly used for tasks such as logging, authentication, authorization, and request modification.
+                </p>
 
                 <h3>Creating a Filter</h3>
                 <p>To create a filter in Java, you need to implement the javax.servlet.Filter interface and override its
@@ -2413,17 +2208,14 @@
                 chain.doFilter(request, response); // Pass request along the filter chain
             }
         }</code></pre>
-                <p>This example demonstrates a simple filter that passes the request along the filter chain without any
-                    modification.</p>
+                <p>This example demonstrates a simple filter that passes the request along the filter chain without any modification.
+                </p>
 
                 <h2>Input</h2>
-                <p>No specific input required. Session management and filters are integrated into the Java web
-                    application
-                    logic and are handled by the servlet container.</p>
+                <p>No specific input required. Session management and filters are integrated into the Java web application logic and are handled by the servlet container.</p>
 
                 <h2>Output</h2>
-                <p>No specific output. Session management and filter operations are transparent to the end user and are
-                    typically used for server-side processing.</p>
+                <p>No specific output. Session management and filter operations are transparent to the end user and are typically used for server-side processing.</p>
             </div>
         </div>
 
@@ -2435,32 +2227,18 @@
                 </h1>
 
                 <h2>Introduction to Spring Framework</h2>
-                <p>The Spring Framework is an open-source framework for building enterprise-level Java applications. It
-                    provides comprehensive infrastructure support for developing Java applications and makes it easier
-                    to
-                    create robust, scalable, and maintainable
+                <p>The Spring Framework is an open-source framework for building enterprise-level Java applications. It provides comprehensive infrastructure support for developing Java applications and makes it easier to create robust, scalable, and maintainable
                     applications.
                 </p>
 
                 <h3>Key Features of Spring Framework</h3>
                 <ul>
-                    <li><strong>Inversion of Control (IoC) Container:</strong> Spring provides an IoC container that
-                        manages
-                        the lifecycle of Java objects and their dependencies. This helps in decoupling components and
-                        improves testability.</li>
-                    <li><strong>Dependency Injection (DI):</strong> Spring supports DI, allowing objects to be injected
-                        with
-                        their dependencies rather than creating them manually. This promotes loose coupling and makes
-                        components easier to test.</li>
-                    <li><strong>Aspect-Oriented Programming (AOP):</strong> Spring Framework supports AOP, which enables
-                        separation of cross-cutting concerns like logging, security, and transaction management from the
-                        business logic.</li>
-                    <li><strong>Transaction Management:</strong> Spring provides a powerful abstraction for managing
-                        transactions in Java applications. It supports both programmatic and declarative transaction
-                        management.</li>
-                    <li><strong>Integration with Other Frameworks:</strong> Spring seamlessly integrates with other
-                        popular
-                        frameworks and technologies like Hibernate, JPA, JDBC, JMS, and more.</li>
+                    <li><strong>Inversion of Control (IoC) Container:</strong> Spring provides an IoC container that manages the lifecycle of Java objects and their dependencies. This helps in decoupling components and improves testability.</li>
+                    <li><strong>Dependency Injection (DI):</strong> Spring supports DI, allowing objects to be injected with their dependencies rather than creating them manually. This promotes loose coupling and makes components easier to test.</li>
+                    <li><strong>Aspect-Oriented Programming (AOP):</strong> Spring Framework supports AOP, which enables separation of cross-cutting concerns like logging, security, and transaction management from the business logic.</li>
+                    <li><strong>Transaction Management:</strong> Spring provides a powerful abstraction for managing transactions in Java applications. It supports both programmatic and declarative transaction management.
+                    </li>
+                    <li><strong>Integration with Other Frameworks:</strong> Spring seamlessly integrates with other popular frameworks and technologies like Hibernate, JPA, JDBC, JMS, and more.</li>
                 </ul>
 
                 <h2>Input</h2>
