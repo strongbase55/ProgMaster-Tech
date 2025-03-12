@@ -42,6 +42,7 @@
     <!-- <link rel="stylesheet" href="assets/css/overlay&slider.css"> -->
 
     <link rel="stylesheet" href="PricingSlash.css">
+    <link rel="stylesheet" href="TrainingMaterialsPopUp.css">
     <style>
         .locked-all {
             pointer-events: none;
@@ -51,6 +52,15 @@
 </head>
 
 <body>
+    <!-- Modal -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Training Materials</h3>
+            <a href="" target="_blank">Figma Materials</a>
+            <a href="content/FreeWebDevelopmentCourse.html" target="_blank">Web Dev Materials</a>
+        </div>
+    </div>
     <!-- Images scrolling animation -->
     <!-- <div class="overlay" id="overlay">
         <div class="close-btn" onclick="closeOverlay()">&times;</div>
@@ -153,7 +163,7 @@
                                                         <a href="Course-Registration.html">Free Training Registration</a>
                                                     </li>
                                                     <li>
-                                                        <a href="content/FreeWebDevelopmentCourse.html" target="_blank">Training Materials</a>
+                                                        <a href="#" class="training-link" onclick="openModal()">Training Materials</a>
                                                     </li>
                                                     <li>
                                                         <a href="ResumeWorld.html" class="locked-all" target="_blank">100+
@@ -181,7 +191,7 @@
                                                             <li><a class="mobile-menu-link" href="web dev.html">Web
                                                                         Development</a>
                                                             </li>
-                                                            <li><a class="mobile-menu-link locked-all" href="course-four.html">Figma (UI)</a>
+                                                            <li><a class="mobile-menu-link" href="figma Free Training.html">Figma (UI)</a>
                                                             </li>
                                                             <li><a class="mobile-menu-link locked-all" href="single-course.html">AWS</a>
                                                             </li>
@@ -1197,7 +1207,7 @@
                                             Questions</a>
                                 </li>
                                 <li>
-                                    <a href="content/FreeWebDevelopmentCourse.html" target="_blank">Training Materials</a>
+                                    <a href="#" class="training-link" onclick="openModal()">Training Materials</a>
                                 </li>
                             </ul>
                         </li>
@@ -1253,29 +1263,24 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has-dropdown">
-                            <a class="nav-link" href="#">Free Live
-                                    Training</a>
-                            <ul class="submenu">
-                                <li>
-                                    <a href="https://meet.google.com/jdm-mziu-dku" target="_blank">Web
-                                            Dev - 6am <br> (Mon-Sat)</a>
-                                </li>
-                                <li>
-                                    <a href="https://meet.google.com/rvr-rhzk-jio" target="_blank">Figma (UI)
-                                            - 7pm (Sat&Sun)</a>
-                                </li>
+                        <li class="has-droupdown">
+                            <a href="#" class="main">Free Live
+                                Training</a>
+                            <ul class="submenu mm-collapse">
+                                <li><a href="https://meet.google.com/jdm-mziu-dku" target="_blank">Web
+                                    Dev - 6am <br> (Mon-Sat)</a></li>
+                                <li><a href="https://meet.google.com/rvr-rhzk-jio" target="_blank">Figma (UI)
+                                    - 7pm (Sat&Sun)</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a class="nav-link" style="color: burlywood;" target="_blank" href="leaderboard.html">LeaderBoard</a>
+                        <li class="">
+                            <a href="leaderboard.html" class="main">LeaderBoard</a>
                         </li>
-                        <li>
-                            <a class="nav-link" style="color: burlywood;" target="_blank" href="Consultencey-Job-Portal.html">Job
-                                    Portal</a>
+                        <li class="">
+                            <a href="Consultencey-Job-Portal.html" class="main">Job Portal</a>
                         </li>
-
                     </ul>
+
                 </nav>
 
                 <div class="buttons-area">
@@ -1539,6 +1544,9 @@
     <script src="single-course-assets/js/main.js"></script>
     <script src="assets/js/overlay.js"></script>
     <script src="assets/js/imageslider.js"></script>
+    <script src="TrainingMaterialsPopUp.js"></script>
 </body>
+
+</html>
 
 </html>
