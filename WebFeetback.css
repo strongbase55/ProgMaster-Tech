@@ -1,0 +1,435 @@
+/* Importing Google Fonts - Poppins */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    gap: 2em;
+    flex-direction: row;
+    background: white;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+@media(max-width:768px) {
+    body {
+        flex-wrap: wrap;
+    }
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.container .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.course-container .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.container .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.course-container .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    border-radius: 5px;
+    text-align: center;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.content form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+form .input-box span.details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.user-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    border-color: #9b59b6;
+}
+
+.user-details .input-box select {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.user-details .input-box select:focus,
+.user-details .input-box select:valid {
+    border-color: #9b59b6;
+}
+
+form .gender-details .gender-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .category {
+    display: flex;
+    width: 80%;
+    margin: 14px 0;
+    justify-content: space-between;
+}
+
+form .category label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+form .category label .dot {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #d9d9d9;
+    border: 5px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two,
+#dot-3:checked~.category label .three {
+    background: #9b59b6;
+    border-color: #d9d9d9;
+}
+
+form input[type="radio"] {
+    display: none;
+}
+
+form .button {
+    height: 45px;
+    margin: 35px 0
+}
+
+form .button input {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+form .button input:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+
+/* back button  */
+
+.backbtn {
+    position: absolute;
+    float: right;
+    right: 1em;
+    top: 1.4em;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.backbtn:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+
+/* Responsive media query code for mobile devices */
+
+@media(max-width: 584px) {
+    .container {
+        max-width: 100%;
+    }
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    form .category {
+        width: 100%;
+    }
+    .content form .user-details {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar {
+        width: 5px;
+    }
+}
+
+
+/* Responsive media query code for mobile devices */
+
+@media(max-width: 459px) {
+    .container .content .category {
+        flex-direction: column;
+    }
+}
+
+
+/* Course details container */
+
+.course-container {
+    height: 96.5vh;
+    max-width: 900px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    overflow-y: scroll;
+    scrollbar-width: 1px;
+}
+
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+.course-container h2 {
+    color: #333;
+    text-align: center;
+}
+
+.course-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.process-list,
+.certificate-list {
+    list-style: none;
+    padding: 0;
+}
+
+.process-list li,
+.certificate-list li {
+    background: #eef6ff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .course-container {
+        padding: 15px;
+        min-width: 100%;
+    }
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+#submit {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: not-allowed;
+}
+
+#submit.enabled {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* company details hold */
+
+.company-details-hold {
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.company-details-hold img {
+    height: 100px;
+    width: 100px;
+}
+
+
+/* Default: Disabled Button */
+
+input[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Enabled Button: Change Cursor to Pointer */
+
+input[type="submit"].enabled {
+    background-color: #4CAF50;
+    /* Green color */
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.content {
+    width: 100%;
+    max-width: 800px;
+    /* Adjust as per your card width */
+    margin: auto;
+    /* Centers content on big screens */
+    display: flex;
+    flex-direction: column;
+}
+
+.content textarea {
+    /* Takes full width of .content */
+    height: auto;
+    min-height: 100px;
+    width: 635px;
+    /* Equivalent to 5 rows */
+    /* Ensures it doesn't exceed container */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    /* Allows resizing only vertically */
+    box-sizing: border-box;
+    /* Includes padding inside width */
+    padding-left: 10px;
+    padding-top: 1em;
+}
+
+
+/* 🔥 For big screens, make it take full width inside the card */
+
+@media (max-width: 768px) {
+    .content {
+        width: 100%;
+        /* Ensures the content div takes full width */
+        max-width: 100%;
+        /* Prevents unwanted shrinking */
+        display: flex;
+        flex-direction: column;
+    }
+    .content textarea {
+        width: 100%;
+        /* Takes full width of .content */
+        height: auto;
+        min-height: 120px;
+        /* Equivalent to 5 rows */
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+        /* Allows resizing only vertically */
+        box-sizing: border-box;
+        /* Ensures padding is included in width */
+    }
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    /* White with transparency */
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#loader img {
+    width: 200px;
+    /* Adjust as needed */
+    height: 200px;
+}

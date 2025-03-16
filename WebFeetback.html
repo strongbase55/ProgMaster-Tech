@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Training Feedback</title>
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png">
+    <link rel="stylesheet" href="WebFeetback.css">
+</head>
+
+<body>
+
+    <div id="loader">
+        <img src="loder.gif" alt="Loading..." />
+    </div>
+
+
+    <div class="container">
+        <!-- Title section -->
+        <div class="title">You're Feedback Matter's</div>
+        <!-- <a class="backbtn" href="index.html">Back</a> -->
+
+        <div class="content">
+            <!-- Registration form -->
+            <form method="post" action="" name="contact-form">
+                <div class="user-details">
+
+
+
+                    <!-- Input for Phone Number -->
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input type="tel" placeholder="Enter your number" name="Number" id="phone" required oninput="validateForm()">
+                        <small id="phoneError" class="error-message"></small>
+                    </div>
+
+
+                    <!-- Input for College Roll Number -->
+                    <div class="input-box">
+                        <span class="details">Training Id</span>
+                        <input type="text" name="Roll Number" placeholder="PROGTFWD" id="rollNumber" required oninput="validateForm()">
+                        <small id="rollNumberError" class="error-message"></small>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">1. How was the training session?                        </span> <br>
+                        <select required name="How was the training session?">
+                            <option value="Engaging">Engaging</option>
+                            <option value="Informative">Informative</option>
+                            <option value="Insightful">Insightful</option>
+                            <option value="None Of The Above">None Of The Above</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">2. Did the training content meet your expectations?
+                        </span>
+                        <select required name="Did the training content meet your expectations?">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Some What">Some What</option>
+                        </select>
+                    </div>
+                    <!-- Input for Rating Number -->
+                    <div class="input-box">
+                        <span class="details">3. How would you rate the quality of the training? (1-5)
+                        </span>
+                        <input type="number" min="1" max="5" name="How would you rate the quality of the training? (1-5)" id="phone" required oninput="validateForm()">
+                        <small id="phoneError" class="error-message"></small>
+                    </div>
+                    <!-- Input for Rating Number -->
+                    <div class="input-box">
+                        <span class="details">4. How would you rate the quality of the instructor? (1-5)
+
+                        </span>
+                        <input type="number" min="1" max="5" name="How would you rate the quality of the instructor? (1-5)" id="phone" required oninput="validateForm()">
+                        <small id="phoneError" class="error-message"></small>
+                    </div>
+                    <!-- Input for Rating Number -->
+                    <div class="input-box">
+                        <span class="details">5. Did you learn anything new?
+
+                        </span>
+                        <textarea style="padding: 2px;" name="Did you learn anything new?" id="" rows="5" cols="45" placeholder="Write your comments here..."></textarea>
+                        <small id="phoneError" class="error-message"></small>
+                    </div>
+
+                </div>
+
+                <!-- Submit button -->
+                <div class="button">
+                    <input type="submit" value="Submit" id="submit" disabled>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="WebFeetback.js">
+    </script>
+</body>
+
+</html>
