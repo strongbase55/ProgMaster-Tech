@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+:root {
+    --btn-shadow: 1px 1px 15px 1px rgb(29, 186, 197);
+}
+
+.container {
+    min-height: 100vh;
+    min-width: 100%;
+    background: pink;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    /* padding : height width */
+    /* padding : 10px  */
+    padding: 40px 0px;
+}
+
+form {
+    min-height: 50vh;
+    max-width: 500px;
+    background: rgb(59, 52, 52);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color: aliceblue;
+    padding: 20px;
+    box-shadow: 1px 1px 300px 1px rgb(44, 12, 12);
+}
+
+fieldset {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 30px;
+}
+
+input {
+    border: 1px solid gray;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+    width: 300px;
+    font-weight: bold;
+    box-shadow: 1px 1px 15px 1px rgb(83, 55, 55);
+}
+
+
+/* Button desing */
+
+#SingIn {
+    padding: 10px 30px;
+    background: rgb(225, 231, 232);
+    color: rgb(17, 14, 10);
+    font-size: 18px;
+    font-weight: bolder;
+    width: 200px;
+}
+
+#SingIn:hover {
+    box-shadow: var(--btn-shadow);
+    cursor: pointer;
+}
+
+form h1 {
+    color: white;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+form .D18 {
+    margin-bottom: 30px;
+}
+
+
+/* SIGNUP BUTTON */
+
+#SingUp {
+    padding: 10px 30px;
+    background: rgb(225, 231, 232);
+    color: rgb(17, 14, 10);
+    font-size: 18px;
+    font-weight: bolder;
+    max-width: 100%;
+    width: 200px;
+    margin-bottom: 30px;
+    transition: 1s;
+}
+
+#SingUp:hover {
+    box-shadow: var(--btn-shadow);
+    cursor: pointer;
+    background: #000;
+    color: wheat;
+    border: none;
+}
