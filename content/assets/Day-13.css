@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+
+/* container design */
+
+.container {
+    background: #ffffff;
+    min-height: 100vh;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 30px;
+}
+
+.card {
+    min-height: 300px;
+    max-width: 300px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    box-shadow: 1px 1px 200px 1px rgb(174, 134, 134);
+    animation: CardHighlighter .5s infinite;
+}
+
+@keyframes CardHighlighter {
+    from {
+        background: white;
+        color: black;
+    }
+    to {
+        background: #000;
+        color: wheat;
+    }
+}
+
+.card img {
+    height: 200px;
+    width: 200px;
+}
+
+.product_details {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.price {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.price button {
+    background: black;
+    color: wheat;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.price p {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.offer {
+    animation: PriceHighliter .5s infinite;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+@keyframes PriceHighliter {
+    0% {
+        color: red;
+    }
+    25% {
+        color: aqua;
+    }
+    50% {
+        color: yellow;
+    }
+    75% {
+        color: violet;
+    }
+    100% {
+        color: tomato;
+    }
+}
+
+.imagechanger {
+    height: 100vh;
+    max-width: 100%;
+    background: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ImageCard1 {
+    height: 300px;
+    width: 300px;
+    background-image: url('https://www.baerindia.com/cdn/shop/files/DSCF4365-Edit_a4dd4e8e-4a36-4da7-920a-d2efaa40b8d3.png?v=1720270029&width=823');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: imagechanger1 5s infinite;
+}
+
+@keyframes imagechanger1 {
+    0% {
+        background-image: url("https://www.baerindia.com/cdn/shop/files/DSCF4382-Edit_d94a6115-2c91-4678-addf-a6370c81aa19.png?v=1720270030&width=823");
+    }
+    10% {
+        background-image: url("https://www.baerindia.com/cdn/shop/files/DSCF4382-Edit_d94a6115-2c91-4678-addf-a6370c81aa19.png?v=1720270030&width=823");
+    }
+    20% {
+        background-image: url("https://www.baerindia.com/cdn/shop/files/DSCF4503_51be944c-fb12-43cf-9191-a52930e1c2a8.png?v=1720270030&width=823");
+    }
+}
+
+
+/* this  is for image 2 */
+
+.ImageCard2 {
+    height: 300px;
+    width: 300px;
+    background-image: url('https://images.meesho.com/images/products/310919586/cbnfi_512.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: imagechanger2 5s infinite;
+    opacity: 0.3;
+    transition: .5s;
+}
+
+.ImageCard2:hover {
+    opacity: 1;
+}
+
+@keyframes imagechanger2 {
+    0% {
+        background-image: url("https://images.meesho.com/images/products/310919586/mjsdf_512.webp");
+    }
+    10% {
+        background-image: url("https://images.meesho.com/images/products/310919586/7ewlt_512.webp");
+    }
+    20% {
+        background-image: url("https://images.meesho.com/images/products/310919586/mjsdf_512.webp");
+    }
+}
