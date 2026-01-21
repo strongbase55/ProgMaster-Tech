@@ -1,0 +1,2567 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: radial-gradient(circle at top right, #1e1b4b, #0f172a 50%, #020617 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+        }
+        
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .sidebar-item {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background: rgba(99, 102, 241, 0.2);
+            border-left: 3px solid #6366f1;
+        }
+        
+        .table-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .status-pending {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+        
+        .status-inactive {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+            border-radius: 10px;
+        }
+        
+        .chart-bar {
+            background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease;
+        }
+        
+         ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.5);
+            border-radius: 3px;
+        }
+        
+        .toast {
+            animation: toastIn 0.3s ease-out;
+        }
+        
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .hierarchy-line {
+            border-left: 2px dashed rgba(99, 102, 241, 0.3);
+        }
+    </style>
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full gradient-bg text-white overflow-auto">
+    <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2"></div>
+
+    <div id="login-screen" class="h-full flex items-center justify-center p-6">
+        <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-fade-in">
+            <div class="space-y-8 pr-0 lg:pr-12">
+                <div class="w-16 h-14 rounded-2xl btn-primary flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                    <img src="https://imgs.search.brave.com/GOTySodCB923l2t_XndagZf1TQaMkVS3u3AxSIy2Xvw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcm9n/bWFzdGVyLmluL2Fu/b3RoZXItYnJvdWNo/ZXItbG9nby1yZW1v/dmViZy1wcmV2aWV3/LnBuZw" alt="company-logo">
+                </div>
+                <div class="space-y-4">
+                    <h1 id="login-welcome" class="text-5xl lg:text-6xl font-extrabold tracking-tight">
+                        Welcome to <br><span class="text-indigo-400">TechCorp Portal</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg leading-relaxed max-w-md">
+                        Streamline your workforce management with our advanced employee portal. Manage teams, track performance, and collaborate seamlessly.
+                    </p>
+                </div>
+
+                <div class="space-y-6 pt-4">
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Team Management</h4>
+                            <p class="text-sm text-gray-500">Organize and oversee your teams efficiently</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/20 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Performance Analytics</h4>
+                            <p class="text-sm text-gray-500">Track progress with real-time insights</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 group-hover:bg-pink-500/20 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Task Coordination</h4>
+                            <p class="text-sm text-gray-500">Assign and monitor tasks seamlessly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card glow-effect rounded-[2.5rem] p-8 w-full max-w-md mx-auto lg:ml-auto max-h-[85vh] overflow-y-auto">
+                <div class="text-center mb-6">
+                    <h2 id="login-title" class="text-3xl font-bold mb-2">Employee Portal</h2>
+                    <p class="text-gray-400 text-sm">Access your personalized dashboard</p>
+                </div>
+
+                <form id="login-form" class="space-y-4">
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 text-sm font-medium text-gray-300 ml-1">
+                            <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            Email Address
+                        </label>
+                        <input type="email" id="login-email" required value="demo@company.com" class="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-600 input-focus focus:outline-none focus:border-indigo-500 transition-all" placeholder="name@company.com">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 text-sm font-medium text-gray-300 ml-1">
+                            <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            Password
+                        </label>
+                        <input type="password" id="login-password" required value="password" class="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-600 input-focus focus:outline-none focus:border-indigo-500 transition-all" placeholder="••••••••">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 text-sm font-medium text-gray-300 ml-1">
+                            <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                            Select Your Role
+                        </label>
+                        <select id="login-role" required class="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white appearance-none input-focus focus:outline-none focus:border-indigo-500 transition-all cursor-pointer">
+                            <option value="" class="bg-slate-900">Choose your role...</option>
+                            <option value="manager" class="bg-slate-900">Manager</option>
+                            <option value="team_lead" class="bg-slate-900">Team Lead</option>
+                            <option value="intern" class="bg-slate-900">Intern</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs px-1">
+                        <label class="flex items-center gap-2 cursor-pointer text-gray-400 hover:text-white transition-colors">
+                            <input type="checkbox" class="w-4 h-4 rounded bg-white/5 border-white/10 text-indigo-500 focus:ring-0">
+                            Remember me
+                        </label>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-2xl btn-primary text-white font-bold text-lg flex items-center justify-center gap-2 shadow-xl shadow-indigo-500/20 mt-4">
+                        Sign In
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </button>
+                </form>
+
+                <div class="mt-8 pt-6 border-t border-white/5">
+                    <div class="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 flex items-start gap-3">
+                        <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <div>
+                            <p class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-1">Demo Mode Active</p>
+                            <p class="text-gray-400 text-[11px] leading-tight">Select any role to explore the portal with sample data and full functionality.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center text-gray-500 text-xs mt-8">
+                    Don't have an account? <a href="#" class="text-indigo-400 font-bold hover:underline">Contact HR</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard" class="h-full hidden">
+        <div class="flex h-full">
+            <aside id="sidebar" class="w-64 glass-card border-r border-white/10 flex flex-col">
+                <div class="p-6 border-b border-white/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl btn-primary flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+                        </div>
+                        <div>
+                            <h2 id="sidebar-company" class="font-bold text-sm">TechCorp</h2>
+                            <p id="user-role-display" class="text-xs text-gray-400">Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <nav class="flex-1 p-4 space-y-1" id="sidebar-nav">
+                </nav>
+                <div class="p-4 border-t border-white/10">
+                    <div class="glass-card-light rounded-xl p-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div id="user-avatar" class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-bold">
+                                JD
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p id="user-name" class="font-semibold text-sm truncate">John Doe</p>
+                                <p id="user-id" class="text-xs text-gray-400">MGR-001</p>
+                            </div>
+                        </div><button id="logout-btn" class="w-full py-2 rounded-lg btn-secondary text-sm flex items-center justify-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg> Sign Out </button>
+                    </div>
+                </div>
+            </aside>
+            <main class="flex-1 overflow-auto">
+                <div class="p-6" id="main-content">
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id="team-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="modal-backdrop absolute inset-0" onclick="closeTeamModal()"></div>
+        <div class="glass-card glow-effect rounded-3xl p-8 w-full max-w-lg relative animate-slide-in"><button onclick="closeTeamModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+            <h3 class="text-xl font-bold mb-6">Create New Team</h3>
+            <form id="team-form" class="space-y-4">
+                <div><label class="block text-sm text-gray-400 mb-2">Team Name</label> <input type="text" id="team-name" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Department</label> <select id="team-department" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"> <option value="" class="bg-slate-800">Select Department</option> <option value="engineering" class="bg-slate-800">Engineering</option> <option value="design" class="bg-slate-800">Design</option> <option value="marketing" class="bg-slate-800">Marketing</option> <option value="sales" class="bg-slate-800">Sales</option> </select>
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Team Lead</label> <select id="team-lead" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"> <option value="" class="bg-slate-800">Select Team Lead</option> </select>
+                </div>
+                <div class="flex gap-4 mt-6"><button type="button" onclick="closeTeamModal()" class="flex-1 py-3 rounded-xl btn-secondary font-semibold"> Cancel </button> <button type="submit" class="flex-1 py-3 rounded-xl btn-primary font-semibold"> Create Team </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="meeting-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="modal-backdrop absolute inset-0" onclick="closeMeetingModal()"></div>
+        <div class="glass-card glow-effect rounded-3xl p-8 w-full max-w-lg relative animate-slide-in"><button onclick="closeMeetingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+            <h3 class="text-xl font-bold mb-6">Schedule Team Meeting</h3>
+            <form id="meeting-form" class="space-y-4">
+                <div><label class="block text-sm text-gray-400 mb-2">Meeting Title</label> <input type="text" id="meeting-title" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm text-gray-400 mb-2">Date</label> <input type="date" id="meeting-date" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div><label class="block text-sm text-gray-400 mb-2">Time</label> <input type="time" id="meeting-time" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Agenda</label> <textarea id="meeting-agenda" rows="3" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500 resize-none"></textarea>
+                </div>
+                <div class="flex gap-4 mt-6"><button type="button" onclick="closeMeetingModal()" class="flex-1 py-3 rounded-xl btn-secondary font-semibold"> Cancel </button> <button type="submit" class="flex-1 py-3 rounded-xl btn-primary font-semibold"> Schedule </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="add-member-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="modal-backdrop absolute inset-0" onclick="closeAddMemberModal()"></div>
+        <div class="glass-card glow-effect rounded-3xl p-8 w-full max-w-lg relative animate-slide-in"><button onclick="closeAddMemberModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+            <h3 class="text-xl font-bold mb-6">Add Member to Team</h3>
+            <form id="add-member-form" class="space-y-4">
+                <div><label class="block text-sm text-gray-400 mb-2">Select Member</label>
+                    <div id="available-members-list" class="max-h-80 overflow-y-auto space-y-2 glass-card-light rounded-xl p-4">
+                    </div>
+                </div>
+                <div class="flex gap-4 mt-6"><button type="button" onclick="closeAddMemberModal()" class="flex-1 py-3 rounded-xl btn-secondary font-semibold"> Cancel </button> <button type="submit" class="flex-1 py-3 rounded-xl btn-primary font-semibold"> Add to Team </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="employee-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="modal-backdrop absolute inset-0" onclick="closeEmployeeModal()"></div>
+        <div class="glass-card glow-effect rounded-3xl p-8 w-full max-w-2xl relative animate-slide-in overflow-y-auto max-h-[90vh]"><button onclick="closeEmployeeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+            <h3 class="text-xl font-bold mb-6">Add New Employee / Intern</h3>
+            <form id="employee-form" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm text-gray-400 mb-2">First Name</label> <input type="text" id="emp-firstname" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div><label class="block text-sm text-gray-400 mb-2">Last Name</label> <input type="text" id="emp-lastname" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Email Address</label> <input type="email" id="emp-email" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"
+                        placeholder="employee@company.com">
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Phone Number</label> <input type="tel" id="emp-phone" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"
+                        placeholder="+1234567890">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm text-gray-400 mb-2">Designation</label> <select id="emp-role" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"> <option value="" class="bg-slate-800">Select Designation</option> <option value="employee" class="bg-slate-800">Employee</option> <option value="intern" class="bg-slate-800">Intern</option> </select>
+                    </div>
+                    <div><label class="block text-sm text-gray-400 mb-2">Department</label> <select id="emp-department" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"> <option value="" class="bg-slate-800">Select Department</option> <option value="engineering" class="bg-slate-800">Engineering</option> <option value="design" class="bg-slate-800">Design</option> <option value="marketing" class="bg-slate-800">Marketing</option> <option value="sales" class="bg-slate-800">Sales</option> <option value="hr" class="bg-slate-800">Human Resources</option> <option value="finance" class="bg-slate-800">Finance</option> </select>
+                    </div>
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Assign to Team (Optional)</label> <select id="emp-team" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"> <option value="" class="bg-slate-800">No Team (Assign Later)</option> </select>
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Join Date</label> <input type="date" id="emp-joindate" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Initial Performance Score (0-100)</label> <input type="number" id="emp-performance" min="0" max="100" value="70" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                </div>
+                <div class="flex gap-4 mt-6"><button type="button" onclick="closeEmployeeModal()" class="flex-1 py-3 rounded-xl btn-secondary font-semibold"> Cancel </button> <button type="submit" class="flex-1 py-3 rounded-xl btn-primary font-semibold"> Add Employee </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="task-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="modal-backdrop absolute inset-0" onclick="closeTaskModal()"></div>
+        <div class="glass-card glow-effect rounded-3xl p-8 w-full max-w-lg relative animate-slide-in"><button onclick="closeTaskModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+            <h3 class="text-xl font-bold mb-6">Assign New Task</h3>
+            <form id="task-form" class="space-y-4">
+                <div><label class="block text-sm text-gray-400 mb-2">Task Title</label> <input type="text" id="task-title" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Description</label> <textarea id="task-description" rows="3" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500 resize-none"></textarea>
+                </div>
+                <div><label class="block text-sm text-gray-400 mb-2">Assign To</label>
+                    <div id="assignee-select" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 max-h-40 overflow-y-auto">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="block text-sm text-gray-400 mb-2">Priority</label> <select id="task-priority" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500"> <option value="low" class="bg-slate-800">Low</option> <option value="medium" class="bg-slate-800">Medium</option> <option value="high" class="bg-slate-800">High</option> <option value="urgent" class="bg-slate-800">Urgent</option> </select>
+                    </div>
+                    <div><label class="block text-sm text-gray-400 mb-2">Due Date</label> <input type="date" id="task-due" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white input-focus focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+                <div class="flex gap-4 mt-6"><button type="button" onclick="closeTaskModal()" class="flex-1 py-3 rounded-xl btn-secondary font-semibold"> Cancel </button> <button type="submit" class="flex-1 py-3 rounded-xl btn-primary font-semibold"> Assign Task </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // ==================== CONFIGURATION ====================
+        const defaultConfig = {
+            company_name: 'TechCorp',
+            portal_title: 'Employee Portal'
+        };
+
+        let config = {...defaultConfig
+        };
+
+        // ==================== STATE MANAGEMENT ====================
+        let currentUser = null;
+        let members = [];
+        let tasks = [];
+        let teams = [];
+        let meetings = [];
+        let currentPage = 'dashboard';
+
+        // Demo data
+        const demoMembers = [{
+            id: 'MGR-001',
+            firstName: 'Sarah',
+            lastName: 'Wilson',
+            email: 'sarah@company.com',
+            role: 'sr_manager',
+            department: 'engineering',
+            phone: '+1234567890',
+            status: 'active',
+            performance: 95,
+            joinDate: '2022-01-15',
+            teamId: null
+        }, {
+            id: 'TL-001',
+            firstName: 'James',
+            lastName: 'Chen',
+            email: 'james@company.com',
+            role: 'sr_team_lead',
+            department: 'engineering',
+            phone: '+1234567891',
+            status: 'active',
+            performance: 92,
+            joinDate: '2022-06-01',
+            teamId: 'TEAM-001'
+        }, {
+            id: 'TL-002',
+            firstName: 'Lisa',
+            lastName: 'Rodriguez',
+            email: 'lisa@company.com',
+            role: 'team_lead',
+            department: 'design',
+            phone: '+1234567892',
+            status: 'active',
+            performance: 88,
+            joinDate: '2023-01-20',
+            teamId: 'TEAM-002'
+        }, {
+            id: 'EMP-001',
+            firstName: 'Michael',
+            lastName: 'Brown',
+            email: 'michael@company.com',
+            role: 'employee',
+            department: 'engineering',
+            phone: '+1234567893',
+            status: 'active',
+            performance: 85,
+            joinDate: '2023-03-15',
+            teamId: 'TEAM-001'
+        }, {
+            id: 'EMP-002',
+            firstName: 'Emma',
+            lastName: 'Davis',
+            email: 'emma@company.com',
+            role: 'employee',
+            department: 'design',
+            phone: '+1234567894',
+            status: 'active',
+            performance: 90,
+            joinDate: '2023-05-10',
+            teamId: 'TEAM-002'
+        }, {
+            id: 'EMP-003',
+            firstName: 'Alex',
+            lastName: 'Johnson',
+            email: 'alex@company.com',
+            role: 'employee',
+            department: 'engineering',
+            phone: '+1234567895',
+            status: 'active',
+            performance: 82,
+            joinDate: '2023-08-01',
+            teamId: 'TEAM-001'
+        }, {
+            id: 'INT-001',
+            firstName: 'Sophie',
+            lastName: 'Martinez',
+            email: 'sophie@company.com',
+            role: 'intern',
+            department: 'engineering',
+            phone: '+1234567896',
+            status: 'active',
+            performance: 78,
+            joinDate: '2024-01-10',
+            teamId: 'TEAM-001',
+            reportTo: 'TL-001'
+        }, {
+            id: 'INT-002',
+            firstName: 'Ryan',
+            lastName: 'Taylor',
+            email: 'ryan@company.com',
+            role: 'intern',
+            department: 'design',
+            phone: '+1234567897',
+            status: 'active',
+            performance: 75,
+            joinDate: '2024-01-15',
+            teamId: 'TEAM-002',
+            reportTo: 'TL-002'
+        }, ];
+
+        const demoTasks = [{
+            id: 'T001',
+            title: 'Complete UI Redesign',
+            description: 'Redesign the dashboard interface',
+            assignees: ['EMP-002', 'INT-002'],
+            priority: 'high',
+            dueDate: '2024-02-28',
+            status: 'in_progress',
+            createdBy: 'TL-002'
+        }, {
+            id: 'T002',
+            title: 'API Integration',
+            description: 'Integrate payment gateway API',
+            assignees: ['EMP-001', 'EMP-003'],
+            priority: 'urgent',
+            dueDate: '2024-02-20',
+            status: 'in_progress',
+            createdBy: 'TL-001'
+        }, {
+            id: 'T003',
+            title: 'User Testing Report',
+            description: 'Compile user testing feedback',
+            assignees: ['INT-001'],
+            priority: 'medium',
+            dueDate: '2024-03-05',
+            status: 'in_progress',
+            createdBy: 'TL-001'
+        }, {
+            id: 'T004',
+            title: 'Documentation Update',
+            description: 'Update technical documentation',
+            assignees: ['INT-001'],
+            priority: 'low',
+            dueDate: '2024-03-10',
+            status: 'pending',
+            createdBy: 'TL-001'
+        }, {
+            id: 'T005',
+            title: 'Design System V2',
+            description: 'Create new component library',
+            assignees: ['EMP-002', 'INT-002'],
+            priority: 'high',
+            dueDate: '2024-03-15',
+            status: 'pending',
+            createdBy: 'TL-002'
+        }, {
+            id: 'T006',
+            title: 'Code Review',
+            description: 'Review PR submissions',
+            assignees: ['INT-001'],
+            priority: 'medium',
+            dueDate: '2024-02-25',
+            status: 'completed',
+            createdBy: 'TL-001'
+        }, ];
+
+        const demoTeams = [{
+            id: 'TEAM-001',
+            name: 'Backend Engineering',
+            department: 'engineering',
+            leadId: 'TL-001',
+            memberCount: 4
+        }, {
+            id: 'TEAM-002',
+            name: 'UI/UX Design',
+            department: 'design',
+            leadId: 'TL-002',
+            memberCount: 3
+        }, ];
+
+        const demoMeetings = [{
+            id: 'M001',
+            title: 'Sprint Planning',
+            date: '2024-02-20',
+            time: '10:00',
+            agenda: 'Plan tasks for next sprint',
+            teamId: 'TEAM-001',
+            organizer: 'TL-001'
+        }, {
+            id: 'M002',
+            title: 'Design Review',
+            date: '2024-02-21',
+            time: '14:00',
+            agenda: 'Review new design mockups',
+            teamId: 'TEAM-002',
+            organizer: 'TL-002'
+        }, {
+            id: 'M003',
+            title: '1-on-1 Check-in',
+            date: '2024-02-22',
+            time: '15:00',
+            agenda: 'Weekly progress discussion',
+            teamId: 'TEAM-001',
+            organizer: 'TL-001'
+        }, ];
+
+        // ==================== UTILITY FUNCTIONS ====================
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-emerald-500' : type === 'error' ? 'bg-red-500' : 'bg-amber-500';
+
+            toast.className = `toast ${bgColor} text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-3`;
+            toast.innerHTML = `
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          ${type === 'success' ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>' : 
+            type === 'error' ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>' :
+            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>'}
+        </svg>
+        <span>${message}</span>
+      `;
+
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        }
+
+        function getRoleLabel(role) {
+            const labels = {
+                'sr_manager': 'Sr. Manager',
+                'manager': 'Manager',
+                'sr_team_lead': 'Sr. Team Lead',
+                'team_lead': 'Team Lead',
+                'employee': 'Employee',
+                'intern': 'Intern'
+            };
+            return labels[role] || role;
+        }
+
+        function formatDate(dateStr) {
+            return new Date(dateStr).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        function generateId(prefix) {
+            return `${prefix}-${Math.floor(Math.random() * 900) + 100}`;
+        }
+
+        // ==================== AUTHENTICATION ====================
+        async function handleLogin(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('login-email').value;
+            const role = document.getElementById('login-role').value;
+
+            if (!role) {
+                showToast('Please select a role', 'error');
+                return;
+            }
+
+            // Find member with matching email or create demo user
+            let user = demoMembers.find(m => m.email === email);
+
+            if (!user) {
+                user = {
+                    id: role === 'manager' ? 'MGR-002' : role === 'team_lead' ? 'TL-003' : 'INT-003',
+                    firstName: email.split('@')[0],
+                    lastName: 'User',
+                    email: email,
+                    role: role,
+                    department: 'engineering',
+                    phone: '+1234567890',
+                    status: 'active',
+                    performance: 80,
+                    joinDate: new Date().toISOString().split('T')[0],
+                    teamId: role === 'intern' ? 'TEAM-001' : null,
+                    reportTo: role === 'intern' ? 'TL-001' : null
+                };
+            } else {
+                user.role = role; // Override with selected role for demo
+            }
+
+            currentUser = user;
+            initializeDashboard();
+            showToast(`Welcome ${currentUser.firstName}!`, 'success');
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('login-screen').classList.add('flex');
+            showToast('Signed out successfully', 'success');
+        }
+
+        // ==================== DASHBOARD INITIALIZATION ====================
+        function initializeDashboard() {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+
+            updateUserDisplay();
+            loadData();
+            renderRoleBasedUI();
+        }
+
+        function updateUserDisplay() {
+            var fName = currentUser && currentUser.firstName ? currentUser.firstName : '';
+            var lName = currentUser && currentUser.lastName ? currentUser.lastName : '';
+
+            var initials = (fName ? fName.charAt(0) : '') + (lName ? lName.charAt(0) : '');
+
+            document.getElementById('user-avatar').textContent = initials || 'U';
+            document.getElementById('user-name').textContent = (fName + ' ' + lName).trim() || 'User';
+            document.getElementById('user-id').textContent = (currentUser && currentUser.id) || 'N/A';
+            document.getElementById('user-role-display').textContent = getRoleLabel(currentUser ? currentUser.role : '');
+        }
+
+        function loadData() {
+            members = [...demoMembers];
+            tasks = [...demoTasks];
+            teams = [...demoTeams];
+            meetings = [...demoMeetings];
+        }
+
+        // ==================== ROLE-BASED UI RENDERING ====================
+        function renderRoleBasedUI() {
+            const role = currentUser.role;
+
+            if (role === 'manager' || role === 'sr_manager') {
+                renderManagerUI();
+            } else if (role === 'team_lead' || role === 'sr_team_lead') {
+                renderTeamLeadUI();
+            } else if (role === 'intern') {
+                renderInternUI();
+            }
+        }
+
+        // ==================== MANAGER UI ====================
+        function renderManagerUI() {
+            // Render sidebar
+            document.getElementById('sidebar-nav').innerHTML = `
+        <button onclick="renderManagerDashboard()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm active">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+          </svg>
+          Dashboard
+        </button>
+        <button onclick="renderManagerTeams()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zM6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          Teams
+        </button>
+        <button onclick="renderManagerEmployees()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+          Employees
+        </button>
+        <button onclick="renderManagerTasks()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+          All Tasks
+        </button>
+        <button onclick="renderManagerPerformance()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          Performance
+        </button>
+      `;
+
+            renderManagerDashboard();
+        }
+
+        function renderManagerDashboard() {
+            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+
+            if (event && event.target) {
+                const item = event.target.closest('.sidebar-item');
+                if (item) {
+                    item.classList.add('active');
+                }
+            }
+
+            const totalTeams = teams.length;
+            const totalMembers = members.length;
+            const activeProjects = teams.length * 2;
+            const avgPerformance = Math.round(members.reduce((sum, m) => sum + m.performance, 0) / members.length);
+
+            document.getElementById('main-content').innerHTML = `
+        <header class="mb-8">
+          <h1 class="text-3xl font-bold">Manager Dashboard</h1>
+          <p class="text-gray-400 text-sm">Overview of all teams and operations</p>
+        </header>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <span class="text-green-400 text-xs font-semibold bg-green-400/20 px-2 py-1 rounded-full">Active</span>
+            </div>
+            <h3 class="text-3xl font-bold mb-1">${totalTeams}</h3>
+            <p class="text-gray-400 text-sm">Active Teams</p>
+          </div>
+          
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+              </div>
+              <span class="text-green-400 text-xs font-semibold bg-green-400/20 px-2 py-1 rounded-full">+8%</span>
+            </div>
+            <h3 class="text-3xl font-bold mb-1">${totalMembers}</h3>
+            <p class="text-gray-400 text-sm">Total Members</p>
+          </div>
+          
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-3xl font-bold mb-1">${activeProjects}</h3>
+            <p class="text-gray-400 text-sm">Active Projects</p>
+          </div>
+          
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+              </div>
+              <span class="text-green-400 text-xs font-semibold bg-green-400/20 px-2 py-1 rounded-full">+5%</span>
+            </div>
+            <h3 class="text-3xl font-bold mb-1">${avgPerformance}%</h3>
+            <p class="text-gray-400 text-sm">Overall Performance</p>
+          </div>
+        </div>
+        
+        <div class="glass-card rounded-2xl p-6 mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-lg">Teams Overview</h3>
+            <button onclick="showCreateTeamModal()" class="btn-primary px-4 py-2 rounded-xl text-sm font-semibold">
+              <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              Create Team
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${teams.map(team => {
+              const lead = members.find(m => m.id === team.leadId);
+              const teamMembers = members.filter(m => m.teamId === team.id);
+              return `
+                <div class="glass-card-light rounded-xl p-5 hover:bg-white/10 transition-all cursor-pointer" onclick="viewTeamDetails('${team.id}')">
+                  <div class="flex items-start justify-between mb-3">
+                    <div class="flex-1">
+                      <h4 class="font-semibold mb-1">${team.name}</h4>
+                      <p class="text-xs text-gray-400 capitalize">${team.department}</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center">
+                      <span class="text-sm font-bold text-indigo-400">${teamMembers.length}</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm text-gray-400 mb-3">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    <span>Lead: ${lead ? lead.firstName + ' ' + lead.lastName : 'N/A'}</span>
+                  </div>
+                  <div class="flex -space-x-2">
+                    ${teamMembers.slice(0, 5).map(m => `
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-semibold border-2 border-slate-800">
+                        ${m.firstName.charAt(0)}${m.lastName.charAt(0)}
+                      </div>
+                    `).join('')}
+                    ${teamMembers.length > 5 ? `<div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-xs font-semibold border-2 border-slate-800">+${teamMembers.length - 5}</div>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="font-bold mb-4">Recent Activity</h3>
+            <div class="space-y-4">
+              ${tasks.slice(0, 5).map(task => `
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full ${task.status === 'completed' ? 'bg-green-500/20' : 'bg-indigo-500/20'} flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 ${task.status === 'completed' ? 'text-green-400' : 'text-indigo-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${task.status === 'completed' ? 'M5 13l4 4L19 7' : 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'}"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm">${task.title} ${task.status === 'completed' ? 'completed' : 'assigned'}</p>
+                    <p class="text-xs text-gray-500">By ${members.find(m => m.id === task.createdBy)?.firstName || 'Unknown'}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="font-bold mb-4">Upcoming Meetings</h3>
+            <div class="space-y-3">
+              ${meetings.map(meeting => `
+                <div class="glass-card-light rounded-xl p-4">
+                  <div class="flex items-start justify-between mb-2">
+                    <h4 class="font-medium text-sm">${meeting.title}</h4>
+                    <span class="text-xs text-gray-400">${meeting.time}</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">${formatDate(meeting.date)}</p>
+                  <p class="text-xs text-gray-400">${meeting.agenda}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+        }
+        
+        function renderManagerTeams() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8 flex items-center justify-between">
+              <div>
+                <h1 class="text-3xl font-bold">Teams Management</h1>
+                <p class="text-gray-400 text-sm">Manage all teams and their members</p>
+              </div>
+              <button onclick="showCreateTeamModal()" class="btn-primary px-4 py-3 rounded-xl text-sm font-semibold">
+                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Create New Team
+              </button>
+            </header>
+            
+            <div class="space-y-6">
+              ${teams.map(team => {
+                const lead = members.find(m => m.id === team.leadId);
+                const teamMembers = members.filter(m => m.teamId === team.id);
+                const avgPerf = teamMembers.length ? Math.round(teamMembers.reduce((sum, m) => sum + m.performance, 0) / teamMembers.length) : 0;
+                
+                return `
+                  <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-start justify-between mb-6">
+                      <div>
+                        <h3 class="text-xl font-bold mb-1">${team.name}</h3>
+                        <p class="text-sm text-gray-400 capitalize">${team.department} Department</p>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <div class="text-center">
+                          <p class="text-2xl font-bold text-indigo-400">${avgPerf}%</p>
+                          <p class="text-xs text-gray-500">Avg Performance</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="glass-card-light rounded-xl p-4 mb-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold">
+                          ${lead ? lead.firstName.charAt(0) + lead.lastName.charAt(0) : '?'}
+                        </div>
+                        <div>
+                          <p class="font-medium">${lead ? lead.firstName + ' ' + lead.lastName : 'No Lead'}</p>
+                          <p class="text-xs text-gray-400">Team Lead</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h4 class="font-semibold mb-3 text-sm">Team Members (${teamMembers.length})</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      ${teamMembers.map(member => `
+                        <div class="glass-card-light rounded-xl p-3 flex items-center gap-3">
+                          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-semibold text-sm">
+                            ${member.firstName.charAt(0)}${member.lastName.charAt(0)}
+                          </div>
+                          <div class="flex-1 min-w-0">
+                            <p class="font-medium text-sm truncate">${member.firstName} ${member.lastName}</p>
+                            <p class="text-xs text-gray-400">${getRoleLabel(member.role)}</p>
+                          </div>
+                          <div class="text-right">
+                            <p class="text-sm font-semibold text-indigo-400">${member.performance}%</p>
+                          </div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+        }
+        
+        function renderManagerTasks() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">All Tasks</h1>
+              <p class="text-gray-400 text-sm">Overview of all tasks across teams</p>
+            </header>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              ${['pending', 'in_progress', 'completed'].map(status => {
+                const statusTasks = tasks.filter(t => t.status === status);
+                const statusInfo = {
+                  pending: { label: 'Pending', color: 'amber', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+                  in_progress: { label: 'In Progress', color: 'indigo', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+                  completed: { label: 'Completed', color: 'emerald', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' }
+                };
+                
+                return `
+                  <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <h3 class="font-bold flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-${statusInfo[status].color}-400"></span>
+                        ${statusInfo[status].label}
+                      </h3>
+                      <span class="text-sm text-gray-400">${statusTasks.length} tasks</span>
+                    </div>
+                    <div class="space-y-3 max-h-96 overflow-y-auto">
+                      ${statusTasks.map(task => {
+                        const assigneeNames = task.assignees.map(id => {
+                          const m = members.find(mem => mem.id === id);
+                          return m ? `${m.firstName} ${m.lastName.charAt(0)}.` : id;
+                        }).join(', ');
+                        
+                        return `
+                          <div class="glass-card-light rounded-xl p-4">
+                            <div class="flex items-start justify-between mb-2">
+                              <h4 class="font-medium text-sm flex-1">${task.title}</h4>
+                              <span class="px-2 py-1 rounded-full text-xs ${task.priority === 'urgent' ? 'bg-red-500/20 text-red-400' : task.priority === 'high' ? 'bg-orange-500/20 text-orange-400' : task.priority === 'medium' ? 'bg-amber-500/20 text-amber-400' : 'bg-gray-500/20 text-gray-400'}">${task.priority}</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-3">${task.description}</p>
+                            <div class="flex items-center justify-between text-xs">
+                              <span class="text-gray-400">${assigneeNames}</span>
+                              <span class="text-gray-500">${formatDate(task.dueDate)}</span>
+                            </div>
+                          </div>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+        }
+        
+        function renderManagerPerformance() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const topPerformers = [...members].sort((a, b) => b.performance - a.performance).slice(0, 5);
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">Performance Analytics</h1>
+              <p class="text-gray-400 text-sm">Track and analyze team performance</p>
+            </header>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-bold mb-6">Top Performers</h3>
+                <div class="space-y-4">
+                  ${topPerformers.map((member, index) => `
+                    <div class="flex items-center gap-4">
+                      <div class="w-8 h-8 rounded-full ${index === 0 ? 'bg-gradient-to-br from-amber-400 to-orange-500' : index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-500' : index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-800' : 'bg-gradient-to-br from-indigo-500 to-purple-500'} flex items-center justify-center font-bold text-sm">
+                        ${index + 1}
+                      </div>
+                      <div class="flex-1">
+                        <p class="font-medium text-sm">${member.firstName} ${member.lastName}</p>
+                        <p class="text-xs text-gray-500">${getRoleLabel(member.role)}</p>
+                      </div>
+                      <div class="text-right">
+                        <p class="font-bold text-indigo-400">${member.performance}%</p>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-bold mb-6">Performance by Role</h3>
+                <div class="space-y-4">
+                  ${['sr_team_lead', 'team_lead', 'employee', 'intern'].map(role => {
+                    const roleMembers = members.filter(m => m.role === role);
+                    const avgPerf = roleMembers.length ? Math.round(roleMembers.reduce((sum, m) => sum + m.performance, 0) / roleMembers.length) : 0;
+                    
+                    return `
+                      <div>
+                        <div class="flex items-center justify-between mb-2">
+                          <span class="text-sm">${getRoleLabel(role)}</span>
+                          <span class="text-sm font-semibold text-indigo-400">${avgPerf}%</span>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                          <div class="progress-bar h-full" style="width: ${avgPerf}%"></div>
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            </div>
+            
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="font-bold mb-6">All Members Performance</h3>
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead>
+                    <tr class="text-left text-sm text-gray-400 border-b border-white/10">
+                      <th class="px-4 py-3 font-medium">Member</th>
+                      <th class="px-4 py-3 font-medium">Role</th>
+                      <th class="px-4 py-3 font-medium">Department</th>
+                      <th class="px-4 py-3 font-medium">Tasks Assigned</th>
+                      <th class="px-4 py-3 font-medium">Completed</th>
+                      <th class="px-4 py-3 font-medium">Performance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${members.map(member => {
+                      const memberTasks = tasks.filter(t => t.assignees.includes(member.id));
+                      const completed = memberTasks.filter(t => t.status === 'completed').length;
+                      
+                      return `
+                        <tr class="border-b border-white/5 hover:bg-white/5">
+                          <td class="px-4 py-3">
+                            <div class="flex items-center gap-3">
+                              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-semibold text-xs">
+                                ${member.firstName.charAt(0)}${member.lastName.charAt(0)}
+                              </div>
+                              <span class="text-sm">${member.firstName} ${member.lastName}</span>
+                            </div>
+                          </td>
+                          <td class="px-4 py-3 text-sm">${getRoleLabel(member.role)}</td>
+                          <td class="px-4 py-3 text-sm capitalize">${member.department}</td>
+                          <td class="px-4 py-3 text-center text-sm">${memberTasks.length}</td>
+                          <td class="px-4 py-3 text-center text-sm text-emerald-400">${completed}</td>
+                          <td class="px-4 py-3">
+                            <div class="flex items-center gap-2">
+                              <div class="w-16 h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full" style="width: ${member.performance}%"></div>
+                              </div>
+                              <span class="text-sm font-medium">${member.performance}%</span>
+                            </div>
+                          </td>
+                        </tr>
+                      `;
+                    }).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          `;
+        }
+        
+        // ==================== TEAM LEAD UI ====================
+        function renderTeamLeadUI() {
+          document.getElementById('sidebar-nav').innerHTML = `
+            <button onclick="renderTeamLeadDashboard()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm active">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+              </svg>
+              My Dashboard
+            </button>
+            <button onclick="renderTeamLeadTeam()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+              My Team
+            </button>
+            <button onclick="renderTeamLeadTasks()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+              Tasks
+            </button>
+            <button onclick="renderTeamLeadMeetings()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Meetings
+            </button>
+          `;
+          
+          renderTeamLeadDashboard();
+        }
+        
+        function renderTeamLeadDashboard() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myTeam = currentUser.teamId ? members.filter(m => m.teamId === currentUser.teamId) : [];
+          const myTasks = tasks.filter(t => t.createdBy === currentUser.id || t.assignees.includes(currentUser.id));
+          const completedTasks = myTasks.filter(t => t.status === 'completed').length;
+          const pendingTasks = myTasks.filter(t => t.status !== 'completed').length;
+          const avgPerf = myTeam.length ? Math.round(myTeam.reduce((sum, m) => sum + m.performance, 0) / myTeam.length) : 0;
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">My Team Dashboard</h1>
+              <p class="text-gray-400 text-sm">Overview of your team and tasks</p>
+            </header>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+              <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-3xl font-bold mb-1">${myTeam.length}</h3>
+                <p class="text-gray-400 text-sm">Team Members</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-3xl font-bold mb-1">${completedTasks}</h3>
+                <p class="text-gray-400 text-sm">Tasks Completed</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-3xl font-bold mb-1">${pendingTasks}</h3>
+                <p class="text-gray-400 text-sm">Pending Tasks</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-3xl font-bold mb-1">${avgPerf}%</h3>
+                <p class="text-gray-400 text-sm">Team Performance</p>
+              </div>
+            </div>
+            
+            <div class="glass-card rounded-2xl p-6 mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold">My Team</h3>
+                <button onclick="showAssignTaskModal()" class="btn-primary px-4 py-2 rounded-xl text-sm font-semibold">Assign Task</button>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                ${myTeam.map(member => `
+                  <div class="glass-card-light rounded-xl p-4">
+                    <div class="flex items-start gap-3 mb-3">
+                      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-bold">
+                        ${member.firstName.charAt(0)}${member.lastName.charAt(0)}
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <p class="font-semibold truncate">${member.firstName} ${member.lastName}</p>
+                        <p class="text-xs text-gray-400">${getRoleLabel(member.role)}</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-xs text-gray-400">Performance</span>
+                      <span class="text-sm font-semibold text-indigo-400">${member.performance}%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div class="progress-bar h-full" style="width: ${member.performance}%"></div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-bold mb-4">Active Tasks</h3>
+                <div class="space-y-3 max-h-80 overflow-y-auto">
+                  ${myTasks.filter(t => t.status !== 'completed').map(task => `
+                    <div class="glass-card-light rounded-xl p-4">
+                      <div class="flex items-start justify-between mb-2">
+                        <h4 class="font-medium text-sm flex-1">${task.title}</h4>
+                        <span class="px-2 py-1 rounded-full text-xs ${task.priority === 'urgent' ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'}">${task.priority}</span>
+                      </div>
+                      <p class="text-xs text-gray-500 mb-3">${task.description}</p>
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-400">${formatDate(task.dueDate)}</span>
+                        ${task.status === 'in_progress' ? '<span class="status-badge status-pending">In Progress</span>' : '<span class="status-badge bg-gray-500/20 text-gray-400">Pending</span>'}
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="font-bold">Team Meetings</h3>
+                  <button onclick="showScheduleMeetingModal()" class="text-indigo-400 hover:text-indigo-300 text-sm">Schedule</button>
+                </div>
+                <div class="space-y-3 max-h-80 overflow-y-auto">
+                  ${meetings.filter(m => m.organizer === currentUser.id).map(meeting => `
+                    <div class="glass-card-light rounded-xl p-4">
+                      <div class="flex items-start justify-between mb-2">
+                        <h4 class="font-medium text-sm">${meeting.title}</h4>
+                        <span class="text-xs text-gray-400">${meeting.time}</span>
+                      </div>
+                      <p class="text-xs text-gray-500 mb-2">${formatDate(meeting.date)}</p>
+                      <p class="text-xs text-gray-400">${meeting.agenda}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+        
+        function renderTeamLeadTeam() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myTeam = currentUser.teamId ? members.filter(m => m.teamId === currentUser.teamId) : [];
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">My Team</h1>
+              <p class="text-gray-400 text-sm">Manage your team members</p>
+            </header>
+            
+            <div class="space-y-4">
+              ${myTeam.map(member => {
+                const memberTasks = tasks.filter(t => t.assignees.includes(member.id));
+                const completed = memberTasks.filter(t => t.status === 'completed').length;
+                
+                return `
+                  <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-start gap-6">
+                      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-xl">
+                        ${member.firstName.charAt(0)}${member.lastName.charAt(0)}
+                      </div>
+                      <div class="flex-1">
+                        <div class="flex items-start justify-between mb-4">
+                          <div>
+                            <h3 class="text-xl font-bold mb-1">${member.firstName} ${member.lastName}</h3>
+                            <p class="text-sm text-gray-400">${getRoleLabel(member.role)} • ${member.department}</p>
+                          </div>
+                          <span class="status-badge status-active">${member.status}</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-4 gap-4 mb-4">
+                          <div class="glass-card-light rounded-xl p-3 text-center">
+                            <p class="text-2xl font-bold text-indigo-400">${member.id}</p>
+                            <p class="text-xs text-gray-500">ID</p>
+                          </div>
+                          <div class="glass-card-light rounded-xl p-3 text-center">
+                            <p class="text-2xl font-bold">${memberTasks.length}</p>
+                            <p class="text-xs text-gray-500">Tasks</p>
+                          </div>
+                          <div class="glass-card-light rounded-xl p-3 text-center">
+                            <p class="text-2xl font-bold text-emerald-400">${completed}</p>
+                            <p class="text-xs text-gray-500">Completed</p>
+                          </div>
+                          <div class="glass-card-light rounded-xl p-3 text-center">
+                            <p class="text-2xl font-bold text-purple-400">${member.performance}%</p>
+                            <p class="text-xs text-gray-500">Performance</p>
+                          </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 text-sm text-gray-400">
+                          <span class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            ${member.email}
+                          </span>
+                          <span class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            ${member.phone}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+        }
+        
+        function renderTeamLeadTasks() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myTasks = tasks.filter(t => t.createdBy === currentUser.id);
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8 flex items-center justify-between">
+              <div>
+                <h1 class="text-3xl font-bold">My Tasks</h1>
+                <p class="text-gray-400 text-sm">Manage tasks assigned to your team</p>
+              </div>
+              <button onclick="showAssignTaskModal()" class="btn-primary px-4 py-3 rounded-xl text-sm font-semibold">
+                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Assign Task
+              </button>
+            </header>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              ${['pending', 'in_progress', 'completed'].map(status => {
+                const statusTasks = myTasks.filter(t => t.status === status);
+                const statusInfo = {
+                  pending: { label: 'Pending', color: 'amber' },
+                  in_progress: { label: 'In Progress', color: 'indigo' },
+                  completed: { label: 'Completed', color: 'emerald' }
+                };
+                
+                return `
+                  <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <h3 class="font-bold flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-${statusInfo[status].color}-400"></span>
+                        ${statusInfo[status].label}
+                      </h3>
+                      <span class="text-sm text-gray-400">${statusTasks.length}</span>
+                    </div>
+                    <div class="space-y-3 max-h-96 overflow-y-auto">
+                      ${statusTasks.map(task => `
+                        <div class="glass-card-light rounded-xl p-4">
+                          <div class="flex items-start justify-between mb-2">
+                            <h4 class="font-medium text-sm flex-1">${task.title}</h4>
+                            <span class="px-2 py-1 rounded-full text-xs ${task.priority === 'urgent' ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'}">${task.priority}</span>
+                          </div>
+                          <p class="text-xs text-gray-500 mb-3">${task.description}</p>
+                          <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-400">${task.assignees.length} assignee(s)</span>
+                            <span class="text-gray-500">${formatDate(task.dueDate)}</span>
+                          </div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+        }
+        
+        function renderTeamLeadMeetings() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myMeetings = meetings.filter(m => m.organizer === currentUser.id);
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8 flex items-center justify-between">
+              <div>
+                <h1 class="text-3xl font-bold">Team Meetings</h1>
+                <p class="text-gray-400 text-sm">Schedule and manage team meetings</p>
+              </div>
+              <button onclick="showScheduleMeetingModal()" class="btn-primary px-4 py-3 rounded-xl text-sm font-semibold">
+                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Schedule Meeting
+              </button>
+            </header>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              ${myMeetings.map(meeting => `
+                <div class="glass-card rounded-2xl p-6">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex-1">
+                      <h3 class="text-xl font-bold mb-2">${meeting.title}</h3>
+                      <div class="flex items-center gap-4 text-sm text-gray-400">
+                        <span class="flex items-center gap-1">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                          </svg>
+                          ${formatDate(meeting.date)}
+                        </span>
+                        <span class="flex items-center gap-1">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                          </svg>
+                          ${meeting.time}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="glass-card-light rounded-xl p-4">
+                    <h4 class="text-sm font-semibold mb-2">Agenda</h4>
+                    <p class="text-sm text-gray-400">${meeting.agenda}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        
+        // ==================== INTERN UI ====================
+        function renderInternUI() {
+          document.getElementById('sidebar-nav').innerHTML = `
+            <button onclick="renderInternDashboard()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm active">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+              My Profile
+            </button>
+            <button onclick="renderInternTasks()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+              My Tasks
+            </button>
+            <button onclick="renderInternProgress()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+              My Progress
+            </button>
+            <button onclick="renderInternTeam()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              My Team
+            </button>
+          `;
+          
+          renderInternDashboard();
+        }
+        
+        function renderInternDashboard() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myTasks = tasks.filter(t => t.assignees.includes(currentUser.id));
+          const completed = myTasks.filter(t => t.status === 'completed').length;
+          const inProgress = myTasks.filter(t => t.status === 'in_progress').length;
+          const pending = myTasks.filter(t => t.status === 'pending').length;
+          
+          // Performance circle calculation
+          const circumference = 2 * Math.PI * 44;
+          const dashOffset = circumference - (currentUser.performance / 100) * circumference;
+          
+          // Build hierarchy
+          const hierarchy = [];
+          if (currentUser.reportTo) {
+            const teamLead = members.find(m => m.id === currentUser.reportTo);
+            if (teamLead) {
+              hierarchy.push(teamLead);
+              const srTeamLead = members.find(m => m.role === 'sr_team_lead' && m.department === currentUser.department);
+              if (srTeamLead) hierarchy.unshift(srTeamLead);
+              const manager = members.find(m => (m.role === 'manager' || m.role === 'sr_manager') && m.department === currentUser.department);
+              if (manager) hierarchy.unshift(manager);
+            }
+          }
+          
+          const teammates = members.filter(m => m.teamId === currentUser.teamId && m.id !== currentUser.id && m.role === 'intern');
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">My Profile</h1>
+              <p class="text-gray-400 text-sm">Personal information and performance overview</p>
+            </header>
+            
+            <div class="glass-card rounded-2xl p-6 mb-6">
+              <div class="flex items-start gap-6">
+                <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-3xl">
+                  ${currentUser.firstName.charAt(0)}${currentUser.lastName.charAt(0)}
+                </div>
+                <div class="flex-1">
+                  <h2 class="text-2xl font-bold mb-1">${currentUser.firstName} ${currentUser.lastName}</h2>
+                  <p class="text-indigo-400 mb-3">${getRoleLabel(currentUser.role)} - ${currentUser.department}</p>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <p class="text-xs text-gray-500">Employee ID</p>
+                      <p class="font-semibold">${currentUser.id}</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-gray-500">Join Date</p>
+                      <p class="font-semibold">${formatDate(currentUser.joinDate)}</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-gray-500">Email</p>
+                      <p class="font-semibold text-sm">${currentUser.email}</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-gray-500">Phone</p>
+                      <p class="font-semibold">${currentUser.phone}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div class="w-24 h-24 relative">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle cx="48" cy="48" r="44" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none"/>
+                      <circle cx="48" cy="48" r="44" stroke="#6366f1" stroke-width="8" fill="none" stroke-dasharray="${circumference}" stroke-dashoffset="${dashOffset}" stroke-linecap="round"/>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <span class="text-xl font-bold">${currentUser.performance}%</span>
+                    </div>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-2">Performance</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+              <div class="glass-card rounded-2xl p-4 text-center">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-indigo-500/20 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-1">${myTasks.length}</h3>
+                <p class="text-gray-400 text-xs">Total Tasks</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-4 text-center">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-500/20 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-1 text-emerald-400">${completed}</h3>
+                <p class="text-gray-400 text-xs">Completed</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-4 text-center">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-amber-500/20 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-1 text-amber-400">${inProgress}</h3>
+                <p class="text-gray-400 text-xs">In Progress</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-4 text-center">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-red-500/20 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-1 text-red-400">${pending}</h3>
+                <p class="text-gray-400 text-xs">Pending</p>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="lg:col-span-2 glass-card rounded-2xl p-6">
+                <h3 class="font-bold mb-4">My Tasks</h3>
+                <div class="space-y-3 max-h-96 overflow-y-auto">
+                  ${myTasks.map(task => `
+                    <div class="glass-card-light rounded-xl p-4">
+                      <div class="flex items-start justify-between mb-2">
+                        <h4 class="font-medium text-sm flex-1">${task.title}</h4>
+                        <span class="px-2 py-1 rounded-full text-xs ${
+                          task.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400' :
+                          task.status === 'in_progress' ? 'bg-amber-500/20 text-amber-400' :
+                          'bg-gray-500/20 text-gray-400'
+                        }">${task.status.replace('_', ' ')}</span>
+                      </div>
+                      <p class="text-xs text-gray-500 mb-3">${task.description}</p>
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs px-2 py-1 rounded-full ${task.priority === 'urgent' ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'}">${task.priority}</span>
+                        <span class="text-xs text-gray-500">${formatDate(task.dueDate)}</span>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-bold mb-4">My Organization</h3>
+                <div class="space-y-3">
+                  ${hierarchy.map((person, index) => `
+                    <div class="relative ${index < hierarchy.length - 1 ? 'pb-6' : ''}">
+                      ${index < hierarchy.length - 1 ? '<div class="absolute left-6 top-12 bottom-0 hierarchy-line"></div>' : ''}
+                      <div class="glass-card-light rounded-xl p-3 flex items-center gap-3 relative z-10">
+                        <div class="w-12 h-12 rounded-full ${
+                          person.role === 'sr_manager' || person.role === 'manager' ? 'bg-gradient-to-br from-purple-500 to-pink-500' :
+                          person.role === 'sr_team_lead' ? 'bg-gradient-to-br from-amber-500 to-orange-500' :
+                          'bg-gradient-to-br from-indigo-500 to-purple-500'
+                        } flex items-center justify-center font-bold">
+                          ${person.firstName.charAt(0)}${person.lastName.charAt(0)}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <p class="font-medium text-sm truncate">${person.firstName} ${person.lastName}</p>
+                          <p class="text-xs text-gray-400">${getRoleLabel(person.role)}</p>
+                        </div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+                
+                ${teammates.length > 0 ? `
+                  <div class="mt-6 pt-6 border-t border-white/10">
+                    <h4 class="font-semibold text-sm mb-3">My Teammates</h4>
+                    <div class="space-y-2">
+                      ${teammates.map(teammate => `
+                        <div class="glass-card-light rounded-xl p-3 flex items-center gap-3">
+                          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-semibold text-sm">
+                            ${teammate.firstName.charAt(0)}${teammate.lastName.charAt(0)}
+                          </div>
+                          <div class="flex-1 min-w-0">
+                            <p class="font-medium text-sm truncate">${teammate.firstName} ${teammate.lastName}</p>
+                            <p class="text-xs text-gray-400">${getRoleLabel(teammate.role)}</p>
+                          </div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        }
+        
+        function renderInternTasks() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myTasks = tasks.filter(t => t.assignees.includes(currentUser.id));
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">My Tasks</h1>
+              <p class="text-gray-400 text-sm">Track your assigned tasks</p>
+            </header>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              ${['pending', 'in_progress', 'completed'].map(status => {
+                const statusTasks = myTasks.filter(t => t.status === status);
+                const statusInfo = {
+                  pending: { label: 'To Do', color: 'red', icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' },
+                  in_progress: { label: 'In Progress', color: 'amber', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+                  completed: { label: 'Completed', color: 'emerald', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' }
+                };
+                
+                return `
+                  <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <h3 class="font-bold flex items-center gap-2">
+                        <svg class="w-5 h-5 text-${statusInfo[status].color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${statusInfo[status].icon}"/>
+                        </svg>
+                        ${statusInfo[status].label}
+                      </h3>
+                      <span class="text-sm text-gray-400">${statusTasks.length}</span>
+                    </div>
+                    <div class="space-y-3 max-h-96 overflow-y-auto">
+                      ${statusTasks.map(task => `
+                        <div class="glass-card-light rounded-xl p-4">
+                          <h4 class="font-medium text-sm mb-2">${task.title}</h4>
+                          <p class="text-xs text-gray-500 mb-3">${task.description}</p>
+                          <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 rounded-full ${task.priority === 'urgent' ? 'bg-red-500/20 text-red-400' : task.priority === 'high' ? 'bg-orange-500/20 text-orange-400' : 'bg-amber-500/20 text-amber-400'}">${task.priority}</span>
+                            <span class="text-xs text-gray-500">Due ${formatDate(task.dueDate)}</span>
+                          </div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+        }
+        
+        function renderInternProgress() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myTasks = tasks.filter(t => t.assignees.includes(currentUser.id));
+          const completed = myTasks.filter(t => t.status === 'completed').length;
+          const completionRate = myTasks.length > 0 ? Math.round((completed / myTasks.length) * 100) : 0;
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">My Progress</h1>
+              <p class="text-gray-400 text-sm">Track your performance and growth</p>
+            </header>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-semibold mb-4">Overall Performance</h3>
+                <div class="flex items-center justify-center mb-4">
+                  <div class="relative w-32 h-32">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle cx="64" cy="64" r="60" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="none"/>
+                      <circle cx="64" cy="64" r="60" stroke="#6366f1" stroke-width="12" fill="none" 
+                        stroke-dasharray="${2 * Math.PI * 60}" 
+                        stroke-dashoffset="${2 * Math.PI * 60 - (currentUser.performance / 100) * 2 * Math.PI * 60}" 
+                        stroke-linecap="round"/>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <span class="text-3xl font-bold">${currentUser.performance}%</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-center text-sm text-gray-400">Performance Score</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-semibold mb-4">Task Completion</h3>
+                <div class="flex items-center justify-center mb-4">
+                  <div class="relative w-32 h-32">
+                    <svg class="w-full h-full transform -rotate-90">
+                      <circle cx="64" cy="64" r="60" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="none"/>
+                      <circle cx="64" cy="64" r="60" stroke="#10b981" stroke-width="12" fill="none" 
+                        stroke-dasharray="${2 * Math.PI * 60}" 
+                        stroke-dashoffset="${2 * Math.PI * 60 - (completionRate / 100) * 2 * Math.PI * 60}" 
+                        stroke-linecap="round"/>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <span class="text-3xl font-bold">${completionRate}%</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-center text-sm text-gray-400">${completed} of ${myTasks.length} tasks</p>
+              </div>
+              
+              <div class="glass-card rounded-2xl p-6">
+                <h3 class="font-semibold mb-4">Growth Metrics</h3>
+                <div class="space-y-4">
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm">Quality</span>
+                      <span class="text-sm font-semibold text-indigo-400">85%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div class="progress-bar h-full" style="width: 85%"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm">Punctuality</span>
+                      <span class="text-sm font-semibold text-emerald-400">92%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div class="bg-gradient-to-r from-emerald-500 to-green-500 h-full rounded-full" style="width: 92%"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm">Learning</span>
+                      <span class="text-sm font-semibold text-amber-400">78%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div class="bg-gradient-to-r from-amber-500 to-orange-500 h-full rounded-full" style="width: 78%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="font-bold mb-4">Task History</h3>
+              <div class="space-y-3">
+                ${myTasks.slice(0, 10).map(task => `
+                  <div class="glass-card-light rounded-xl p-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full ${task.status === 'completed' ? 'bg-emerald-500/20' : 'bg-amber-500/20'} flex items-center justify-center">
+                        <svg class="w-5 h-5 ${task.status === 'completed' ? 'text-emerald-400' : 'text-amber-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${task.status === 'completed' ? 'M5 13l4 4L19 7' : 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'}"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <p class="font-medium text-sm">${task.title}</p>
+                        <p class="text-xs text-gray-500">${formatDate(task.dueDate)}</p>
+                      </div>
+                    </div>
+                    <span class="text-xs px-2 py-1 rounded-full ${
+                      task.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400' :
+                      task.status === 'in_progress' ? 'bg-amber-500/20 text-amber-400' :
+                      'bg-gray-500/20 text-gray-400'
+                    }">${task.status.replace('_', ' ')}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+        
+        function renderInternTeam() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const myTeam = members.filter(m => m.teamId === currentUser.teamId);
+          const myTeamLead = members.find(m => m.id === currentUser.reportTo);
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8">
+              <h1 class="text-3xl font-bold">My Team</h1>
+              <p class="text-gray-400 text-sm">Your team members and lead</p>
+            </header>
+            
+            ${myTeamLead ? `
+              <div class="glass-card rounded-2xl p-6 mb-6">
+                <h3 class="font-bold mb-4">My Team Lead</h3>
+                <div class="flex items-start gap-6">
+                  <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold text-2xl">
+                    ${myTeamLead.firstName.charAt(0)}${myTeamLead.lastName.charAt(0)}
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1">${myTeamLead.firstName} ${myTeamLead.lastName}</h4>
+                    <p class="text-sm text-gray-400 mb-3">${getRoleLabel(myTeamLead.role)} - ${myTeamLead.department}</p>
+                    <div class="flex items-center gap-4 text-sm text-gray-400">
+                      <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        ${myTeamLead.email}
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        ${myTeamLead.phone}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ` : ''}
+            
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="font-bold mb-4">All Team Members (${myTeam.length})</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${myTeam.map(member => `
+                  <div class="glass-card-light rounded-xl p-4 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl ${
+                      member.role === 'sr_team_lead' ? 'bg-gradient-to-br from-amber-500 to-orange-500' :
+                      member.role === 'team_lead' ? 'bg-gradient-to-br from-indigo-500 to-blue-500' :
+                      member.role === 'employee' ? 'bg-gradient-to-br from-emerald-500 to-green-500' :
+                      'bg-gradient-to-br from-indigo-500 to-purple-500'
+                    } flex items-center justify-center font-bold">
+                      ${member.firstName.charAt(0)}${member.lastName.charAt(0)}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="font-semibold truncate">${member.firstName} ${member.lastName}</p>
+                      <p class="text-xs text-gray-400">${getRoleLabel(member.role)}</p>
+                      ${member.id === currentUser.id ? '<span class="text-xs text-indigo-400">(You)</span>' : ''}
+                    </div>
+                    <div class="text-center">
+                      <p class="text-lg font-bold text-indigo-400">${member.performance}%</p>
+                      <p class="text-xs text-gray-500">Performance</p>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+        
+        // ==================== MODAL FUNCTIONS ====================
+        let selectedTeamForMember = null;
+        
+        function showEmployeeModal() {
+          // Populate teams dropdown
+          const teamSelect = document.getElementById('emp-team');
+          teamSelect.innerHTML = '<option value="">No Team (Assign Later)</option>' + 
+            teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+          
+          // Set today as default join date
+          document.getElementById('emp-joindate').value = new Date().toISOString().split('T')[0];
+          
+          document.getElementById('employee-modal').classList.remove('hidden');
+          document.getElementById('employee-modal').classList.add('flex');
+        }
+        
+        function closeEmployeeModal() {
+          document.getElementById('employee-modal').classList.add('hidden');
+          document.getElementById('employee-modal').classList.remove('flex');
+          document.getElementById('employee-form').reset();
+        }
+        
+        function renderManagerEmployees() {
+          document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+          event?.target?.closest('.sidebar-item')?.classList.add('active');
+          
+          const employees = members.filter(m => m.role === 'employee' || m.role === 'intern');
+          
+          document.getElementById('main-content').innerHTML = `
+            <header class="mb-8 flex items-center justify-between">
+              <div>
+                <h1 class="text-3xl font-bold">Employee Management</h1>
+                <p class="text-gray-400 text-sm">Manage all employees and interns</p>
+              </div>
+              <button onclick="showEmployeeModal()" class="btn-primary px-4 py-3 rounded-xl text-sm font-semibold">
+                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                </svg>
+                Add New Employee
+              </button>
+            </header>
+            
+            <div class="glass-card rounded-2xl p-6">
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead>
+                    <tr class="text-left text-sm text-gray-400 border-b border-white/10">
+                      <th class="px-4 py-3 font-medium">Employee</th>
+                      <th class="px-4 py-3 font-medium">Employee ID</th>
+                      <th class="px-4 py-3 font-medium">Designation</th>
+                      <th class="px-4 py-3 font-medium">Department</th>
+                      <th class="px-4 py-3 font-medium">Team</th>
+                      <th class="px-4 py-3 font-medium">Join Date</th>
+                      <th class="px-4 py-3 font-medium">Performance</th>
+                      <th class="px-4 py-3 font-medium">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${employees.map(emp => {
+                      const team = teams.find(t => t.id === emp.teamId);
+                      
+                      return `
+                        <tr class="border-b border-white/5 table-row">
+                          <td class="px-4 py-3">
+                            <div class="flex items-center gap-3">
+                              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-semibold text-sm">
+                                ${emp.firstName.charAt(0)}${emp.lastName.charAt(0)}
+                              </div>
+                              <div>
+                                <p class="font-medium text-sm">${emp.firstName} ${emp.lastName}</p>
+                                <p class="text-xs text-gray-500">${emp.email}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-4 py-3 text-sm font-mono text-indigo-400">${emp.id}</td>
+                          <td class="px-4 py-3 text-sm">${getRoleLabel(emp.role)}</td>
+                          <td class="px-4 py-3 text-sm capitalize">${emp.department}</td>
+                          <td class="px-4 py-3 text-sm">${team ? team.name : '<span class="text-gray-500">No Team</span>'}</td>
+                          <td class="px-4 py-3 text-sm">${formatDate(emp.joinDate)}</td>
+                          <td class="px-4 py-3">
+                            <div class="flex items-center gap-2">
+                              <div class="w-16 h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full" style="width: ${emp.performance}%"></div>
+                              </div>
+                              <span class="text-sm font-medium">${emp.performance}%</span>
+                            </div>
+                          </td>
+                          <td class="px-4 py-3">
+                            <span class="status-badge ${emp.status === 'active' ? 'status-active' : 'status-inactive'}">${emp.status}</span>
+                          </td>
+                        </tr>
+                      `;
+                    }).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+              <div class="glass-card rounded-2xl p-6 text-center">
+                <h3 class="text-3xl font-bold text-indigo-400 mb-1">${employees.length}</h3>
+                <p class="text-sm text-gray-400">Total Employees</p>
+              </div>
+              <div class="glass-card rounded-2xl p-6 text-center">
+                <h3 class="text-3xl font-bold text-emerald-400 mb-1">${employees.filter(e => e.role === 'employee').length}</h3>
+                <p class="text-sm text-gray-400">Full-Time Employees</p>
+              </div>
+              <div class="glass-card rounded-2xl p-6 text-center">
+                <h3 class="text-3xl font-bold text-amber-400 mb-1">${employees.filter(e => e.role === 'intern').length}</h3>
+                <p class="text-sm text-gray-400">Interns</p>
+              </div>
+              <div class="glass-card rounded-2xl p-6 text-center">
+                <h3 class="text-3xl font-bold text-purple-400 mb-1">${employees.filter(e => !e.teamId).length}</h3>
+                <p class="text-sm text-gray-400">Unassigned</p>
+              </div>
+            </div>
+          `;
+        }
+        
+        function showCreateTeamModal() {
+          const teamLeads = members.filter(m => m.role === 'team_lead' || m.role === 'sr_team_lead');
+          document.getElementById('team-lead').innerHTML = '<option value="">Select Team Lead</option>' + 
+            teamLeads.map(tl => `<option value="${tl.id}">${tl.firstName} ${tl.lastName}</option>`).join('');
+          
+          document.getElementById('team-modal').classList.remove('hidden');
+          document.getElementById('team-modal').classList.add('flex');
+        }
+        
+        function closeTeamModal() {
+          document.getElementById('team-modal').classList.add('hidden');
+          document.getElementById('team-modal').classList.remove('flex');
+        }
+        
+        function showAddMemberModal(teamId) {
+          selectedTeamForMember = teamId;
+          const team = teams.find(t => t.id === teamId);
+          
+          // Get members that are not team leads, not managers, and not already in this team
+          const availableMembers = members.filter(m => 
+            (m.role === 'employee' || m.role === 'intern') && 
+            (!m.teamId || m.teamId !== teamId)
+          );
+          
+          document.getElementById('available-members-list').innerHTML = availableMembers.map(member => `
+            <label class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 cursor-pointer transition-all">
+              <input type="radio" name="selected-member" value="${member.id}" class="w-4 h-4 text-indigo-500 border-white/20 bg-white/5 focus:ring-indigo-500">
+              <div class="flex items-center gap-3 flex-1">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-semibold text-sm">
+                  ${member.firstName.charAt(0)}${member.lastName.charAt(0)}
+                </div>
+                <div class="flex-1">
+                  <p class="font-medium text-sm">${member.firstName} ${member.lastName}</p>
+                  <p class="text-xs text-gray-400">${getRoleLabel(member.role)} • ${member.department}</p>
+                </div>
+                ${member.teamId ? `<span class="text-xs text-amber-400 bg-amber-400/10 px-2 py-1 rounded-full">In ${teams.find(t => t.id === member.teamId)?.name || 'Team'}</span>` : '<span class="text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full">Available</span>'}
+              </div>
+            </label>
+          `).join('');
+          
+          if (availableMembers.length === 0) {
+            document.getElementById('available-members-list').innerHTML = '<p class="text-center text-gray-400 py-4">No available members to add</p>';
+          }
+          
+          document.getElementById('add-member-modal').classList.remove('hidden');
+          document.getElementById('add-member-modal').classList.add('flex');
+        }
+        
+        function closeAddMemberModal() {
+          selectedTeamForMember = null;
+          document.getElementById('add-member-modal').classList.add('hidden');
+          document.getElementById('add-member-modal').classList.remove('flex');
+        }
+        
+        function removeMemberFromTeam(memberId, teamId) {
+          const member = members.find(m => m.id === memberId);
+          if (member) {
+            member.teamId = null;
+            member.reportTo = null;
+            showToast(`${member.firstName} ${member.lastName} removed from team`, 'success');
+            viewTeamDetails(teamId);
+          }
+        }
+        
+        function showScheduleMeetingModal() {
+          document.getElementById('meeting-modal').classList.remove('hidden');
+          document.getElementById('meeting-modal').classList.add('flex');
+        }
+        
+        function closeMeetingModal() {
+          document.getElementById('meeting-modal').classList.add('hidden');
+          document.getElementById('meeting-modal').classList.remove('flex');
+        }
+        
+        function showAssignTaskModal() {
+          let availableMembers = members;
+          
+          if (currentUser?.role === 'team_lead' || currentUser?.role === 'sr_team_lead') {
+            availableMembers = members.filter(m => m.teamId === currentUser.teamId && (m.role === 'employee' || m.role === 'intern'));
+          }
+          
+          document.getElementById('assignee-select').innerHTML = availableMembers.map(member => `
+            <label class="flex items-center gap-3 py-2 cursor-pointer hover:bg-white/5 rounded px-2">
+              <input type="checkbox" value="${member.id}" class="w-4 h-4 rounded border-white/20 bg-white/5 text-indigo-500 focus:ring-indigo-500">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-xs">
+                  ${member.firstName?.charAt(0)}${member.lastName?.charAt(0)}
+                </div>
+                <span class="text-sm">${member.firstName} ${member.lastName}</span>
+                <span class="text-xs text-gray-500">(${getRoleLabel(member.role)})</span>
+              </div>
+            </label>
+          `).join('');
+          
+          document.getElementById('task-modal').classList.remove('hidden');
+          document.getElementById('task-modal').classList.add('flex');
+        }
+        
+        function closeTaskModal() {
+          document.getElementById('task-modal').classList.add('hidden');
+          document.getElementById('task-modal').classList.remove('flex');
+        }
+        
+        // ==================== FORM HANDLERS ====================
+        function handleEmployeeSubmit(e) {
+          e.preventDefault();
+          
+          const role = document.getElementById('emp-role').value;
+          const prefix = role === 'employee' ? 'EMP' : 'INT';
+          const existingIds = members.filter(m => m.id.startsWith(prefix)).map(m => parseInt(m.id.split('-')[1]));
+          const nextNum = existingIds.length > 0 ? Math.max(...existingIds) + 1 : 1;
+          const newId = `${prefix}-${String(nextNum).padStart(3, '0')}`;
+          
+          const teamId = document.getElementById('emp-team').value || null;
+          let reportTo = null;
+          
+          if (teamId) {
+            const team = teams.find(t => t.id === teamId);
+            if (team) {
+              reportTo = team.leadId;
+            }
+          }
+          
+          const newEmployee = {
+            id: newId,
+            firstName: document.getElementById('emp-firstname').value,
+            lastName: document.getElementById('emp-lastname').value,
+            email: document.getElementById('emp-email').value,
+            phone: document.getElementById('emp-phone').value,
+            role: role,
+            department: document.getElementById('emp-department').value,
+            teamId: teamId,
+            reportTo: reportTo,
+            joinDate: document.getElementById('emp-joindate').value,
+            performance: parseInt(document.getElementById('emp-performance').value),
+            status: 'active'
+          };
+          
+          members.push(newEmployee);
+          closeEmployeeModal();
+          renderManagerEmployees();
+          showToast(`${newEmployee.firstName} ${newEmployee.lastName} added successfully!`, 'success');
+        }
+        
+        function handleTeamSubmit(e) {
+          e.preventDefault();
+          const teamData = {
+            id: generateId('TEAM'),
+            name: document.getElementById('team-name').value,
+            department: document.getElementById('team-department').value,
+            leadId: document.getElementById('team-lead').value,
+            memberCount: 0
+          };
+          
+          teams.push(teamData);
+          closeTeamModal();
+          renderManagerDashboard();
+          showToast('Team created successfully!', 'success');
+        }
+        
+        function handleAddMemberSubmit(e) {
+          e.preventDefault();
+          
+          const selectedMemberId = document.querySelector('input[name="selected-member"]:checked')?.value;
+          
+          if (!selectedMemberId) {
+            showToast('Please select a member', 'error');
+            return;
+          }
+          
+          const member = members.find(m => m.id === selectedMemberId);
+          const team = teams.find(t => t.id === selectedTeamForMember);
+          
+          if (member && team) {
+            member.teamId = selectedTeamForMember;
+            member.reportTo = team.leadId;
+            
+            showToast(`${member.firstName} ${member.lastName} added to ${team.name}`, 'success');
+            closeAddMemberModal();
+            viewTeamDetails(selectedTeamForMember);
+          }
+        }
+        
+        function handleMeetingSubmit(e) {
+          e.preventDefault();
+          const meetingData = {
+            id: generateId('M'),
+            title: document.getElementById('meeting-title').value,
+            date: document.getElementById('meeting-date').value,
+            time: document.getElementById('meeting-time').value,
+            agenda: document.getElementById('meeting-agenda').value,
+            teamId: currentUser.teamId,
+            organizer: currentUser.id
+          };
+          
+          meetings.push(meetingData);
+          closeMeetingModal();
+          renderTeamLeadDashboard();
+          showToast('Meeting scheduled successfully!', 'success');
+        }
+        
+        function handleTaskSubmit(e) {
+          e.preventDefault();
+          
+          const selectedAssignees = Array.from(document.querySelectorAll('#assignee-select input:checked')).map(cb => cb.value);
+          
+          if (selectedAssignees.length === 0) {
+            showToast('Please select at least one assignee', 'error');
+            return;
+          }
+          
+          const taskData = {
+            id: generateId('T'),
+            title: document.getElementById('task-title').value,
+            description: document.getElementById('task-description').value,
+            assignees: selectedAssignees,
+            priority: document.getElementById('task-priority').value,
+            dueDate: document.getElementById('task-due').value,
+            status: 'pending',
+            createdBy: currentUser.id
+          };
+          
+          tasks.push(taskData);
+          closeTaskModal();
+          
+          if (currentUser.role === 'manager' || currentUser.role === 'sr_manager') {
+            renderManagerDashboard();
+          } else {
+            renderTeamLeadDashboard();
+          }
+          
+          showToast('Task assigned successfully!', 'success');
+        }
+        
+        function viewTeamDetails(teamId) {
+          const team = teams.find(t => t.id === teamId);
+          if (!team) return;
+          
+          const lead = members.find(m => m.id === team.leadId);
+          const teamMembers = members.filter(m => m.teamId === team.id);
+          
+          document.getElementById('main-content').innerHTML = `
+            <div class="mb-6">
+              <button onclick="renderManagerTeams()" class="text-indigo-400 hover:text-indigo-300 text-sm flex items-center gap-2 mb-4">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to Teams
+              </button>
+              
+              <div class="flex items-center justify-between">
+                <div>
+                  <h1 class="text-3xl font-bold">${team.name}</h1>
+                  <p class="text-gray-400 text-sm capitalize">${team.department} Department</p>
+                </div>
+                <button onclick="showAddMemberModal('${team.id}')" class="btn-primary px-4 py-3 rounded-xl text-sm font-semibold">
+                  <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                  </svg>
+                  Add Member
+                </button>
+              </div>
+            </div>
+            
+            ${lead ? `
+              <div class="glass-card rounded-2xl p-6 mb-6">
+                <h3 class="font-bold mb-4">Team Lead</h3>
+                <div class="flex items-center gap-6">
+                  <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold text-xl">
+                    ${lead.firstName.charAt(0)}${lead.lastName.charAt(0)}
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-1">${lead.firstName} ${lead.lastName}</h4>
+                    <p class="text-sm text-gray-400">${getRoleLabel(lead.role)} • ${lead.email}</p>
+                  </div>
+                  <div class="text-center glass-card-light rounded-xl px-6 py-3">
+                    <p class="text-2xl font-bold text-indigo-400">${lead.performance}%</p>
+                    <p class="text-xs text-gray-500">Performance</p>
+                  </div>
+                </div>
+              </div>
+            ` : '<div class="glass-card rounded-2xl p-6 mb-6 text-center text-gray-400">No Team Lead Assigned</div>'}
+            
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="font-bold mb-4">Team Members (${teamMembers.length})</h3>
+              ${teamMembers.length > 0 ? `
+                <div class="space-y-4">
+                  ${teamMembers.map(member => {
+                    const memberTasks = tasks.filter(t => t.assignees.includes(member.id));
+                    const completed = memberTasks.filter(t => t.status === 'completed').length;
+                    
+                    return `
+                      <div class="glass-card-light rounded-xl p-5">
+                        <div class="flex items-start gap-6">
+                          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-bold">
+                            ${member.firstName.charAt(0)}${member.lastName.charAt(0)}
+                          </div>
+                          <div class="flex-1">
+                            <div class="flex items-start justify-between mb-3">
+                              <div>
+                                <h4 class="text-lg font-bold mb-1">${member.firstName} ${member.lastName}</h4>
+                                <p class="text-sm text-gray-400">${getRoleLabel(member.role)} • ${member.email}</p>
+                              </div>
+                              <button onclick="removeMemberFromTeam('${member.id}', '${team.id}')" class="text-red-400 hover:text-red-300 text-sm px-3 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20">
+                                Remove
+                              </button>
+                            </div>
+                            <div class="grid grid-cols-4 gap-3">
+                              <div class="glass-card-light rounded-lg p-3 text-center">
+                                <p class="text-lg font-bold">${member.id}</p>
+                                <p class="text-xs text-gray-500">ID</p>
+                              </div>
+                              <div class="glass-card-light rounded-lg p-3 text-center">
+                                <p class="text-lg font-bold">${memberTasks.length}</p>
+                                <p class="text-xs text-gray-500">Tasks</p>
+                              </div>
+                              <div class="glass-card-light rounded-lg p-3 text-center">
+                                <p class="text-lg font-bold text-emerald-400">${completed}</p>
+                                <p class="text-xs text-gray-500">Completed</p>
+                              </div>
+                              <div class="glass-card-light rounded-lg p-3 text-center">
+                                <p class="text-lg font-bold text-purple-400">${member.performance}%</p>
+                                <p class="text-xs text-gray-500">Performance</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              ` : '<p class="text-center text-gray-400 py-8">No team members yet. Add members to get started.</p>'}
+            </div>
+          `;
+        }
+        
+        // ==================== ELEMENT SDK ====================
+        async function onConfigChange(newConfig) {
+          config = { ...config, ...newConfig };
+          
+          const companyName = config.company_name || defaultConfig.company_name;
+          document.getElementById('sidebar-company').textContent = companyName;
+          
+          const portalTitle = config.portal_title || defaultConfig.portal_title;
+          document.getElementById('login-title').textContent = portalTitle;
+        }
+        
+        function mapToCapabilities(cfg) {
+          return {
+            recolorables: [],
+            borderables: [],
+            fontEditable: undefined,
+            fontSizeable: undefined
+          };
+        }
+        
+        function mapToEditPanelValues(cfg) {
+          return new Map([
+            ['company_name', cfg.company_name || defaultConfig.company_name],
+            ['portal_title', cfg.portal_title || defaultConfig.portal_title]
+          ]);
+        }
+        
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', () => {
+          if (window.elementSdk) {
+            window.elementSdk.init({
+              defaultConfig,
+              onConfigChange,
+              mapToCapabilities,
+              mapToEditPanelValues
+            });
+          }
+          
+          document.getElementById('login-form').addEventListener('submit', handleLogin);
+          document.getElementById('logout-btn').addEventListener('click', handleLogout);
+          document.getElementById('team-form').addEventListener('submit', handleTeamSubmit);
+          document.getElementById('employee-form').addEventListener('submit', handleEmployeeSubmit);
+          document.getElementById('add-member-form').addEventListener('submit', handleAddMemberSubmit);
+          document.getElementById('meeting-form').addEventListener('submit', handleMeetingSubmit);
+          document.getElementById('task-form').addEventListener('submit', handleTaskSubmit);
+          
+          // Set today as default for meeting date
+          const today = new Date().toISOString().split('T')[0];
+          document.getElementById('meeting-date').value = today;
+          
+          // Set tomorrow as default for task due date
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          document.getElementById('task-due').value = tomorrow.toISOString().split('T')[0];
+        });
+    </script>
+</body>
+
+</html>

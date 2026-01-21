@@ -1,1552 +1,1214 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJT52BJRP2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-QJT52BJRP2');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="https://progmaster.in/another-broucher-logo-removebg-preview.png">
-    <title>ProgMaster LMS & Website</title>
-    <!-- fontawesome css -->
-    <!-- bootstrap css -->
-    <link rel="stylesheet preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" as="style">
-    <link rel="stylesheet preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style">
-    <link rel="stylesheet preload" href="assets/css/plugins/fontawesome-6.css" as="style">
-
-    <!-- Custom css -->
-    <link rel="stylesheet preload" href="assets/scss/style.css" as="style">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/header-style.css">
-
-    <!-- free tag highlighter css -->
-    <link rel="stylesheet" href="Free Tag Higlighter.css">
-
-    <!-- metismenu scss -->
-    <link rel="stylesheet" href="single-course-assets/css/vendor/metismenu.css">
-    <!-- custom style css -->
-    <link rel="stylesheet" href="single-course-assets/css/plugins/fontawesome-6.css">
-    <link rel="stylesheet" href="single-course-assets/css/vendor/metismenu.css">
-    <!-- <link rel="stylesheet" href="assets/css/overlay&slider.css"> -->
-
-    <link rel="stylesheet" href="PricingSlash.css">
-    <link rel="stylesheet" href="TrainingMaterialsPopUp.css">
-    <style>
-        .locked-all {
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProgMaster — Software & App Development</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="We build premium apps, websites, and software products for ambitious businesses." />
 </head>
 
 <body>
-    <!-- Modal -->
-    <div id="popupModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Training Materials</h3>
-            <a href="" target="_blank">Figma Materials</a>
-            <a href="content/FreeWebDevelopmentCourse.html" target="_blank">Web Dev Materials</a>
+    <!-- Animated background -->
+    <div class="bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+        <div class="grain"></div>
+    </div>
+
+    <!-- Cursor glow (desktop) -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Top progress bar -->
+    <div class="progress" id="progress"></div>
+
+    <!-- Navbar -->
+    <header class="nav-wrap" id="nav">
+        <nav class="nav">
+            <a class="brand" href="#home">
+                <span class="logo">PM</span>
+                <span class="brand-text">ProgMaster</span>
+                <span class="badge">Studio</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#services" class="nl">Services</a>
+
+                <div class="nav-dd" id="ddSolutions">
+                    <button class="nl dd-btn" type="button">
+                        Solutions <span class="chev">▾</span>
+                    </button>
+                    <div class="dd-menu">
+                        <a href="#stack" class="dd-item">
+                            <b>SaaS Systems</b>
+                            <span>Onboarding, billing, admin, automation</span>
+                        </a>
+                        <a href="#work" class="dd-item">
+                            <b>Case Studies</b>
+                            <span>Real outcomes & delivered projects</span>
+                        </a>
+                        <a href="#process" class="dd-item">
+                            <b>Delivery Process</b>
+                            <span>Clear steps, fast MVP, scalable build</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#stack" class="nl">Why Us</a>
+                <a href="#process" class="nl">Process</a>
+                <a href="#testimonials" class="nl">Reviews</a>
+                <a href="#contact" class="nl">Contact</a>
+            </div>
+
+
+            <div class="nav-actions">
+                <button class="pill ghost" id="themeBtn" aria-label="Toggle theme">Theme</button>
+                <a class="pill" href="#contact">Get Quote</a>
+                <button class="hamburger" id="ham" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobile-drawer" id="drawer">
+        <div class="drawer-card">
+            <div class="drawer-head">
+                <div class="drawer-title">Menu</div>
+                <button class="icon-btn" id="closeDrawer" aria-label="Close">✕</button>
+            </div>
+            <a href="#services" class="drawer-link">Services</a>
+            <a href="#work" class="drawer-link">Work</a>
+            <a href="#process" class="drawer-link">Process</a>
+            <a href="#testimonials" class="drawer-link">Reviews</a>
+            <a href="#contact" class="drawer-link">Contact</a>
+            <a href="#contact" class="pill full">Get Quote</a>
         </div>
     </div>
-    <!-- Images scrolling animation -->
-    <!-- <div class="overlay" id="overlay">
-        <div class="close-btn" onclick="closeOverlay()">&times;</div>
-        <section class="lolipop">
-            <article id="article-container"></article>
-            <div>
-                <button id="leftArrow" onclick=previousImg()>❮</button>
-                <button id="rightArrow" onclick=nextImg()>❯</button>
+
+    <!-- Hero -->
+    <main id="home" class="hero">
+        <section class="container hero-grid">
+            <div class="hero-left reveal">
+                <div class="kicker">
+                    <span class="dot"></span>
+                    <span>Apps • Websites • Software Products</span>
+                </div>
+
+                <h1 class="hero-title">
+                    We build <span class="grad">premium</span> software that makes your business look <span class="grad2">bigger</span>.
+                </h1>
+
+                <p class="hero-sub">
+                    ProgMaster is a product-minded software studio. We design, develop, and ship fast — with performance, security, and scalable architecture.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#contact" class="pill big">Start a Project</a>
+                    <a href="#work" class="pill big ghost">See Our Work</a>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-num" data-count="120">0</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num" data-count="4.9">0</div>
+                        <div class="stat-label">Avg Client Rating</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num" data-count="14">0</div>
+                        <div class="stat-label">Days to First MVP</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right reveal">
+                <div class="glass-card tilt" id="tiltCard">
+                    <div class="card-top">
+                        <div class="chip"></div>
+                        <div class="card-title">Project Dashboard</div>
+                        <div class="pill tiny">Live</div>
+                    </div>
+
+                    <div class="mini-grid">
+                        <div class="mini">
+                            <div class="mini-h">Speed</div>
+                            <div class="mini-v"><span class="pulse"></span> Optimized
+                            </div>
+                        </div>
+                        <div class="mini">
+                            <div class="mini-h">Security</div>
+                            <div class="mini-v"><span class="pulse"></span> Hardened
+                            </div>
+                        </div>
+                        <div class="mini">
+                            <div class="mini-h">Design</div>
+                            <div class="mini-v"><span class="pulse"></span> Premium
+                            </div>
+                        </div>
+                        <div class="mini">
+                            <div class="mini-h">Scale</div>
+                            <div class="mini-v"><span class="pulse"></span> Cloud-ready
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sparkline">
+                        <div class="bar" style="--h: 30%"></div>
+                        <div class="bar" style="--h: 60%"></div>
+                        <div class="bar" style="--h: 45%"></div>
+                        <div class="bar" style="--h: 80%"></div>
+                        <div class="bar" style="--h: 55%"></div>
+                        <div class="bar" style="--h: 90%"></div>
+                        <div class="bar" style="--h: 70%"></div>
+                    </div>
+
+                    <div class="card-bottom">
+                        <div class="tag">UI/UX</div>
+                        <div class="tag">Web Apps</div>
+                        <div class="tag">Mobile</div>
+                        <div class="tag">APIs</div>
+                    </div>
+                </div>
             </div>
         </section>
-    </div> -->
-    <!-- header style one -->
-    <!-- header style one -->
-    <div class="no-scroll">
-        <header class="header-one v-2 header--sticky">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-one-wrapper">
-                            <div class="left-side-header">
-                                <a href="web dev.html" class="logo-area">
-                                    <a href="index.html" class="logo">
-                                            PROGMASTER
-                                        </a>
-                                </a>
-                                <div class="main-nav-one">
-                                    <nav>
-                                        <ul>
-                                            <li class="has-dropdown" style="position: static;">
-                                                <a class="nav-link" href="#">LMS</a>
-                                                <ul class="megamenu-hub">
-                                                    <li>
-                                                        <ul class>
-                                                            <li>
-                                                                <a href="course-hub.html">Internship
-                                                                        Hub</a>
-                                                                <span>Hot</span>
-                                                            </li>
-                                                            <li>
-                                                                <a href="index-two.html" class="locked-all">Online
-                                                                        course
-                                                                    </a>
-                                                                <span class="popular">Popular</span>
-                                                            </li>
-                                                            <li>
-                                                                <a href="index.html" class="locked-all">Live
-                                                                        Projects</a>
-
-                                                            </li>
-                                                            <li><a href="index-four.html" class="locked-all">Distance
-                                                                        learning</a></li>
-                                                            <li>
-                                                                <a href="index-five.html" class="locked-all">Instructor
-                                                                        Hiring</a>
-                                                                <span>Hot</span>
-                                                            </li>
-                                                        </ul>
-                                                        <ul class>
-                                                            <li>
-                                                                <a href="index-six.html" class="locked-all">Online
-                                                                        Terminal</a>
-                                                                <span>Hot</span>
-                                                            </li>
-                                                            <li><a href="index-seven.html" class="locked-all">Student
-                                                                        Community</a></li>
-                                                            <li>
-                                                                <a href="index-eight.html" class="locked-all">Up-Comming
-                                                                        Webinar</a>
-                                                                <span class="popular">Popular</span>
-                                                            </li>
-                                                            <li><a href="index-nine.html" class="locked-all">Course
-                                                                        Portal</a></li>
-                                                            <li><a href="index-ten.html" class="locked-all">Inern
-                                                                        Hiring</a></li>
-                                                        </ul>
-                                                        <div class="absolute-image-shape shape-image">
-                                                            <img class=" shape one" src="assets/images/nav/02.png" data-speed="0.04" data-revert="true" alt="nav">
-                                                            <img class=" shape two" src="assets/images/nav/03.png" data-speed="0.04" alt="nav">
-                                                        </div>
-                                                        <div class="nav-mega-image">
-                                                            <a href="single-course.html">
-                                                                <img src="assets/images/nav/01.jpg" alt="nav">
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="has-dropdown">
-                                                <a class="nav-link" href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li>
-                                                        <a href="about.html">About
-                                                                Us</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="contact-us.html">Contact
-                                                                Us</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="Course-Registration.html">Free Training Registration</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="training-link" onclick="openModal()">Training Materials</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="ResumeWorld.html" class="locked-all" target="_blank">100+
-                                                                Resumes</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a class="locked-all" href="InterviewQuestionsWorld.html">300+
-                                                                Interview
-                                                                Questions</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="has-dropdown" style="position: static;">
-                                                <a class="nav-link" href="#">Courses</a>
-                                                <ul class="megamenu-hub min-mega shape-move">
-                                                    <li>
-                                                        <ul class>
-                                                            <li class="parent"><a href="#">Courses</a></li>
-                                                            <li><a class="mobile-menu-link" href="java-course.html">Java</a>
-                                                            </li>
-                                                            <li><a class="mobile-menu-link" href="python-course.html">Python</a>
-                                                            </li>
-                                                            <li><a class="mobile-menu-link" href="web dev.html">Web
-                                                                        Development</a>
-                                                            </li>
-                                                            <li><a class="mobile-menu-link" href="figma Free Training.html">Figma (UI)</a>
-                                                            </li>
-                                                            <li><a class="mobile-menu-link locked-all" href="single-course.html">AWS</a>
-                                                            </li>
-
-                                                        </ul>
-                                                        <ul class>
-                                                            <li class="parent"><a href="#" class="locked-all">Internships
-                                                                    </a></li>
-                                                            <li><a class="mobile-menu-link locked-all" href="single-course.html">AWS</a>
-                                                            </li>
-                                                            <li><a class="mobile-menu-link locked-all" href="single-course-two.html">A.I</a>
-                                                            </li>
-                                                            <li><a class="mobile-menu-link locked-all" href="single-course-three.html">M.L</a>
-                                                            </li>
-                                                            <li><a class="mobile-menu-link locked-all" href="single-course-four.html">Block
-                                                                        Chain</a></li>
-                                                            <li><a class="mobile-menu-link locked-all" href="single-course-five.html locked-all">Cloud
-                                                                        Computing</a></li>
-                                                            <!-- <li><a class="mobile-menu-link locked-all" href="single-course-free.html locked-all">Ethical
-                                                                Hacking</a>
-                                                            </li> -->
-                                                        </ul>
-                                                        <ul class>
-                                                            <li class="parent"><a href="#" class="locked-all">Others</a>
-                                                            </li>
-                                                            <li><a href="become-instructor.html" class="locked-all">Aptitude</a>
-                                                                <span class="popular">Upcoming</span>
-                                                            </li>
-                                                            <li><a href="instructor-profile.html" class="locked-all">Soft
-                                                                        Skills</a>
-                                                                <span class="popular">Upcoming</span>
-                                                            </li>
-                                                            <li><a href="instructor.html" class="locked-all">Coading
-                                                                        Contest</a>
-                                                                <span class="popular">Upcoming</span>
-                                                            </li>
-                                                            <li><a href="pricing.html" class="locked-all">Coading
-                                                                        Quiz</a>
-                                                                <span class="popular">Upcoming</span>
-                                                            </li>
-                                                            <li><a href="log-in.html" class="locked-all">Coding
-                                                                        Game</a>
-                                                                <span class="popular">Upcoming</span>
-                                                            </li>
-                                                            <!-- <li><a href="registration.html" class="locked-all">Logic
-                                                                Bulding
-                                                                Techniques</a>
-                                                                <span class="popular">Upcoming</span>
-                                                            </li> -->
-                                                        </ul>
-
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="has-dropdown">
-                                                <a class="nav-link" href="#">Free Live
-                                                        Training</a>
-                                                <ul class="submenu">
-                                                    <li>
-                                                        <a href="https://meet.google.com/jdm-mziu-dku" target="_blank">Web
-                                                                Dev - 6am <br> (Mon-Sat)</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://meet.google.com/rvr-rhzk-jio" target="_blank">Figma (UI)
-                                                                - 7pm (Sat&Sun)</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link" style="color: burlywood;" target="_blank" href="leaderboard.html">LeaderBoard</a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link" style="color: burlywood;" target="_blank" href="Consultencey-Job-Portal.html">Job
-                                                        Portal</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-
-                            <div class="header-right-area-one">
-                                <!-- <div class="actions-area">
-                                    <div class="search-btn" id="search">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
-                                                <path
-                                                    d="M19.9375 18.9652L14.7454 13.7732C15.993 12.2753 16.6152 10.3542 16.4824 8.40936C16.3497 6.46453 15.4722 4.64575 14.0326 3.33139C12.593 2.01702 10.7021 1.30826 8.75326 1.35254C6.8044 1.39683 4.94764 2.19075 3.56924 3.56916C2.19083 4.94756 1.39691 6.80432 1.35263 8.75317C1.30834 10.702 2.0171 12.5929 3.33147 14.0325C4.64584 15.4721 6.46461 16.3496 8.40944 16.4823C10.3543 16.6151 12.2754 15.993 13.7732 14.7453L18.9653 19.9374L19.9375 18.9652ZM2.75 8.93742C2.75 7.71365 3.11289 6.51736 3.79278 5.49983C4.47267 4.4823 5.43903 3.68923 6.56965 3.22091C7.70026 2.7526 8.94436 2.63006 10.1446 2.86881C11.3449 3.10756 12.4474 3.69686 13.3127 4.56219C14.1781 5.42753 14.7674 6.53004 15.0061 7.7303C15.2449 8.93055 15.1223 10.1747 14.654 11.3053C14.1857 12.4359 13.3926 13.4022 12.3751 14.0821C11.3576 14.762 10.1613 15.1249 8.9375 15.1249C7.29703 15.1231 5.72427 14.4706 4.56429 13.3106C3.4043 12.1506 2.75182 10.5779 2.75 8.93742Z"
-                                                    fill="#553CDF" />
-                                            </svg>
-                                    </div>
-                                    <div class="cart cart-icon">
-                                        <i class="fa-regular fa-cart-shopping"></i>
-                                    </div>
-                                </div> -->
-
-                                <div class="buttons-area">
-                                    <a href="login.html" class="rts-btn btn-border locked-all">Log
-                                            In</a>
-                                    <a href="registration.html" class="rts-btn btn-primary locked-all">Sign
-                                            Up</a>
-                                </div>
-                                <div class="menu-btn" id="menu-btn">
-                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect y="14" width="20" height="2"
-                                                fill="#1F1F25"></rect>
-                                            <rect y="7" width="20" height="2"
-                                                fill="#1F1F25"></rect>
-                                            <rect width="20" height="2"
-                                                fill="#1F1F25"></rect>
-                                        </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- header style end -->
-        <!-- rts banner area start -->
-        <div class="rts-banner-area rts-section-gap shape-move">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-12 order-xl-1 order-lg-1 order-md-6 order-sm-2 order-2 p-0">
-                        <div class="banner-one-content text-center">
-                            <p class="pre-title"><img src="assets/images/banner/shape/bulb.svg" alt> ONLINE # OFFLINE TRAINING & PLACEMENTS
-                            </p>
-                            <h1 class="title">Welcome to ProgMaster <br>
-                                <span>Traning Platform</span>
-                            </h1>
-
-                        </div>
-                        <div class="banner-button-area">
-                            <a href="#demos" class="rts-btn btn-primary">
-                                    View
-                                    Demos</a>
-                        </div>
-                        <div class="banner-img-area">
-                            <div class="banner-img"><img style="border-top-right-radius: 10px;border-top-left-radius: 10px;" src="assets/images/banner/laptop.png" width="766" alt></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="banner-floating-image-area shape-image">
-                <img style="border-top-right-radius: 10px;border-top-left-radius: 10px;" class="shape one" data-speed="0.04" data-revert="true" src="assets/images/banner/floating-01.png" alt>
-                <img style="border-top-right-radius: 10px;border-top-left-radius: 10px;" class="shape two" data-speed="0.04" src="assets/images/banner/floating-02.png" alt>
-                <img style="border-top-right-radius: 10px;border-top-left-radius: 10px;" class="shape three" data-speed="0.04" data-revert="true" src="assets/images/banner/floating-03.png" alt>
-                <img style="border-top-right-radius: 10px;border-top-left-radius: 10px;" class="shape four" data-speed="0.04" src="assets/images/banner/floating-04.png" alt>
-            </div>
-            <div class="banner-shape-area shape-image">
-                <img class="shape one" data-speed="0.04" data-revert="true" src="assets/images/banner/shape/01.svg" alt="svg-shape">
-                <img class="shape two" data-speed="0.04" src="assets/images/banner/shape/02.svg" alt="svg-shape">
-                <img class="shape three" data-speed="0.04" data-revert="true" src="assets/images/banner/shape/03.svg" alt="svg-shape">
-            </div>
-            <div class="banner-fixed-shape">
-                <img class="shape-image-one" src="assets/images/banner/shape/bg-shape-01.svg" alt>
-                <img class="shape-image-two" src="assets/images/banner/shape/bg-shape-02.svg" alt>
-            </div>
-        </div>
-        <!-- rts banner area end -->
-
-        <!-- rts feature area start -->
-        <div class="rts-features-area rts-section-gap shape-move">
-            <div class="container">
-                <div class="feature-top-area">
-                    <ul class="feature-wrapper">
-                        <li class="feature-list one">
-                            <div class="icon"><img src="assets/images/features/feature-01.svg" alt></div>
-                            <p class="text">AICTE <br> APPROVED</p>
-                        </li>
-                        <li class="feature-list two">
-                            <div class="icon"><img src="assets/images/features/feature-02.svg" alt></div>
-                            <p class="text">MSME <br> APPROVED</p>
-                        </li>
-                        <li class="feature-list three">
-                            <div class="icon"><img src="assets/images/features/feature-03.svg" alt></div>
-                            <p class="text">APSCHE<br> APPROVED</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="feature-bottom-area">
-                    <div class="row">
-                        <div class="col-xl-5">
-                            <div class="feature-left-area">
-                                <h4 class="feature-title">
-                                    ProgMaster Provide Online & Offline <br> Traning
-                                    <span>Online & Offline Courses</span>
-                                    <br> with PLACEMENT ASSISTENCE
-                                </h4>
-                                <div class="feature-image-area">
-                                    <img src="assets/images/features/feature-left.jpg" alt>
-                                </div>
-                                <div class="feature-shape-area shape-image">
-                                    <img class="shape one" data-speed="0.04" data-revert="true" src="assets/images/features/feature-bg-shape.svg" alt="svg-shape">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-7">
-                            <div class="feature-right-area">
-                                <div class="feature-counter-area">
-                                    <ul class="counter-top">
-                                        <li class="counter-list">
-                                            <div class="icon"><img src="assets/images/features/feature-04.svg" alt></div>
-                                            <p class="text"><span>1200+</span>
-                                                <br> Resumes
-                                            </p>
-                                        </li>
-                                        <li class="counter-list">
-                                            <div class="icon"><img src="assets/images/features/feature-05.svg" alt></div>
-                                            <p class="text"><span>130+</span>
-                                                <br> Courses
-                                            </p>
-                                        </li>
-                                        <li class="counter-list">
-                                            <div class="icon"><img src="assets/images/features/feature-06.svg" alt></div>
-                                            <p class="text"><span>300+</span>
-                                                <br> Interview Questions
-                                            </p>
-                                        </li>
-                                    </ul>
-                                    <ul class="counter-bottom-area">
-                                        <li><img src="assets/images/features/feature-07.svg" alt></li>
-                                        <li><img src="assets/images/features/feature-08.svg" alt></li>
-                                        <li><img src="assets/images/features/feature-09.svg" alt></li>
-                                        <li><img src="assets/images/features/feature-10.svg" alt></li>
-                                        <li><img src="assets/images/features/feature-11.svg" alt></li>
-                                        <li><img src="assets/images/features/feature-12.svg" alt></li>
-                                    </ul>
-                                </div>
-                                <div class="feature-right-image">
-                                    <img style="border-radius: 10px;" src="assets/images/features/feature-right.png" alt>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rts feature area end -->
-
-        <!-- rts demos area start -->
-        <div id="demos" class="rts-demos-area">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-lg-12">
-                        <div class="title-between-area v-8">
-                            <div class="section-title-area text-center">
-                                <p class="watermark">12+</p>
-                                <h2 class="heading-title">Our Catalogue</h2>
-                            </div>
-                            <div class="button-group filters-button-group text-center">
-                                <button class="button is-checked" data-filter="*">All</button>
-                                <button class="button" data-filter=".course">Online
-                                        Training</button>
-                                <button class="button" data-filter=".university">Internships</button>
-                                <!-- <button class="button" data-filter=".instructor">Instructor</button>
-                            <button class="button" data-filter=".coaching">Personal Coach</button> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ms-portfolio-filter-area main-isotop">
-                    <div class="container">
-                        <div class="portfolio_wrap section-inner">
-                            <div class="filter row g-5 mt-5 portfolio-feed personal">
-
-                                <!-- free training -->
-                                <div class="flash grid-item-p element-item transition course col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area">
-                                            <a href="figma Free Training.html" target="_blank"><img style="height:200px;width: 400px;" src="https://imgs.search.brave.com/vHdCd4Gbv2dzKFGNIM87Pr0KLgV3QEeVXwyXUjr5BcU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/NTRjYmRiNjU0NTBj/ZjJkZDA3MjVjMzEv/NjU0ZWM3YmM1NWNh/ZmU1YTMzNjRmMjQw/X1UwNXhUbFFnUVpL/eUxqMDRyZFlKX21h/c3Rlci1maWdtYS5w/bmc"
-                                                    alt></a>
-                                        </div>
-                                        <h3 class="content"><a class="" href="figma Free Training.html" target="_blank">Figma ( UI/UX Desgin ) <tags>Free</tag></a>
-                                        </h3>
-                                    </div>
-                                </div>
-                                <div class="flash grid-item-p element-item transition course col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area">
-                                            <a href="web development Free Training.html" target="_blank"><img style="height:200px;width: 400px;" src="https://media.licdn.com/dms/image/v2/D5612AQGEq2wiAIYOVw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1712138744232?e=2147483647&v=beta&t=I0ONRfHC-H9gQE9-dOyiDdxuPXvXDjEIXd2Yo4sd6wI"
-                                                    alt></a>
-                                        </div>
-                                        <h3 class="content"><a class="" href="web development Free Training.html" target="_blank">Web Development <tags>Free</tag></a>
-                                        </h3>
-                                    </div>
-                                </div>
-
-                                <div class="flash grid-item-p element-item transition course col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area">
-                                            <a class href="java-course.html" target="_blank"><img style="height:200px;width: 400px;" src="https://media.geeksforgeeks.org/wp-content/uploads/20230926163338/Java-Full-Stack.png" alt></a>
-                                        </div>
-                                        <h3 class="content"><a class href="java-course.html" target="_blank">Java Full
-                                                    Stack
-                                                    Training</a></h3>
-                                    </div>
-                                </div>
-
-                                <div class="flash grid-item-p element-item transition course col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area">
-                                            <a class href="python-course.html" target="_blank"><img style="height:200px;width: 400px;" src="https://eeakolkata.com/wp-content/uploads/2023/10/FULL-STACK-PYTHON-1.jpeg" alt></a>
-                                        </div>
-                                        <h3 class="content"><a class href="python-course.html" target="_blank">Python Full
-                                                    Stack
-                                                    Training</a></h3>
-                                    </div>
-                                </div>
+    </main>
 
 
-                                <div class="flash grid-item-p element-item transition university col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area">
-                                            <a class="locked-all" href="java-course.html"><img style="height:200px;width: 400px;" src="https://kaashiv.com/img/course/otv1urlr.png" alt></a>
-                                        </div>
-                                        <h3 class="content"><a href class="locked-all">Java
-                                                    Internship</a></h3>
-                                    </div>
-                                </div>
-
-
-                                <div class="flash grid-item-p element-item transition university col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area">
-                                            <a class="locked-all" href="python-course.html"><img style="height:200px;width: 400px;" src="https://kaashiv.com/img/course/m7b04dsz.png" alt></a>
-                                        </div>
-                                        <h3 class="content locked-all"><a href="python-course.html">Python
-                                                    Internship</a></h3>
-                                    </div>
-                                </div>
-
-
-                                <div class="flash grid-item-p element-item transition course col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area" style="display: flex;align-items: center;justify-content: center;">
-                                            <a href="web dev.html"><img style="height:200px;width: 400px;" src="https://wayspire.in/wp-content/uploads/2022/11/web-development.jpg" alt></a>
-                                        </div>
-                                        <h3 class="content"><a href="web dev.html">Web
-                                                    Development Course</a></h3>
-                                    </div>
-                                </div>
-                                <!-- <div class="flash grid-item-p element-item transition course col-lg-4 col-md-6" data-category="transition">
-                                    <div class="demo-wrapper wow fadeIn" data-wow-duration="1.2s" data-wow-delay=".5s">
-                                        <div class="image-area">
-                                            <a href class="locked-all" target="_blank"><img style="height:200px;width: 400px;" src="https://stelligence.com/wp-content/uploads/2023/03/Generative-AI.jpg" alt></a>
-                                        </div>
-                                        <h3 class="content"><a class="locked-all" href target="_blank">Generative AI
-                                            Training</a></h3>
-                                    </div>
-                                </div> -->
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rts demos area end -->
-
-        <!-- rts dashboard area start -->
-        <div class="rts-dashboard-area rts-section-gap shape-move">
-            <div class="container">
-                <div class="section-title-area text-center">
-                    <p class="watermark">Dashboard</p>
-                </div>
-                <div class="row g-5">
-                    <div class="col-lg-12">
-                        <div class="dashboard-top-inner">
-                            <div class="row align-items-center">
-                                <div class="col-xl-6">
-                                    <div class="left-side-content">
-                                        <h4 class="dashboard-title">Personalized Dashboard for <br>
-                                            <span>Teachers & Students</span>
-                                        </h4>
-                                        <p class="desc">Streamlined and Tailored Dashboard Experience for <br> Educators & Learners. Access All Your Website <br> Management Tools in One Convenient Location.
-                                        </p>
-                                        <ul class="wrapper">
-                                            <li class="wrapper-list">
-                                                <div class="icon"><img src="assets/images/features/feature-13.svg" alt>
-                                                </div>
-                                                <p>Access & Manage <br> Everything From One Spot
-                                                </p>
-                                            </li>
-                                            <li class="wrapper-list">
-                                                <div class="icon"><img src="assets/images/features/feature-14.svg" alt>
-                                                </div>
-                                                <p>Separate Dashboard <br> for Students & Teachers
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="right-side-image">
-                                        <img src="assets/images/features/dashboard-011.jpg" alt>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="image-area">
-                            <img src="assets/images/features/dashboard-02.webp" alt>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="image-area">
-                            <img src="assets/images/features/dashboard-03.webp" alt>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rts dashboard area end -->
-
-        <!-- rts course area start -->
-        <div class="rts-course-area rts-section-gap shape-move">
-            <div class="container">
-                <div class="section-inner">
-                    <div class="row">
-                        <div class="col-xl-5">
-                            <div class="left-side-content">
-                                <p class="pre-title">Course Showcase</p>
-                                <h4 class="course-title">Effortlessly Customize Your Course Selections with Filtered Views
-                                </h4>
-                                <p class="desc">Explore courses like never before with our intuitive filtering options. Whether you prefer a clean, streamlined grid view or a detailed list view, our system allows you to tailor your course browsing experience to your
-                                    exact preferences. Easily filter through a wide array of courses, and find the perfect match for your learning needs. Your journey to knowledge just became more personalized and efficient!
-                                </p>
-                                <div class="bottom-icon">
-                                    <img class="arrow" src="assets/images/features/arrow-right.svg" alt>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-7">
-                            <div class="right-side-tab-area">
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><svg
-                                                    width="20" height="20"
-                                                    viewBox="0 0 20 20"
-                                                    fill="110C2D"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        clip-rule="evenodd"
-                                                        d="M3.75 2.5H7.5C7.83152 2.5 8.14946 2.6317 8.38388 2.86612C8.6183 3.10054 8.75 3.41848 8.75 3.75V7.5C8.75 7.83152 8.6183 8.14946 8.38388 8.38388C8.14946 8.6183 7.83152 8.75 7.5 8.75H3.75C3.41848 8.75 3.10054 8.6183 2.86612 8.38388C2.6317 8.14946 2.5 7.83152 2.5 7.5V3.75C2.5 3.41848 2.6317 3.10054 2.86612 2.86612C3.10054 2.6317 3.41848 2.5 3.75 2.5ZM3.75 7.5H7.5V3.75H3.75V7.5ZM12.5 2.5H16.25C16.5815 2.5 16.8995 2.6317 17.1339 2.86612C17.3683 3.10054 17.5 3.41848 17.5 3.75V7.5C17.5 7.83152 17.3683 8.14946 17.1339 8.38388C16.8995 8.6183 16.5815 8.75 16.25 8.75H12.5C12.1685 8.75 11.8505 8.6183 11.6161 8.38388C11.3817 8.14946 11.25 7.83152 11.25 7.5V3.75C11.25 3.41848 11.3817 3.10054 11.6161 2.86612C11.8505 2.6317 12.1685 2.5 12.5 2.5ZM12.5 7.5H16.25V3.75H12.5V7.5ZM7.5 11.25H3.75C3.41848 11.25 3.10054 11.3817 2.86612 11.6161C2.6317 11.8505 2.5 12.1685 2.5 12.5V16.25C2.5 16.5815 2.6317 16.8995 2.86612 17.1339C3.10054 17.3683 3.41848 17.5 3.75 17.5H7.5C7.83152 17.5 8.14946 17.3683 8.38388 17.1339C8.6183 16.8995 8.75 16.5815 8.75 16.25V12.5C8.75 12.1685 8.6183 11.8505 8.38388 11.6161C8.14946 11.3817 7.83152 11.25 7.5 11.25ZM7.5 16.25H3.75V12.5H7.5V16.25ZM12.5 11.25H16.25C16.5815 11.25 16.8995 11.3817 17.1339 11.6161C17.3683 11.8505 17.5 12.1685 17.5 12.5V16.25C17.5 16.5815 17.3683 16.8995 17.1339 17.1339C16.8995 17.3683 16.5815 17.5 16.25 17.5H12.5C12.1685 17.5 11.8505 17.3683 11.6161 17.1339C11.3817 16.8995 11.25 16.5815 11.25 16.25V12.5C11.25 12.1685 11.3817 11.8505 11.6161 11.6161C11.8505 11.3817 12.1685 11.25 12.5 11.25ZM12.5 16.25H16.25V12.5H12.5V16.25Z"
-                                                        fill="110C2D" />
-                                                </svg>Grid</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><svg
-                                                    width="20" height="20"
-                                                    viewBox="0 0 20 20"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        clip-rule="evenodd"
-                                                        d="M6.25 8.75H2.5C2.1686 8.74962 1.85087 8.6178 1.61654 8.38346C1.3822 8.14913 1.25038 7.8314 1.25 7.5V3.75C1.25038 3.4186 1.3822 3.10087 1.61654 2.86654C1.85087 2.6322 2.1686 2.50038 2.5 2.5H6.25C6.5814 2.50038 6.89913 2.6322 7.13346 2.86654C7.3678 3.10087 7.49962 3.4186 7.5 3.75V7.5C7.49962 7.8314 7.3678 8.14913 7.13346 8.38346C6.89913 8.6178 6.5814 8.74962 6.25 8.75ZM2.5 3.75V7.5H6.25075L6.25 3.75H2.5ZM10 5H18.75V6.25H10V5ZM10 13.75H18.75V15H10V13.75ZM2.5 17.5H6.25C6.5814 17.4996 6.89913 17.3678 7.13346 17.1335C7.3678 16.8991 7.49962 16.5814 7.5 16.25V12.5C7.49962 12.1686 7.3678 11.8509 7.13346 11.6165C6.89913 11.3822 6.5814 11.2504 6.25 11.25H2.5C2.1686 11.2504 1.85087 11.3822 1.61654 11.6165C1.3822 11.8509 1.25038 12.1686 1.25 12.5V16.25C1.25038 16.5814 1.3822 16.8991 1.61654 17.1335C1.85087 17.3678 2.1686 17.4996 2.5 17.5ZM2.5 16.25V12.5H6.25L6.25075 16.25H2.5Z"
-                                                        fill="#110C2D" />
-                                                </svg>List</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><svg
-                                                    width="20" height="20"
-                                                    viewBox="0 0 20 20"
-                                                    fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11.25 17.5H8.75C8.41848 17.5 8.10054 17.3683 7.86612 17.1339C7.6317 16.8995 7.5 16.5815 7.5 16.25V11.5063L2.86875 6.875C2.63401 6.64166 2.5014 6.32474 2.5 5.99375V3.75C2.5 3.41848 2.6317 3.10054 2.86612 2.86612C3.10054 2.6317 3.41848 2.5 3.75 2.5H16.25C16.5815 2.5 16.8995 2.6317 17.1339 2.86612C17.3683 3.10054 17.5 3.41848 17.5 3.75V5.99375C17.4986 6.32474 17.366 6.64166 17.1313 6.875L12.5 11.5063V16.25C12.5 16.5815 12.3683 16.8995 12.1339 17.1339C11.8995 17.3683 11.5815 17.5 11.25 17.5ZM3.75 3.75V5.99375L8.75 10.9937V16.25H11.25V10.9937L16.25 5.99375V3.75H3.75Z"
-                                                        fill="#525252" />
-                                                    <path
-                                                        d="M11.25 17.5H8.75C8.41848 17.5 8.10054 17.3683 7.86612 17.1339C7.6317 16.8995 7.5 16.5815 7.5 16.25V11.5063L2.86875 6.875C2.63401 6.64166 2.5014 6.32474 2.5 5.99375V3.75C2.5 3.41848 2.6317 3.10054 2.86612 2.86612C3.10054 2.6317 3.41848 2.5 3.75 2.5H16.25C16.5815 2.5 16.8995 2.6317 17.1339 2.86612C17.3683 3.10054 17.5 3.41848 17.5 3.75V5.99375C17.4986 6.32474 17.366 6.64166 17.1313 6.875L12.5 11.5063V16.25C12.5 16.5815 12.3683 16.8995 12.1339 17.1339C11.8995 17.3683 11.5815 17.5 11.25 17.5ZM3.75 3.75V5.99375L8.75 10.9937V16.25H11.25V10.9937L16.25 5.99375V3.75H3.75Z"
-                                                        fill="#110C2D" />
-                                                </svg>Filter</button>
-                                    </li>
-                                </ul>
-
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <img src="assets/images/features/grid.png" alt>
-                                    </div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <img src="assets/images/features/list.png" alt>
-                                    </div>
-                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                        <img src="assets/images/features/grid.png" alt>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rts course area end -->
-
-        <!-- rts shop area start -->
-        <div class="rts-shop-area shape-move">
-            <div class="container">
-                <div class="section-inner">
-                    <div class="row">
-                        <div class="col-xl-7">
-                            <div class="left-side-image">
-                                <img src="assets/images/features/shop.png" alt>
-                            </div>
-                        </div>
-                        <div class="col-xl-5">
-                            <div class="right-side-content">
-                                <p class="pre-title">Study Materials</p>
-                                <h4 class="course-title">At ProgMaster, <br> Your Next Favorite Finds</h4>
-                                <p class="desc"> we offer practical materials that guide students from beginner to advanced levels. With numerous practical questions and detailed logic explanations, our resources help students build hands-on experience and excel in real-world
-                                    scenarios.
-                                </p>
-                                <div class="bottom-icon">
-                                    <img class="arrow" src="assets/images/features/arrow-left.svg" alt>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rts shop area end -->
-
-        <!-- rts zoom area start -->
-        <div class="rts-zoom-area rts-section-gapTop shape-move">
-            <div class="container">
-                <div class="section-inner">
-                    <div class="left-side-content">
-                        <p class="pre-title">Zoom</p>
-                        <h4 class="course-title">Zoom into Learning <br> Engaging Virtual Classes</h4>
-                        <p class="desc">"Join us for dynamic and interactive Zoom classes designed to <br> bring learning to life from the comfort of your own home.</p>
-                    </div>
-                    <div class="mid-side-image">
-                        <img src="assets/images/features/zoom.png" width="263" alt>
-                    </div>
-                    <div class="right-side-image">
-                        <img src="assets/images/features/zoom-2.png" alt>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rts zoom area end -->
-
-        <!-- rts responsive area start -->
-        <div class="rts-responsive-area rts-section-gap shape-move">
-            <div class="container">
-                <div class="section-title-area text-center">
-                    <p class="watermark">Responsive</p>
-                </div>
-                <div class="section-inner">
-                    <p class="desc">Our website is fully responsive and accessible across multiple devices, <br> ensuring a seamless experience no matter where you are.
-                    </p>
-                    <div class="image-area text-end">
-                        <img src="assets/images/features/laptop.png" alt>
-                        <img class="arrow" src="assets/images/features/arrow.svg" alt>
-                        <img class="star" src="assets/images/features/star.svg" alt>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- rts responsive area end -->
-
-        <!-- rts feature area start -->
-        <div id="rts-features" class="rts-features area-2 rts-section-gap">
-            <div class="container">
-                <div class="title-sec rts-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                    <div class="left">
-                        <p class="pre-title">Features</p>
-                        <h2>Our Indirect Partners</h2>
-                    </div>
-                    <div class="right">
-                        <p>We have over 100+ eager partners ready to hire talented individuals like you, <br> offering exciting opportunities to launch your career.
-                        </p>
-                    </div>
-                </div>
-                <ul class="all-features">
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="https://logos-world.net/wp-content/uploads/2022/04/Cognizant-Logo.png" alt="image" loading="lazy">
-                            <!-- <span>Cognizant</span> -->
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="https://1000logos.net/wp-content/uploads/2021/04/Accenture-logo.png" alt="image" loading="lazy">
-                            <!-- <span>Accenture</span> -->
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="assets/images/company-partners/tenxer.png" alt="image" loading="lazy">
-                            <!-- <span>OptimHire</span> -->
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="assets/images/company-partners/prismberry.png" alt="image" loading="lazy">
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="https://cdn.prod.website-files.com/658002b040896ac0d98d8f10/65a6525202f400bc3a74d7d6_morflax-studio%201.png" alt="image" loading="lazy">
-                            <!-- <span>Code Vyasa</span> -->
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" style="height:30px;" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img style="height:50px;" src="https://mrd-live.s3.amazonaws.com/client-image/20230418053356profile-img301181.png" alt="image" loading="lazy">
-                            <span>Unizen Technologies</span>
-                        </div>
-                    </li>
-
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="https://mrd-live.s3.amazonaws.com/client-image/20220609010021profile-img222253.png" alt="image" loading="lazy">
-                            <span>Dripshop.live</span>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div><img src="https://mrd-live.s3.amazonaws.com/client-image/20230421093922profile-img332595.png" alt="image" loading="lazy">
-                            <span>Oneplay
-                                </span>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="assets/images/company-partners/devanagri.png" alt="image" loading="lazy">
-                            <span>Devnagri
-                                </span>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="assets/images/company-partners/agivant.png" alt="image" loading="lazy">
-                            <span>Agivant Technologies</span>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img style="height: 50px;width: 50px;" src="https://mrd-live.s3.amazonaws.com/client-image/20231017093923profile-img395940.png" alt="image" loading="lazy">
-                            <span>Utilitarian <br> Labs</span>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div>
-                            <img src="assets/images/company-partners/plus-logo.png" alt="image" loading="lazy">
-                            <span>100+ Partners</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- rts feature area end -->
-
-        <!-- rts feature area start -->
-        <!-- <div id="rts-features" class="rts-features area-3 rts-section-gap">
+    <section class="section alt" id="flows">
         <div class="container">
-            <div class="title-sec text-center rts-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                <p class="sub-title">University Feature</p>
-                <h2>Discover Our University Features: <br> Elevating Your Academic Experience</h2>
-                <p>Explore the exceptional features that set our university apart and <br> elevate your academic
-                    journey.</p>
+            <div class="section-head reveal">
+                <h2>Your growth engine — built like a product</h2>
+                <p>We combine design, engineering, automation and analytics into one smooth system.</p>
             </div>
-            <div class="section-inner">
-                <div class="row g-5">
-                    <div class="col-lg-4">
-                        <div class="image">
-                            <img src="assets/images/features/feature-01.png" alt="">
-                        </div>
+
+            <div class="flow-wrap reveal">
+                <div class="flow-screen">
+                    <div class="flow-topbar">
+                        <div class="flow-dot"></div>
+                        <div class="flow-dot"></div>
+                        <div class="flow-dot"></div>
+                        <div class="flow-title">Dashboard Preview</div>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="image">
-                            <img src="assets/images/features/feature-02.png" alt="">
+
+                    <div class="flow-body">
+                        <div class="flow-metric">
+                            <div class="n">+15%</div>
+                            <div class="t">New customers</div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="image">
-                            <img src="assets/images/features/feature-03.png" alt="">
+                        <div class="flow-metric">
+                            <div class="n">+8%</div>
+                            <div class="t">Returning users</div>
                         </div>
+                        <div class="flow-chart"></div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="image">
-                            <img src="assets/images/features/feature-04.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="image">
-                            <img src="assets/images/features/feature-05.png" alt="">
-                        </div>
-                    </div>
+                </div>
+
+                <!-- Floating cards -->
+                <div class="float-card fc1">
+                    <b>Calendar</b>
+                    <span>Bookings / scheduling / reminders</span>
+                </div>
+                <div class="float-card fc2">
+                    <b>Marketing</b>
+                    <span>Campaigns + lead automation</span>
+                </div>
+                <div class="float-card fc3">
+                    <b>Hyperconnect</b>
+                    <span>WhatsApp + email + CRM notes</span>
                 </div>
             </div>
         </div>
-    </div> -->
-        <!-- rts feature area end -->
+    </section>
 
-        <!-- rts customer review area start -->
-        <div class="rts-customer-review-area">
-            <div class="container">
-                <div class="title-sec text-center rts-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                    <p class="pre-title">Review</p>
-                    <h2 class="course-title">Our Satisfied Clints</h2>
-                    <p class="desc"> Honest feedback from our clients that drives us to continually improve and deliver the best.
+
+    <!-- Services -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Delivering Excellence in Every Service</h2>
+                <p>Everything you need — IT, growth, automation, apps and support.</p>
+            </div>
+
+            <div class="svc-carousel reveal">
+                <!-- ✅ Wrapper kept only for JS hooks. NO BG will be applied via CSS below -->
+                <div class="svc-scroller2" id="svcScroller2" aria-label="Services carousel">
+                    <div class="svc-track2" id="svcTrack2">
+
+                        <article class="svc-card2">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/zendesk.svg" alt="ITMS Support">
+                                </div>
+                                <div class="svc-num2">01</div>
+                            </div>
+                            <h3 class="svc-title2">ITMS Support</h3>
+                            <p class="svc-desc2">Reliable IT support to keep your business running without interruptions.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                        <article class="svc-card2">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/powerbi.svg" alt="Business Intelligence">
+                                </div>
+                                <div class="svc-num2">02</div>
+                            </div>
+                            <h3 class="svc-title2">Business Intelligence</h3>
+                            <p class="svc-desc2">Dashboards, reports, and insights to make faster decisions.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                        <article class="svc-card2 is-active">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/react.svg" alt="Custom Apps">
+                                </div>
+                                <div class="svc-num2">03</div>
+                            </div>
+                            <h3 class="svc-title2">Custom Apps</h3>
+                            <p class="svc-desc2">Modern apps & internal tools built for speed, scale and reliability.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                        <article class="svc-card2">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/microsoft.svg" alt="IT Strategy & Support">
+                                </div>
+                                <div class="svc-num2">04</div>
+                            </div>
+                            <h3 class="svc-title2">IT Strategy & Support</h3>
+                            <p class="svc-desc2">Systems planning, upgrades, security, and ongoing support.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                        <article class="svc-card2">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/salesforce.svg" alt="CRM Solutions">
+                                </div>
+                                <div class="svc-num2">05</div>
+                            </div>
+                            <h3 class="svc-title2">CRM Solutions</h3>
+                            <p class="svc-desc2">Lead capture, pipelines, follow-ups, and automation that converts.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                        <article class="svc-card2">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/google.svg" alt="Grow with SEO">
+                                </div>
+                                <div class="svc-num2">06</div>
+                            </div>
+                            <h3 class="svc-title2">Grow with SEO</h3>
+                            <p class="svc-desc2">Technical SEO + content structure for long-term traffic growth.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                        <article class="svc-card2">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/microsoft.svg" alt="Microsoft ERP Support">
+                                </div>
+                                <div class="svc-num2">07</div>
+                            </div>
+                            <h3 class="svc-title2">Microsoft ERP Support</h3>
+                            <p class="svc-desc2">ERP support, integrations, reporting and maintenance.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                        <article class="svc-card2">
+                            <div class="svc-top2">
+                                <div class="svc-logo2">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/shopify.svg" alt="Shopify">
+                                </div>
+                                <div class="svc-num2">08</div>
+                            </div>
+                            <h3 class="svc-title2">Build Your Brand with Shopify</h3>
+                            <p class="svc-desc2">Premium Shopify storefronts optimized for sales and performance.</p>
+                            <a class="svc-link2" href="#contact">Learn More</a>
+                        </article>
+
+                    </div>
+                </div>
+
+                <div class="svc-dots2" id="svcDots2" aria-label="Service position indicators"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Stack / Why we're different -->
+    <section id="stack" class="section alt">
+        <div class="container">
+            <div class="why-top reveal">
+                <div class="why-pill">WHY CHOOSE US</div>
+                <h2>Why ProgMaster is the right choice for you</h2>
+                <p>We build SaaS-grade systems with modern cloud engineering, premium UI, and growth-ready setup.</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-left">
+                    <article class="why-card reveal">
+                        <div class="why-ic">🧩</div>
+                        <h3>SaaS System Building</h3>
+                        <p>Customer onboarding, orders, billing, admin dashboards, automations, analytics — end-to-end.
+                        </p>
+                    </article>
+
+                    <article class="why-card reveal">
+                        <div class="why-ic">🚀</div>
+                        <h3>Performance + SEO</h3>
+                        <p>Fast loading, clean structure, SEO-ready pages, analytics tracking and conversions.</p>
+                    </article>
+
+                    <article class="why-card reveal">
+                        <div class="why-ic">🔒</div>
+                        <h3>Security + Reliability</h3>
+                        <p>Secure auth, role-based access, validated database rules, spam protection and safe deployments.
+                        </p>
+                    </article>
+                </div>
+
+                <aside class="why-right reveal">
+                    <div class="why-big">
+                        <div class="why-big-title">We build like a product team</div>
+                        <p>
+                            Many agencies just deliver pages. We build complete systems that generate leads, manage customers, and scale smoothly — with modern cloud + automation + analytics.
+                        </p>
+
+                        <div class="why-big-list">
+                            <div class="wli">✅ Customer onboarding flows</div>
+                            <div class="wli">✅ Billing + invoices + payments</div>
+                            <div class="wli">✅ Marketing automation + WhatsApp/email</div>
+                            <div class="wli">✅ Admin dashboard + reports</div>
+                        </div>
+
+                        <a style="color:white" href="#book" class="pill big">Book a Free Call</a>
+                    </div>
+                </aside>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- AUTO SCROLL LOGOS -->
+    <section class="tech-strip">
+        <div class="container">
+            <h2>We are expert in it</h2>
+            <p>Modern tools, platforms, and cloud services we work with daily.</p>
+
+            <div class="tech-marquee" aria-label="Technology logos">
+                <div class="tech-marquee__track">
+
+                    <!-- ✅ ONE SET (we will duplicate via CSS automatically) -->
+                    <div class="tech-marquee__set">
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/nodedotjs.svg" alt="Node.js">
+                            <span>Node</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/openapiinitiative.svg" alt="APIs">
+                            <span>APIs</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/firebase.svg" alt="Firebase">
+                            <span>Firebase</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/cloudflare.svg" alt="CDN">
+                            <span>CDN</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/githubactions.svg" alt="CI/CD">
+                            <span>CI/CD</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/googleanalytics.svg" alt="GA4">
+                            <span>GA4</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://www.pngall.com/wp-content/uploads/13/AWS-Logo-PNG-Pic.png" alt="AWS">
+                            <span>AWS</span>
+                        </div>
+
+                        <!-- add more chips... -->
+                    </div>
+
+                    <!-- ✅ 2nd set will be auto created by CSS duplication approach (we’ll do it via pseudo duplication using repeating animation)
+             BUT better reliability: duplicate set manually once (recommended). -->
+                    <div class="tech-marquee__set" aria-hidden="true">
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/nodedotjs.svg" alt="">
+                            <span>Node</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/openapiinitiative.svg" alt="">
+                            <span>APIs</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/firebase.svg" alt="">
+                            <span>Firebase</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/cloudflare.svg" alt="">
+                            <span>CDN</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/githubactions.svg" alt="">
+                            <span>CI/CD</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/googleanalytics.svg" alt="">
+                            <span>GA4</span>
+                        </div>
+
+                        <div class="tech-chip">
+                            <img src="https://download.logo.wine/logo/Amazon_Web_Services/Amazon_Web_Services-Logo.wine.png" alt="aws">
+                            <span>AWS</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / Proof -->
+    <section id="trust" class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Trusted by teams who want premium quality</h2>
+                <p>Real delivery. Clean UI. Fast support. Measurable results.
+                </p>
+            </div>
+
+            <!-- Logo strip (replace with real logos later) -->
+            <div class="logo-strip reveal" aria-label="Client logos">
+                <div class="logo-pill">Beta Customers</div>
+                <div class="logo-pill">Internal Products</div>
+                <div class="logo-pill">Early Clients</div>
+                <div class="logo-pill">Startup Projects</div>
+                <div class="logo-pill">Live Platforms</div>
+            </div>
+
+            <!-- Results -->
+            <div class="proof-grid">
+                <div class="proof reveal">
+                    <div class="proof-h">Avg Delivery Speed</div>
+                    <div class="proof-v">10–14 days</div>
+                    <div class="proof-s">for first usable MVP</div>
+                </div>
+                <div class="proof reveal">
+                    <div class="proof-h">Support Response</div>
+                    <div class="proof-v">&lt; 2 hours</div>
+                    <div class="proof-s">during active delivery</div>
+                </div>
+                <div class="proof reveal">
+                    <div class="proof-h">Client Satisfaction</div>
+                    <div class="proof-v">4.8–5.0</div>
+                    <div class="proof-s">based on project feedback</div>
+                </div>
+            </div>
+
+            <!-- Real reviews template -->
+            <div class="real-reviews">
+                <article class="review reveal">
+                    <div class="review-top">
+                        <div class="avatar">A</div>
+                        <div>
+                            <div class="review-name">Client Name</div>
+                            <div class="review-meta">Founder • City</div>
+                        </div>
+                        <div class="stars" aria-label="5 star rating">★★★★★</div>
+                    </div>
+                    <p class="review-text">Replace this with a real review. Add one line about the outcome (leads, speed, automation, UI quality).</p>
+                    <div class="review-proof">✅ Delivered in: <b>14 days</b> • ✅ Outcome: <b>+X% leads</b></div>
+                </article>
+
+                <article class="review reveal">
+                    <div class="review-top">
+                        <div class="avatar">S</div>
+                        <div>
+                            <div class="review-name">Client Name</div>
+                            <div class="review-meta">Operations Lead • City
+                            </div>
+                        </div>
+                        <div class="stars" aria-label="5 star rating">★★★★★</div>
+                    </div>
+                    <p class="review-text">Replace this with a real review. Mention quality + communication + delivery speed.
                     </p>
-                </div>
-                <div class="section-inner">
-                    <div class="row g-5 mt--10 justify-content-sm-center justify-content-md-start">
-
-                        <div class="col-sm-10 col-md-6 col-lg-6 col-xl-4">
-                            <div class="single-testimonials-area">
-                                <ul class="star-rating-area">
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                </ul>
-                                <p class="desc">Great company. I bought a project, I have never seen a supporter as good as this company. If there were 10 stars I would give 10 stars. When you have a problem, they solve it within 3-5 minutes
-                                </p>
-                                <div class="author-area">
-                                    <div class="image-area">
-                                        <img src="assets/images/madhu.png" alt="clint-image" style="height: 50px;width: 50px;border-radius: 50%;">
-                                    </div>
-                                    <div class="text">
-                                        <h4>Vishu R</h4>
-                                        <p>Project Development</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-10 col-md-6 col-lg-6 col-xl-4">
-                            <div class="single-testimonials-area">
-                                <ul class="star-rating-area">
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                </ul>
-                                <p class="desc">I encountered a few issues with the app but the team responded fast and fixed the issues within 24 hours by updating the app. Can't really ask for more. Very happy
-                                </p> <br>
-                                <div class="author-area">
-                                    <div class="image-area">
-                                        <img src="assets/images/masthan.png" alt="clint-image" style="height: 50px;width: 50px;border-radius: 50%;">
-                                    </div>
-                                    <div class="text">
-                                        <h4>Anish Dev</h4>
-                                        <p>For Customer Support</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-10 col-md-6 col-lg-6 col-xl-4">
-                            <div class="single-testimonials-area">
-                                <ul class="star-rating-area">
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                </ul>
-                                <p class="desc">I received prompt and helpful assistance for customizing the Spa template in the comments section, eliminating the need to fill out forms and create support accounts.
-                                </p><br>
-                                <div class="author-area">
-                                    <div class="image-area">
-                                        <img src="assets/images/chaithu.png" alt="clint-image" style="height: 50px;width: 50px;border-radius: 50%;">
-                                    </div>
-                                    <div class="text">
-                                        <h4>Hari Yadhav</h4>
-                                        <p>For Customer Support</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <div class="button-area-box-shadow overlay-bottom-section">
-                                <a href="javascript:void(0);" class="rts-btn btn-primary btn-bottom-center">Read
-                                        More
-                                        Reviews</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="review-proof">✅ Delivered: <b>On time</b> • ✅ Support: <b>Fast</b></div>
+                </article>
             </div>
         </div>
-        <!-- rts customer review area end -->
+    </section>
 
-        <!-- FAQ section start -->
-        <div id="rts-faq" class="rts-faq rts-section-gap">
-            <div class="container">
-                <div class="title-sec rts-center wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".5s">
-                    <h2>Frequently asked questions</h2>
+    <!-- Work / Portfolio -->
+    <section id="work" class="work-sec">
+        <div class="container">
+            <div class="work-head reveal">
+                <h2>Selected Work</h2>
+                <p>Professional UI systems with measurable outcomes.</p>
+            </div>
+
+            <div class="work-wrap reveal">
+                <!-- Arrows -->
+                <button class="work-nav work-nav--left" id="workPrev" aria-label="Previous projects">
+        &#x2039;
+      </button>
+
+                <div class="work-viewport" id="workViewport">
+                    <div class="work-track" id="workTrack">
+
+                        <!-- CARD 1 -->
+                        <article class="work-card" data-project="0">
+                            <div class="work-card__top">
+                                <div class="work-badge">Platform</div>
+                                <div class="work-mini">01</div>
+                            </div>
+
+                            <h3 class="work-title">RealTechWorld</h3>
+                            <p class="work-desc">Student–intern real-time project platform with dashboards & leaderboards.</p>
+
+                            <div class="work-metrics">
+                                <div class="metric">
+                                    <div class="metric-val">+40%</div>
+                                    <div class="metric-label">Faster onboarding</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">24/7</div>
+                                    <div class="metric-label">Cloud uptime</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">1k+</div>
+                                    <div class="metric-label">Users supported</div>
+                                </div>
+                            </div>
+
+                            <div class="work-tags">
+                                <span>HTML</span><span>CSS</span><span>JS</span><span>Firebase</span>
+                            </div>
+                            <button class="work-more" type="button" data-popup="intern-ops">
+    View more details →
+  </button>
+                        </article>
+
+                        <!-- CARD 2 -->
+                        <article class="work-card" data-project="1">
+                            <div class="work-card__top">
+                                <div class="work-badge">Automation</div>
+                                <div class="work-mini">02</div>
+                            </div>
+
+                            <h3 class="work-title">Intern Ops Tracker</h3>
+                            <p class="work-desc">Task + attendance + performance system with auto scoring and weekly insights.</p>
+
+                            <div class="work-metrics">
+                                <div class="metric">
+                                    <div class="metric-val">-60%</div>
+                                    <div class="metric-label">Manual tracking</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">4x</div>
+                                    <div class="metric-label">Faster reviews</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">99%</div>
+                                    <div class="metric-label">Data accuracy</div>
+                                </div>
+                            </div>
+
+                            <div class="work-tags">
+                                <span>Sheets</span><span>Apps Script</span><span>Dashboards</span><span>GA4</span>
+                            </div>
+                            <button class="work-more" type="button" data-popup="intern-ops">
+    View more details →
+  </button>
+                        </article>
+
+                        <!-- CARD 3 -->
+                        <article class="work-card" data-project="2">
+                            <div class="work-card__top">
+                                <div class="work-badge">Web App</div>
+                                <div class="work-mini">03</div>
+                            </div>
+
+                            <h3 class="work-title">Job Portal + Auth</h3>
+                            <p class="work-desc">Student-only job portal with secure login, IDs, roles, and admin moderation.</p>
+
+                            <div class="work-metrics">
+                                <div class="metric">
+                                    <div class="metric-val">2s</div>
+                                    <div class="metric-label">Fast search</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">RBAC</div>
+                                    <div class="metric-label">Role access</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">100%</div>
+                                    <div class="metric-label">Audit logs</div>
+                                </div>
+                            </div>
+
+                            <div class="work-tags">
+                                <span>Firebase</span><span>Auth</span><span>Realtime DB</span><span>UI</span>
+                            </div>
+
+                            <button class="work-more" type="button" data-popup="intern-ops">
+    View more details →
+  </button>
+                        </article>
+
+                        <!-- CARD 4 -->
+                        <article class="work-card" data-project="3">
+                            <div class="work-card__top">
+                                <div class="work-badge">UI System</div>
+                                <div class="work-mini">04</div>
+                            </div>
+
+                            <h3 class="work-title">Mock Interview UI</h3>
+                            <p class="work-desc">Interview dashboard with real-time status, analytics blocks, and smooth UX.</p>
+
+                            <div class="work-metrics">
+                                <div class="metric">
+                                    <div class="metric-val">+35%</div>
+                                    <div class="metric-label">Engagement</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">UX</div>
+                                    <div class="metric-label">Clean flow</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-val">A11y</div>
+                                    <div class="metric-label">Readable UI</div>
+                                </div>
+                            </div>
+
+                            <div class="work-tags">
+                                <span>UI</span><span>Charts</span><span>Timeline</span><span>JS</span>
+                            </div>
+
+                            <button class="work-more" type="button" data-popup="intern-ops">
+    View more details →
+  </button>
+                        </article>
+
+                    </div>
                 </div>
-                <div class="accordion">
-                    <!-- Tab 1 -->
-                    <div class="accordion-item active">
-                        <div class="accordion-header">
-                            <h2>What is the duration of the online courses?
-                            </h2>
-                        </div>
-                        <div class="accordion-content" style="display: block;">
-                            <p>Each course varies in length, typically ranging from 4 to 12 weeks, depending on the complexity of the subject.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2>Are the courses self-paced, or do they have a fixed schedule?
 
-                            </h2>
-                        </div>
-                        <div class="accordion-content">
-                            <p>We offer both self-paced and instructor-led courses. Self-paced courses allow you to learn at your own speed, while instructor-led courses follow a fixed schedule with live sessions.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2>Will I receive a certificate upon completion of the course?
-
-                            </h2>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Yes, you will receive a certificate of completion after successfully finishing the course, provided all assignments and assessments are completed.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2> Are the courses self-paced, or do they have a fixed schedule?</h2>
-                        </div>
-                        <div class="accordion-content">
-                            <p>We offer both self-paced and instructor-led courses. Self-paced courses allow you to learn at your own speed, while instructor-led courses follow a fixed schedule with live sessions.
-                            </p>
-
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2>What are the prerequisites for enrolling in a course?
-                            </h2>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Prerequisites vary by course. Some may require prior knowledge of specific programming languages or tools, while others are designed for beginners.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2>How do I access course materials? </h2>
-                        </div>
-                        <div class="accordion-content">
-                            <p>All course materials, including lectures, assignments, and resources, are accessible through our online learning platform. You can log in anytime to review content.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2>What happens if I miss a live session?
-                            </h2>
-                        </div>
-                        <div class="accordion-content">
-                            <p>All live sessions are recorded and made available on the course platform, so you can watch them at your convenience.
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
+                <button class="work-nav work-nav--right" id="workNext" aria-label="Next projects">
+        &#x203A;
+      </button>
             </div>
         </div>
-        <!-- FAQ section end -->
-        <!-- rts features area start -->
-        <div id="features" class="rts-features-area rts-section-gap2Bottom">
-            <div class="container">
-                <div class="feature-section-bottom2">
-                    <div class="feature-area">
-                        <div class="row g-5">
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="features-wrapper">
-                                    <div class="icon">
-                                        <img src="assets/images/icon/13.svg" alt>
-                                    </div>
-                                    <div class="content">
-                                        <h4 class="title">Attend Our class
-                                        </h4>
-                                        <p class="desc">Learn the skills with our class and assignments
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="features-wrapper">
-                                    <div class="icon">
-                                        <img src="assets/images/icon/14.svg" alt>
-                                    </div>
-                                    <div class="content">
-                                        <h4 class="title">Gain Experience
-                                        </h4>
-                                        <p class="desc">Work with us in the real time projects and get the experience
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="features-wrapper">
-                                    <div class="icon">
-                                        <img src="assets/images/icon/15.svg" alt>
-                                    </div>
-                                    <div class="content">
-                                        <h4 class="title">Apply for JOBS
-                                        </h4>
-                                        <p class="desc">Apply jobs through our portal & crack the high paying job
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    </section>
+
+    <!-- ================== CASE STUDY MODAL ================== -->
+    <div class="cs-modal" id="csModal" aria-hidden="true">
+        <div class="cs-backdrop" data-close="1"></div>
+
+        <div class="cs-panel" role="dialog" aria-modal="true" aria-labelledby="csTitle">
+            <button class="cs-close" aria-label="Close" data-close="1">✕</button>
+
+            <div class="cs-hero">
+                <div class="cs-hero__pill" id="csPill">Project</div>
+                <h3 class="cs-title" id="csTitle">Title</h3>
+                <p class="cs-sub" id="csSub">Subtitle</p>
+            </div>
+
+            <div class="cs-grid">
+                <div class="cs-box">
+                    <h4>Highlights</h4>
+                    <ul id="csHighlights"></ul>
+                </div>
+
+                <div class="cs-box">
+                    <h4>Tech Stack</h4>
+                    <div class="cs-tags" id="csTags"></div>
+                </div>
+
+                <div class="cs-box cs-box--wide">
+                    <h4>What we delivered</h4>
+                    <p id="csDelivered"></p>
+                </div>
+
+                <div class="cs-box cs-box--wide">
+                    <h4>Impact</h4>
+                    <div class="cs-metrics" id="csMetrics"></div>
                 </div>
             </div>
-        </div>
-        <!-- rts features area end -->
-
-        <!-- header style two -->
-        <div id="side-bar" class="side-bar header-two">
-            <button class="close-icon-menu"><i
-                        class="far fa-times"></i></button>
-            <!-- inner menu area desktop start -->
-            <div class="inner-main-wrapper-desk">
-                <div class="thumbnail">
-                    <img src="single-course-assets/images/banner/04.jpg" alt="elevate">
-                </div>
-                <div class="inner-content">
-                    <h4 class="title">We Build Building and Great Constructive Homes.
-                    </h4>
-                    <p class="disc">
-                        We successfully cope with tasks of varying complexity, provide long-term guarantees and regularly master new technologies.
-                    </p>
-                    <div class="footer">
-                        <h4 class="title">Got a project in mind?</h4>
-                        <a href="contact-us.html" class="rts-btn btn-primary">Let's
-                                talk</a>
-                    </div>
-                </div>
-            </div>
-            <!-- mobile menu area start -->
-            <div class="mobile-menu-main">
-                <nav class="nav-main mainmenu-nav mt--30">
-                    <ul class="mainmenu metismenu" id="mobile-menu-active">
-                        <li class="has-droupdown">
-                            <a href="#" class="main">LMS</a>
-                            <ul class="submenu mm-collapse">
-                                <li>
-                                    <a href="course-hub.html">Internship
-                                            Hub</a>
-                                    <span>Hot</span>
-                                </li>
-                                <li>
-                                    <a href="index-two.html" class="locked-all">Online
-                                            course </a>
-                                    <span class="popular">Popular</span>
-                                </li>
-                                <li>
-                                    <a href="index.html" class="locked-all">Live
-                                            Projects</a>
-
-                                </li>
-                                <li><a href="index-four.html" class="locked-all">Distance
-                                            learning</a></li>
-                                <li>
-                                    <a href="index-five.html" class="locked-all">Instructor
-                                            Hiring</a>
-                                    <span>Hot</span>
-                                </li>
-                                <li>
-                                    <a href="index-six.html" class="locked-all">Online
-                                            Terminal</a>
-                                    <span>Hot</span>
-                                </li>
-                                <li><a href="index-seven.html" class="locked-all">Student
-                                            Community</a></li>
-                                <li>
-                                    <a href="index-eight.html" class="locked-all">Up-Comming
-                                            Webinar</a>
-                                    <span class="popular">Popular</span>
-                                </li>
-                                <li><a href="index-nine.html" class="locked-all">Course
-                                            Portal</a></li>
-                                <li><a href="index-ten.html" class="locked-all">Inern
-                                            Hiring</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="has-droupdown">
-                            <a href="#" class="main">Pages</a>
-                            <ul class="submenu mm-collapse">
-                                <li><a href="about.html" class="locked-all">About Us</a></li>
-                                <li><a href="contact-us.html" class="locked-all">Contact</a></li>
-                                <li>
-                                    <a href="Course-Registration.html">Free Training Registration</a>
-                                </li>
-
-                                <li>
-                                    <a href="ResumeWorld.html" class="locked-all" target="_blank">100+
-                                            Resumes</a>
-                                </li>
-
-                                <li>
-                                    <a class="locked-all" href="InterviewQuestionsWorld.html">300+
-                                            Interview
-                                            Questions</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="training-link" onclick="openModal()">Training Materials</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-droupdown">
-                            <a href="#" class="main">Course</a>
-                            <ul class="submenu mm-collapse">
-                                <li><a href="#" class="tag">Internships</a></li>
-                                <li><a class="mobile-menu-link" href="java-course.html">Java</a>
-                                </li>
-                                <li><a class="mobile-menu-link" href="python-course.html">Python</a>
-                                </li>
-                                <li><a class="mobile-menu-link" href="web dev.html">Web
-                                            Dev</a>
-                                </li>
-                                <li><a class="mobile-menu-link locked-all" href="course-four.html">Flutter</a>
-                                </li>
-                                <li><a class="mobile-menu-link locked-all" href="course-five.html">Data
-                                            Science</a></li>
-                                <li><a class="mobile-menu-link locked-all" href="course-six.html">Microsoft
-                                            Azure</a></li>
-                            </ul>
-                            <ul class="submenu mm-collapse">
-                                <li><a href="#" class="tag">Courses</a></li>
-
-                                <li><a class="mobile-menu-link locked-all" href="single-course.html">AWS</a>
-                                </li>
-                                <li><a class="mobile-menu-link locked-all" href="single-course-two.html">A.I</a>
-                                </li>
-                                <li><a class="mobile-menu-link locked-all" href="single-course-three.html">M.L</a>
-                                </li>
-                                <li><a class="mobile-menu-link locked-all" href="single-course-four.html">Block
-                                            Chain</a></li>
-                                <li><a class="mobile-menu-link locked-all" href="single-course-five.html locked-all">Cloud
-                                            Computing</a></li>
-                                <li><a class="mobile-menu-link locked-all" href="single-course-free.html locked-all">Ethical
-                                            Hacking</a>
-                                </li>
-                            </ul>
-                            <ul class="submenu mm-collapse">
-                                <li><a href="#" class="tag">Others</a></li>
-
-                                <li><a href="become-instructor.html" class="locked-all">Aptitude</a></li>
-                                <li><a href="instructor-profile.html" class="locked-all">Soft
-                                            Skills</a></li>
-                                <li><a href="instructor.html" class="locked-all">Coading
-                                            Contest</a></li>
-                                <li><a href="pricing.html" class="locked-all">Coading
-                                            Quiz</a></li>
-                                <li><a href="log-in.html" class="locked-all">Coding Game</a>
-                                </li>
-                                <li><a href="registration.html" class="locked-all">Logic
-                                            Bulding Techniques</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-droupdown">
-                            <a href="#" class="main">Free Live
-                                Training</a>
-                            <ul class="submenu mm-collapse">
-                                <li><a href="https://meet.google.com/jdm-mziu-dku" target="_blank">Web
-                                    Dev - 6am <br> (Mon-Sat)</a></li>
-                                <li><a href="https://meet.google.com/rvr-rhzk-jio" target="_blank">Figma (UI)
-                                    - 7pm (Sat&Sun)</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a href="leaderboard.html" class="main">LeaderBoard</a>
-                        </li>
-                        <li class="">
-                            <a href="Consultencey-Job-Portal.html" class="main">Job Portal</a>
-                        </li>
-                    </ul>
-
-                </nav>
-
-                <div class="buttons-area">
-                    <a href="login.html" class="rts-btn btn-border">Log
-                            In</a>
-                    <!-- <a href="#" class="rts-btn btn-primary">Sign Up</a> -->
-                </div>
-
-                <div class="rts-social-style-one pl--20 mt--50">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- mobile menu area end -->
-        </div>
-        <!-- header style two End -->
-        <!-- footer call to action area start -->
-        <div class="footer-callto-action-area bg-dark-footer-1 mt_sm--50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="call-to-sction bg_image shape-move">
-                            <div class="title-area-left-style">
-                                <div class="pre-title">
-                                    <img src="assets/images/banner/bulb-2.png" alt="icon">
-                                    <span>Why Choose
-                                            Us</span>
-                                </div>
-                                <h2 class="title mb--25">Build your Skills Certificate From <br> the PROGMASTER Online course
-                                </h2>
-                                <!-- <div class="finding-source">
-                                <a href="#">
-                                    <img src="assets/images/cta/01.svg" alt="cta-one">
-                                </a>
-                                <a href="#">
-                                    <img src="assets/images/cta/02.svg" alt="cta-one">
-                                </a>
-                            </div> -->
-                            </div>
-                            <div class="image-right">
-                                <img src="assets/images/cta/03.png" alt="cta-main">
-                            </div>
-                            <div class="banner-shape-area-two shape-image">
-                                <img src="assets/images/cta/03.svg" data-speed="0.04" alt="one" class="shape one">
-                                <img src="assets/images/cta/05.svg" data-speed="0.04" data-revert="true" alt="two" class=" shape two">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container ptb--105">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- footer main wrapper -->
-                        <div class="footer-one-main-wrapper">
-                            <!-- single sized  footer  -->
-                            <div class="footer-singl-wized left-logo">
-                                <div class="head">
-                                    <a href="index.html" class="logo">
-                                            PROGMASTER
-                                        </a>
-                                </div>
-                                <div class="body">
-                                    <p class="dsic">
-                                        We are passionate education dedicated to providing high-quality resources learners all backgrounds.
-                                    </p>
-                                    <ul class="wrapper-list">
-                                        <li><i class="fa-regular fa-location-dot"></i>Govardhana Giri, Andhra Pradesh, India
-                                        </li>
-                                        <li><a href="call-to:61485826710"><i
-                                                        class="fa-regular fa-phone"></i>+(91)
-                                                    7993854229</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- single sized  footer end -->
-                            <!-- single sized  footer  -->
-                            <div class="footer-singl-wized">
-                                <div class="head">
-                                    <h6 class="title">Quick Links
-                                    </h6>
-                                </div>
-                                <div class="body">
-                                    <ul class="menu">
-                                        <li><a href="#" class="locked-all">Latest
-                                                    Courses</a></li>
-                                        <li><a href="#" class="locked-all">Mission
-                                                    &
-                                                    Vision</a></li>
-                                        <li><a href="#" class="locked-all">Join
-                                                    a
-                                                    Carrer</a></li>
-                                        <li><a href="#" class="locked-all">Our
-                                                    Approach</a></li>
-                                        <li><a href="Privacy Policy Terms Conditions-Refund and Cancellation Policy.html" class>Privacy Policy
-                                                </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- single sized  footer end -->
-                            <!-- single sized  footer  -->
-                            <div class="footer-singl-wized">
-                                <div class="head">
-                                    <h6 class="title">Explore</h6>
-                                </div>
-                                <div class="body">
-                                    <ul class="menu">
-                                        <li><a href="#">About
-                                                    Us</a></li>
-                                        <li><a href="#" class="locked-all">Upcoming
-                                                    Events</a></li>
-                                        <li><a href="#" class="locked-all">Blog
-                                                    &
-                                                    News</a></li>
-                                        <li><a href="#" class="locked-all">FAQ
-                                                    Question</a></li>
-                                        <li><a href="#" class="locked-all">Course</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- single sized  footer end -->
-                            <!-- single sized  footer  -->
-                            <div class="footer-singl-wized input-area">
-                                <div class="head">
-                                    <h6 class="title">Newsletter</h6>
-                                </div>
-                                <div class="body">
-                                    <p class="disc">Subscribe Our newsletter get update our new course
-                                    </p>
-                                    <form action="#">
-                                        <div class="input-area-fill">
-                                            <input type="email" placeholder="Enter Your Email" required>
-                                            <button>
-                                                    Subscribe</button>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <input type="checkbox" id="exampleCheck1">
-                                            <label for="exampleCheck1">I
-                                                    agree to the
-                                                    terms of use
-                                                    and privacy
-                                                    policy.</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- single sized  footer end -->
-                        </div>
-                        <!-- footer main wrapper end -->
-                    </div>
-                </div>
-            </div>
-            <div class="copyright-area-one-border">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="copyright-area-one">
-                                <p>Copyright © 2024 All Rights Reserved by PROGMASTER PVT LTD</p>
-                                <div class="social-copyright">
-                                    <ul>
-                                        <!-- <li><a href="#" class="locked-all"><i class="fa-brands fa-facebook-f"></i></a></li> -->
-                                        <li><a href="#" class><i
-                                                        class="fa-brands fa-instagram"></i></a></li>
-                                        <li><a href="#" class><i
-                                                        class="fa-brands fa-linkedin"></i></a></li>
-                                        <!-- <li><a href="#" class="locked-all"><i class="fa-brands fa-pinterest"></i></a></li> -->
-                                        <li><a href="#" class><i
-                                                        class="fa-brands fa-youtube"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer call to action area end -->
-
-        <!-- pre loader start -->
-        <div class="loader-wrapper">
-            <div class="loader">
-            </div>
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-        </div>
-        <!-- pre loader end -->
-
-        <!-- progress area start -->
-        <div class="progress-wrap">
-            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-                        style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
-                    </path>
-                </svg>
         </div>
     </div>
-    <!-- progress area end -->
-    <!-- jquery js -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js"></script>
-    <script defer src="assets/js/plugins/gsap.min.js"></script>
-    <script defer src="assets/js/main.js"></script>
-    <!-- all scripts -->
-    <!-- jquery min js -->
-    <script src="single-course-assets/js/vendor/jquery.min.js"></script>
-    <!-- jquery ui js -->
-    <script src="single-course-assets/js/vendor/jquery-ui.js"></script>
-    <!-- metismenu js -->
-    <script src="single-course-assets/js/vendor/metismenu.js"></script>
-    <!-- magnific popup js-->
-    <script src="single-course-assets/js/vendor/magnifying-popup.js"></script>
-    <!-- swiper JS 10.2.0 -->
-    <script src="single-course-assets/js/plugins/swiper.js"></script>
-    <!-- counterup js -->
-    <script src="single-course-assets/js/plugins/counterup.js"></script>
-    <!-- waypoint js -->
-    <script src="single-course-assets/js/vendor/waypoint.js"></script>
-    <!-- wow js -->
-    <script src="single-course-assets/js/vendor/waw.js"></script>
-    <!-- isotop mesonary -->
-    <script src="single-course-assets/js/plugins/isotop.js"></script>
-    <!-- jquery imageloaded -->
-    <script src="single-course-assets/js/plugins/imagesloaded.pkgd.min.js"></script>
-    <!-- resize sensor js -->
-    <script src="single-course-assets/js/plugins/resizer-sensor.js"></script>
-    <!-- sticky sidebar -->
-    <script src="single-course-assets/js/plugins/sticky-sidebar.js"></script>
-    <!-- gsap twinmax js -->
-    <script src="single-course-assets/js/plugins/twinmax.js"></script>
-    <!-- chroma js -->
-    <script src="single-course-assets/js/vendor/chroma.min.js"></script>
-    <!-- bootstrap 5.0.2 -->
-    <script src="single-course-assets/js/plugins/bootstrap.min.js"></script>
-    <!-- dymanic Contact Form -->
-    <script src="single-course-assets/js/plugins/contact.form.js"></script>
-    <!-- calender js -->
-    <script src="single-course-assets/js/plugins/calender.js"></script>
-    <!-- main Js -->
-    <script src="single-course-assets/js/main.js"></script>
-    <script src="assets/js/overlay.js"></script>
-    <script src="assets/js/imageslider.js"></script>
-    <script src="TrainingMaterialsPopUp.js"></script>
-</body>
 
-</html>
+
+    <!-- Process -->
+    <section id="process" class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Our Process</h2>
+                <p>Clear steps. Predictable delivery. Premium quality.</p>
+            </div>
+
+            <div class="timeline reveal" id="timeline">
+                <div class="t-line" aria-hidden="true"></div>
+
+                <button class="t-step reveal" type="button" data-step="01" data-title="Discover" data-desc="We clarify goals, users, competitor insights, and scope so there’s no confusion later." data-points="Requirements workshop|User flows + wireframes|Scope + timeline planning|Tech & architecture plan">
+                    <div class="t-dot"></div>
+                    <br>
+                    <div class="t-card">
+                        <div class="t-num">01</div>
+                        <h3>Discover</h3>
+                        <p>Requirements, user flow, competitor research, and
+                            scope definition.</p>
+                        <div class="t-cta">Click to view details →</div>
+                    </div>
+                </button>
+
+                <button class="t-step reveal" type="button" data-step="02" data-title="Design" data-desc="We create a premium UI, prototype interactions, and finalize the look before development." data-points="Brand direction|Premium UI screens|Micro-interactions|Clickable prototype">
+                    <div class="t-dot"></div>
+                    <br>
+                    <div class="t-card">
+                        <div class="t-num">02</div>
+                        <h3>Design</h3>
+                        <p>Wireframes, premium UI, animations, and a
+                            clickable prototype.</p>
+                        <div class="t-cta">Click to view details →</div>
+                    </div>
+                </button>
+
+                <button class="t-step reveal" type="button" data-step="03" data-title="Develop" data-desc="We build fast, structured code with secure integrations and scalable architecture." data-points="Frontend engineering|Backend/API setup|Firebase/AWS integration|Performance optimization">
+                    <div class="t-dot"></div>
+
+                    <br>
+                    <div class="t-card">
+                        <div class="t-num">03</div>
+                        <h3>Develop</h3>
+                        <p>Frontend + Firebase integration + clean code
+                            structure.</p>
+                        <div class="t-cta">Click to view details →</div>
+                    </div>
+                </button>
+
+                <button class="t-step reveal" type="button" data-step="04" data-title="Launch" data-desc="We test thoroughly, deploy safely, and ensure SEO + analytics are ready for growth." data-points="Testing + QA|Deployment + CI/CD|SEO + analytics|Post-launch support">
+                    <div class="t-dot"></div>
+
+                    <br>
+                    <div class="t-card">
+                        <div class="t-num">04</div>
+                        <h3>Launch</h3>
+                        <p>Testing, SEO, deployment, and post-launch
+                            improvements.</p>
+                        <div class="t-cta">Click to view details →</div>
+                    </div>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section alt">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Client Reviews</h2>
+                <p>Real communication. Premium UI. Fast delivery. Strong support.</p>
+            </div>
+
+            <div class="review-grid">
+                <article class="review-pro reveal">
+                    <div class="rhead">
+                        <div class="ravatar">RK</div>
+                        <div>
+                            <div class="rname">Client Name</div>
+                            <div class="rmeta">Founder • Business Type • City</div>
+                        </div>
+                        <div class="rright">
+                            <div class="rstars">★★★★★</div>
+                            <div class="rdate">Jan 2026</div>
+                        </div>
+                    </div>
+
+                    <p class="rtext">
+                        “ProgMaster delivered a premium UI and the system feels like a real product. Communication was clear and updates were fast.”
+                    </p>
+
+                    <div class="rchips">
+                        <span class="rchip">✅ Delivered in 14 days</span>
+                        <span class="rchip">✅ Admin dashboard</span>
+                        <span class="rchip">✅ Performance optimized</span>
+                    </div>
+                </article>
+
+                <article class="review-pro reveal">
+                    <div class="rhead">
+                        <div class="ravatar">SP</div>
+                        <div>
+                            <div class="rname">Client Name</div>
+                            <div class="rmeta">Operations Lead • City</div>
+                        </div>
+                        <div class="rright">
+                            <div class="rstars">★★★★★</div>
+                            <div class="rdate">Jan 2026</div>
+                        </div>
+                    </div>
+
+                    <p class="rtext">
+                        “The process was smooth. They understood requirements, built clean UI, and delivered with great support.”
+                    </p>
+
+                    <div class="rchips">
+                        <span class="rchip">✅ Secure auth</span>
+                        <span class="rchip">✅ Automation</span>
+                        <span class="rchip">✅ SEO ready</span>
+                    </div>
+                </article>
+
+                <article class="review-pro reveal">
+                    <div class="rhead">
+                        <div class="ravatar">AK</div>
+                        <div>
+                            <div class="rname">Client Name</div>
+                            <div class="rmeta">CEO • City</div>
+                        </div>
+                        <div class="rright">
+                            <div class="rstars">★★★★★</div>
+                            <div class="rdate">Jan 2026</div>
+                        </div>
+                    </div>
+
+                    <p class="rtext">
+                        “Premium design, fast delivery, and professional execution. The product looks bigger and more trustworthy.”
+                    </p>
+
+                    <div class="rchips">
+                        <span class="rchip">✅ SaaS-style build</span>
+                        <span class="rchip">✅ Analytics setup</span>
+                        <span class="rchip">✅ Post-launch support</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Book a Free Call -->
+    <section id="book" class="section alt">
+        <div class="container">
+            <div class="book-card reveal">
+                <div class="book-left">
+                    <div class="kicker">
+                        <span class="dot"></span>
+                        <span>Free 15-min consultation</span>
+                    </div>
+
+                    <h2 class="book-title">Let’s discuss your project and give you a clear plan.</h2>
+                    <p class="book-sub">
+                        Tell us your idea — we’ll map the exact SaaS flow (users, roles, billing, automation, analytics), and give you a clear delivery plan.
+                    </p>
+
+
+                    <div class="book-points">
+                        <div class="bp">✅ Requirements clarity</div>
+                        <div class="bp">✅ Best tech suggestion</div>
+                        <div class="bp">✅ Timeline + delivery plan</div>
+                        <div class="bp">✅ Next steps checklist</div>
+                    </div>
+
+                    <div class="book-actions">
+                        <a class="pill big" id="calendarBtn" target="_blank" rel="noopener">Book on Calendar</a>
+                        <a class="pill big ghost" id="waConsultBtn" target="_blank" rel="noopener">WhatsApp Now</a>
+                    </div>
+
+                    <div class="book-note">We usually respond within <b>1–2 hours</b>.</div>
+                </div>
+
+                <div class="book-right">
+                    <div class="book-mini">
+                        <div class="bm-title">What you’ll get</div>
+                        <div class="bm-list">
+                            <div class="bm-item">• Feature list (MVP)</div>
+                            <div class="bm-item">• UI + flow suggestion</div>
+                            <div class="bm-item">• Architecture overview</div>
+                            <div class="bm-item">• Deployment plan</div>
+                        </div>
+                        <div class="bm-tag">Product-minded delivery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <h2>Start Your Project</h2>
+                <p>Tell us what you need. We’ll reply quickly with a plan.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <form class="form reveal" id="leadForm">
+                    <!-- Anti-spam honeypot (humans won't fill) -->
+                    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" />
+
+                    <div class="row">
+                        <label>
+                            Name
+                            <input type="text" name="name" placeholder="Your full name" required />
+                        </label>
+                        <label>
+                            Phone
+                            <input type="tel" name="phone" placeholder="Your phone number" required />
+                        </label>
+                    </div>
+
+                    <label>
+                        Email
+                        <input type="email" name="email" placeholder="your@email.com" required />
+                    </label>
+
+                    <label>
+                        Service
+                        <select name="service" required>
+                            <option value selected disabled>Select
+                                service</option>
+                            <option>Website</option>
+                            <option>Web Application</option>
+                            <option>Mobile App</option>
+                            <option>Software Product</option>
+                            <option>Maintenance</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Message
+                        <textarea name="message" rows="5" placeholder="Describe your project…" required></textarea>
+                    </label>
+
+                    <button class="pill big" type="submit" id="submitBtn">
+                        <span class="btn-text">Send Request</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+
+                    <p class="form-note">By submitting, you agree to be contacted by our team.</p>
+                </form>
+
+                <div class="contact-card reveal">
+                    <h3>Company Details</h3>
+                    <p><b>ProgMaster Pvt Ltd</b><br />Govardhana Giri, Chittoor, Andhra Pradesh, 517587</p>
+                    <div class="contact-pills">
+                        <span class="tag">Fast Delivery</span>
+                        <span class="tag">Premium UI</span>
+                        <span class="tag">Realtime Updates</span>
+                    </div>
+                    <div class="line"></div>
+                    <p class="small">You can also share your requirement on WhatsApp after submitting the form.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Modal -->
+    <div class="cs-modal" id="csModal" aria-hidden="true">
+        <div class="cs-backdrop" data-close="1"></div>
+
+        <div class="cs-panel" role="dialog" aria-modal="true" aria-labelledby="csTitle">
+            <button class="cs-x" id="csClose" aria-label="Close">✕</button>
+
+            <div class="cs-hero">
+                <div class="cs-pill" id="csType">Platform</div>
+                <h3 class="cs-title" id="csTitle">Case Study</h3>
+                <p class="cs-sub" id="csSub">Short one-line outcome summary.</p>
+            </div>
+
+            <div class="cs-grid">
+                <div class="cs-box">
+                    <div class="cs-h">Problem</div>
+                    <div class="cs-p" id="csProblem"></div>
+                </div>
+
+                <div class="cs-box">
+                    <div class="cs-h">Solution</div>
+                    <div class="cs-p" id="csSolution"></div>
+                </div>
+
+                <div class="cs-box cs-wide">
+                    <div class="cs-h">Key Highlights</div>
+                    <ul class="cs-list" id="csBullets"></ul>
+                </div>
+            </div>
+
+            <div class="cs-meta">
+                <div class="cs-chip" id="csTech"></div>
+                <div class="cs-chip" id="csTime"></div>
+                <div class="cs-chip cs-strong" id="csOutcome"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-pro">
+        <div class="container fgrid">
+            <div class="fbrand">
+                <a class="brand footer-brand" href="#home">
+                    <span class="logo">PM</span>
+                    <span class="brand-text">ProgMaster</span>
+                </a>
+                <p class="ftext">
+                    Premium development for modern businesses. We build fast, scalable systems with clean UI and strong support.
+                </p>
+
+                <div class="fcta">
+                    <a class="pill big" href="#contact">Get Quote</a>
+                    <a class="pill big ghost" href="#work">See Work</a>
+                </div>
+
+                <div class="fsocial">
+                    <a class="fs" href="mailto:progmabal.progmaster@gmail.com">Email</a>
+                    <a class="fs" target="_blank" rel="noopener" href="https://wa.me/919999999999?text=Hi%20ProgMaster!%20I%20need%20a%20website/app.%20Can%20we%20discuss%3F">WhatsApp</a>
+                    <a class="fs" href="tel:+919999999999">Call</a>
+                </div>
+            </div>
+
+            <div class="flinks">
+                <div class="fh">Company</div>
+                <a href="#services">Services</a>
+                <a href="#work">Work</a>
+                <a href="#process">Process</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="flinks">
+                <div class="fh">Solutions</div>
+                <a href="#stack">SaaS Systems</a>
+                <a href="#stack">Admin Dashboards</a>
+                <a href="#stack">Web Apps</a>
+                <a href="#stack">Mobile Apps</a>
+                <a href="#stack">Maintenance</a>
+            </div>
+
+            <div class="finfo">
+                <div class="fh">Contact</div>
+                <div class="fi">
+                    <div class="flabel">Address</div>
+                    <div class="fvalue">Govardhana Giri, Chittoor, Andhra Pradesh, 517587</div>
+                </div>
+                <div class="fi">
+                    <div class="flabel">Response Time</div>
+                    <div class="fvalue">Typically within 1–2 hours</div>
+                </div>
+                <div class="fi">
+                    <div class="flabel">Support</div>
+                    <div class="fvalue">Post-launch support + maintenance available</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container fbottom">
+            <div class="fsmall">© <span id="year"></span> ProgMaster. All rights reserved.</div>
+            <div class="fsmall">
+                <a href="#contact">Privacy</a> • <a href="#contact">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTAs -->
+    <div class="float-cta">
+        <a class="float-btn wa" target="_blank" rel="noopener" href="https://wa.me/919999999999?text=Hi%20ProgMaster!%20I%20need%20a%20website/app.%20Can%20we%20discuss%3F" aria-label="Chat on WhatsApp">
+            WhatsApp
+        </a>
+        <a class="float-btn call" href="tel:+919999999999" aria-label="Call ProgMaster">
+            Call
+        </a>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="firebase.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Process Modal -->
+    <div class="pmodal" id="processModal" aria-hidden="true">
+        <div class="pbackdrop" data-close="true"></div>
+
+        <div class="pcard" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+            <div class="phead">
+                <div class="ptag" id="pStep">Step</div>
+                <button class="icon-btn" id="pClose" aria-label="Close">✕</button>
+            </div>
+
+            <h3 id="pTitle" class="ptitle">Title</h3>
+            <p id="pDesc" class="pdesc"></p>
+
+            <div class="plist" id="pList"></div>
+
+            <div class="pfoot">
+                <a href="#contact" class="pill big">Start a Project</a>
+                <button class="pill big ghost" id="pOkay" type="button">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process Modal -->
+    <div class="pmodal" id="processModal" aria-hidden="true">
+        <div class="pbackdrop" data-close="true"></div>
+
+        <div class="pcard" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+            <div class="phead">
+                <div class="ptag" id="pStep">Step</div>
+                <button class="icon-btn" id="pClose" aria-label="Close">✕</button>
+            </div>
+
+            <h3 id="pTitle" class="ptitle">Title</h3>
+            <p id="pDesc" class="pdesc"></p>
+
+            <div class="plist" id="pList"></div>
+
+            <div class="pfoot">
+                <a href="#contact" class="pill big">Start a Project</a>
+                <button class="pill big ghost" id="pOkay" type="button">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="float-cta">
+        <a class="float-btn wa" target="_blank" rel="noopener" href="https://wa.me/919999999999?text=Hi%20ProgMaster!%20I%20need%20a%20website/app.%20Can%20we%20discuss%3F" aria-label="Chat on WhatsApp">
+            WhatsApp
+        </a>
+        <a class="float-btn call" href="tel:+919999999999" aria-label="Call ProgMaster">
+            Call
+        </a>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="firebase.js"></script>
+    <script src="app.js"></script>
+</body>
 
 </html>
