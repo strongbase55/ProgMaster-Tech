@@ -910,3 +910,234 @@ window.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
     });
 })();
+
+
+const viewport = document.querySelector('.work-viewport');
+
+let autoScroll = setInterval(() => {
+    viewport.scrollBy({ left: 320, behavior: 'smooth' });
+
+    if (
+        viewport.scrollLeft + viewport.clientWidth >=
+        viewport.scrollWidth - 10
+    ) {
+        viewport.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+}, 4000);
+
+// pause on hover
+viewport.addEventListener('mouseenter', () => clearInterval(autoScroll));
+viewport.addEventListener('mouseleave', () => {
+    autoScroll = setInterval(() => {
+        viewport.scrollBy({ left: 320, behavior: 'smooth' });
+    }, 4000);
+});
+
+const data = [
+    {
+        title: "RealTechWorld",
+        desc: "A real-time student–intern platform designed to simulate live industry projects with performance tracking.",
+        list: [
+            "Role-based dashboards",
+            "Weekly performance scoring",
+            "Leaderboards & analytics",
+            "Admin control panel"
+        ],
+        impact: ["+40% onboarding speed", "1k+ users", "24/7 uptime"]
+    }
+];
+
+document.querySelectorAll('.wc-btn').forEach((btn, i) => {
+    btn.onclick = () => {
+        const d = data[i];
+        document.getElementById('wmTitle').innerText = d.title;
+        document.getElementById('wmDesc').innerText = d.desc;
+
+        const ul = document.getElementById('wmList');
+        ul.innerHTML = d.list.map(x => `<li>${x}</li>`).join('');
+
+        document.getElementById('wmImpact').innerHTML =
+            d.impact.map(x => `<span>${x}</span>`).join('');
+
+        document.getElementById('wmModal').classList.add('active');
+    };
+});
+
+document.querySelector('.wm-backdrop').onclick =
+    document.querySelector('.wm-close').onclick = () =>
+        document.getElementById('wmModal').classList.remove('active');
+
+/* ===================== SELECTED WORK: Slider + Modal ===================== */
+/* Safe-guarded: if Work section/modal removed, it won't break other JS */
+(() => {
+    const track = document.getElementById("workTrack");
+    const viewport = document.getElementById("workViewport");
+    const prevBtn = document.getElementById("workPrev");
+    const nextBtn = document.getElementById("workNext");
+
+    const modal = document.getElementById("csModal");
+    const csPill = document.getElementById("csPill");
+    const csTitle = document.getElementById("csTitle");
+    const csSub = document.getElementById("csSub");
+    const csHighlights = document.getElementById("csHighlights");
+    const csTags = document.getElementById("csTags");
+    const csDelivered = document.getElementById("csDelivered");
+    const csMetrics = document.getElementById("csMetrics");
+
+    // ✅ If Work section is removed, STOP here (prevent JS crash)
+    if (!track || !prevBtn || !nextBtn || !modal) return;
+
+    const projects = [
+        {
+            badge: "Platform",
+            title: "RealTechWorld",
+            sub: "A student–intern real-time project platform designed to improve delivery, visibility, and outcomes.",
+            delivered:
+                "Built a clean dashboard experience, weekly progress tracking, and leaderboard-style visibility for mentors and interns. Focused on speed, clarity, and simple workflows.",
+            highlights: [
+                "Secure authentication and role-based access",
+                "Weekly progress + module tracking",
+                "Leaderboards with performance breakdown",
+                "Admin controls for updates and monitoring"
+            ],
+            tags: ["HTML", "CSS", "JavaScript", "Firebase"],
+            metrics: [
+                { v: "+40%", l: "Faster onboarding" },
+                { v: "24/7", l: "Cloud uptime" },
+                { v: "1k+", l: "Users supported" }
+            ]
+        },
+        {
+            badge: "Automation",
+            title: "Intern Ops Tracker",
+            sub: "An automation-first tracking system for tasks, attendance, and weekly performance scoring.",
+            delivered:
+                "Designed a lightweight workflow that reduces manual follow-ups and makes reviews faster with auto summaries and structured metrics.",
+            highlights: [
+                "Attendance % calculations and weekly rollups",
+                "Task assignment + completion tracking",
+                "Performance signals (communication, coding, teamwork)",
+                "Fast review-ready summary views"
+            ],
+            tags: ["Dashboards", "Sheets", "Apps Script", "GA4"],
+            metrics: [
+                { v: "-60%", l: "Manual tracking" },
+                { v: "4x", l: "Faster reviews" },
+                { v: "99%", l: "Data accuracy" }
+            ]
+        },
+        {
+            badge: "Web App",
+            title: "Job Portal + Auth",
+            sub: "A student-only job portal with secure login, roles, and admin moderation.",
+            delivered:
+                "Implemented secure access for training students and created a smooth job browsing and applying experience with admin oversight.",
+            highlights: [
+                "Unique Student ID login system",
+                "Protected routes and role policies",
+                "Admin job posting + moderation",
+                "Clean, responsive UI for mobile/desktop"
+            ],
+            tags: ["Firebase", "Auth", "Realtime DB", "UI"],
+            metrics: [
+                { v: "2s", l: "Fast search" },
+                { v: "RBAC", l: "Role access" },
+                { v: "100%", l: "Audit logs" }
+            ]
+        },
+        {
+            badge: "UI System",
+            title: "Mock Interview UI",
+            sub: "A modern interview dashboard with status flow and analytics-ready layout.",
+            delivered:
+                "Built a clean, animated interview UX with structured sections that can later plug into real-time analytics and evaluation scoring.",
+            highlights: [
+                "Smooth status flow (awaiting, live, completed)",
+                "Reusable UI blocks for analytics",
+                "Professional card-based layout",
+                "Better readability + spacing system"
+            ],
+            tags: ["UI", "Charts", "Timeline", "JavaScript"],
+            metrics: [
+                { v: "+35%", l: "Engagement" },
+                { v: "UX", l: "Clean flow" },
+                { v: "A11y", l: "Readable UI" }
+            ]
+        }
+    ];
+
+    // ----- Slider -----
+    let index = 0;
+    const maxIndex = 2;
+
+    function cardStepPx() {
+        const card = track.querySelector(".work-card");
+        if (!card) return 0;
+        const gap = 16;
+        return card.getBoundingClientRect().width + gap;
+    }
+
+    function updateSlider() {
+        const step = cardStepPx();
+        track.style.transform = `translateX(${-index * step}px)`;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === maxIndex;
+    }
+
+    prevBtn.addEventListener("click", () => {
+        index = Math.max(0, index - 1);
+        updateSlider();
+    });
+
+    nextBtn.addEventListener("click", () => {
+        index = Math.min(maxIndex, index + 1);
+        updateSlider();
+    });
+
+    window.addEventListener("resize", updateSlider);
+    updateSlider();
+
+    // ----- Modal -----
+    function openModal(i) {
+        const p = projects[i];
+        if (!p) return;
+
+        if (csPill) csPill.textContent = p.badge;
+        if (csTitle) csTitle.textContent = p.title;
+        if (csSub) csSub.textContent = p.sub;
+        if (csDelivered) csDelivered.textContent = p.delivered;
+
+        if (csHighlights) csHighlights.innerHTML = p.highlights.map(x => `<li>${x}</li>`).join("");
+        if (csTags) csTags.innerHTML = p.tags.map(x => `<span>${x}</span>`).join("");
+
+        if (csMetrics) {
+            csMetrics.innerHTML = p.metrics.map(m => `
+        <div class="metric">
+          <div class="metric-val">${m.v}</div>
+          <div class="metric-label">${m.l}</div>
+        </div>
+      `).join("");
+        }
+
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
+    document.addEventListener("click", (e) => {
+        const openBtn = e.target.closest("[data-open]");
+        if (openBtn) openModal(Number(openBtn.getAttribute("data-open")));
+
+        if (e.target.closest("[data-close]")) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    });
+})();
