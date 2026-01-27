@@ -539,8 +539,8 @@
                         <div class="avatar">S</div>
                         <div>
                             <div class="review-name">Sri Sai Ram School</div>
-                            <div class="review-meta">Tirupati
-                            </div>
+                            <!-- <div class="review-meta">Tirupati
+                            </div> -->
                         </div>
                         <div class="stars" aria-label="5 star rating">★★★★★</div>
                     </div>
@@ -1046,7 +1046,105 @@
 
     <script type="module" src="firebase.js"></script>
     <script src="app.js"></script>
+
+
+    <script>
+/* ===============================
+   DISABLE RIGHT CLICK
+================================ */
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    return false;
+});
+
+/* ===============================
+   DISABLE KEYBOARD SHORTCUTS
+================================ */
+document.addEventListener('keydown', function (e) {
+
+    // Block F12
+    if (e.key === "F12") {
+        e.preventDefault();
+        return false;
+    }
+
+    // Block Ctrl + Shift + I / J / C
+    if (e.ctrlKey && e.shiftKey && 
+        (e.key === "I" || e.key === "J" || e.key === "C")) {
+        e.preventDefault();
+        return false;
+    }
+
+    // Block Ctrl + U (View Source)
+    if (e.ctrlKey && e.key === "u") {
+        e.preventDefault();
+        return false;
+    }
+
+    // Block Ctrl + S (Save)
+    if (e.ctrlKey && e.key === "s") {
+        e.preventDefault();
+        return false;
+    }
+
+    // Block Ctrl + P (Print)
+    if (e.ctrlKey && e.key === "p") {
+        e.preventDefault();
+        return false;
+    }
+
+    // Block Ctrl + Shift + K (Firefox console)
+    if (e.ctrlKey && e.shiftKey && e.key === "K") {
+        e.preventDefault();
+        return false;
+    }
+
+    // Block Ctrl + A, C, X, V
+    if (e.ctrlKey && ["a", "c", "x", "v"].includes(e.key)) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+/* ===============================
+   DISABLE TEXT SELECTION
+================================ */
+document.addEventListener('selectstart', function (e) {
+    e.preventDefault();
+});
+
+/* ===============================
+   DISABLE DRAG
+================================ */
+document.addEventListener('dragstart', function (e) {
+    e.preventDefault();
+});
+
+/* ===============================
+   DEVTOOLS DETECTION (BASIC)
+================================ */
+(function () {
+    let devtoolsOpen = false;
+    const threshold = 160;
+
+    setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+
+        if (widthDiff > threshold || heightDiff > threshold) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                document.body.innerHTML = "<h2 style='text-align:center;margin-top:20%'>⚠️ Developer Tools Detected</h2>";
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    }, 1000);
+})();
+</script>
+
 </body>
 
 </html>
+
 
