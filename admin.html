@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin Overview Dashboard - ResumeHub</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2a6",
+                        "background-light": "#f5f8f7",
+                        "background-dark": "#10221c",
+                        "surface-dark": "#1a2e28",
+                        "accent-emerald": "#064e3b"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(26, 46, 40, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 242, 166, 0.1);
+        }
+        
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(13, 242, 166, 0.15);
+        }
+        
+        .modal-overlay {
+            background: rgba(5, 13, 8, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        select option {
+            background: #1a2e28;
+            color: white;
+        }
+        /* Style for the mini-iframe preview in the list */
+        
+        .mini-preview-container {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+        }
+        
+        .mini-preview-iframe {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+    <div class="flex min-h-screen overflow-hidden">
+        <aside class="w-72 bg-surface-dark border-r border-primary/10 flex flex-col shrink-0">
+            <div class="p-6 flex items-center gap-3">
+                <div class="size-10 rounded-full bg-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-background-dark font-bold">description</span>
+                </div>
+                <div>
+                    <h1 class="text-slate-100 text-lg font-bold leading-tight">ResumeHub</h1>
+                    <p class="text-primary text-xs font-medium uppercase tracking-wider">Admin Console</p>
+                </div>
+            </div>
+            <nav class="flex-1 px-4 py-4 space-y-1">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20" href="#" onclick="filterInventory('all')">
+                    <span class="material-symbols-outlined fill-1">dashboard</span>
+                    <span class="font-semibold text-sm">Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-primary hover:bg-primary/5 transition-all" href="#" onclick="filterInventory('resumes')">
+                    <span class="material-symbols-outlined">description</span>
+                    <span class="font-medium text-sm">Manage Resumes</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-primary hover:bg-primary/5 transition-all" href="#" onclick="filterInventory('portfolios')">
+                    <span class="material-symbols-outlined">browse_gallery</span>
+                    <span class="font-medium text-sm">Manage Portfolios</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto bg-background-dark">
+            <header class="h-20 px-8 flex items-center justify-between sticky top-0 bg-background-dark/80 backdrop-blur-md z-10 border-b border-primary/5">
+                <div>
+                    <h2 class="text-2xl font-black text-slate-100 tracking-tight">Admin Dashboard</h2>
+                    <p class="text-slate-500 text-sm">Real-time template & portfolio management.</p>
+                </div>
+                <button onclick="firebase.auth().signOut()" class="bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-background-dark px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 transition-all">
+                    <span class="material-symbols-outlined text-lg">logout</span> Sign Out
+                </button>
+            </header>
+
+            <div class="p-8 space-y-8 max-w-7xl mx-auto">
+                <section>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="openEditor('resumes')" class="group relative flex-1 min-w-[240px] p-6 bg-primary text-background-dark rounded-2xl transition-all emerald-glow hover:scale-[1.02]">
+                            <div class="text-left">
+                                <p class="text-lg font-black leading-tight">Add New Resume</p>
+                                <p class="text-xs font-semibold opacity-70">No thumbnail image required</p>
+                            </div>
+                        </button>
+                        <button onclick="openEditor('portfolios')" class="group relative flex-1 min-w-[240px] p-6 bg-surface-dark border-2 border-primary/30 hover:border-primary text-slate-100 rounded-2xl transition-all hover:scale-[1.02]">
+                            <div class="text-left">
+                                <p class="text-lg font-black leading-tight">Add New Portfolio</p>
+                                <p class="text-xs font-semibold text-primary">Live link based preview</p>
+                            </div>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="glass-card rounded-2xl overflow-hidden border border-primary/10">
+                    <div class="p-6 border-b border-primary/5 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">inventory</span>
+                            <h3 id="list-title" class="text-lg font-bold text-slate-100">Live Inventory Management</h3>
+                        </div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Items: <span id="count-display" class="text-primary">0</span></div>
+                    </div>
+                    <div id="inventory-list" class="divide-y divide-primary/5"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="edit-modal" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-xl rounded-3xl p-8 border-primary/20 shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-500 hover:text-white">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            <h3 id="modal-header" class="text-2xl font-black text-primary mb-6 italic">Manage Asset</h3>
+
+            <input type="hidden" id="edit-id">
+            <input type="hidden" id="edit-category">
+
+            <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">Item Name</label>
+                        <input id="in-name" type="text" placeholder="Professional Resume" class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">Price (INR)</label>
+                        <input id="in-price" type="number" placeholder="499" class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors">
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase">Attractive Description (Visible on Preview)</label>
+                    <input id="in-desc" type="text" placeholder="e.g. Modern ATS-friendly layout for Tech roles." class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase">Status Badge</label>
+                    <select id="in-badge" class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary outline-none py-2 px-3">
+                        <option value="new">🆕 New Arrival</option>
+                        <option value="trending">🔥 Trending Now</option>
+                        <option value="premium">👑 Premium (Gold)</option>
+                        <option value="high-rated">⭐ High Rated</option>
+                    </select>
+                </div>
+
+                <div id="resume-fields" class="space-y-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">G-Drive Link (Source for Preview)</label>
+                        <input id="in-link" type="text" placeholder="https://drive.google.com/file/d/..." class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">ATS Score %</label>
+                        <input id="in-ats" type="number" placeholder="98" class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors">
+                    </div>
+                </div>
+                <div id="portfolio-fields" class="hidden space-y-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">Live Demo URL (For Preview Iframe)</label>
+                        <input id="in-demo" type="url" placeholder="https://your-demo-link.com" class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">Source Code / GitHub URL (What they buy)</label>
+                        <input id="in-repo" type="url" placeholder="https://github.com/user/repository" class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors border-2 border-primary/20">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase">Tech Stack</label>
+                        <input id="in-stack" type="text" placeholder="React, Tailwind, Firebase" class="w-full bg-surface-dark border-white/10 rounded-xl text-white focus:border-primary transition-colors">
+                    </div>
+                </div>
+
+                <button onclick="saveAsset()" class="w-full py-4 bg-primary text-background-dark font-black rounded-2xl hover:scale-[1.02] transition-all shadow-xl mt-4 uppercase tracking-widest">
+                    Update Database
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5"
+        };
+
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+
+        let activeFilter = 'all';
+
+        function closeModal() {
+            document.getElementById('edit-modal').classList.add('hidden');
+        }
+
+        function openEditor(cat, id = null) {
+            document.getElementById('edit-modal').classList.remove('hidden');
+            document.getElementById('edit-category').value = cat;
+            document.getElementById('edit-id').value = id || "";
+            document.getElementById('modal-header').innerText = id ? `Update ${cat}` : `Create ${cat}`;
+            document.getElementById('resume-fields').classList.toggle('hidden', cat !== 'resumes');
+            document.getElementById('portfolio-fields').classList.toggle('hidden', cat !== 'portfolios');
+
+            if (id) {
+                firebase.database().ref(`products/${cat}/${id}`).once('value', s => {
+                    const data = s.val();
+                    if (!data) return;
+                    document.getElementById('in-name').value = data.name || "";
+                    document.getElementById('in-price').value = data.price || "";
+                    document.getElementById('in-desc').value = data.description || "";
+                    document.getElementById('in-badge').value = data.badge || "new";
+
+                    if (cat === 'resumes') {
+                        document.getElementById('in-link').value = data.download || "";
+                        document.getElementById('in-ats').value = data.ats || "";
+                    } else {
+                        document.getElementById('in-demo').value = data.demo || "";
+                        document.getElementById('in-repo').value = data.repo || ""; // New field
+                        document.getElementById('in-stack').value = data.stack || "";
+                    }
+                });
+            } else {
+                document.querySelectorAll('input:not([type="hidden"])').forEach(i => i.value = "");
+            }
+        }
+
+        function saveAsset() {
+            const id = document.getElementById('edit-id').value;
+            const category = document.getElementById('edit-category').value;
+
+            const productData = {
+                name: document.getElementById('in-name').value,
+                price: document.getElementById('in-price').value,
+                description: document.getElementById('in-desc').value,
+                badge: document.getElementById('in-badge').value,
+                timestamp: Date.now()
+            };
+
+            if (category === 'resumes') {
+                productData.download = document.getElementById('in-link').value;
+                productData.ats = document.getElementById('in-ats').value;
+            } else {
+                productData.demo = document.getElementById('in-demo').value;
+                productData.repo = document.getElementById('in-repo').value; // Saves to "repo" key
+                productData.stack = document.getElementById('in-stack').value;
+            }
+
+            // Basic validation
+            if (!productData.name || !productData.price) {
+                alert("Please enter Name and Price");
+                return;
+            }
+
+            const dbRef = firebase.database().ref(`products/${category}`);
+            const action = id ? dbRef.child(id).update(productData) : dbRef.push(productData);
+
+            action.then(() => {
+                closeModal();
+                console.log("Database Updated Successfully");
+            }).catch(e => alert("Error: " + e.message));
+        }
+
+        function deleteItem(cat, id) {
+            if (confirm("Permanently delete this item?")) firebase.database().ref(`products/${cat}/${id}`).remove();
+        }
+
+        function filterInventory(cat) {
+            activeFilter = cat;
+            document.getElementById('list-title').innerText = cat === 'all' ? 'Live Inventory Management' : `Managing ${cat}`;
+            loadInventory();
+        }
+
+        function loadInventory() {
+            firebase.database().ref('products').on('value', snap => {
+                        const products = snap.val();
+                        const list = document.getElementById('inventory-list');
+                        const countDisplay = document.getElementById('count-display');
+                        let htmlContent = "";
+                        let totalCount = 0;
+
+                        if (!products) {
+                            list.innerHTML = `<div class="p-10 text-center text-slate-500 italic text-sm">No items in database.</div>`;
+                            countDisplay.innerText = "0";
+                            return;
+                        }
+
+                        Object.keys(products).forEach(cat => {
+                                    if (activeFilter !== 'all' && cat !== activeFilter) return;
+
+                                    Object.keys(products[cat]).forEach(id => {
+                                                totalCount++;
+                                                const item = products[cat][id];
+
+                                                // Dynamically generate the preview URL based on the file link
+                                                let fileLink = cat === 'resumes' ? item.download : item.demo;
+                                                let previewSrc = "";
+                                                if (fileLink) {
+                                                    previewSrc = fileLink.replace('/view', '/preview').replace('/edit', '/preview');
+                                                    if (!previewSrc.includes('/preview') && previewSrc.includes('drive.google.com')) {
+                                                        previewSrc = previewSrc.split('?')[0] + '/preview';
+                                                    }
+                                                }
+
+                                                htmlContent += `
+                        <div class="p-4 hover:bg-primary/5 transition-all flex items-center gap-4 border-b border-primary/5 last:border-0">
+                            <div class="mini-preview-container">
+                                ${previewSrc ? `<iframe src="${previewSrc}" class="mini-preview-iframe"></iframe>` : `<div class="w-full h-full bg-surface-dark flex items-center justify-center text-[10px] text-slate-600">N/A</div>`}
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-bold text-slate-100 truncate">${item.name || 'Untitled'}</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[9px] bg-primary/20 text-primary px-1.5 py-0.5 rounded font-black uppercase tracking-tighter">${item.badge || 'NEW'}</span>
+                                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">${cat} • ₹${item.price || '0'}</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-1">
+                                <button onclick="openEditor('${cat}', '${id}')" class="text-primary p-2 hover:bg-primary/10 rounded-xl transition-colors"><span class="material-symbols-outlined text-lg">edit</span></button>
+                                <button onclick="deleteItem('${cat}', '${id}')" class="text-rose-500 p-2 hover:bg-rose-500/10 rounded-xl transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+                            </div>
+                        </div>`;
+                    });
+                });
+
+                list.innerHTML = htmlContent || `<div class="p-10 text-center text-slate-500 italic text-sm">No items found.</div>`;
+                countDisplay.innerText = totalCount;
+            });
+        }
+
+        loadInventory();
+        
+        firebase.auth().onAuthStateChanged(user => {
+            if(!user) window.location.href = 'auth.html';
+        });
+    </script>
+</body>
+
+</html>
