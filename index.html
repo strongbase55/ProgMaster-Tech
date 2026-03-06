@@ -1,1150 +1,867 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="dark" lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProgMaster — Software & App Development</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/D560BAQGwt8ZORHimIA/company-logo_400_400/company-logo_400_400/0/1701485206679?e=2147483647&v=beta&t=LAfnREh2-Osc__ucCnukxmwF6TCLYtEIq6GSM48FLp8">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PROGMASTER HUB ResumePro - Premium Developer Templates</title>
 
-    <meta name="description" content="We build premium apps, websites, and software products for ambitious businesses." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df259",
+                        "emerald-accent": "#10b981",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#0a1a10",
+                        "forest-deep": "#050d08",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; } .confetti-bg { background-image: radial-gradient(circle at 20% 30%, rgba(13, 242, 89, 0.03) 0%, transparent 10%), radial-gradient(circle at 80% 10%, rgba(16, 185, 129, 0.03) 0%, transparent 10%), radial-gradient(circle
+        at 50% 80%, rgba(13, 242, 89, 0.03) 0%, transparent 10%), radial-gradient(circle at 90% 90%, rgba(13, 242, 89, 0.05) 0%, transparent 15%); } .hero-gradient { background: radial-gradient(circle at top center, rgba(13, 242, 89, 0.12) 0%, transparent
+        60%); } .dark-card-gradient { background: linear-gradient(145deg, rgba(16, 34, 22, 0.8) 0%, rgba(10, 26, 16, 0.9) 100%); } .emerald-glow { box-shadow: 0 0 20px rgba(13, 242, 89, 0.15); }
+
+
+    </style>
+    <style>
+        /* Container to hide Google Drive toolbars */
+        
+        .pdf-thumbnail-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        /* Force the container to match the background exactly */
+        
+        #preview-wrapper {
+            background-color: #081210 !important;
+            border: none !important;
+            overflow: hidden;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        /* Force the iframe to behave as a solid block without borders */
+        
+        #live-demo-frame {
+            background-color: #081210 !important;
+            border: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block;
+            /* Removes inline-block gaps */
+            width: 100%;
+            height: 100%;
+        }
+        
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #0df259;
+            color: #081210;
+            text-align: center;
+            border-radius: 12px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-weight: 800;
+            box-shadow: 0 10px 30px rgba(13, 242, 89, 0.3);
+        }
+        
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+        /* The PDF shifted up to crop the header and scaled */
+        
+        .pdf-iframe {
+            position: absolute;
+            top: -40px;
+            /* Hides the top toolbar */
+            left: 0;
+            width: 100%;
+            height: calc(100% + 80px);
+            /* Hides the bottom toolbar */
+            border: none;
+            pointer-events: none;
+            /* User can't click/zoom */
+        }
+        /* Guard layer to ensure the click goes to your page, not the PDF */
+        
+        .click-guard {
+            position: absolute;
+            inset: 0;
+            z-index: 30;
+            cursor: pointer;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(6, 249, 148, 0.2);
+        }
+        
+        .glow-orb {
+            filter: blur(100px);
+            z-index: 0;
+        }
+        
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+    <style>
+        .filter-btn {
+            color: #94a3b8;
+            /* Slate 400 */
+        }
+        
+        .filter-btn.active {
+            background: #06f994;
+            /* Primary Green */
+            color: #0f231b;
+            /* Dark background */
+            box-shadow: 0 0 15px rgba(6, 249, 148, 0.4);
+        }
+    </style>
 </head>
 
-<body>
-    <!-- Animated background -->
-    <div class="bg">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="blob b3"></div>
-        <div class="grain"></div>
-    </div>
+<body class="bg-background-dark text-slate-100 min-h-screen font-display selection:bg-primary/30 selection:text-white">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden confetti-bg">
+        <div class="layout-container flex h-full grow flex-col">
 
-    <!-- Cursor glow (desktop) -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- Top progress bar -->
-    <div class="progress" id="progress"></div>
-
-    <!-- Navbar -->
-    <header class="nav-wrap" id="nav">
-        <nav class="nav">
-            <a class="brand" href="#home" aria-label="ProgMaster Home">
-                <img src="https://purushotham5.github.io/StrongBase.edu/another-broucher-logo-removebg-preview.png" alt="ProgMaster Logo" class="brand-logo" loading="eager" />
-                <span class="badge">Studio</span>
-            </a>
-
-
-            <div class="nav-links" id="navLinks">
-                <a href="#services" class="nl">Services</a>
-
-                <div class="nav-dd" id="ddSolutions">
-                    <button class="nl dd-btn" type="button">
-                        Solutions <span class="chev">▾</span>
-                    </button>
-                    <div class="dd-menu">
-                        <a href="#stack" class="dd-item">
-                            <b>SaaS Systems</b>
-                            <span>Onboarding, billing, admin, automation</span>
-                        </a>
-                        <a href="#work" class="dd-item">
-                            <b>Case Studies</b>
-                            <span>Real outcomes & delivered projects</span>
-                        </a>
-                        <a href="#process" class="dd-item">
-                            <b>Delivery Process</b>
-                            <span>Clear steps, fast MVP, scalable build</span>
-                        </a>
-                    </div>
+            <header class="flex items-center justify-between border-b border-primary/10 px-6 md:px-20 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='resumehub.html'">
+                    <div class="text-primary"><span class="material-symbols-outlined text-3xl font-bold">description</span></div>
+                    <h2 class="text-white text-xl font-extrabold leading-tight tracking-tight">PROGMASTER HUB</h2>
                 </div>
 
-                <a href="#stack" class="nl">Why Us</a>
-                <a href="#process" class="nl">Process</a>
-                <a href="#testimonials" class="nl">Reviews</a>
-                <a href="#contact" class="nl">Contact</a>
-            </div>
+                <div class="flex items-center gap-4 lg:gap-8">
+                    <nav class="hidden lg:flex items-center gap-8">
+                        <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#why-it-matters">Why Us</a>
+                        <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#templates">Templates</a>
+                        <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#ats">ATS Optimization</a>
+                        <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="#portfolio">Portfolios</a>
+                    </nav>
 
+                    <div id="auth-section" class="flex items-center gap-4">
+                        <div id="guest-state" class="flex items-center gap-4">
+                            <button onclick="location.href='auth.html'" class="hidden md:block text-slate-300 text-sm font-medium hover:text-white transition-colors">Log In</button>
+                            <button onclick="location.href='auth.html'" class="bg-primary text-forest-deep px-5 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all">Get Started</button>
+                        </div>
+                        <div id="user-state" class="hidden relative">
+                            <button onclick="toggleDropdown()" class="flex items-center gap-2 p-1 pr-3 rounded-full bg-white/5 border border-white/10 hover:border-primary/30 transition-all">
+        <div id="user-initial" class="size-8 rounded-full bg-primary text-background-dark flex items-center justify-center font-black text-xs uppercase">U</div>
+        <span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+    </button>
 
-            <div class="nav-actions">
-                <button class="pill ghost" id="themeBtn" aria-label="Toggle theme">Theme</button>
-                <a class="pill" href="#contact">Get Quote</a>
-                <button class="hamburger" id="ham" aria-label="Open menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+                            <div id="user-dropdown" class="hidden absolute right-0 mt-3 w-64 bg-[#0a1a10] border border-white/10 rounded-2xl shadow-2xl py-2 z-[100] overflow-hidden backdrop-blur-xl">
+                                <div class="px-4 py-3 border-b border-white/5">
+                                    <p class="text-[10px] text-primary font-black uppercase tracking-widest mb-1">Signed in as</p>
+                                    <p id="user-display-email" class="text-white text-sm font-bold truncate">user@email.com</p>
+                                </div>
+                                <!-- 
+                                <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-primary/10 hover:text-primary transition-all text-sm font-medium">
+                                    <span class="material-symbols-outlined text-xl">dashboard</span> My Dashboard
+                                </a> -->
 
-    <!-- Mobile menu -->
-    <div class="mobile-drawer" id="drawer">
-        <div class="drawer-card">
-            <div class="drawer-head">
-                <div class="drawer-title">Menu</div>
-                <button class="icon-btn" id="closeDrawer" aria-label="Close">✕</button>
-            </div>
-            <a href="#services" class="drawer-link">Services</a>
-            <a href="#work" class="drawer-link">Work</a>
-            <a href="#process" class="drawer-link">Process</a>
-            <a href="#testimonials" class="drawer-link">Reviews</a>
-            <a href="#contact" class="drawer-link">Contact</a>
-            <a href="#contact" class="pill full">Get Quote</a>
-        </div>
-    </div>
+                                <a href="purchase.html" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-primary/10 hover:text-primary transition-all text-sm font-medium">
+                                    <span class="material-symbols-outlined text-xl">shopping_bag</span> My Purchases
+                                </a>
 
-    <!-- Hero -->
-    <main id="home" class="hero">
-        <section class="container hero-grid">
-            <div class="hero-left reveal">
-                <div class="kicker">
-                    <span class="dot"></span>
-                    <span>Apps • Websites • Software Products</span>
-                </div>
+                                <hr class="border-white/5 my-1">
 
-                <h1 class="hero-title">
-                    We build <span class="grad">premium</span> software that makes your business look <span class="grad2">bigger</span>.
-                </h1>
-
-                <p class="hero-sub">
-                    ProgMaster is a product-minded software studio. We design, develop, and ship fast — with performance, security, and scalable architecture.
-                </p>
-
-                <div class="hero-cta">
-                    <a href="#contact" class="pill big">Start a Project</a>
-                    <a href="#work" class="pill big ghost">See Our Work</a>
-                </div>
-
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-num" data-count="120">0</div>
-                        <div class="stat-label">Projects Delivered</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num" data-count="4.9">0</div>
-                        <div class="stat-label">Avg Client Rating</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num" data-count="14">0</div>
-                        <div class="stat-label">Days to First MVP</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-right reveal">
-                <div class="glass-card tilt" id="tiltCard">
-                    <div class="card-top">
-                        <div class="chip"></div>
-                        <div class="card-title">Project Dashboard</div>
-                        <div class="pill tiny">Live</div>
-                    </div>
-
-                    <div class="mini-grid">
-                        <div class="mini">
-                            <div class="mini-h">Speed</div>
-                            <div class="mini-v"><span class="pulse"></span> Optimized
+                                <button onclick="handleSignOut()" class="w-full flex items-center gap-3 px-4 py-3 text-rose-400 hover:bg-rose-500/10 transition-all text-sm font-bold">
+            <span class="material-symbols-outlined text-xl">logout</span>
+            Sign Out
+        </button>
                             </div>
                         </div>
-                        <div class="mini">
-                            <div class="mini-h">Security</div>
-                            <div class="mini-v"><span class="pulse"></span> Hardened
-                            </div>
-                        </div>
-                        <div class="mini">
-                            <div class="mini-h">Design</div>
-                            <div class="mini-v"><span class="pulse"></span> Premium
-                            </div>
-                        </div>
-                        <div class="mini">
-                            <div class="mini-h">Scale</div>
-                            <div class="mini-v"><span class="pulse"></span> Cloud-ready
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="sparkline">
-                        <div class="bar" style="--h: 30%"></div>
-                        <div class="bar" style="--h: 60%"></div>
-                        <div class="bar" style="--h: 45%"></div>
-                        <div class="bar" style="--h: 80%"></div>
-                        <div class="bar" style="--h: 55%"></div>
-                        <div class="bar" style="--h: 90%"></div>
-                        <div class="bar" style="--h: 70%"></div>
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="tag">UI/UX</div>
-                        <div class="tag">Web Apps</div>
-                        <div class="tag">Mobile</div>
-                        <div class="tag">APIs</div>
+                        <button onclick="toggleMobileMenu()" class="lg:hidden text-white p-1">
+                <span id="menu-icon" class="material-symbols-outlined text-3xl">menu</span>
+            </button>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </header>
 
+            <div id="mobile-menu" class="fixed inset-0 bg-background-dark/95 z-[60] flex flex-col items-center justify-center gap-6 transition-all duration-300 translate-x-full lg:hidden">
+                <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-white">
+        <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
 
-    <section class="section alt" id="flows">
-        <div class="container">
-            <div class="section-head reveal">
-                <h2>Your growth engine — built like a product</h2>
-                <p>We combine design, engineering, automation and analytics into one smooth system.</p>
-            </div>
+                <a onclick="toggleMobileMenu()" class="text-xl font-bold text-white hover:text-primary" href="#why-it-matters">Why Us</a>
+                <a onclick="toggleMobileMenu()" class="text-xl font-bold text-white hover:text-primary" href="#templates">Templates</a>
 
-            <div class="flow-wrap reveal">
-                <div class="flow-screen">
-                    <div class="flow-topbar">
-                        <div class="flow-dot"></div>
-                        <div class="flow-dot"></div>
-                        <div class="flow-dot"></div>
-                        <div class="flow-title">Dashboard Preview</div>
-                    </div>
-
-                    <div class="flow-body">
-                        <div class="flow-metric">
-                            <div class="n">+15%</div>
-                            <div class="t">New customers</div>
-                        </div>
-                        <div class="flow-metric">
-                            <div class="n">+8%</div>
-                            <div class="t">Returning users</div>
-                        </div>
-                        <div class="flow-chart"></div>
-                    </div>
+                <div id="mobile-user-links" class="hidden flex flex-col items-center gap-6">
+                    <a onclick="toggleMobileMenu()" class="text-xl font-bold text-white hover:text-primary" href="dashboard.html">Dashboard</a>
+                    <a onclick="toggleMobileMenu()" class="text-xl font-bold text-white hover:text-primary" href="purchases.html">My Purchases</a>
                 </div>
 
-                <!-- Floating cards -->
-                <div class="float-card fc1">
-                    <b>Calendar</b>
-                    <span>Bookings / scheduling / reminders</span>
-                </div>
-                <div class="float-card fc2">
-                    <b>Marketing</b>
-                    <span>Campaigns + lead automation</span>
-                </div>
-                <div class="float-card fc3">
-                    <b>Hyperconnect</b>
-                    <span>WhatsApp + email + CRM notes</span>
-                </div>
+                <a onclick="toggleMobileMenu()" class="text-xl font-bold text-white hover:text-primary" href="#ats">ATS Optimization</a>
+
+                <hr class="w-20 border-primary/20">
+
+                <button id="mobile-auth-btn" onclick="location.href='auth.html'" class="text-xl font-extrabold uppercase tracking-widest text-slate-400">
+        Log In
+    </button>
             </div>
-        </div>
-    </section>
-
-
-    <!-- Services -->
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <h2>Delivering Excellence in Every Service</h2>
-                <p>Everything you need — IT, growth, automation, apps and support.</p>
-            </div>
-
-            <div class="svc-carousel reveal">
-                <!-- ✅ Wrapper kept only for JS hooks. NO BG will be applied via CSS below -->
-                <div class="svc-scroller2" id="svcScroller2" aria-label="Services carousel">
-                    <div class="svc-track2" id="svcTrack2">
-
-                        <article class="svc-card2">
-                            <div class="svc-top2">
-                                <div class="svc-logo2">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/zendesk.svg" alt="ITMS Support">
-                                </div>
-                                <div class="svc-num2">01</div>
-                            </div>
-                            <h3 class="svc-title2">ITMS Support</h3>
-                            <p class="svc-desc2">Reliable IT support to keep your business running without interruptions.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-
-                        <article class="svc-card2">
-                            <div class="svc-top2">
-                                <div class="svc-logo2" aria-hidden="true">
-                                    <!-- BI / Dashboard icon -->
-                                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none">
-        <rect x="3" y="4" width="18" height="16" rx="4" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M7 16v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M11 16v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M15 16v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M7 9h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-      </svg>
-                                </div>
-                                <div class="svc-num2">02</div>
-                            </div>
-                            <h3 class="svc-title2">Business Intelligence</h3>
-                            <p class="svc-desc2">Dashboards, reports, and insights to make faster decisions.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-
-
-                        <article class="svc-card2 is-active">
-                            <div class="svc-top2">
-                                <div class="svc-logo2">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/react.svg" alt="Custom Apps">
-                                </div>
-                                <div class="svc-num2">03</div>
-                            </div>
-                            <h3 class="svc-title2">Custom Apps</h3>
-                            <p class="svc-desc2">Modern apps & internal tools built for speed, scale and reliability.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-                        <article class="svc-card2">
-                            <div class="svc-top2">
-                                <div class="svc-logo2" aria-hidden="true">
-                                    <!-- IT Strategy / Security + Support icon -->
-                                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none">
-        <path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3Z"
-              stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M9.2 13.2l5.6-5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M8.5 15.5c1.2 1.2 3.2 1.1 4.6-.2l.3-.3"
-              stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.8"/>
-        <path d="M15.6 9.4l.9.9-1.1 1.1-.9-.9 1.1-1.1Z" fill="currentColor" opacity="0.85"/>
-      </svg>
-                                </div>
-                                <div class="svc-num2">04</div>
-                            </div>
-                            <h3 class="svc-title2">IT Strategy & Support</h3>
-                            <p class="svc-desc2">Systems planning, upgrades, security, and ongoing support.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-
-                        <article class="svc-card2">
-                            <div class="svc-top2">
-                                <div class="svc-logo2" aria-hidden="true">
-                                    <!-- CRM / Pipeline icon -->
-                                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none">
-        <path d="M4 7h7v5H4V7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M13 6h7v6h-7V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M8 12v5h8v-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M11 9h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
-        <circle cx="18" cy="9" r="1.2" fill="currentColor"/>
-      </svg>
-                                </div>
-                                <div class="svc-num2">05</div>
-                            </div>
-                            <h3 class="svc-title2">CRM Solutions</h3>
-                            <p class="svc-desc2">Lead capture, pipelines, follow-ups, and automation that converts.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-
-
-                        <article class="svc-card2">
-                            <div class="svc-top2">
-                                <div class="svc-logo2">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/google.svg" alt="Grow with SEO">
-                                </div>
-                                <div class="svc-num2">06</div>
-                            </div>
-                            <h3 class="svc-title2">Grow with SEO</h3>
-                            <p class="svc-desc2">Technical SEO + content structure for long-term traffic growth.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-
-                        <article class="svc-card2">
-                            <div class="svc-top2">
-                                <div class="svc-logo2" aria-hidden="true">
-                                    <!-- ERP / Microsoft-style grid + gear -->
-                                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none">
-        <path d="M4 4h7v7H4V4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M13 4h7v7h-7V4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M4 13h7v7H4v-7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M15.2 14.2l.8-1.2 1.2.5.2 1.4c.3.1.6.3.9.5l1.3-.7.9.9-.7 1.3c.2.3.3.6.5.9l1.4.2.5 1.2-1.2.8c0 .3 0 .6-.1 1l1.2.8-.5 1.2-1.4.2c-.1.3-.3.6-.5.9l.7 1.3-.9.9-1.3-.7c-.3.2-.6.3-.9.5l-.2 1.4-1.2.5-.8-1.2c-.3 0-.6 0-1 0l-.8 1.2-1.2-.5-.2-1.4c-.3-.1-.6-.3-.9-.5l-1.3.7-.9-.9.7-1.3c-.2-.3-.3-.6-.5-.9l-1.4-.2-.5-1.2 1.2-.8c0-.3 0-.6.1-1l-1.2-.8.5-1.2 1.4-.2c.1-.3.3-.6.5-.9l-.7-1.3.9-.9 1.3.7c.3-.2.6-.3.9-.5l.2-1.4 1.2-.5.8 1.2c.3 0 .6 0 1 0Z"
-              stroke="currentColor" stroke-width="0.9" opacity="0.85"/>
-        <circle cx="17" cy="17" r="1.7" stroke="currentColor" stroke-width="1.2"/>
-      </svg>
-                                </div>
-                                <div class="svc-num2">07</div>
-                            </div>
-                            <h3 class="svc-title2">Microsoft ERP Support</h3>
-                            <p class="svc-desc2">ERP support, integrations, reporting and maintenance.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-
-
-                        <article class="svc-card2">
-                            <div class="svc-top2">
-                                <div class="svc-logo2">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/shopify.svg" alt="Shopify">
-                                </div>
-                                <div class="svc-num2">08</div>
-                            </div>
-                            <h3 class="svc-title2">Build Your Brand with Shopify</h3>
-                            <p class="svc-desc2">Premium Shopify storefronts optimized for sales and performance.</p>
-                            <a class="svc-link2" href="#contact">Learn More</a>
-                        </article>
-
-                    </div>
-                </div>
-
-                <div class="svc-dots2" id="svcDots2" aria-label="Service position indicators"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modern Stack / Why we're different -->
-    <section id="stack" class="section alt">
-        <div class="container">
-            <div class="why-top reveal">
-                <div class="why-pill">WHY CHOOSE US</div>
-                <h2>Why ProgMaster is the right choice for you</h2>
-                <p>We build SaaS-grade systems with modern cloud engineering, premium UI, and growth-ready setup.</p>
-            </div>
-
-            <div class="why-grid">
-                <div class="why-left">
-                    <article class="why-card reveal">
-                        <div class="why-ic">🧩</div>
-                        <h3>SaaS System Building</h3>
-                        <p>Customer onboarding, orders, billing, admin dashboards, automations, analytics — end-to-end.
+            <main class="flex flex-1 flex-col">
+                <section class="hero-gradient pt-24 pb-20 px-6 text-center">
+                    <div class="max-w-4xl mx-auto">
+                        <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-accent/10 text-emerald-accent mb-6 border border-emerald-accent/20 tracking-wider uppercase">
+            New: 2024 Tech-Focused Templates
+        </span>
+                        <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-[1.1]">
+                            Stop Being <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-accent">Ignored</span> by Recruiters
+                        </h1>
+                        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                            Expert-crafted resume and portfolio templates designed specifically for software professionals. Designed to beat ATS and impress hiring managers.
                         </p>
-                    </article>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <button onclick="document.getElementById('templates').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto flex items-center justify-center gap-2 h-14 px-10 bg-primary text-forest-deep text-lg font-extrabold rounded-xl shadow-xl shadow-primary/20 hover:scale-105 transition-all">
+                <span>Browse Templates</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+                            <button onclick="location.href='#ats'" class="w-full sm:w-auto h-14 px-10 border border-slate-700 text-white text-lg font-bold rounded-xl hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-primary">verified</span>
+                <span>Get Free ATS Guide</span>
+            </button>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-24 px-6 md:px-20 bg-forest-deep/50" id="why-it-matters">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="grid md:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <h2 class="text-4xl font-extrabold text-white mb-6 leading-tight">Your Skills Deserve <br/><span class="text-primary">Better Presentation</span></h2>
+                                <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                                    Being a world-class developer isn't enough if your resume looks like a 2010 Word document. In a sea of applicants, a professional resume is the key to getting past the initial screen.
+                                </p>
+                                <div class="space-y-6">
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined">trending_up</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold mb-1">Higher Response Rates</h4>
+                                            <p class="text-slate-500 text-sm">Our users report a 3x increase in interview callbacks within 30 days of switching.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined">palette</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold mb-1">Modern Design</h4>
+                                            <p class="text-slate-500 text-sm">Clean, tech-forward aesthetics that align with top-tier engineering cultures.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full opacity-30"></div>
+                                <div class="relative bg-slate-900 border border-slate-800 p-2 rounded-2xl shadow-2xl">
+                                    <img alt="Resume Preview" class="rounded-xl w-full h-auto grayscale-[20%] hover:grayscale-0 transition-all duration-500" src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                    <article class="why-card reveal">
-                        <div class="why-ic">🚀</div>
-                        <h3>Performance + SEO</h3>
-                        <p>Fast loading, clean structure, SEO-ready pages, analytics tracking and conversions.</p>
-                    </article>
-
-                    <article class="why-card reveal">
-                        <div class="why-ic">🔒</div>
-                        <h3>Security + Reliability</h3>
-                        <p>Secure auth, role-based access, validated database rules, spam protection and safe deployments.
+                <section class="py-24 px-6 md:px-20 border-y border-white/5" id="ats">
+                    <div class="max-w-7xl mx-auto text-center mb-16">
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs">The Technical Edge</span>
+                        <h2 class="text-4xl font-black text-white mt-4 mb-6">Built to Beat the Bots</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                            Most resumes are rejected by Applicant Tracking Systems (ATS) before a human ever sees them. Our templates are architected for 99%+ parsing accuracy.
                         </p>
-                    </article>
-                </div>
+                    </div>
+                    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-primary/30 transition-all group">
+                            <span class="material-symbols-outlined text-4xl text-emerald-accent mb-6 group-hover:scale-110 transition-transform block">fact_check</span>
+                            <h3 class="text-xl font-bold text-white mb-4">ATS Friendly Structure</h3>
+                            <p class="text-slate-500 leading-relaxed">Standard headers and layouts that automated filters love. No complex graphics that break parsing.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-primary/30 transition-all group">
+                            <span class="material-symbols-outlined text-4xl text-emerald-accent mb-6 group-hover:scale-110 transition-transform block">memory</span>
+                            <h3 class="text-xl font-bold text-white mb-4">Keyword Optimization</h3>
+                            <p class="text-slate-500 leading-relaxed">Strategically placed skill sections designed to highlight your stack in the way algorithms expect.</p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-primary/30 transition-all group">
+                            <span class="material-symbols-outlined text-4xl text-emerald-accent mb-6 group-hover:scale-110 transition-transform block">history_edu</span>
+                            <h3 class="text-xl font-bold text-white mb-4">Semantic Markup</h3>
+                            <p class="text-slate-500 leading-relaxed">Properly nested sections ensure your experience is read in chronological order without confusion.</p>
+                        </div>
+                    </div>
+                </section>
 
-                <aside class="why-right reveal">
-                    <div class="why-big">
-                        <div class="why-big-title">We build like a product team</div>
-                        <p>
-                            Many agencies just deliver pages. We build complete systems that generate leads, manage customers, and scale smoothly — with modern cloud + automation + analytics.
+                <section class="py-24 px-6 md:px-20 bg-background-dark relative overflow-hidden" id="portfolio">
+                    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+                        <div class="order-2 md:order-1">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-4">
+                                    <div class="aspect-square rounded-2xl bg-slate-800 border border-slate-700 p-4">
+                                        <span class="material-symbols-outlined text-primary mb-2">code</span>
+                                        <h4 class="text-white font-bold text-sm">Clean React Code</h4>
+                                    </div>
+                                    <div class="aspect-square rounded-2xl bg-slate-900 border border-slate-800 p-4">
+                                        <span class="material-symbols-outlined text-emerald-accent mb-2">speed</span>
+                                        <h4 class="text-white font-bold text-sm">99 Lighthouse Score</h4>
+                                    </div>
+                                </div>
+                                <div class="space-y-4 mt-8">
+                                    <div class="aspect-square rounded-2xl bg-slate-900 border border-slate-800 p-4">
+                                        <span class="material-symbols-outlined text-emerald-accent mb-2">devices</span>
+                                        <h4 class="text-white font-bold text-sm">Responsive Design</h4>
+                                    </div>
+                                    <div class="aspect-square rounded-2xl bg-slate-800 border border-slate-700 p-4">
+                                        <span class="material-symbols-outlined text-primary mb-2">terminal</span>
+                                        <h4 class="text-white font-bold text-sm">Full Source Access</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-[10px] font-extrabold bg-primary/10 text-primary mb-4 border border-primary/20 uppercase tracking-[0.2em]">Source Code Included</span>
+                            <h2 class="text-4xl font-black text-white mb-6">The Portfolio Advantage</h2>
+                            <p class="text-slate-400 text-lg mb-8">
+                                Don't just say you can code—prove it. Our premium portfolio templates come with full source code access, allowing you to customize your site and showcase real-world development skills.
+                            </p>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span> Modern React & Tailwind CSS codebase
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span> Built-in MDX Blog and Project pages
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span> Ready to deploy to Vercel or Netlify
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-24 px-6 md:px-20 max-w-7xl mx-auto w-full" id="templates">
+                    <div class="mb-20">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-3xl font-black text-white flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary text-4xl">local_fire_department</span> Trending Now
+                            </h2>
+                            <a href="Resume Browse.html" class="text-slate-400 hover:text-primary text-sm font-bold transition-colors">Browse All →</a>
+                        </div>
+                        <div id="trending-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                        </div>
+                    </div>
+
+                    <!-- <div id="all-designs" class="pt-16 border-t border-white/5">
+                        <h2 class="text-xl font-bold text-slate-500 mb-10 uppercase tracking-[0.2em]">More Designs</h2>
+                        <div id="template-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                        </div>
+                    </div> -->
+                </section>
+                <section class="py-20 bg-forest-deep border-y border-white/5">
+                    <div class="max-w-7xl mx-auto px-6 text-center">
+                        <p class="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-12">Engineers Hired By The Best</p>
+                        <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale contrast-125">
+                            <div class="flex items-center gap-2 text-white font-bold text-lg"><span class="material-symbols-outlined text-emerald-accent">cloud</span> CloudSystems</div>
+                            <div class="flex items-center gap-2 text-white font-bold text-lg"><span class="material-symbols-outlined text-emerald-accent">bolt</span> TechFlow</div>
+                            <div class="flex items-center gap-2 text-white font-bold text-lg"><span class="material-symbols-outlined text-emerald-accent">database</span> DataCore</div>
+                            <div class="flex items-center gap-2 text-white font-bold text-lg"><span class="material-symbols-outlined text-emerald-accent">terminal</span> DevBox</div>
+                            <div class="flex items-center gap-2 text-white font-bold text-lg"><span class="material-symbols-outlined text-emerald-accent">security</span> SecureLink</div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-forest-deep border-t border-white/5 pt-20 pb-10 px-6 md:px-20">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                    <div class="col-span-1 md:col-span-1">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="text-primary"><span class="material-symbols-outlined text-3xl font-bold">description</span></div>
+                            <h2 class="text-white text-xl font-extrabold tracking-tight">ResumePro</h2>
+                        </div>
+                        <p class="text-slate-500 text-sm leading-relaxed max-w-xs">
+                            Elevating developer careers through high-conversion resume templates and portfolio source code. Built by engineers, for engineers.
                         </p>
-
-                        <div class="why-big-list">
-                            <div class="wli">✅ Customer onboarding flows</div>
-                            <div class="wli">✅ Billing + invoices + payments</div>
-                            <div class="wli">✅ Marketing automation + WhatsApp/email</div>
-                            <div class="wli">✅ Admin dashboard + reports</div>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Products</h4>
+                        <ul class="space-y-4 text-slate-500 text-sm">
+                            <li><a class="hover:text-primary transition-colors" href="#">Resume Templates</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Portfolio Templates</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Support</h4>
+                        <ul class="space-y-4 text-slate-500 text-sm">
+                            <li><a class="hover:text-primary transition-colors" href="#">ATS Guide</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Newsletter</h4>
+                        <p class="text-slate-500 text-xs mb-4 leading-relaxed">Get latest interview tips.</p>
+                        <div class="flex gap-2 p-1 bg-slate-900 border border-slate-800 rounded-xl">
+                            <form id="newsletter-form" class="flex gap-2">
+                                <input type="email" placeholder="Enter your email" required class="flex-1 bg-background-dark border border-border-dark rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" />
+                                <button type="submit" class="bg-primary text-background-dark px-6 py-3 rounded-xl font-bold text-sm hover:brightness-110 transition-all">
+        Send
+    </button>
+                            </form>
                         </div>
-
-                        <a style="color:white" href="#book" class="pill big">Book a Free Call</a>
                     </div>
-                </aside>
-            </div>
-
-
-        </div>
-    </section>
-    <section class="tech-strip">
-        <div class="container">
-            <h2>We are expert in it</h2>
-            <p>Modern tools, platforms, and cloud services we work with daily.</p>
-
-            <div class="tech-marquee" aria-label="Technology stack">
-                <div class="tech-marquee__track">
-
-                    <!-- SET 1 -->
-                    <div class="tech-marquee__set">
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/nodedotjs.svg"><span>Node.js</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/react.svg"><span>React</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/firebase.svg"><span>Firebase</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/openapiinitiative.svg"><span>APIs</span></div>
-                        <div class="tech-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png"><span>AWS</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/cloudflare.svg"><span>CDN</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/githubactions.svg"><span>CI/CD</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/googleanalytics.svg"><span>GA4</span></div>
-                        <div class="tech-chip"><img src="https://p7.hiclipart.com/preview/61/689/137/salesforce-com-business-partner-logo-customer-relationship-management-business.jpg"><span>Salesforce</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/hubspot.svg"><span>HubSpot</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/googleads.svg"><span>Google Ads</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/figma.svg"><span>Figma</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/shopify.svg"><span>Shopify</span></div>
-                    </div>
-
-                    <!-- SET 2 (TECHNICAL DUPLICATE FOR LOOP) -->
-                    <div class="tech-marquee__set" aria-hidden="true">
-                        <!-- exact same content -->
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/nodedotjs.svg"><span>Node.js</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/react.svg"><span>React</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/firebase.svg"><span>Firebase</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/openapiinitiative.svg"><span>APIs</span></div>
-                        <div class="tech-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png"><span>AWS</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/cloudflare.svg"><span>CDN</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/githubactions.svg"><span>CI/CD</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/googleanalytics.svg"><span>GA4</span></div>
-                        <div class="tech-chip"><img src="https://p7.hiclipart.com/preview/61/689/137/salesforce-com-business-partner-logo-customer-relationship-management-business.jpg"><span>Salesforce</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/hubspot.svg"><span>HubSpot</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/googleads.svg"><span>Google Ads</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/figma.svg"><span>Figma</span></div>
-                        <div class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/shopify.svg"><span>Shopify</span></div>
-                    </div>
-
                 </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Trust / Proof -->
-    <section id="trust" class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <h2>Trusted by teams who want premium quality</h2>
-                <p>Real delivery. Clean UI. Fast support. Measurable results.
-                </p>
-            </div>
-
-            <!-- Logo strip (replace with real logos later) -->
-            <div class="logo-strip reveal" aria-label="Client logos">
-                <div class="logo-pill">Beta Customers</div>
-                <div class="logo-pill">Internal Products</div>
-                <div class="logo-pill">Early Clients</div>
-                <div class="logo-pill">Startup Projects</div>
-                <div class="logo-pill">Live Platforms</div>
-            </div>
-
-            <!-- Results -->
-            <div class="proof-grid">
-                <div class="proof reveal">
-                    <div class="proof-h">Avg Delivery Speed</div>
-                    <div class="proof-v">10–14 days</div>
-                    <div class="proof-s">for first usable MVP</div>
+                <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-slate-600 text-xs font-medium">© 2024 ResumePro. All rights reserved.</p>
                 </div>
-                <div class="proof reveal">
-                    <div class="proof-h">Support Response</div>
-                    <div class="proof-v">&lt; 2 hours</div>
-                    <div class="proof-s">during active delivery</div>
-                </div>
-                <div class="proof reveal">
-                    <div class="proof-h">Client Satisfaction</div>
-                    <div class="proof-v">4.8–5.0</div>
-                    <div class="proof-s">based on project feedback</div>
-                </div>
-            </div>
-
-            <!-- Real reviews template -->
-            <div class="real-reviews">
-                <article class="review reveal">
-                    <div class="review-top">
-                        <div class="avatar">FS</div>
-                        <div>
-                            <div class="review-name">Flawskin</div>
-                            <div class="review-meta">Banglore</div>
-                        </div>
-                        <div class="stars" aria-label="5 star rating">★★★★★</div>
-                    </div>
-                    <p class="review-text">The automated booking system and modern UI have completely transformed how we handle patient inquiries and consultations. Our practice saw a massive jump in appointment efficiency and lead conversion within the first month of launching
-                        the new site.</p>
-                    <div class="review-proof">✅ Delivered in: <b>14 days</b> • ✅ Outcome: <b>+45% leads</b></div>
-                </article>
-
-                <article class="review reveal">
-                    <div class="review-top">
-                        <div class="avatar">S</div>
-                        <div>
-                            <div class="review-name">Sri Sai Ram School</div>
-                            <!-- <div class="review-meta">Tirupati
-                            </div> -->
-                        </div>
-                        <div class="stars" aria-label="5 star rating">★★★★★</div>
-                    </div>
-                    <p class="review-text">"The new school management portal and digital admission flow have revolutionized our enrollment process. Parents specifically mentioned how easy it was to navigate the curriculum details and schedule campus visits, making our administrative
-                        work 10x faster."</p>
-                    <div class="review-proof">✅ Delivered: <b>On time</b> • ✅ Support: <b>Fast</b></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work / Portfolio -->
-    <section id="work" class="work-sec">
-
-    </section>
-
-    <!-- ================== CASE STUDY MODAL ================== -->
-    <div class="cs-modal" id="csModal" aria-hidden="true">
-        <div class="cs-backdrop" data-close="1"></div>
-
-        <div class="cs-panel" role="dialog" aria-modal="true" aria-labelledby="csTitle">
-            <button class="cs-close" aria-label="Close" data-close="1">✕</button>
-
-            <div class="cs-hero">
-                <div class="cs-hero__pill" id="csPill">Project</div>
-                <h3 class="cs-title" id="csTitle">Title</h3>
-                <p class="cs-sub" id="csSub">Subtitle</p>
-            </div>
-
-            <div class="cs-grid">
-                <div class="cs-box">
-                    <h4>Highlights</h4>
-                    <ul id="csHighlights"></ul>
-                </div>
-
-                <div class="cs-box">
-                    <h4>Tech Stack</h4>
-                    <div class="cs-tags" id="csTags"></div>
-                </div>
-
-                <div class="cs-box cs-box--wide">
-                    <h4>What we delivered</h4>
-                    <p id="csDelivered"></p>
-                </div>
-
-                <div class="cs-box cs-box--wide">
-                    <h4>Impact</h4>
-                    <div class="cs-metrics" id="csMetrics"></div>
-                </div>
-            </div>
+            </footer>
         </div>
     </div>
 
-
-    <!-- Process -->
-    <section id="process" class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <h2>Our Process</h2>
-                <p>Clear steps. Predictable delivery. Premium quality.</p>
+    <div id="quick-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 backdrop-blur-xl p-4">
+        <div class="relative w-full max-w-5xl bg-[#0a1a10] rounded-3xl overflow-hidden border border-white/10 flex flex-col md:flex-row shadow-2xl">
+            <button onclick="closeQuickPreview()" class="absolute top-4 right-4 z-[110] bg-white/10 p-2 rounded-full text-white hover:bg-white/20 transition-all">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="flex-1 p-6 bg-black flex items-center justify-center">
+                <img id="modal-temp-img" src="" class="max-h-[80vh] rounded shadow-2xl">
             </div>
-
-            <div class="timeline reveal" id="timeline">
-                <div class="t-line" aria-hidden="true"></div>
-
-                <button class="t-step reveal" type="button" data-step="01" data-title="Discover" data-desc="We clarify goals, users, competitor insights, and scope so there’s no confusion later." data-points="Requirements workshop|User flows + wireframes|Scope + timeline planning|Tech & architecture plan">
-                    <div class="t-dot"></div>
-                    <br>
-                    <div class="t-card">
-                        <div class="t-num">01</div>
-                        <h3>Discover</h3>
-                        <p>Requirements, user flow, competitor research, and
-                            scope definition.</p>
-                        <div class="t-cta">Click to view details →</div>
-                    </div>
-                </button>
-
-                <button class="t-step reveal" type="button" data-step="02" data-title="Design" data-desc="We create a premium UI, prototype interactions, and finalize the look before development." data-points="Brand direction|Premium UI screens|Micro-interactions|Clickable prototype">
-                    <div class="t-dot"></div>
-                    <br>
-                    <div class="t-card">
-                        <div class="t-num">02</div>
-                        <h3>Design</h3>
-                        <p>Wireframes, premium UI, animations, and a
-                            clickable prototype.</p>
-                        <div class="t-cta">Click to view details →</div>
-                    </div>
-                </button>
-
-                <button class="t-step reveal" type="button" data-step="03" data-title="Develop" data-desc="We build fast, structured code with secure integrations and scalable architecture." data-points="Frontend engineering|Backend/API setup|Firebase/AWS integration|Performance optimization">
-                    <div class="t-dot"></div>
-
-                    <br>
-                    <div class="t-card">
-                        <div class="t-num">03</div>
-                        <h3>Develop</h3>
-                        <p>Frontend + Firebase integration + clean code
-                            structure.</p>
-                        <div class="t-cta">Click to view details →</div>
-                    </div>
-                </button>
-
-                <button class="t-step reveal" type="button" data-step="04" data-title="Launch" data-desc="We test thoroughly, deploy safely, and ensure SEO + analytics are ready for growth." data-points="Testing + QA|Deployment + CI/CD|SEO + analytics|Post-launch support">
-                    <div class="t-dot"></div>
-
-                    <br>
-                    <div class="t-card">
-                        <div class="t-num">04</div>
-                        <h3>Launch</h3>
-                        <p>Testing, SEO, deployment, and post-launch
-                            improvements.</p>
-                        <div class="t-cta">Click to view details →</div>
-                    </div>
-                </button>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="testimonials" class="section alt">
-        <div class="container">
-            <div class="section-head reveal">
-                <h2>Client Reviews</h2>
-                <p>Real communication. Premium UI. Fast delivery. Strong support.</p>
-            </div>
-
-            <div class="review-grid">
-
-                <!-- Flawskin -->
-                <article class="review-pro reveal">
-                    <div class="rhead">
-                        <div class="ravatar">FS</div>
-                        <div>
-                            <div class="rname">Flawskin</div>
-                            <div class="rmeta">Founder • Laser Treatment Clinic • Bangalore</div>
-                        </div>
-                        <div class="rright">
-                            <div class="rstars">★★★★★</div>
-                            <div class="rdate">Jan 2026</div>
-                        </div>
-                    </div>
-
-                    <p class="rtext">
-                        “ProgMaster transformed our clinic website into a premium digital platform. The appointment booking flow, clean UI, and automation significantly improved patient inquiries and consultation management. Everything feels smooth and professional.”
-                    </p>
-
-                    <div class="rchips">
-                        <span class="rchip">✅ Delivered in 14 days</span>
-                        <span class="rchip">✅ Appointment automation</span>
-                        <span class="rchip">✅ Premium clinic UI</span>
-                    </div>
-                </article>
-
-                <!-- Zym / Gym -->
-                <article class="review-pro reveal">
-                    <div class="rhead">
-                        <div class="ravatar">ZY</div>
-                        <div>
-                            <div class="rname">Zym Fitness</div>
-                            <div class="rmeta">Operations Lead • Fitness & Gym • Hyderabad</div>
-                        </div>
-                        <div class="rright">
-                            <div class="rstars">★★★★★</div>
-                            <div class="rdate">Jan 2026</div>
-                        </div>
-                    </div>
-
-                    <p class="rtext">
-                        “The system ProgMaster built helped us manage memberships, leads, and inquiries without manual follow-ups. The UI is modern, fast, and our conversions increased after launch.”
-                    </p>
-
-                    <div class="rchips">
-                        <span class="rchip">✅ CRM + lead automation</span>
-                        <span class="rchip">✅ Performance optimized</span>
-                        <span class="rchip">✅ Mobile-friendly UI</span>
-                    </div>
-                </article>
-
-                <!-- Sri Sai Ram School -->
-                <article class="review-pro reveal">
-                    <div class="rhead">
-                        <div class="ravatar">SS</div>
-                        <div>
-                            <div class="rname">Sri Sai Ram School</div>
-                            <div class="rmeta">Principal • Education • Tirupati</div>
-                        </div>
-                        <div class="rright">
-                            <div class="rstars">★★★★★</div>
-                            <div class="rdate">Jan 2026</div>
-                        </div>
-                    </div>
-
-                    <p class="rtext">
-                        “The school management portal simplified admissions and parent communication. The dashboard, student data handling, and clarity of design saved us a lot of administrative time and effort.”
-                    </p>
-
-                    <div class="rchips">
-                        <span class="rchip">✅ School management system</span>
-                        <span class="rchip">✅ Secure student data</span>
-                        <span class="rchip">✅ Easy admin dashboard</span>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Book a Free Call -->
-    <section id="book" class="section alt">
-        <div class="container">
-            <div class="book-card reveal">
-                <div class="book-left">
-                    <div class="kicker">
-                        <span class="dot"></span>
-                        <span>Free 15-min consultation</span>
-                    </div>
-
-                    <h2 class="book-title">Let’s discuss your project and give you a clear plan.</h2>
-                    <p class="book-sub">
-                        Tell us your idea — we’ll map the exact SaaS flow (users, roles, billing, automation, analytics), and give you a clear delivery plan.
-                    </p>
-
-
-                    <div class="book-points">
-                        <div class="bp">✅ Requirements clarity</div>
-                        <div class="bp">✅ Best tech suggestion</div>
-                        <div class="bp">✅ Timeline + delivery plan</div>
-                        <div class="bp">✅ Next steps checklist</div>
-                    </div>
-
-                    <div class="book-actions">
-                        <a class="pill big" id="calendarBtn" target="_blank" rel="noopener">Book on Calendar</a>
-                        <a class="pill big ghost" id="waConsultBtn" target="_blank" rel="noopener">WhatsApp Now</a>
-                    </div>
-
-                    <div class="book-note">We usually respond within <b>1–2 hours</b>.</div>
+            <div class="p-10 bg-surface-dark md:w-96 flex flex-col justify-center border-l border-white/5">
+                <p class="text-primary text-xs font-black uppercase tracking-[0.2em] mb-2">Professional Template</p>
+                <h3 id="modal-temp-name" class="text-3xl font-black text-white mb-4 leading-tight">Name</h3>
+                <div class="mb-10">
+                    <p class="text-slate-500 text-xs font-bold uppercase mb-2">Price</p>
+                    <p id="modal-temp-price" class="text-white text-4xl font-black">₹0</p>
                 </div>
-
-                <div class="book-right">
-                    <div class="book-mini">
-                        <div class="bm-title">What you’ll get</div>
-                        <div class="bm-list">
-                            <div class="bm-item">• Feature list (MVP)</div>
-                            <div class="bm-item">• UI + flow suggestion</div>
-                            <div class="bm-item">• Architecture overview</div>
-                            <div class="bm-item">• Deployment plan</div>
-                        </div>
-                        <div class="bm-tag">Product-minded delivery</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <h2>Start Your Project</h2>
-                <p>Tell us what you need. We’ll reply quickly with a plan.
-                </p>
-            </div>
-
-            <div class="contact-grid">
-                <form class="form reveal" id="leadForm">
-                    <!-- Anti-spam honeypot (humans won't fill) -->
-                    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" />
-
-                    <div class="row">
-                        <label>
-                            Name
-                            <input type="text" name="name" placeholder="Your full name" required />
-                        </label>
-                        <label>
-                            Phone
-                            <input type="tel" name="phone" placeholder="Your phone number" required />
-                        </label>
-                    </div>
-
-                    <label>
-                        Email
-                        <input type="email" name="email" placeholder="your@email.com" required />
-                    </label>
-
-                    <label>
-                        Service
-                        <select name="service" required>
-                            <option value selected disabled>Select
-                                service</option>
-                            <option>Website</option>
-                            <option>Web Application</option>
-                            <option>Mobile App</option>
-                            <option>Software Product</option>
-                            <option>Maintenance</option>
-                        </select>
-                    </label>
-
-                    <label>
-                        Message
-                        <textarea name="message" rows="5" placeholder="Describe your project…" required></textarea>
-                    </label>
-
-                    <button class="pill big" type="submit" id="submitBtn">
-                        <span class="btn-text">Send Request</span>
-                        <span class="spinner" aria-hidden="true"></span>
-                    </button>
-
-                    <p class="form-note">By submitting, you agree to be contacted by our team.</p>
-                </form>
-
-                <div class="contact-card reveal">
-                    <h3>Company Details</h3>
-                    <p><b>ProgMaster Pvt Ltd</b><br />Govardhana Giri, Chittoor, Andhra Pradesh, 517587</p>
-                    <div class="contact-pills">
-                        <span class="tag">Fast Delivery</span>
-                        <span class="tag">Premium UI</span>
-                        <span class="tag">Realtime Updates</span>
-                    </div>
-                    <div class="line"></div>
-                    <p class="small">You can also share your requirement on WhatsApp after submitting the form.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Study Modal -->
-    <div class="cs-modal" id="csModal" aria-hidden="true">
-        <div class="cs-backdrop" data-close="1"></div>
-
-        <div class="cs-panel" role="dialog" aria-modal="true" aria-labelledby="csTitle">
-            <button class="cs-x" id="csClose" aria-label="Close">✕</button>
-
-            <div class="cs-hero">
-                <div class="cs-pill" id="csType">Platform</div>
-                <h3 class="cs-title" id="csTitle">Case Study</h3>
-                <p class="cs-sub" id="csSub">Short one-line outcome summary.</p>
-            </div>
-
-            <div class="cs-grid">
-                <div class="cs-box">
-                    <div class="cs-h">Problem</div>
-                    <div class="cs-p" id="csProblem"></div>
-                </div>
-
-                <div class="cs-box">
-                    <div class="cs-h">Solution</div>
-                    <div class="cs-p" id="csSolution"></div>
-                </div>
-
-                <div class="cs-box cs-wide">
-                    <div class="cs-h">Key Highlights</div>
-                    <ul class="cs-list" id="csBullets"></ul>
-                </div>
-            </div>
-
-            <div class="cs-meta">
-                <div class="cs-chip" id="csTech"></div>
-                <div class="cs-chip" id="csTime"></div>
-                <div class="cs-chip cs-strong" id="csOutcome"></div>
+                <button class="w-full py-5 bg-primary text-background-dark rounded-2xl font-black text-lg hover:scale-[1.02] transition-all shadow-xl shadow-primary/20">Get This Template</button>
             </div>
         </div>
     </div>
+    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 z-[100] size-12 bg-primary text-background-dark rounded-full shadow-[0_0_20px_rgba(13,242,89,0.4)] flex items-center justify-center translate-y-20 opacity-0 transition-all duration-300 hover:scale-110 active:scale-95">
+    <span class="material-symbols-outlined font-bold text-3xl">expand_less</span>
+</button>
 
-    <!-- Footer -->
-    <footer class="footer-pro">
-        <div class="container fgrid">
-            <div class="fbrand">
-                <a class="brand footer-brand" href="#home">
-                    <span class="logo">PM</span>
-                    <span class="brand-text">ProgMaster</span>
-                </a>
-                <p class="ftext">
-                    Premium development for modern businesses. We build fast, scalable systems with clean UI and strong support.
-                </p>
+    <div id="toast">Thanks for subscribing! 🚀</div>
 
-                <div class="fcta">
-                    <a class="pill big" href="#contact">Get Quote</a>
-                    <a class="pill big ghost" href="#work">See Work</a>
-                </div>
-
-                <div class="fsocial">
-                    <a class="fs" href="mailto:progmabal.progmaster@gmail.com">Email</a>
-                    <a class="fs" target="_blank" rel="noopener" href="https://wa.me/919999999999?text=Hi%20ProgMaster!%20I%20need%20a%20website/app.%20Can%20we%20discuss%3F">WhatsApp</a>
-                    <a class="fs" href="tel:+919999999999">Call</a>
-                </div>
-            </div>
-
-            <div class="flinks">
-                <div class="fh">Company</div>
-                <a href="#services">Services</a>
-                <a href="#work">Work</a>
-                <a href="#process">Process</a>
-                <a href="#testimonials">Reviews</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-            <div class="flinks">
-                <div class="fh">Solutions</div>
-                <a href="#stack">SaaS Systems</a>
-                <a href="#stack">Admin Dashboards</a>
-                <a href="#stack">Web Apps</a>
-                <a href="#stack">Mobile Apps</a>
-                <a href="#stack">Maintenance</a>
-            </div>
-
-            <div class="finfo">
-                <div class="fh">Contact</div>
-                <div class="fi">
-                    <div class="flabel">Address</div>
-                    <div class="fvalue">Govardhana Giri, Chittoor, Andhra Pradesh, 517587</div>
-                </div>
-                <div class="fi">
-                    <div class="flabel">Response Time</div>
-                    <div class="fvalue">Typically within 1–2 hours</div>
-                </div>
-                <div class="fi">
-                    <div class="flabel">Support</div>
-                    <div class="fvalue">Post-launch support + maintenance available</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container fbottom">
-            <div class="fsmall">© <span id="year"></span> ProgMaster. All rights reserved.</div>
-            <div class="fsmall">
-                <a href="#contact">Privacy</a> • <a href="#contact">Terms</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating CTAs -->
-    <div class="float-cta">
-        <a class="float-btn wa" target="_blank" rel="noopener" href="https://wa.me/919999999999?text=Hi%20ProgMaster!%20I%20need%20a%20website/app.%20Can%20we%20discuss%3F" aria-label="Chat on WhatsApp">
-            WhatsApp
-        </a>
-        <a class="float-btn call" href="tel:+919999999999" aria-label="Call ProgMaster">
-            Call
-        </a>
-    </div>
-
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-
-    <script type="module" src="firebase.js"></script>
-    <script src="app.js"></script>
-
-    <!-- Process Modal -->
-    <div class="pmodal" id="processModal" aria-hidden="true">
-        <div class="pbackdrop" data-close="true"></div>
-
-        <div class="pcard" role="dialog" aria-modal="true" aria-labelledby="pTitle">
-            <div class="phead">
-                <div class="ptag" id="pStep">Step</div>
-                <button class="icon-btn" id="pClose" aria-label="Close">✕</button>
-            </div>
-
-            <h3 id="pTitle" class="ptitle">Title</h3>
-            <p id="pDesc" class="pdesc"></p>
-
-            <div class="plist" id="pList"></div>
-
-            <div class="pfoot">
-                <a href="#contact" class="pill big">Start a Project</a>
-                <button class="pill big ghost" id="pOkay" type="button">Got it</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Process Modal -->
-    <div class="pmodal" id="processModal" aria-hidden="true">
-        <div class="pbackdrop" data-close="true"></div>
-
-        <div class="pcard" role="dialog" aria-modal="true" aria-labelledby="pTitle">
-            <div class="phead">
-                <div class="ptag" id="pStep">Step</div>
-                <button class="icon-btn" id="pClose" aria-label="Close">✕</button>
-            </div>
-
-            <h3 id="pTitle" class="ptitle">Title</h3>
-            <p id="pDesc" class="pdesc"></p>
-
-            <div class="plist" id="pList"></div>
-
-            <div class="pfoot">
-                <a href="#contact" class="pill big">Start a Project</a>
-                <button class="pill big ghost" id="pOkay" type="button">Got it</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="float-cta">
-        <a class="float-btn wa" target="_blank" rel="noopener" href="https://wa.me/919999999999?text=Hi%20ProgMaster!%20I%20need%20a%20website/app.%20Can%20we%20discuss%3F" aria-label="Chat on WhatsApp">
-            WhatsApp
-        </a>
-        <a class="float-btn call" href="tel:+919999999999" aria-label="Call ProgMaster">
-            Call
-        </a>
-    </div>
-
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-
-    <script type="module" src="firebase.js"></script>
-    <script src="app.js"></script>
 
 
     <script>
-/* ===============================
-   DISABLE RIGHT CLICK
-================================ */
-document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-    return false;
-});
+        // 1. FIREBASE INITIALIZATION
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5",
+            measurementId: "G-B974CWLPJG"
+        };
 
-/* ===============================
-   DISABLE KEYBOARD SHORTCUTS
-================================ */
-document.addEventListener('keydown', function (e) {
-
-    // Block F12
-    if (e.key === "F12") {
-        e.preventDefault();
-        return false;
-    }
-
-    // Block Ctrl + Shift + I / J / C
-    if (e.ctrlKey && e.shiftKey && 
-        (e.key === "I" || e.key === "J" || e.key === "C")) {
-        e.preventDefault();
-        return false;
-    }
-
-    // Block Ctrl + U (View Source)
-    if (e.ctrlKey && e.key === "u") {
-        e.preventDefault();
-        return false;
-    }
-
-    // Block Ctrl + S (Save)
-    if (e.ctrlKey && e.key === "s") {
-        e.preventDefault();
-        return false;
-    }
-
-    // Block Ctrl + P (Print)
-    if (e.ctrlKey && e.key === "p") {
-        e.preventDefault();
-        return false;
-    }
-
-    // Block Ctrl + Shift + K (Firefox console)
-    if (e.ctrlKey && e.shiftKey && e.key === "K") {
-        e.preventDefault();
-        return false;
-    }
-
-    // Block Ctrl + A, C, X, V
-    if (e.ctrlKey && ["a", "c", "x", "v"].includes(e.key)) {
-        e.preventDefault();
-        return false;
-    }
-});
-
-/* ===============================
-   DISABLE TEXT SELECTION
-================================ */
-document.addEventListener('selectstart', function (e) {
-    e.preventDefault();
-});
-
-/* ===============================
-   DISABLE DRAG
-================================ */
-document.addEventListener('dragstart', function (e) {
-    e.preventDefault();
-});
-
-/* ===============================
-   DEVTOOLS DETECTION (BASIC)
-================================ */
-(function () {
-    let devtoolsOpen = false;
-    const threshold = 160;
-
-    setInterval(() => {
-        const widthDiff = window.outerWidth - window.innerWidth;
-        const heightDiff = window.outerHeight - window.innerHeight;
-
-        if (widthDiff > threshold || heightDiff > threshold) {
-            if (!devtoolsOpen) {
-                devtoolsOpen = true;
-                document.body.innerHTML = "<h2 style='text-align:center;margin-top:20%'>⚠️ Developer Tools Detected</h2>";
-            }
-        } else {
-            devtoolsOpen = false;
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
         }
-    }, 1000);
-})();
-</script>
+        // 2. AUTH OBSERVER (This fixes your navbar issue)
+        firebase.auth().onAuthStateChanged((user) => {
+            // Select all necessary elements
+            const guestState = document.getElementById('guest-state');
+            const userState = document.getElementById('user-state');
+            const userEmail = document.getElementById('user-display-email');
+            const userInitial = document.getElementById('user-initial');
 
+            // Mobile Elements
+            const mobileAuthBtn = document.getElementById('mobile-auth-btn');
+            const mobileUserLinks = document.getElementById('mobile-user-links');
+
+            if (user) {
+                // Desktop Logic
+                if (guestState) guestState.classList.add('hidden');
+                if (userState) userState.classList.remove('hidden');
+                if (userEmail) userEmail.innerText = user.email;
+                if (userInitial) userInitial.innerText = user.email.charAt(0).toUpperCase();
+
+                // Mobile Logic: Show Dashboard/Purchases and change Login to Logout
+                if (mobileUserLinks) mobileUserLinks.classList.remove('hidden');
+                if (mobileAuthBtn) {
+                    mobileAuthBtn.innerText = "Logout";
+                    mobileAuthBtn.onclick = handleSignOut;
+                    mobileAuthBtn.classList.add('text-rose-500'); // Make logout stand out
+                    mobileAuthBtn.classList.remove('text-slate-400');
+                }
+            } else {
+                // Reset Desktop
+                if (guestState) guestState.classList.remove('hidden');
+                if (userState) userState.classList.add('hidden');
+
+                // Reset Mobile: Hide extra links and reset button
+                if (mobileUserLinks) mobileUserLinks.classList.add('hidden');
+                if (mobileAuthBtn) {
+                    mobileAuthBtn.innerText = "Log In";
+                    mobileAuthBtn.onclick = () => location.href = 'auth.html';
+                    mobileAuthBtn.classList.add('text-slate-400');
+                    mobileAuthBtn.classList.remove('text-rose-500');
+                }
+            }
+        }); // Fixed Dropdown Logic
+        function toggleDropdown() {
+            const dropdown = document.getElementById('user-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        function handleSignOut() {
+            firebase.auth().signOut().then(() => {
+                // Force a refresh to reset the UI states
+                window.location.reload();
+            }).catch((error) => {
+                console.error("Sign out error:", error);
+            });
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(e) {
+            const dropdown = document.getElementById('user-dropdown');
+            const userStateBtn = document.getElementById('user-state');
+
+            if (userStateBtn && !userStateBtn.contains(e.target)) {
+                if (dropdown) dropdown.classList.add('hidden');
+            }
+        }
+
+        function openQuickPreview(id, category) {
+            let targetPage = (category === "portfolios") ? "portfolio-preview.html" : "preview.html";
+            window.location.href = `${targetPage}?id=${id}&cat=${category}`;
+        }
+        /* ========================= LOAD PRODUCTS ========================= */
+        window.onload = function() {
+            const trendingGrid = document.getElementById('trending-grid');
+            const templateGrid = document.getElementById('template-grid');
+
+            if (!trendingGrid || !templateGrid) return;
+
+            // Fetch from 'products' root to get resumes AND portfolios
+            firebase.database().ref('products').on('value', function(snapshot) {
+                trendingGrid.innerHTML = "";
+                templateGrid.innerHTML = "";
+
+                let totalCount = 0; // Global counter to track top 5
+
+                snapshot.forEach(function(categorySnapshot) {
+                    const categoryName = categorySnapshot.key; // 'resumes' or 'portfolios'
+
+                    categorySnapshot.forEach(function(child) {
+                        const item = child.val();
+                        const id = child.key;
+                        const targetPage = (categoryName === 'resumes') ? 'preview.html' : 'portfolio-preview.html';
+
+                        // Replace the card generation logic in your loadProducts function
+                        const cardHTML = `
+<div class="group bg-surface-dark/40 border border-white/5 rounded-2xl p-3 hover:border-primary/30 transition-all duration-500 hover:emerald-glow">
+    <div class="relative aspect-[3/4] rounded-xl overflow-hidden mb-4 bg-background-dark border border-white/5">
+        
+        <div class="absolute inset-0 z-10"></div> <iframe 
+            src="${p.download ? p.download.replace('/view', '/preview').replace('/edit', '/preview') : ''}" 
+            class="w-[200%] h-[200%] origin-top-left scale-[0.5] border-none pointer-events-none"
+            loading="lazy">
+        </iframe>
+
+        <div class="absolute inset-0 bg-background-dark/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 flex flex-col items-center justify-center gap-3">
+            <button onclick="window.location.href='preview.html?id=${id}&cat=${category}'" 
+                    class="w-10 h-10 rounded-full bg-primary text-background-dark flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-300">
+                <span class="material-symbols-outlined font-bold">visibility</span>
+            </button>
+            <span class="text-[10px] font-bold text-primary uppercase tracking-widest">View Details</span>
+        </div>
+        
+        <div class="absolute top-2 left-2 z-30">
+            <span class="px-2 py-1 rounded-lg bg-background-dark/60 backdrop-blur-md border border-white/10 text-[9px] font-black text-primary uppercase tracking-tighter">
+                ${p.badge || 'PRO'}
+            </span>
+        </div>
+    </div>
+
+    <div class="flex flex-col px-1">
+        <div class="flex items-center gap-2 mb-1">
+            <span class="text-[8px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-bold uppercase">${category.slice(0, -1)}</span>
+        </div>
+        <h3 class="text-slate-100 font-semibold text-sm truncate">${p.name}</h3>
+        <div class="flex justify-between items-center">
+            <p class="text-primary font-bold">₹${p.price}</p>
+            <button onclick="window.location.href='preview.html?id=${id}&cat=${category}'" 
+                    class="text-primary text-[10px] font-black uppercase hover:underline">Preview</button>
+        </div>
+    </div>
+</div>`;
+                        // LOGIC: Put first 5 in Trending, rest in Template Grid
+                        if (totalCount < 5) {
+                            trendingGrid.insertAdjacentHTML('beforeend', cardHTML);
+                        } else {
+                            templateGrid.insertAdjacentHTML('beforeend', cardHTML);
+                        }
+
+                        totalCount++;
+                    });
+                });
+
+                // Show "More Designs" section only if we actually have more than 5 items
+                const moreSection = document.getElementById('all-designs');
+                if (totalCount <= 5) {
+                    moreSection.classList.add('hidden');
+                } else {
+                    moreSection.classList.remove('hidden');
+                }
+            });
+        }; // UI ACTIONS
+        function toggleDropdown() {
+            document.getElementById('user-dropdown').classList.toggle('hidden');
+        }
+
+        function handleSignOut() {
+            firebase.auth().signOut().then(() => location.reload());
+        }
+
+        function openQuickPreview(id, category) {
+            // Determine the destination page based on category
+            let targetPage = "preview.html"; // Default for resumes
+
+            if (category === "portfolios") {
+                targetPage = "portfolio-preview.html";
+            }
+
+            // Redirect with the ID and category in the URL
+            // This allows the preview page to fetch the correct data from Firebase
+            window.location.href = `${targetPage}?id=${id}&cat=${category}`;
+        }
+
+        function closeQuickPreview() {
+            document.getElementById('quick-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(e) {
+            if (!e.target.closest('#user-state')) {
+                document.getElementById('user-dropdown').classList.add('hidden');
+            }
+        }
+    </script>
+
+    <script>
+        /* ========================= LOAD PRODUCTS ========================= */
+        function loadProducts() {
+            const trendingGrid = document.getElementById('trending-grid');
+            const templateGrid = document.getElementById('template-grid');
+            if (!trendingGrid && !templateGrid) return;
+
+            firebase.database().ref('products').on('value', (snapshot) => {
+                        const categories = snapshot.val();
+                        if (!categories) return;
+
+                        // Clear existing content
+                        if (trendingGrid) trendingGrid.innerHTML = '';
+                        if (templateGrid) templateGrid.innerHTML = '';
+
+                        let totalCount = 0;
+
+                        Object.keys(categories).forEach(categoryName => {
+                                    const products = categories[categoryName];
+                                    Object.keys(products).forEach(id => {
+                                                const item = products[id];
+
+                                                // 1. Check if it's a Portfolio or Resume
+                                                const isPortfolio = categoryName.toLowerCase().includes('portfolio');
+                                                const targetPage = isPortfolio ? 'portfolio-preview.html' : 'preview.html';
+
+                                                // 2. Determine Preview URL (Demo for Portfolios, Drive for Resumes)
+                                                let finalPreviewUrl = "";
+                                                if (isPortfolio) {
+                                                    finalPreviewUrl = item.demo || "";
+                                                } else if (item.download && item.download.includes('drive.google.com')) {
+                                                    const fileIdMatch = item.download.match(/\/d\/([^\/]+)/);
+                                                    if (fileIdMatch) finalPreviewUrl = `https://drive.google.com/file/d/${fileIdMatch[1]}/preview`;
+                                                }
+
+                                                const cardHTML = `
+                <div class="group relative bg-[#11241a] border border-white/5 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500">
+                    
+                    <div class="h-52 w-full bg-black/20 relative overflow-hidden">
+                        ${finalPreviewUrl ? `
+                            <iframe src="${finalPreviewUrl}#toolbar=0" 
+                                class="w-full h-[600px] border-none pointer-events-none opacity-40 group-hover:opacity-100 transition-all duration-700"
+                                style="transform: scale(${isPortfolio ? '0.35' : '0.4'}); transform-origin: top left; width: ${isPortfolio ? '285%' : '250%'};"
+                                loading="lazy">
+                            </iframe>
+                        ` : `
+                            <div class="h-full flex items-center justify-center text-white/5 font-black italic text-2xl uppercase">No Preview</div>
+                        `}
+                        
+                        <div class="absolute inset-0 z-10"></div>
+
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                            <button onclick="location.href='${targetPage}?id=${id}&cat=${categoryName.toLowerCase()}'" 
+                                    class="size-12 bg-primary text-background-dark rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(13,242,89,0.5)] hover:scale-110 active:scale-95 transition-all">
+                                <span class="material-symbols-outlined font-bold">visibility</span>
+                            </button>
+                        </div>
+
+                        ${isPortfolio ? `
+                            <div class="absolute top-3 left-3 z-20 px-2 py-1 bg-primary/20 backdrop-blur-md border border-primary/30 rounded text-[8px] font-black text-primary uppercase">Live Site</div>
+                        ` : ''}
+                    </div>
+
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="text-white font-bold text-sm truncate w-32">${item.name}</h3>
+                                <p class="text-[10px] text-primary font-black uppercase tracking-widest">${categoryName}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-white font-mono font-bold text-sm">₹${item.price}</p>
+                            </div>
+                        </div>
+          
+                    </div>
+                </div>`;
+
+                // Add to grids (First 4 go to Trending, rest to Library)
+                if (totalCount < 4 && trendingGrid) {
+                    trendingGrid.insertAdjacentHTML('beforeend', cardHTML);
+                } else if (templateGrid) {
+                    templateGrid.insertAdjacentHTML('beforeend', cardHTML);
+                }
+                totalCount++;
+            });
+        });
+    });
+}
+        // Make sure to call it
+        window.onload = loadProducts;
+        // Call the function when the page loads
+        window.addEventListener('DOMContentLoaded', loadProducts);
+
+        // Dropdown and Auth helpers
+        function toggleDropdown() {
+            document.getElementById('user-dropdown').classList.toggle('hidden');
+        }
+
+        function handleSignOut() {
+            firebase.auth().signOut().then(() => location.reload());
+        }
+
+        window.onclick = function(e) {
+            if (!e.target.closest('#user-state')) {
+                const dd = document.getElementById('user-dropdown');
+                if (dd) dd.classList.add('hidden');
+            }
+        }
+    </script>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const isHidden = menu.classList.contains('translate-x-full');
+
+            if (isHidden) {
+                menu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            } else {
+                menu.classList.add('translate-x-full');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+
+    <script>
+        window.onscroll = function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                btn.classList.remove('translate-y-20', 'opacity-0');
+                btn.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                btn.classList.add('translate-y-20', 'opacity-0');
+                btn.classList.remove('translate-y-0', 'opacity-100');
+            }
+        };
+    </script>
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stops page reload
+
+            const emailInput = this.querySelector('input');
+            const userEmail = emailInput.value;
+
+            // You can add Firebase logic here later to actually save the email
+            console.log("New Subscriber:", userEmail);
+
+            // Show the message
+            alert("Thanks for subscribing to DevPort! 🚀");
+
+            // Clear the input
+            emailInput.value = '';
+        });
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => {
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+            this.reset();
+        });
+    </script>
 </body>
 
 </html>
-
-
