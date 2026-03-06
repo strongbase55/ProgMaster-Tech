@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Auth | ResumePro</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df259",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#081210", // Deeper dark for premium feel
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(13, 242, 89, 0.15);
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <style>
+        /* Add this to your <style> block */
+        
+        .loader-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        #loading-overlay {
+            display: none;
+            background: rgba(8, 18, 16, 0.8);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+
+    <div id="loading-overlay" class="fixed inset-0 z-[200] flex items-center justify-center">
+        <div class="flex flex-col items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-5xl loader-spin">progress_activity</span>
+            <p class="text-primary font-bold tracking-widest text-xs uppercase">Authenticating...</p>
+        </div>
+    </div>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center font-display">
+    <div class="flex flex-col lg:flex-row w-full min-h-screen">
+
+        <div class="hidden lg:flex lg:w-1/2 relative flex-col justify-between p-12 overflow-hidden bg-[#0a1a14] border-r border-primary/10">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#0df259 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+
+            <div class="relative z-10 flex items-center gap-3">
+
+                <h1 class="text-2xl font-bold tracking-tight text-white">ResumePro</h1>
+            </div>
+
+            <div class="relative z-10">
+                <h2 class="text-6xl font-black leading-tight tracking-tighter text-white mb-6">
+                    Build. Ship. <br/> <span class="text-primary italic">Succeed.</span>
+                </h2>
+                <p class="text-slate-400 text-lg max-w-sm">
+                    The ultimate repository for high-converting resume and portfolio templates for developers.
+                </p>
+            </div>
+
+            <div class="relative z-10 text-sm text-slate-500 font-medium uppercase tracking-widest">
+                © 2026 DevPort Ecosystem
+            </div>
+        </div>
+
+        <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 md:p-20">
+            <div class="w-full max-w-md flex flex-col gap-8">
+
+                <div class="flex flex-col gap-2">
+                    <h3 id="authTitle" class="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Sign In</h3>
+                    <p id="authSubtitle" class="text-slate-500">Welcome back. Enter your details to access your assets.</p>
+                </div>
+
+                <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-xs font-bold uppercase tracking-widest text-slate-500">Email Address</label>
+                        <input id="email" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#12201c] border border-slate-200 dark:border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white" placeholder="name@dev.com"
+                            type="email" />
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center">
+                            <label class="text-xs font-bold uppercase tracking-widest text-slate-500">Password</label>
+                        </div>
+                        <input id="password" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#12201c] border border-slate-200 dark:border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white" placeholder="••••••••"
+                            type="password" />
+                    </div>
+
+                    <button onclick="handleAuth()" id="submitBtn" class="w-full bg-primary hover:brightness-110 text-[#081210] font-black py-4 rounded-xl shadow-lg shadow-primary/20 transition-all transform active:scale-95 mt-2">
+                        Sign In
+                    </button>
+                </div>
+
+                <p class="text-center text-sm text-slate-500">
+                    <span id="toggleText">Don't have an account?</span>
+                    <button onclick="toggleAuthMode()" id="toggleBtn" class="text-primary font-bold hover:underline ml-1">Create an account</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5",
+            measurementId: "G-B974CWLPJG"
+        };
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        let isLogin = true;
+
+        function toggleAuthMode() {
+            isLogin = !isLogin;
+
+            const title = document.getElementById('authTitle');
+            const subtitle = document.getElementById('authSubtitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleText = document.getElementById('toggleText');
+            const toggleBtn = document.getElementById('toggleBtn');
+
+            if (!isLogin) {
+                title.innerText = "Get Started";
+                subtitle.innerText = "Join our community of elite developers today.";
+                submitBtn.innerText = "Create Account";
+                toggleText.innerText = "Already a member?";
+                toggleBtn.innerText = "Sign In";
+            } else {
+                title.innerText = "Sign In";
+                subtitle.innerText = "Welcome back. Enter your details to access your assets.";
+                submitBtn.innerText = "Sign In";
+                toggleText.innerText = "Don't have an account?";
+                toggleBtn.innerText = "Create an account";
+            }
+        }
+
+        function handleAuth() {
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+
+            if (isLogin) {
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                    .then(() => {
+                        window.location.href = "resumehub.html";
+                    })
+                    .catch((err) => {
+                        alert(err.message);
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    });
+
+            } else {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(() => {
+                        window.location.href = "resumehub.html";
+                    })
+                    .catch((err) => {
+                        alert(err.message);
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    });
+            }
+        }
+    </script>
+
+    <script>
+        function login() {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+
+            firebase.auth().signInWithEmailAndPassword(email, pass)
+                .then((userCredential) => {
+                    // Success! Now redirect
+                    window.location.href = 'resumehub.html';
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+    </script>
+
+    <script>
+        function showToast(msg, isError = false) {
+            Toastify({
+                text: msg,
+                duration: 3000,
+                gravity: "top",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                    background: isError ? "#ef4444" : "#0df259",
+                    color: isError ? "#fff" : "#081210",
+                    borderRadius: "12px",
+                    fontWeight: "bold",
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
+                },
+            }).showToast();
+        }
+
+        function handleAuth() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const overlay = document.getElementById('loading-overlay');
+
+            if (!email || !password) {
+                showToast("Please fill in all fields", true);
+                return;
+            }
+
+            // Show Loader
+            overlay.style.display = 'flex';
+
+            const authAction = isLogin ?
+                firebase.auth().signInWithEmailAndPassword(email, password) :
+                firebase.auth().createUserWithEmailAndPassword(email, password);
+
+            authAction
+                .then(() => {
+                    showToast(isLogin ? "Welcome back!" : "Account created successfully!");
+                    setTimeout(() => {
+                        window.location.href = "resumehub.html";
+                    }, 1000);
+                })
+                .catch((err) => {
+                    overlay.style.display = 'none'; // Hide loader on error
+                    showToast(err.message, true);
+                });
+        }
+    </script>
+</body>
+
+</html>
