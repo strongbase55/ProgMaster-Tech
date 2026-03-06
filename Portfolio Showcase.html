@@ -1,0 +1,558 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DevPortfolio | Developer Portfolio Templates</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
+    <script>
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5",
+            measurementId: "G-B974CWLPJG"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+        // This script checks for a user BEFORE the page even finishes loading
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                // If NO user is found, redirect them to the login page
+                alert("Access Denied! Please login to view this page.");
+                window.location.href = "auth.html";
+            } else {
+                console.log("Access Granted for: " + user.email);
+                // Page continues to load normally for the logged-in user
+            }
+        });
+    </script>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+            <div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+
+                <div class="flex items-center gap-2">
+                    <div class="text-primary">
+                        <span class="material-symbols-outlined text-3xl">terminal</span>
+                    </div>
+                    <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ResumeHub</h1>
+                </div>
+
+                <div class="flex items-center">
+                    <div id="logged-out-view" class="flex items-center gap-4">
+                        <a href="auth.html" class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">Login</a>
+                        <a href="auth.html" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 shadow-md transition-all">
+                    Get Started
+                </a>
+                    </div>
+
+                    <div id="logged-in-view" class="hidden relative">
+                        <button onclick="toggleUserDropdown()" class="flex items-center focus:outline-none group">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold border-2 border-white dark:border-slate-800 shadow-lg group-hover:scale-105 transition-transform">
+                        <span id="user-initial">U</span>
+                    </div>
+                </button>
+
+                        <div id="user-dropdown" class="hidden absolute right-0 mt-3 w-52 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl shadow-2xl py-2 z-[100]">
+                            <div class="px-4 py-3 border-b border-slate-50 dark:border-slate-800">
+                                <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Account</p>
+                                <p id="user-email-display" class="text-sm font-bold text-slate-700 dark:text-slate-200 truncate">user@email.com</p>
+                            </div>
+
+                            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                <span class="material-symbols-outlined text-lg">dashboard</span> Dashboard
+                            </a>
+
+                            <a href="purchase.html" class="flex items-center gap-3 px-4 py-3 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                <span class="material-symbols-outlined text-lg">shopping_bag</span> My Purchases
+                            </a>
+
+                            <div class="border-t border-slate-50 dark:border-slate-800 mt-1 pt-1">
+                                <button onclick="logout()" class="w-full text-left flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors font-medium">
+                            <span class="material-symbols-outlined text-lg">logout</span> Logout
+                        </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <main class="flex flex-1 overflow-hidden">
+            <!-- Left Sidebar Filter -->
+            <aside class="hidden md:flex w-72 flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-6 overflow-y-auto">
+                <div class="flex flex-col gap-6">
+                    <div>
+                        <h3 class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider mb-4">Categories</h3>
+                        <nav class="flex flex-col gap-1">
+                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-semibold" href="#">
+                                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                                <span class="text-sm">All Templates</span>
+                            </a>
+                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+                                <span class="material-symbols-outlined text-[20px]">terminal</span>
+                                <span class="text-sm">Minimalist</span>
+                            </a>
+                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+                                <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                                <span class="text-sm">Modern &amp; 3D</span>
+                            </a>
+                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+                                <span class="material-symbols-outlined text-[20px]">article</span>
+                                <span class="text-sm">Resume Style</span>
+                            </a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h3 class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider mb-4">Tech Stack</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium border border-slate-200 dark:border-slate-700">React</span>
+                            <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium border border-slate-200 dark:border-slate-700">Next.js</span>
+                            <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium border border-slate-200 dark:border-slate-700">Tailwind</span>
+                            <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium border border-slate-200 dark:border-slate-700">Framer Motion</span>
+                            <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium border border-slate-200 dark:border-slate-700">Three.js</span>
+                            <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium border border-slate-200 dark:border-slate-700">Svelte</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider mb-4">Pricing</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Budget (Under ₹100)</span>
+</label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Premium Templates</span>
+</label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Free Templates</span>
+</label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!-- Main Content Area -->
+            <div class="flex-1 flex flex-col overflow-y-auto bg-background-light dark:bg-background-dark">
+                <div class="p-6 md:p-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+                        <div class="max-w-2xl">
+                            <nav class="flex gap-2 text-xs font-medium text-slate-500 mb-4">
+                                <a class="hover:text-primary" href="#">Home</a>
+                                <span>/</span>
+                                <span class="text-slate-900 dark:text-white">Developer Portfolios</span>
+                            </nav>
+                            <h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">Professional Developer Templates</h1>
+                            <p class="mt-2 text-slate-600 dark:text-slate-400 text-lg">High-quality source code for your next big break. Starting at just <span class="font-bold text-primary">₹50</span>.</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white dark:bg-slate-800 p-1 rounded-lg border border-slate-200 dark:border-slate-700">
+                            <button class="px-4 py-2 text-sm font-semibold rounded-md bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white">Popular</button>
+                            <button class="px-4 py-2 text-sm font-medium rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white">Newest</button>
+                            <button class="px-4 py-2 text-sm font-medium rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white">Price</button>
+                        </div>
+                    </div>
+                    <!-- Grid of Portfolio Thumbnails -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+                        <!-- Card 1 -->
+                        <div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                            <div class="relative h-56 overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dark themed minimalist developer portfolio landing page" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoHuOlM9-O-m4valDITGHTOlGR6Mu1KDIly5bsjg3Awnftadx6X4wwd8u_g4j_TTSA14ZaSat7c_3-RgNVMORHWYCsk73WiAV0Wg8NRJzpKKRJNohh7N3IW1lyjyadP7y2t4y8dWKVldEDCigtEbHRDIKqXajUs1n2buPsh7UzX-Kke7fbYhExfzKz2sn9ewLn8i7T9q_WGRziTuxQYknYXtY9BMAXuqBYoSYtqe04yicYIsOC8skiwMjJnGWsqpnYdu1XW9zhZgjt"
+                                />
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                                    <button class="px-4 py-2 bg-white text-slate-900 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-slate-50">
+<span class="material-symbols-outlined text-lg">visibility</span> Quick View
+                                    </button>
+                                </div>
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="px-2 py-1 bg-primary/90 text-white text-[10px] font-bold uppercase tracking-wider rounded">React</span>
+                                    <span class="px-2 py-1 bg-black/70 text-white text-[10px] font-bold uppercase tracking-wider rounded">Dark Mode</span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col flex-1">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Nova - Minimal Portfolio</h3>
+                                    <span class="text-primary font-bold">₹50</span>
+                                </div>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4">A clean, dark-themed portfolio focused on typography and smooth page transitions using Framer Motion.</p>
+                                <div class="mt-auto flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                                    <div class="flex -space-x-2">
+                                        <div class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 flex items-center justify-center text-[10px] font-bold">A</div>
+                                        <div class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 flex items-center justify-center text-[10px] font-bold">B</div>
+                                        <div class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-400 flex items-center justify-center text-[10px] font-bold">+12</div>
+                                    </div>
+                                    <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
+                                        Buy Code <span class="opacity-70">₹50</span>
+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                            <div class="relative h-56 overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant 3D portfolio with animated cards and floating elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOxpS1jHCBnkNUELDfDFWFMJS2U3bkXpJrbIjNUAwMo-CnYP4fLdapOV9JCC_VxKPQjbHP0YMKn5fcbixpvRBpWEqiJlHD4sRcVU6aTk7rI5SlDakKg6SVfc8hzOz6faLvXqwbKtj4OFI4KQenHp_xwsKOXw4nOw9cS__aEkqvPRRunFQn-W4sy3hC9nmPPd9C1cT3qArp0-kaZVceFHbRqjimxR2-UHpu8KO9RMSZ7d3uRbSgCr1af7EWLon0pJzqLvohYWmajfOt"
+                                />
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                                    <button class="px-4 py-2 bg-white text-slate-900 rounded-lg text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">visibility</span> Quick View
+                                    </button>
+                                </div>
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="px-2 py-1 bg-green-500/90 text-white text-[10px] font-bold uppercase tracking-wider rounded">Next.js</span>
+                                    <span class="px-2 py-1 bg-purple-500/90 text-white text-[10px] font-bold uppercase tracking-wider rounded">Three.js</span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col flex-1">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Aura - 3D Portfolio</h3>
+                                    <span class="text-primary font-bold">₹89</span>
+                                </div>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4">Stunning 3D elements and immersive scrolling experience for creative frontend developers.</p>
+                                <div class="mt-auto flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                                    <div class="flex items-center gap-1 text-amber-500">
+                                        <span class="material-symbols-outlined text-sm">star</span>
+                                        <span class="text-xs font-bold">4.9 (42 sales)</span>
+                                    </div>
+                                    <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
+                                        Buy Code <span class="opacity-70">₹89</span>
+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                            <div class="relative h-56 overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Code editor style portfolio layout with terminal UI" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH8p6G_Iqz6SCy20KRYJ9gstvYj3-D_4Q1A5QZ8vdUzZDFCmZzGLEcWEAumCVBmilbOr7SnsW3HP2Ks6ks9ZzhFUFf962yXrbY9BEdNpc4bzVrnnOSYKC122Swqiiga7zukW58O5Q4qwN81RynzqCW77DpvkUeNhMbt5UvKUEXYblepVXq2xKguRg3W_Vw2UpQ65B0aaO4GmQ9HYIcGzyPb3-b-WQAxKQRz83jvWtfxU6P_ltKiTI9dH-zfUyl8culvsf2y0DLY-Z5"
+                                />
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                                    <button class="px-4 py-2 bg-white text-slate-900 rounded-lg text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">visibility</span> Quick View
+                                    </button>
+                                </div>
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="px-2 py-1 bg-blue-500/90 text-white text-[10px] font-bold uppercase tracking-wider rounded">Tailwind</span>
+                                    <span class="px-2 py-1 bg-red-500/90 text-white text-[10px] font-bold uppercase tracking-wider rounded">Terminal</span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col flex-1">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Shell - Dev Terminal</h3>
+                                    <span class="text-primary font-bold">₹50</span>
+                                </div>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4">Unique terminal-inspired UI for true command-line enthusiasts. Fully interactive commands.</p>
+                                <div class="mt-auto flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                                    <div class="flex items-center gap-1 text-slate-400">
+                                        <span class="material-symbols-outlined text-sm">schedule</span>
+                                        <span class="text-xs">Updated 2d ago</span>
+                                    </div>
+                                    <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
+                                        Buy Code <span class="opacity-70">₹50</span>
+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View Expandable Section (Simulated Active State) -->
+                    <div class="mt-12 bg-white dark:bg-slate-900 rounded-2xl border-2 border-primary overflow-hidden shadow-2xl shadow-primary/10">
+                        <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary">preview</span>
+                                <h3 class="font-bold text-slate-900 dark:text-white">Quick View: Aura - 3D Portfolio Preview</h3>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 text-green-600 text-xs font-bold rounded-full">
+                                    <span class="size-1.5 rounded-full bg-green-600 animate-pulse"></span> Live Demo
+                                </div>
+                                <button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col lg:flex-row h-[500px]">
+                            <!-- Mockup Content -->
+                            <div class="flex-1 bg-slate-900 relative overflow-hidden flex flex-col items-center justify-center">
+                                <!-- Simulated Portfolio Preview -->
+                                <div class="w-[80%] aspect-video bg-white rounded-lg shadow-2xl overflow-hidden scale-110">
+                                    <div class="h-6 bg-slate-100 flex items-center px-3 gap-1.5 border-b border-slate-200">
+                                        <div class="size-2 rounded-full bg-red-400"></div>
+                                        <div class="size-2 rounded-full bg-amber-400"></div>
+                                        <div class="size-2 rounded-full bg-green-400"></div>
+                                        <div class="ml-4 bg-slate-200 h-3 w-40 rounded"></div>
+                                    </div>
+                                    <div class="p-8 flex flex-col gap-6">
+                                        <div class="flex justify-between">
+                                            <div class="size-8 rounded bg-primary/20"></div>
+                                            <div class="flex gap-4">
+                                                <div class="h-2 w-12 bg-slate-200 rounded"></div>
+                                                <div class="h-2 w-12 bg-slate-200 rounded"></div>
+                                                <div class="h-2 w-12 bg-slate-200 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-3 mt-10">
+                                            <div class="h-8 w-2/3 bg-slate-800 rounded"></div>
+                                            <div class="h-8 w-1/2 bg-slate-800 rounded"></div>
+                                            <div class="h-4 w-3/4 bg-slate-300 rounded mt-4"></div>
+                                        </div>
+                                        <div class="flex gap-4 mt-8">
+                                            <div class="h-10 w-32 bg-primary rounded-lg"></div>
+                                            <div class="h-10 w-32 border-2 border-slate-100 rounded-lg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Pattern overlay -->
+                                <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+                            </div>
+                            <!-- Side Description for Quick View -->
+                            <div class="w-full lg:w-80 border-l border-slate-200 dark:border-slate-800 p-6 flex flex-col">
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Aura - 3D Portfolio</h4>
+                                    <div class="flex items-center gap-1 mb-4">
+                                        <span class="material-symbols-outlined text-amber-500 text-sm">star</span>
+                                        <span class="text-xs font-bold text-slate-500">4.9/5 Rating</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                                        This template features advanced Framer Motion animations and Three.js canvas integrations. Optimized for performance and SEO.
+                                    </p>
+                                    <ul class="space-y-2 mb-6">
+                                        <li class="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-300">
+                                            <span class="material-symbols-outlined text-primary text-base">check_circle</span> Responsive Design
+                                        </li>
+                                        <li class="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-300">
+                                            <span class="material-symbols-outlined text-primary text-base">check_circle</span> Dark/Light Mode
+                                        </li>
+                                        <li class="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-300">
+                                            <span class="material-symbols-outlined text-primary text-base">check_circle</span> CMS for Projects
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="space-y-3">
+                                    <button class="w-full py-3 bg-primary text-white rounded-lg font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                                        Buy Source Code - ₹89
+                                    </button>
+                                    <button class="w-full py-3 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                        Full Screen Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Section -->
+                <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-10">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                        <div class="col-span-2">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="bg-primary p-1 rounded-lg text-white">
+                                    <span class="material-symbols-outlined block text-sm">code_blocks</span>
+                                </div>
+                                <h2 class="text-slate-900 dark:text-white text-md font-bold tracking-tight">DevPortfolio</h2>
+                            </div>
+                            <p class="text-slate-500 text-sm max-w-sm">The world's first marketplace for developer portfolio templates. Helping you land your dream job since 2024.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-4">Product</h4>
+                            <ul class="space-y-2 text-sm text-slate-500">
+                                <li><a class="hover:text-primary" href="#">Templates</a></li>
+                                <li><a class="hover:text-primary" href="#">Custom Design</a></li>
+                                <li><a class="hover:text-primary" href="#">Deployment Help</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                            <ul class="space-y-2 text-sm text-slate-500">
+                                <li><a class="hover:text-primary" href="#">Help Center</a></li>
+                                <li><a class="hover:text-primary" href="#">Contact Us</a></li>
+                                <li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="max-w-7xl mx-auto border-t border-slate-100 dark:border-slate-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p class="text-slate-400 text-xs">© 2024 DevPortfolio. All rights reserved.</p>
+                        <div class="flex gap-4">
+                            <span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary">language</span>
+                            <span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary">share</span>
+                            <span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary">alternate_email</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+
+    <script>
+        (function() {
+            // 1. Generate a unique random token
+            // Example output: "temp-492k-z91"
+            const part1 = Math.random().toString(36).substring(2, 6);
+            const part2 = Math.random().toString(36).substring(2, 6);
+            const token = `view-${part1}-${part2}`;
+
+            // 2. Overwrite the URL in the address bar
+            // This hides "Resume Browse.html" and shows "view-492k-z91"
+            window.history.replaceState(null, null, token);
+        })();
+    </script>
+
+
+
+    <style>
+        /* Prevent the page from flashing templates before the check */
+        
+        body {
+            display: none;
+        }
+    </style>
+
+    <script>
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlToken = urlParams.get('id');
+            const sessionToken = sessionStorage.getItem('activeToken');
+
+            if (!urlToken || urlToken !== sessionToken) {
+                // FAILURE: Link is invalid, shared, or refreshed
+                window.addEventListener('DOMContentLoaded', () => {
+                    document.body.style.display = "block";
+                    document.body.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; font-family: sans-serif; background-color: #fff;">
+                        <img src="access denied.avif" alt="Access Denied" style="max-width: 450px; width: 80%; border-radius: 15px;">
+                        <h1 style="color: #0f172a; margin-top: 20px;">Link Expired</h1>
+                        <p style="color: #64748b;">This session is invalid. Redirecting you home in <span id="timer">5</span> seconds...</p>
+                    </div>
+                `;
+
+                    // 1. Start a 5-second countdown
+                    let timeLeft = 5;
+                    const timerElement = document.getElementById('timer');
+
+                    const countdown = setInterval(() => {
+                        timeLeft--;
+                        timerElement.textContent = timeLeft;
+                        if (timeLeft <= 0) clearInterval(countdown);
+                    }, 1000);
+
+                    // 2. Redirect after 5 seconds using .replace()
+                    // .replace() ensures this "Access Denied" page is removed from History
+                    setTimeout(() => {
+                        window.location.replace("resumehub.html");
+                    }, 5000);
+                });
+            } else {
+                // SUCCESS: Token matches
+                // We consume it immediately
+                sessionStorage.removeItem('activeToken');
+
+                window.addEventListener('DOMContentLoaded', () => {
+                    document.body.style.display = "block";
+                });
+            }
+        })();
+
+
+        // Clean the slate every time they come home
+        window.onload = function() {
+            sessionStorage.clear();
+        };
+    </script>
+    <script>
+        // THE LOGIC: Checks if user is logged in
+        firebase.auth().onAuthStateChanged((user) => {
+            const loggedOutView = document.getElementById('logged-out-view');
+            const loggedInView = document.getElementById('logged-in-view');
+            const emailDisplay = document.getElementById('user-email-display');
+            const initialDisplay = document.getElementById('user-initial');
+
+            if (user) {
+                // User is logged in: Show Profile Icon
+                loggedOutView.classList.add('hidden');
+                loggedInView.classList.remove('hidden');
+                emailDisplay.innerText = user.email;
+                initialDisplay.innerText = user.email.charAt(0).toUpperCase();
+            } else {
+                // User is logged out: Show Login/Get Started
+                loggedOutView.classList.remove('hidden');
+                loggedInView.classList.add('hidden');
+            }
+        });
+
+        function toggleUserDropdown() {
+            document.getElementById('user-dropdown').classList.toggle('hidden');
+        }
+
+        function logout() {
+            firebase.auth().signOut().then(() => {
+                window.location.href = "resumehub.html";
+            });
+        }
+    </script>
+    <script>
+        function loadProducts() {
+            const resumeContainer = document.getElementById('templates-grid');
+            firebase.database().ref('products/resumes').on('value', snapshot => {
+                resumeContainer.innerHTML = "";
+                snapshot.forEach(child => {
+                    const p = child.val();
+                    resumeContainer.innerHTML += `
+                <div class="card">
+                   <img src="${p.image}">
+                   <h3>${p.name}</h3>
+                   <button onclick="buy('${p.name}', '${p.price}', '${p.downloadUrl}')">Buy Now</button>
+                </div>`;
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
