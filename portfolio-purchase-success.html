@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="dark">
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+        }
+    </style>
+</head>
+
+<body class="bg-[#081210] text-white flex items-center justify-center min-h-screen p-6">
+    <div class="max-w-md w-full bg-[#12201c] border border-[#1d332d] p-8 rounded-3xl text-center shadow-2xl">
+        <div class="size-20 bg-[#0df2a6]/20 text-[#0df2a6] rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="material-symbols-outlined !text-4xl">check_circle</span>
+        </div>
+
+        <h1 class="text-2xl font-black mb-2">Payment Successful!</h1>
+        <p class="text-slate-400 text-sm mb-8">Thank you for your purchase. Your source code for <span id="display-name" class="text-white font-bold"></span> is ready.</p>
+
+        <button onclick="triggerDownload()" class="w-full py-4 bg-[#0df2a6] text-[#081210] font-black rounded-xl hover:scale-105 transition-all flex items-center justify-center gap-2 mb-4">
+            <span class="material-symbols-outlined">download</span>
+            DOWNLOAD ZIP FILE
+        </button>
+
+        <a href="index.html" class="text-[#0df2a6] text-xs font-bold hover:underline">Back to Gallery</a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const repo = params.get('repo');
+        const name = params.get('name');
+
+        document.getElementById('display-name').innerText = name;
+
+        function triggerDownload() {
+            // Direct ZIP download from GitHub
+            const zipUrl = `https://github.com/${repo}/archive/refs/heads/main.zip`;
+
+            const link = document.createElement('a');
+            link.href = zipUrl;
+            link.setAttribute('download', '');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+
+</html>
