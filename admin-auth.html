@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin Auth</title>
+</head>
+
+<body class="bg-[#050d08] text-white flex items-center justify-center min-h-screen">
+    <div class="bg-[#0d2216] p-10 rounded-3xl border border-white/10 w-full max-w-md shadow-2xl">
+        <h1 class="text-2xl font-black mb-6 text-center">Admin <span class="text-[#0df259]">Entry</span></h1>
+        <div class="space-y-4">
+            <input id="admin-email" type="email" placeholder="Your Admin Email" class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-[#0df259]">
+            <input id="admin-password" type="password" placeholder="Create Secure Password" class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-[#0df259]">
+            <button onclick="adminAction('signup')" class="w-full border border-white/20 py-3 rounded-xl hover:bg-white/5 font-bold">CREATE ADMIN ACCOUNT</button>
+            <div class="text-center text-xs text-slate-500 py-2">OR</div>
+            <button onclick="adminAction('login')" class="w-full bg-[#0df259] text-black py-4 rounded-xl font-black hover:scale-105 transition-transform">LOGIN TO DASHBOARD</button>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // FIXED: This must match exactly what you type in the login box
+        const MASTER_ADMIN_EMAIL = "admin@edupro.com";
+
+        function adminAction(type) {
+            const email = document.getElementById('admin-email').value.trim();
+            const pass = document.getElementById('admin-password').value;
+
+            if (type === 'signup') {
+                firebase.auth().createUserWithEmailAndPassword(email, pass)
+                    .then(() => {
+                        alert("Account Created! Use the Login button now.");
+                        firebase.auth().signOut();
+                    })
+                    .catch((error) => alert(error.message));
+            } else {
+                firebase.auth().signInWithEmailAndPassword(email, pass)
+                    .then((userCredential) => {
+                        // Check if the logged in email matches our secret master email
+                        if (userCredential.user.email === MASTER_ADMIN_EMAIL) {
+                            window.location.href = "admin.html";
+                        } else {
+                            alert("Unauthorized: You are not the admin!");
+                            firebase.auth().signOut();
+                        }
+                    })
+                    .catch((error) => alert(error.message));
+            }
+        }
+    </script>
+</body>
+
+</html>
