@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>My Purchases - PROGMASTER HUB</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df259",
+                        "forest-deep": "#08150d",
+                        "forest-mid": "#0d2216",
+                        "forest-light": "#1a3d28",
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities { .emerald-gradient { background: radial-gradient(circle at top right, rgba(13, 242, 89, 0.08), transparent), radial-gradient(circle at bottom left, rgba(8, 21, 13, 1), rgba(13, 34, 22, 1)); } } .custom-scrollbar::-webkit-scrollbar {
+        width: 4px; } .custom-scrollbar::-webkit-scrollbar-track { background: transparent; } .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(13, 242, 89, 0.1); border-radius: 10px; } .custom-scrollbar::-webkit-scrollbar-thumb:hover { background:
+        rgba(13, 242, 89, 0.3); }
+    </style>
+</head>
+
+<body class="bg-forest-deep text-slate-100 min-h-screen font-display overflow-x-hidden">
+
+    <div class="flex min-h-screen w-full overflow-hidden">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-forest-mid border-r border-white/5 transform -translate-x-full lg:translate-x-0 lg:relative transition-transform duration-300 ease-in-out flex flex-col">
+            <div class="p-8 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="text-primary"><span class="material-symbols-outlined text-3xl font-bold">terminal</span></div>
+                    <h2 class="text-white text-xl font-extrabold tracking-tight">ResumePro</h2>
+                </div>
+                <button onclick="toggleSidebar()" class="lg:hidden text-slate-400"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <nav class="flex-1 px-4 space-y-2 mt-4">
+                <a href="Resume Browse.html" class="flex items-center gap-4 px-4 py-3 text-slate-400 hover:text-primary transition-colors rounded-lg"><span class="material-symbols-outlined">dashboard</span><span class="font-semibold">Explore</span></a>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 text-primary bg-primary/10 border-l-4 border-primary rounded-r-lg"><span class="material-symbols-outlined">shopping_bag</span><span class="font-semibold">My Purchases</span></a>
+            </nav>
+            <div class="p-6 mt-auto">
+                <div class="bg-forest-light/40 border border-white/5 p-4 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3 overflow-hidden">
+                        <div id="user-initial" class="bg-primary text-forest-deep h-8 w-8 rounded-full flex items-center justify-center font-bold shrink-0">U</div>
+                        <p id="user-email" class="text-white text-sm font-bold truncate">Loading...</p>
+                    </div>
+                    <button onclick="firebase.auth().signOut()" class="w-full py-2 text-xs font-bold text-slate-400 hover:text-white border border-white/10 rounded-lg">Sign Out</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col h-screen overflow-y-auto emerald-gradient">
+            <header class="flex flex-col md:flex-row items-start md:items-center justify-between px-6 lg:px-10 py-8 gap-4">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="lg:hidden p-2 bg-forest-mid rounded-lg text-primary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                    <div>
+                        <h1 class="text-white text-3xl font-black tracking-tight">My Purchases</h1>
+                        <p class="text-slate-400 mt-1 hidden sm:block">Manage your acquired developer assets.</p>
+                    </div>
+                </div>
+                <div class="relative w-full md:w-64">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">search</span>
+                    <input id="search-bar" class="bg-forest-mid border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm w-full text-white focus:ring-primary focus:border-primary" placeholder="Search templates..." type="text" />
+                </div>
+            </header>
+
+            <div class="px-6 lg:px-10 pb-12">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 mb-10">
+                    <div class="bg-forest-mid border border-white/5 p-6 rounded-2xl">
+                        <p class="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-1">Total Spent</p>
+                        <p id="stat-spent" class="text-white text-2xl lg:text-3xl font-black">₹0</p>
+                    </div>
+                    <div class="bg-forest-mid border border-white/5 p-6 rounded-2xl">
+                        <p class="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-1">Assets Owned</p>
+                        <p id="stat-count" class="text-white text-2xl lg:text-3xl font-black">0</p>
+                    </div>
+                    <div class="bg-forest-mid border border-white/5 p-6 rounded-2xl border-b-primary/30 border-b-2">
+                        <p class="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-1">Status</p>
+                        <p class="text-primary text-2xl lg:text-3xl font-black">Active</p>
+                    </div>
+                </div>
+
+                <div id="purchases-container" class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="analytics-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 bg-forest-deep/90 backdrop-blur-xl transition-all duration-300">
+        <div class="bg-forest-mid border border-primary/20 w-full max-w-xl rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(13,242,89,0.15)] flex flex-col max-h-[90vh]">
+
+            <div class="relative p-8 pb-4 bg-gradient-to-b from-primary/5 to-transparent">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h2 id="modal-title" class="text-2xl sm:text-3xl font-black text-white tracking-tight">Modern Dev Elite</h2>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            <p class="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">AI Analytics Active</p>
+                        </div>
+                    </div>
+                    <button onclick="closeModal()" class="p-2 hover:bg-white/10 rounded-full transition-colors text-slate-400 hover:text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                </div>
+            </div>
+
+            <div class="px-8 pb-8 overflow-y-auto custom-scrollbar space-y-6">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-forest-light/30 border border-white/5 p-4 rounded-2xl group hover:border-primary/30 transition-all">
+                        <p class="text-slate-500 text-[10px] font-bold uppercase mb-1">ATS Optimization</p>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-primary text-3xl font-black">98</span>
+                            <span class="text-primary/60 text-sm font-bold">%</span>
+                        </div>
+                    </div>
+                    <div class="bg-forest-light/30 border border-white/5 p-4 rounded-2xl group hover:border-primary/30 transition-all">
+                        <p class="text-slate-500 text-[10px] font-bold uppercase mb-1">Shortlist Prob.</p>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-white text-3xl font-black">Top 5</span>
+                            <span class="text-slate-500 text-sm font-bold">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black/20 rounded-3xl p-5 border border-white/5">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined text-primary text-sm">target</span>
+                        <h4 class="text-white text-xs font-bold uppercase tracking-widest">Keyword Matcher</h4>
+                    </div>
+                    <textarea id="jd-input" placeholder="Paste the Job Description here to see if your resume matches..." class="w-full h-28 bg-forest-deep/50 border border-white/10 rounded-xl p-4 text-sm text-slate-300 placeholder:text-slate-600 focus:ring-1 focus:ring-primary/50 focus:border-primary/50 outline-none transition-all resize-none"></textarea>
+
+                    <button onclick="analyzeKeywords()" class="w-full mt-4 py-3 bg-primary text-forest-deep font-black text-sm rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-[0_10px_20px_rgba(13,242,89,0.2)]">
+                    Analyze Compatibility
+                </button>
+
+                    <div id="keyword-results" class="hidden mt-4 pt-4 border-t border-white/5">
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-slate-500 text-[10px] font-bold uppercase tracking-widest pl-1">Pro Optimization Tips</h4>
+                    <div class="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                        <span class="material-symbols-outlined text-primary mt-0.5">bolt</span>
+                        <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-white">Action Verbs:</strong> Use "Architected" or "Orchestrated" instead of "Worked on".</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 bg-forest-light/20 border-t border-white/5">
+                <button onclick="closeModal()" class="w-full py-3 text-slate-400 hover:text-white font-bold text-sm transition-colors">
+                Back to Dashboard
+            </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5",
+            measurementId: "G-B974CWLPJG"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        }
+
+        function openAnalytics(name) {
+            document.getElementById('modal-title').innerText = name;
+            document.getElementById('analytics-modal').classList.replace('hidden', 'flex');
+        }
+
+        function closeModal() {
+            document.getElementById('analytics-modal').classList.replace('flex', 'hidden');
+        }
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById('user-email').innerText = user.email;
+                document.getElementById('user-initial').innerText = user.email.charAt(0).toUpperCase();
+                loadPurchases(user.uid);
+            } else {
+                window.location.href = "auth.html";
+            }
+        });
+
+        function loadPurchases(uid) {
+            const ref = firebase.database().ref('users/' + uid + '/purchases');
+            ref.on('value', (snapshot) => {
+                const container = document.getElementById('purchases-container');
+                container.innerHTML = "";
+                let totalSpent = 0;
+                let count = 0;
+
+                if (!snapshot.exists()) {
+                    container.innerHTML = `<div class="col-span-full py-20 text-center text-slate-500">No purchases found.</div>`;
+                    return;
+                }
+
+                snapshot.forEach((child) => {
+                    const data = child.val();
+                    count++;
+                    totalSpent += 50;
+
+                    const isPortfolio = !!data.repoPath;
+                    const badgeText = isPortfolio ? "Portfolio Template" : "Resume Template";
+
+                    // --- THUMBNAIL LOGIC ---
+                    let thumbUrl = "default-resume-thumb.jpg";
+                    if (isPortfolio) {
+                        thumbUrl = data.thumbnailUrl || 'thumb.jpg';
+                    } else if (data.downloadUrl && typeof data.downloadUrl === 'string' && data.downloadUrl.includes('id=')) {
+                        const fileId = data.downloadUrl.split('id=')[1].split('&')[0];
+                        thumbUrl = "https://drive.google.com/thumbnail?id=" + fileId + "&sz=w400";
+                    }
+
+                    // --- DIRECT DOWNLOAD LOGIC ---
+                    let finalDownloadUrl = data.downloadUrl || "";
+
+                    if (isPortfolio) {
+                        let path = data.repoPath || data.downloadUrl || "";
+                        if (path.includes("http")) {
+                            if (!path.endsWith(".zip") && !path.includes("/archive/")) {
+                                finalDownloadUrl = path.replace(/\/$/, "") + "/archive/refs/heads/main.zip";
+                            } else {
+                                finalDownloadUrl = path;
+                            }
+                        } else if (path !== "") {
+                            finalDownloadUrl = "https://github.com/" + path + "/archive/refs/heads/main.zip";
+                        }
+                    } else {
+                        // Check if it's a Google Drive link and convert to direct download
+                        if (finalDownloadUrl.includes('drive.google.com')) {
+                            let fileId = "";
+                            if (finalDownloadUrl.includes('id=')) {
+                                fileId = finalDownloadUrl.split('id=')[1].split('&')[0];
+                            } else {
+                                // Handle /file/d/FILE_ID/view format
+                                const match = finalDownloadUrl.match(/\/d\/([^\/]+)/);
+                                if (match) fileId = match[1];
+                            }
+
+                            if (fileId) {
+                                // Force direct download format
+                                finalDownloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+                            }
+                        }
+                    }
+
+                    const itemHtml = `
+            <div class="bg-forest-mid/50 border border-white/5 hover:border-primary/30 transition-all rounded-2xl p-5 sm:p-6 group">
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <div class="w-full sm:w-32 h-44 shrink-0 bg-slate-800 bg-center bg-no-repeat bg-cover rounded-lg shadow-2xl border border-white/10 transition-transform group-hover:scale-105" 
+                         style="background-image: url('${thumbUrl}')">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${isPortfolio ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-primary/10 text-primary border-primary/20'} uppercase">
+                                    ${badgeText}
+                                </span>
+                                <span class="text-slate-500 text-[10px] font-mono">#${(data.paymentId || 'ORD').substring(0,8)}</span>
+                            </div>
+                            <h3 class="text-white text-xl font-bold mt-2">${data.templateName}</h3>
+                            <p class="text-slate-400 text-sm mt-1 line-clamp-2 italic">
+                                ${isPortfolio ? 'High-performance developer portfolio source code.' : 'Optimized for high-growth tech companies.'}
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 mt-4">
+                            <a href="${finalDownloadUrl}" target="_self" class="flex-1 flex items-center justify-center gap-2 bg-primary text-forest-deep py-2.5 rounded-xl font-extrabold text-sm hover:brightness-110">
+                                <span class="material-symbols-outlined text-lg">download</span> Download
+                            </a>
+                            <button onclick="openAnalytics('${data.templateName}')" class="px-3 py-2.5 bg-forest-light text-primary rounded-xl hover:bg-forest-light/80">
+                                <span class="material-symbols-outlined">analytics</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                    container.insertAdjacentHTML('beforeend', itemHtml);
+                });
+
+                document.getElementById('stat-spent').innerText = "₹" + totalSpent;
+                document.getElementById('stat-count').innerText = count;
+            });
+        }
+
+        // SEARCH LOGIC
+        const searchBar = document.getElementById('search-bar');
+        if (searchBar) {
+            searchBar.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('#purchases-container > div');
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').innerText.toLowerCase();
+                    card.style.display = title.includes(term) ? 'block' : 'none';
+                });
+            });
+        }
+
+        // KEYWORD ANALYZER LOGIC (Fixed scope issues)
+        function analyzeKeywords() {
+            const jdText = document.getElementById('jd-input').value.toLowerCase();
+            const resultDiv = document.getElementById('keyword-results');
+            const supportKeywords = ['service desk', 'incident management', 'itil', 'voice support', 'troubleshooting', 'sla', 'ticketing'];
+
+            const matched = supportKeywords.filter(word => jdText.includes(word));
+            resultDiv.classList.remove('hidden');
+
+            const matchPercent = Math.min(Math.round((matched.length / supportKeywords.length) * 100), 100);
+            let statusColor = matchPercent > 70 ? '#0df259' : (matchPercent > 40 ? '#fbbf24' : '#ef4444');
+
+            resultDiv.innerHTML = `
+            <div class="mb-6">
+                <div class="flex justify-between items-end mb-2">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase">JD Match Strength</p>
+                    <p class="text-xl font-black" style="color: ${statusColor}">${matchPercent}%</p>
+                </div>
+                <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full transition-all duration-1000 ease-out" 
+                         style="width: ${matchPercent}%; background-color: ${statusColor}; shadow: 0 0 10px ${statusColor}66">
+                    </div>
+                </div>
+            </div>
+            <p class="text-primary text-[10px] font-black uppercase mb-3 tracking-widest">Detected Keywords:</p>
+            <div class="flex flex-wrap gap-2">
+                ${matched.map(word => `<span class="px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded text-[10px] font-bold uppercase">${word}</span>`).join('')}
+            </div>
+        `;
+    }
+    </script>
+</body>
+
+</html>
