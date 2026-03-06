@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Preview Mode</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df259",
+                        "background-dark": "#102216",
+                        "surface-dark": "#162c1d",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .loader-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* Prevents interaction with the PDF viewer controls */
+        
+        .preview-lock {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            background: transparent;
+            cursor: default;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 min-h-screen font-sans">
+    <header class="border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-10 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-3 text-primary">
+            <span class="material-symbols-outlined text-3xl cursor-pointer" onclick="window.history.back()">arrow_back</span>
+            <h2 class="text-xl font-bold tracking-tight text-white">Preview</h2>
+        </div>
+        <button onclick="window.location.href='purchase.html'" class="text-slate-400 hover:text-primary text-sm font-medium transition-colors">My Purchases</button>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-8 space-y-6">
+                <div id="preview-container" class="w-full aspect-[3/4] bg-surface-dark rounded-xl overflow-hidden relative border border-primary/5 shadow-2xl">
+                    <div class="preview-lock"></div>
+
+                    <div id="iframe-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-surface-dark z-10">
+                        <span class="material-symbols-outlined text-primary text-5xl loader-spin">progress_activity</span>
+                        <p class="mt-4 text-slate-400 text-sm italic">Securing Preview...</p>
+                    </div>
+                    <iframe id="pdf-frame" src="" class="w-full h-full opacity-0 transition-opacity duration-500" frameborder="0" onload="this.classList.remove('opacity-0'); document.getElementById('iframe-loader').style.display='none';"></iframe>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-surface-dark p-8 rounded-3xl border border-primary/10 sticky top-28 shadow-2xl">
+                    <h1 id="template-title" class="text-3xl font-black mb-2 text-white italic tracking-tight">Loading...</h1>
+                    <p id="template-desc" class="text-slate-400 text-sm mb-6">Expertly crafted for ATS optimization and modern aesthetic.</p>
+
+                    <div id="features-list" class="space-y-4 mb-8">
+                    </div>
+
+                    <div class="pt-6 border-t border-white/10">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-slate-400 font-medium text-sm uppercase tracking-widest">Total Price</span>
+                            <span id="price-display" class="text-3xl font-black text-primary font-mono">₹--</span>
+                        </div>
+                        <button id="buy-btn" class="w-full py-4 bg-primary text-background-dark font-black rounded-2xl shadow-[0_0_20px_rgba(13,242,89,0.4)] hover:scale-[1.02] active:scale-95 transition-all uppercase tracking-widest">
+                            PURCHASE TO DOWNLOAD
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5",
+            measurementId: "G-B974CWLPJG"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+        const category = params.get('cat');
+
+        if (productId && category) {
+            const dbPath = `products/${category.toLowerCase()}/${productId}`;
+
+            firebase.database().ref(dbPath).once('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    renderUI(data);
+                } else {
+                    document.getElementById('template-title').innerText = "Asset Not Found";
+                }
+            });
+        }
+
+        function renderUI(data) {
+            // Basic Info
+            document.getElementById('template-title').innerText = data.name;
+            document.getElementById('template-desc').innerText = data.description || "Premium template optimized for top-tier hiring tools.";
+            document.getElementById('price-display').innerText = "₹" + data.price;
+
+            // Handle Dynamic Features (Attractive Highlights)
+            const featuresContainer = document.getElementById('features-list');
+            const defaultFeatures = [{
+                icon: 'verified',
+                text: 'Recruiter Verified'
+            }, {
+                icon: data.download.includes('.pdf') ? 'picture_as_pdf' : 'description',
+                text: `Format: ${data.download.includes('.pdf') ? 'PDF' : 'DOCX/PDF'}`
+            }, {
+                icon: 'analytics',
+                text: `ATS Score: ${data.ats || '95'}/100`
+            }];
+
+            // Use data-specific features if they exist in DB, otherwise use defaults
+            const featuresToUse = data.customFeatures || defaultFeatures;
+
+            featuresContainer.innerHTML = featuresToUse.map(f => `
+                <div class="flex items-center gap-3 text-slate-300">
+                    <span class="material-symbols-outlined text-primary">${f.icon}</span>
+                    <span class="text-sm font-semibold">${f.text}</span>
+                </div>
+            `).join('');
+
+            // Iframe Preview with /preview mode
+            if (data.download) {
+                let previewLink = data.download.replace('/view', '/preview').replace('/edit', '/preview');
+                if (!previewLink.includes('/preview') && previewLink.includes('drive.google.com')) {
+                    previewLink = previewLink.split('?')[0] + '/preview';
+                }
+                document.getElementById('pdf-frame').src = previewLink;
+            }
+
+            document.getElementById('buy-btn').onclick = () => startPayment(data.name, data.price, data.download);
+        }
+
+        function startPayment(pName, pPrice, pLink) {
+            const user = firebase.auth().currentUser;
+            if (!user) {
+                alert("Please login to purchase");
+                window.location.href = 'auth.html';
+                return;
+            }
+
+            const options = {
+                "key": "rzp_test_MFXBFr6Rwpv2jP",
+                "amount": parseInt(pPrice) * 100,
+                "currency": "INR",
+                "name": "ResumeHub",
+                "description": "Purchase: " + pName,
+                // Inside your Razorpay options 'handler' function in preview.html
+                "handler": function(response) {
+                    const user = firebase.auth().currentUser;
+                    // Get values using the CORRECT IDs from your HTML
+                    const tName = document.getElementById('template-title').innerText;
+                    const tPrice = document.getElementById('price-display').innerText.replace('₹', '');
+
+                    firebase.database().ref('purchases/' + user.uid).push({
+                        templateId: productId, // Uses the ID from URL
+                        templateName: tName,
+                        price: tPrice,
+                        paymentId: response.razorpay_payment_id,
+                        timestamp: firebase.database.ServerValue.TIMESTAMP
+                    }).then(() => {
+                        window.location.href = "purchase.html";
+                    }).catch(err => {
+                        console.error("Database Error:", err);
+                        alert("Payment successful, but failed to save. Contact support with ID: " + response.razorpay_payment_id);
+                    });
+                },
+                "prefill": {
+                    "email": user.email
+                },
+                "theme": {
+                    "color": "#0df259"
+                }
+            };
+            new Razorpay(options).open();
+        }
+
+        function savePurchase(templateName, payId, link) {
+            const user = firebase.auth().currentUser;
+            const purchaseData = {
+                templateName,
+                paymentId: payId,
+                downloadUrl: link,
+                purchasedAt: Date.now()
+            };
+            firebase.database().ref('users/' + user.uid + '/purchases').push(purchaseData)
+                .then(() => {
+                    window.location.href = `success.html?name=${encodeURIComponent(templateName)}&payId=${payId}`;
+                });
+        }
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) window.location.href = 'auth.html';
+        });
+    </script>
+
+
+    <script>
+        // 1. Grab the ID from the URL (the part after ?id=)
+        const urlParams = new URLSearchParams(window.location.search);
+        const templateId = urlParams.get('id');
+
+        if (templateId) {
+            // 2. Search all categories in Firebase to find this ID
+            firebase.database().ref('products').once('value', (snapshot) => {
+                const categories = snapshot.val();
+                let foundData = null;
+
+                // Loop through categories (resumes, portfolios, etc.) to find the item
+                for (let cat in categories) {
+                    if (categories[cat][templateId]) {
+                        foundData = categories[cat][templateId];
+                        break;
+                    }
+                }
+
+                if (foundData) {
+                    // 3. Put the data into your HTML elements
+                    document.getElementById('template-title').innerText = foundData.name;
+                    document.getElementById('template-price').innerText = "₹" + foundData.price;
+
+                    // 4. Update the iframe preview
+                    const iframe = document.getElementById('preview-iframe');
+                    if (iframe) {
+                        let url = foundData.download || foundData.liveUrl;
+                        // Convert Drive link to Preview link if needed
+                        if (url.includes('drive.google.com')) {
+                            const id = url.match(/\/d\/([^\/]+)/)[1];
+                            iframe.src = `https://drive.google.com/file/d/${id}/preview`;
+                        } else {
+                            iframe.src = url;
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
