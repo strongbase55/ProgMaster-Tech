@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Portfolio Preview | DevPort</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2a6",
+                        "background-dark": "#081210",
+                        "surface-dark": "#12201c",
+                        "border-dark": "#1d332d",
+                    },
+                },
+            },
+        }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
+    <script>
+        // You MUST include your config here too so this page knows which DB to talk to
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5",
+            measurementId: "G-B974CWLPJG"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <style>
+        /* Force icons to render as symbols, not text */
+        
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1d332d;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 min-h-screen flex flex-col font-['Inter']">
+
+    <header class="flex items-center justify-between border-b border-border-dark px-4 md:px-6 py-3 bg-surface-dark/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+            <button onclick="window.history.back()" class="size-8 bg-primary rounded flex items-center justify-center text-background-dark hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined !text-sm">arrow_back</span>
+            </button>
+            <h2 class="text-lg md:text-xl font-bold">DevPort</h2>
+        </div>
+        <div class="hidden sm:flex items-center bg-background-dark border border-border-dark rounded-full px-3 py-1 gap-2">
+            <span class="material-symbols-outlined text-primary text-sm">devices</span>
+            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Live Preview Mode</span>
+        </div>
+    </header>
+
+    <main class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+
+        <section class="flex-1 p-4 md:p-6 flex flex-col gap-4 min-h-[60vh] lg:min-h-0">
+
+            <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                    <div class="flex gap-1.5">
+                        <div class="size-2.5 rounded-full bg-red-500/40"></div>
+                        <div class="size-2.5 rounded-full bg-yellow-500/40"></div>
+                        <div class="size-2.5 rounded-full bg-green-500/40"></div>
+                    </div>
+                    <div id="preview-loader" class="hidden">
+                        <svg class="animate-spin h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                    </div>
+                </div>
+
+                <div class="flex items-center bg-background-dark/50 border border-border-dark rounded-lg p-1 gap-1">
+                    <button onclick="resizePreview('mobile')" class="p-1.5 hover:bg-primary/20 rounded text-slate-400 hover:text-primary transition-colors" title="Mobile View">
+        <span class="material-symbols-outlined !text-sm">smartphone</span>
+    </button>
+                    <button onclick="resizePreview('tablet')" class="p-1.5 hover:bg-primary/20 rounded text-slate-400 hover:text-primary transition-colors" title="Tablet View">
+        <span class="material-symbols-outlined !text-sm">tablet</span>
+    </button>
+                    <button onclick="resizePreview('desktop')" class="hidden md:flex p-1.5 hover:bg-primary/20 rounded text-primary bg-primary/10 transition-colors" title="Desktop View">
+    <span class="material-symbols-outlined !text-sm">desktop_windows</span>
+</button>
+                </div>
+
+                <div id="url-bar" class="hidden"></div>
+            </div>
+            <div class="flex-1 flex justify-center items-center overflow-hidden p-4">
+                <div id="preview-wrapper" class="w-full h-full transition-all duration-500 ease-in-out bg-white overflow-hidden relative shadow-2xl border-2 border-surface-dark rounded-xl">
+
+                    <div id="phone-notch" class="hidden absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-surface-dark rounded-b-2xl z-50"></div>
+
+                    <iframe id="live-demo-frame" src="" class="w-full h-full border-none transition-all duration-500"></iframe>
+
+                    <div id="phone-home-bar" class="hidden absolute bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-slate-300 rounded-full z-50"></div>
+                </div>
+            </div>
+        </section>
+        <aside class="w-full lg:w-96 bg-surface-dark border-t lg:border-t-0 lg:border-l border-border-dark flex flex-col p-6 md:p-8 gap-6 overflow-y-auto">
+            <div>
+                <span class="text-primary text-[10px] font-black tracking-widest uppercase mb-1 block">Featured Template</span>
+                <h1 id="template-title" class="text-2xl md:text-3xl font-black leading-tight mb-2 uppercase">Portfolio Name</h1>
+                <p class="text-slate-400 text-xs">By <span class="text-slate-200 font-medium italic">EmeraldElite</span></p>
+            </div>
+
+            <div class="p-4 bg-background-dark/50 rounded-xl border border-border-dark">
+                <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Tech Stack</h3>
+                <div id="stack-container" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Premium Features</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary">check_circle</span>
+                        <span class="text-sm text-slate-300">Fully Responsive UI</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary">check_circle</span>
+                        <span class="text-sm text-slate-300">Clean GitHub Source Code</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary">check_circle</span>
+                        <span class="text-sm text-slate-300">Commercial Usage License</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-auto pt-6 border-t border-border-dark">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex flex-col">
+                        <span class="text-slate-500 text-xs line-through">₹499</span>
+                        <span class="text-4xl font-black text-white">₹50</span>
+                    </div>
+                    <div class="px-3 py-1 bg-primary/20 text-primary rounded-lg text-[10px] font-black italic">SAVE 90%</div>
+                </div>
+
+                <button onclick="buySource()" class="w-full py-5 bg-primary hover:brightness-110 active:scale-95 text-background-dark font-black text-lg rounded-2xl transition-all flex items-center justify-center gap-2 shadow-[0_0_40px_rgba(13,242,166,0.15)]">
+                    BUY SOURCE CODE
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </aside>
+    </main>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        let currentRepo = "";
+        let currentName = "";
+        let currentThumb = "";
+        let authenticatedUser = null;
+        const RZP_KEY = "REPLACE_WITH_YOUR_KEY"; // Put your rzp_test_... key here
+
+        // 1. Auth Observer
+        firebase.auth().onAuthStateChanged((user) => {
+            authenticatedUser = user;
+            console.log(user ? "User Authenticated: " + user.email : "No User Logged In");
+        });
+
+        // 2. Load Data & Setup
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+            const category = params.get('cat') || 'portfolios';
+
+            if (!productId) return;
+
+            const loader = document.getElementById('preview-loader');
+            if (loader) loader.classList.remove('hidden');
+
+            firebase.database().ref('products/' + category + '/' + productId).once('value').then((snapshot) => {
+                const item = snapshot.val();
+                if (item) {
+                    currentName = item.name;
+                    currentThumb = item.image || item.thumbnail || params.get('img') || "";
+                    currentRepo = item.repo || item.download || item.sourceCode || "";
+
+                    document.getElementById('template-title').innerText = item.name;
+
+                    const iframe = document.getElementById('live-demo-frame');
+                    if (iframe && item.demo) {
+                        iframe.src = item.demo;
+                    }
+
+                    const stackContainer = document.getElementById('stack-container');
+                    if (stackContainer && item.stack) {
+                        stackContainer.innerHTML = item.stack.split(',').map(tech => `
+                            <span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-black rounded-md uppercase tracking-tighter">
+                                ${tech.trim()}
+                            </span>`).join('');
+                    }
+                }
+                hideLoader();
+            });
+        };
+
+        // FIX: Added the missing Resize Logic
+        function resizePreview(device) {
+            const wrapper = document.getElementById('preview-wrapper');
+            const notch = document.getElementById('phone-notch');
+            const homeBar = document.getElementById('phone-home-bar');
+            const buttons = document.querySelectorAll('[onclick^="resizePreview"]');
+
+            // UI Reset for buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('text-primary', 'bg-primary/10');
+                btn.classList.add('text-slate-400');
+            });
+            event.currentTarget.classList.add('text-primary', 'bg-primary/10');
+
+            // Clear previous device-specific classes
+            wrapper.className = "transition-all duration-500 ease-in-out bg-white overflow-hidden relative shadow-2xl mx-auto";
+            notch.classList.add('hidden');
+            homeBar.classList.add('hidden');
+
+            if (device === 'mobile') {
+                // Standard iPhone Dimensions + Styling
+                wrapper.style.width = '375px';
+                wrapper.style.height = '750px';
+                wrapper.classList.add('border-[12px]', 'border-surface-dark', 'rounded-[3rem]');
+                notch.classList.remove('hidden');
+                homeBar.classList.remove('hidden');
+            } else if (device === 'tablet') {
+                // iPad Dimensions + Styling
+                wrapper.style.width = '600px';
+                wrapper.style.height = '800px';
+                wrapper.classList.add('border-[15px]', 'border-surface-dark', 'rounded-[2rem]');
+            } else {
+                // Full Desktop View
+                wrapper.style.width = '100%';
+                wrapper.style.height = '100%';
+                wrapper.classList.add('border-2', 'border-surface-dark', 'rounded-xl');
+            }
+        }
+
+        function hideLoader() {
+            const loader = document.getElementById('preview-loader');
+            if (loader) loader.classList.add('hidden');
+        }
+
+        // FIX: Updated path to 'purchases/uid' to match your purchase.html page
+        function buySource() {
+            const btn = event.currentTarget;
+            const originalContent = btn.innerHTML;
+
+            if (!authenticatedUser) {
+                alert("Please login to purchase.");
+                return;
+            }
+
+            if (!currentRepo) {
+                alert("Source Code link not found for this template.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `Connecting...`;
+
+            const options = {
+                "key": 'rzp_live_RP7nclFVkMuJ83',
+                "amount": '100',
+                "currency": "INR",
+                "name": "DevPort",
+                "description": "Purchase: " + currentName,
+                "handler": function(response) {
+                    // This matches the path in your purchase.html
+                    firebase.database().ref('purchases/' + authenticatedUser.uid).push({
+                        templateName: currentName,
+                        downloadUrl: currentRepo, // Changed to downloadUrl for compatibility
+                        thumbnailUrl: currentThumb,
+                        paymentId: response.razorpay_payment_id,
+                        price: 50,
+                        timestamp: firebase.database.ServerValue.TIMESTAMP
+                    }).then(() => {
+                        window.location.href = "purchase.html";
+                    });
+                },
+                "modal": {
+                    "ondismiss": () => {
+                        btn.disabled = false;
+                        btn.innerHTML = originalContent;
+                    }
+                },
+                "prefill": {
+                    "email": authenticatedUser.email
+                },
+                "theme": {
+                    "color": "#0df2a6"
+                }
+            };
+
+            const rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+        document.querySelector('[onclick="resizePreview(\'desktop\')"]').click();
+    </script>
+</body>
+
+</html>
