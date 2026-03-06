@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PROGMASTER HUB</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38fab9",
+                        "background-dark": "#0f231c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        /* Sidebar active state */
+        /* Skeleton Shimmer Animation */
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+        
+        .skeleton {
+            background: linear-gradient(90deg, #11241a 25%, #1a3a30 50%, #11241a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        /* Sidebar active state */
+        /* Horizontal Scroll without scrollbar */
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            /* Better physics on iPhone */
+        }
+        /* Ensure buttons don't shrink */
+        
+        .filter-btn {
+            flex-shrink: 0;
+        }
+        
+        .sidebar-item-active {
+            border-color: rgba(56, 250, 185, 0.3) !important;
+            background-color: rgba(56, 250, 185, 0.05) !important;
+        }
+        
+        .sidebar-item-active span {
+            color: #38fab9 !important;
+        }
+        /* Loader Animation */
+        
+        .loader-spin {
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(56, 250, 185, 0.1);
+            border-top: 3px solid #38fab9;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .sidebar-item-active {
+            border-color: rgba(56, 250, 185, 0.3) !important;
+            background-color: rgba(56, 250, 185, 0.05) !important;
+        }
+        
+        .sidebar-item-active span {
+            color: #38fab9 !important;
+        }
+        /* Loader Animation */
+        
+        .loader-spin {
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(56, 250, 185, 0.1);
+            border-top: 3px solid #38fab9;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1a3a30;
+            border-radius: 10px;
+        }
+        
+        .filter-btn.active {
+            background: #38fab9;
+            color: #0f231c;
+        }
+    </style>
+    <style>
+        /* Hide scrollbar for the horizontal badge menu on mobile */
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Prevent iframe from breaking layout on small screens */
+        
+        iframe {
+            max-width: none !important;
+        }
+        /* Adjust the card container for mobile touch */
+        
+        @media (max-width: 640px) {
+            #library-grid {
+                padding-bottom: 80px;
+                /* Extra space for thumb scrolling */
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-display text-slate-100 min-h-screen">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="sticky top-0 z-50 flex items-center justify-between border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-6 py-3 lg:px-10">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3 text-primary cursor-pointer" onclick="location.href='resumehub.html'">
+                    <span class="material-symbols-outlined text-3xl font-bold">description</span>
+                    <h2 class="text-white text-xl font-bold tracking-tight">PROGMASTER HUB</h2>
+                </div>
+            </div>
+            <div class="relative">
+                <button onclick="toggleDropdown()" class="flex items-center gap-3 p-1 pr-3 rounded-full hover:bg-white/5 transition-all border border-transparent hover:border-white/10 group">
+                    <div id="user-initial" class="size-10 rounded-full border-2 border-primary bg-primary/20 flex items-center justify-center font-bold text-primary group-hover:shadow-[0_0_15px_rgba(56,250,185,0.3)] transition-all"></div>
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">expand_more</span>
+                </button>
+                <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-[#1a3a30] border border-primary/20 shadow-2xl py-2 z-50 backdrop-blur-xl">
+                    <div class="px-4 py-3 border-b border-white/5">
+                        <p id="user-email-display" class="text-sm font-bold text-white truncate italic">Loading...</p>
+                    </div>
+                    <button onclick="location.href='my-purchases.html'" class="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:bg-white/5 transition-all font-bold">
+        <span class="material-symbols-outlined text-lg text-primary">shopping_bag</span> My Purchases
+    </button>
+                    <button onclick="handleLogout()" class="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-all font-bold">
+        <span class="material-symbols-outlined text-lg">logout</span> Sign Out
+    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex flex-1 overflow-hidden">
+            <aside class="w-72 border-r border-primary/10 bg-background-dark hidden lg:flex flex-col p-6">
+                <h3 class="text-slate-100 text-xs font-bold uppercase tracking-widest mb-4 opacity-50">Filter Type</h3>
+                <div class="flex flex-col gap-2">
+                    <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer border border-transparent has-[:checked]:border-primary/30 has-[:checked]:bg-primary/5 transition-all group">
+                        <input type="radio" name="view_mode" value="all" checked onchange="filterLibrary()" class="hidden">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">apps</span>
+                        <span class="text-sm font-medium">All Templates</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer border border-transparent has-[:checked]:border-primary/30 has-[:checked]:bg-primary/5 transition-all group">
+                        <input type="radio" name="view_mode" value="resumes" onchange="filterLibrary()" class="hidden">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">description</span>
+                        <span class="text-sm font-medium">Resumes</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer border border-transparent has-[:checked]:border-primary/30 has-[:checked]:bg-primary/5 transition-all group">
+                        <input type="radio" name="view_mode" value="portfolios" onchange="filterLibrary()" class="hidden">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">art_track</span>
+                        <span class="text-sm font-medium">Portfolios</span>
+                    </label>
+                </div>
+            </aside>
+
+            <main class="flex-1 flex flex-col bg-background-dark/50 overflow-hidden">
+                <div class="p-4 sm:p-6 border-b border-primary/10 bg-background-dark/95 backdrop-blur-md sticky top-0 z-40">
+                    <div class="flex flex-col gap-4">
+                        <div class="relative group w-full">
+                            <span class="material-symbols-outlined absolute left-4 top-3 text-primary/40 group-focus-within:text-primary">search</span>
+                            <input id="searchInput" onkeyup="filterLibrary()" class="w-full h-12 bg-primary/5 border-2 border-primary/10 rounded-xl pl-12 text-slate-100 focus:outline-none focus:border-primary" placeholder="Search templates..." />
+                        </div>
+
+                        <div class="flex items-center overflow-x-auto no-scrollbar gap-2 py-1">
+                            <button onclick="filterByBadge('all', this)" class="filter-btn active whitespace-nowrap px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex-shrink-0">All</button>
+                            <button onclick="filterByBadge('trending', this)" class="filter-btn whitespace-nowrap px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-orange-400 transition-all flex-shrink-0">Trending</button>
+                            <button onclick="filterByBadge('premium', this)" class="filter-btn whitespace-nowrap px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-amber-400 transition-all flex-shrink-0">Premium</button>
+                            <button onclick="filterByBadge('new', this)" class="filter-btn whitespace-nowrap px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-emerald-400 transition-all flex-shrink-0">New</button>
+                            <button onclick="filterByBadge('high-rated', this)" class="filter-btn whitespace-nowrap px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-400 transition-all flex-shrink-0">High Rated</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-6 custom-scrollbar">
+                    <div id="library-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt_3PX3WMQ5lGeOnnfoe7pOtliF-dFBQE",
+            authDomain: "resumedatabase-a2c4b.firebaseapp.com",
+            databaseURL: "https://resumedatabase-a2c4b-default-rtdb.firebaseio.com",
+            projectId: "resumedatabase-a2c4b",
+            storageBucket: "resumedatabase-a2c4b.firebasestorage.app",
+            messagingSenderId: "595333710032",
+            appId: "1:595333710032:web:f8faf099251231bb959ed5",
+            measurementId: "G-B974CWLPJG"
+        };
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+
+        let allItems = [];
+        let activeBadge = 'all';
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById('user-initial').innerText = user.email.charAt(0).toUpperCase();
+                document.getElementById('user-email-display').innerText = user.email;
+                loadUnifiedLibrary();
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+
+        function filterLibrary() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const mode = document.querySelector('input[name="view_mode"]:checked').value;
+            let filtered = allItems.filter(i => {
+                const matchesSearch = i.name.toLowerCase().includes(query);
+                const matchesMode = (mode === 'all' || i.category === mode);
+                const matchesBadge = (activeBadge === 'all' || (i.badge || 'new').toLowerCase() === activeBadge);
+                return matchesSearch && matchesMode && matchesBadge;
+            });
+            renderGrid(filtered);
+        }
+
+        function loadUnifiedLibrary() {
+            const grid = document.getElementById('library-grid');
+            // Show 8 skeleton cards while loading
+            grid.innerHTML = Array(8).fill(0).map(() => `
+        <div class="bg-[#11241a] border border-white/5 rounded-3xl overflow-hidden p-5 space-y-4">
+            <div class="h-48 w-full skeleton rounded-2xl"></div>
+            <div class="h-4 w-3/4 skeleton rounded"></div>
+            <div class="h-3 w-1/2 skeleton rounded opacity-50"></div>
+            <div class="h-10 w-full skeleton rounded-xl"></div>
+        </div>
+    `).join('');
+
+            firebase.database().ref('products').on('value', (snapshot) => {
+                allItems = [];
+                const data = snapshot.val();
+                if (data) {
+                    Object.keys(data).forEach(cat => {
+                        Object.keys(data[cat]).forEach(id => {
+                            allItems.push({...data[cat][id],
+                                id: id,
+                                category: cat
+                            });
+                        });
+                    });
+                }
+                setTimeout(() => filterLibrary(), 500); // Slight delay so the transition is smooth
+            });
+        }
+
+        function renderGrid(data) {
+            const grid = document.getElementById('library-grid');
+            grid.innerHTML = data.length ? "" : `<div class="col-span-full text-center py-20 opacity-30 italic">No assets found...</div>`;
+
+            data.forEach(item => {
+                        const isPortfolio = item.category.toLowerCase().includes('portfolio');
+                        const targetPage = isPortfolio ? 'portfolio-preview.html' : 'preview.html';
+                        let finalPreviewUrl = "";
+                        let rawLink = item.download || item.liveUrl || "";
+
+                        if (isPortfolio && item.demo) {
+                            finalPreviewUrl = item.demo;
+                        } else if (rawLink.includes('drive.google.com')) {
+                            const fileIdMatch = rawLink.match(/\/d\/([^\/]+)/);
+                            if (fileIdMatch) finalPreviewUrl = `https://drive.google.com/file/d/${fileIdMatch[1]}/preview`;
+                        }
+
+                        const cardHtml = `
+            <div class="group relative bg-[#11241a] border border-white/5 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-2xl">
+                <div class="h-64 w-full bg-black/20 relative overflow-hidden border-b border-white/5">
+                    <div id="loader-${item.id}" class="absolute inset-0 flex items-center justify-center bg-[#0f231c] z-30">
+                        <div class="loader-spin"></div>
+                    </div>
+                    
+                    ${finalPreviewUrl ? `
+                        <iframe data-src="${finalPreviewUrl}#toolbar=0" 
+                            class="lazy-iframe w-full h-[600px] border-none pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                            style="transform: scale(${isPortfolio ? '0.35' : '0.45'}); transform-origin: top left; width: ${isPortfolio ? '285%' : '222%'};"
+                            onload="document.getElementById('loader-${item.id}').style.display='none'; this.style.opacity='0.5'">
+                        </iframe>
+                    ` : `<div class="h-full flex items-center justify-center text-white/5 font-black text-xl italic uppercase">No Preview</div>`}
+                    
+                    <div class="absolute inset-0 z-10 cursor-pointer" onclick="location.href='${targetPage}?id=${item.id}&cat=${item.category.toLowerCase()}'"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
+                        <div class="size-14 bg-primary text-background-dark rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(56,250,185,0.5)]">
+                            <span class="material-symbols-outlined font-bold text-3xl">visibility</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="truncate">
+                            <h3 class="text-white font-bold text-sm truncate">${item.name}</h3>
+                            <p class="text-[10px] text-primary font-black uppercase tracking-widest">${item.category}</p>
+                        </div>
+                        <p class="text-white font-mono font-bold text-sm ml-2">₹${item.price}</p>
+                    </div>
+                    <button onclick="location.href='${targetPage}?id=${item.id}&cat=${item.category.toLowerCase()}'" 
+                            class="w-full py-2.5 bg-primary/10 hover:bg-primary text-primary hover:text-background-dark rounded-xl text-[10px] font-bold transition-all uppercase tracking-widest">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        `;
+        grid.insertAdjacentHTML('beforeend', cardHtml);
+    });
+
+    // --- LAZY LOADING LOGIC ---
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const iframe = entry.target;
+                if (iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src; // Start loading only when visible
+                    observer.unobserve(iframe); 
+                }
+            }
+        });
+    }, { rootMargin: "200px" }); // Start loading 200px before it enters the screen
+
+    document.querySelectorAll('.lazy-iframe').forEach(img => observer.observe(img));
+}
+        function filterByBadge(badge, el) {
+            activeBadge = badge.toLowerCase();
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+            filterLibrary();
+        }
+
+        function toggleDropdown() {
+            document.getElementById('profile-dropdown').classList.toggle('hidden');
+        }
+
+        function handleLogout() {
+            firebase.auth().signOut().then(() => window.location.href = 'login.html');
+        }
+    </script>
+</body>
+
+</html>
