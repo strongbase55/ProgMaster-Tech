@@ -1,0 +1,710 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EduPartner | Institutional Partnership Program</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        display: ["Inter"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Top Navigation Bar -->
+            <header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 md:px-20 py-4 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center">
+                        <img src="logo3.png" alt="" />
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="index.html">Home</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Programs.html"
+              >Programs</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Student reg.html"
+              >Internships</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Aboutus.html"
+              >About</a
+            >
+
+            <a
+              class="text-primary text-sm font-bold border-b-2 border-primary"
+              href="Collegepatner.html"
+              >Partner with us</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Contactus.html"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Hamburger -->
+          <button id="menu-btn" class="md:hidden flex flex-col gap-1.5">
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line1"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line2"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line3"
+            ></span>
+          </button>
+        </header>
+
+        <div
+          id="mobile-menu"
+          class="max-h-0 overflow-hidden transition-all duration-500 md:hidden bg-white dark:bg-slate-900 border-b"
+        >
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="index.html"
+            >Home</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="Programs.html"
+            >Programs</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="Student reg.html"
+            >Internships</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="Aboutus.html"
+            >About</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b text-primary font-bold"
+            href="Collegepatner.html"
+            >Partner with us</a
+          >
+
+          <a class="block px-6 py-4 hover:bg-slate-100" href="Contactus.html"
+            >Contact</a
+          >
+        </div>
+        <main class="flex flex-col">
+          <!-- Hero Section -->
+          <section
+            class="px-6 md:px-20 py-12 md:py-24 max-w-[1200px] mx-auto w-full"
+          >
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+              <div class="flex flex-col gap-6 md:w-1/2">
+                <div
+                  class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider w-fit"
+                >
+                  Institutional Partnership
+                </div>
+                <h1
+                  class="text-slate-900 dark:text-slate-100 text-4xl md:text-6xl font-black leading-[1.1] tracking-tight"
+                >
+                  Empowering Higher Education Through
+                  <span class="text-primary">Industry Alignment</span>
+                </h1>
+                <p
+                  class="text-slate-600 dark:text-slate-400 text-lg md:text-xl leading-relaxed"
+                >
+                  Bridge the gap between academia and the professional world.
+                  Our comprehensive program equips your institution with the
+                  tools to boost student employability and global prestige.
+                </p>
+                <div class="flex flex-wrap gap-4 mt-4">
+                  <button
+                    class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+                  >
+                    Register Your College
+                  </button>
+                  <button
+                    class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 border-2 border-primary/20 bg-transparent text-slate-900 dark:text-slate-100 text-base font-bold hover:bg-primary/5 transition-all"
+                  >
+                    Download Brochure
+                  </button>
+                </div>
+              </div>
+              <div class="md:w-1/2 w-full">
+                <div class="relative">
+                  <div
+                    class="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"
+                  ></div>
+                  <div
+                    class="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
+                  ></div>
+                  <div
+                    class="w-full aspect-[4/3] bg-slate-200 dark:bg-slate-800 rounded-2xl overflow-hidden shadow-2xl relative z-10"
+                  >
+                    <img
+                      alt="University campus building"
+                      class="w-full h-full object-cover"
+                      data-alt="Modern university campus building architecture at sunset"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIvKmo8hLL4rfvY1tAxy2XWWTOcnsn4aPTVqEDrBRlNWO44Naz8eIyYDz6U5kd4xB8GudV8UqY-z5b0lzbqrjnyt4AFyWVgm2UZH6oY56BNuINYedo8MNJwJ9kxwCRs1M5ariWcv-x9jeu-nAnHPtdcbQk9VvcrOgZVBc_lpadOqfXb8noHZBwRm8Wf_xvKr6IcKcHv9Wl8i7YpgUq6Em98l-iOJK4bY2_IIdZCwbjQ8-u6haZy5lPk0kYLkwQ_B6MBO3rR3ocDLI"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Benefits Section -->
+          <section
+            class="bg-white dark:bg-slate-900/50 py-20 px-6 md:px-20 border-y border-primary/5"
+            id="benefits"
+          >
+            <div class="max-w-[1200px] mx-auto">
+              <div class="mb-16 text-center max-w-2xl mx-auto">
+                <h2
+                  class="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4"
+                >
+                  The Advantage
+                </h2>
+                <h3
+                  class="text-slate-900 dark:text-slate-100 text-3xl md:text-4xl font-bold mb-6"
+                >
+                  Benefits for Colleges
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 text-lg">
+                  Designed to enhance institutional prestige and student
+                  outcomes through deep industry integration.
+                </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div
+                  class="flex flex-col gap-6 p-8 rounded-2xl bg-background-light dark:bg-background-dark border border-primary/10 hover:border-primary/40 transition-all group"
+                >
+                  <div
+                    class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all"
+                  >
+                    <span class="material-symbols-outlined text-3xl">hub</span>
+                  </div>
+                  <div>
+                    <h4
+                      class="text-slate-900 dark:text-slate-100 text-xl font-bold mb-3"
+                    >
+                      Streamlined Internships
+                    </h4>
+                    <p
+                      class="text-slate-600 dark:text-slate-400 leading-relaxed"
+                    >
+                      Automated matching system for student internships with
+                      top-tier firms. Eliminate manual paperwork and manual
+                      coordination.
+                    </p>
+                  </div>
+                </div>
+                <!-- Benefit 2 -->
+                <div
+                  class="flex flex-col gap-6 p-8 rounded-2xl bg-background-light dark:bg-background-dark border border-primary/10 hover:border-primary/40 transition-all group"
+                >
+                  <div
+                    class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all"
+                  >
+                    <span class="material-symbols-outlined text-3xl"
+                      >work_history</span
+                    >
+                  </div>
+                  <div>
+                    <h4
+                      class="text-slate-900 dark:text-slate-100 text-xl font-bold mb-3"
+                    >
+                      Placement Assistance
+                    </h4>
+                    <p
+                      class="text-slate-600 dark:text-slate-400 leading-relaxed"
+                    >
+                      Direct access to a network of corporate recruiters and
+                      career readiness tools that guarantee higher conversion
+                      rates.
+                    </p>
+                  </div>
+                </div>
+                <!-- Benefit 3 -->
+                <div
+                  class="flex flex-col gap-6 p-8 rounded-2xl bg-background-light dark:bg-background-dark border border-primary/10 hover:border-primary/40 transition-all group"
+                >
+                  <div
+                    class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all"
+                  >
+                    <span class="material-symbols-outlined text-3xl"
+                      >handshake</span
+                    >
+                  </div>
+                  <div>
+                    <h4
+                      class="text-slate-900 dark:text-slate-100 text-xl font-bold mb-3"
+                    >
+                      Industry Collaboration
+                    </h4>
+                    <p
+                      class="text-slate-600 dark:text-slate-400 leading-relaxed"
+                    >
+                      Joint research initiatives and curriculum development with
+                      industry experts to ensure learning is always current.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Success Stories -->
+          <section
+            class="py-20 px-6 md:px-20 max-w-[1200px] mx-auto w-full"
+            id="stories"
+          >
+            <div
+              class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+            >
+              <div class="max-w-xl">
+                <h2
+                  class="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4"
+                >
+                  Impact
+                </h2>
+                <h3
+                  class="text-slate-900 dark:text-slate-100 text-3xl md:text-4xl font-bold"
+                >
+                  Success Stories of Partnered Colleges
+                </h3>
+              </div>
+              <a
+                class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all"
+                href="#"
+              >
+                View all Case Studies
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex flex-col md:flex-row gap-6 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-primary/5 shadow-sm">
+                <div class="md:w-1/3 aspect-square rounded-xl overflow-hidden shrink-0">
+                    <img alt="Campus life" class="w-full h-full object-cover" data-alt="Students walking on a modern university campus courtyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDad3SHtAwtWlE2KllnyzHFZ_AqNckZR7B7z5B1tJAqUnjG9LYktcffqm71OvKibqHVJ2VEef5Pt2Y5lXDr0SomRuq7GJEyy9z9tt1oImh8CBAnydKP5V1s3bWW6RgKwVewZk7Peb2Q4F39CEJ1adFqmuufjMRZOtOLCndAGRZ1rdtcmDgE6HM_OVCAsO3pcFZrDfD-NZc0IsKz_MaY1qTEfTvwh8-WYOabvcU-v34RRoFI0OcysCqHqu5RIq6TgHTef-zX7eBtmd8"
+                    />
+                </div>
+                <div class="flex flex-col justify-center">
+                    <div class="flex text-primary mb-3">
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-4">
+                        "Partnering with ProgMaster increased our placement percentage by 45% in the first year alone. The industry curriculum is revolutionary."
+                    </p>
+                    <h5 class="text-slate-900 dark:text-slate-100 font-bold">
+                        Dean Dr. Sarah Mitchell
+                    </h5>
+                    <p class="text-primary text-sm">
+                        Global Institute of Technology
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-primary/5 shadow-sm">
+                <div class="md:w-1/3 aspect-square rounded-xl overflow-hidden shrink-0">
+                    <img alt="University library" class="w-full h-full object-cover" data-alt="Modern university library interior with glass walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZymTAUs4cTLAZxW1eYCxG3MYMisVcGYJR6Li0F1Y9HfRV1UL1zJsnuia4vfaiSEg0Ufez7LY0WYdr_oei9Ey2GwcWw5pGAJhSK6pSJMBotSXTSZ61bEqLibIGxngV0zaBYz5PRATL0y_hCBpo_PTgqden2imTwRQPVEZsAHoKOyQS0aJefxaNVIIlk_F36rLNDlfOVPhnN0KznNSmN90gjx42kItU3_i-LSB6ap3rlyvNYWNQyWbg0P26kHjgSRgI8whHaJ0vhpI"
+                    />
+                </div>
+                <div class="flex flex-col justify-center">
+                    <div class="flex text-primary mb-3">
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-4">
+                        "The internship matching platform saved our staff hundreds of hours. Students are getting higher quality roles than ever before."
+                    </p>
+                    <h5 class="text-slate-900 dark:text-slate-100 font-bold">
+                        Prof. James Chen
+                    </h5>
+                    <p class="text-primary text-sm">
+                        Metropolitan Commerce College
+                    </p>
+                </div>
+            </div>
+        </div>
+        </section>
+        <!-- Contact & Registration -->
+        <section class="bg-primary/5 py-20 px-6 md:px-20" id="contact">
+            <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h2 class="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">
+                        Get Started
+                    </h2>
+                    <h3 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl font-black mb-8">
+                        Ready to transform your institution?
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
+                        Join over 200+ partnered colleges worldwide. Fill out the inquiry form and our institutional partnership head will contact you within 24 hours to schedule a demonstration.
+                    </p>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-xl">mail</span
+                      >
+                    </div>
+                    <span class="text-slate-700 dark:text-slate-300 font-medium"
+                      >tech@progmaster.in</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0"
+                    >
+                      <span class="material-symbols-outlined text-xl"
+                        >phone_in_talk</span
+                      >
+                    </div>
+                    <span class="text-slate-700 dark:text-slate-300 font-medium"
+                      >+91 9440223975
+                    </span>
+                                <span class="text-slate-700 dark:text-slate-300 font-medium">+91 9440223781
+                    </span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-xl">location_on</span
+                      >
+                    </div>
+                    <span
+                      class="text-slate-700 dark:text-slate-300 font-medium"
+                      data-location="Palo Alto, California"
+                      >3rd Floor, AMR Complex, Bazaar St, Puttur, Andhra Pradesh
+                      517583</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-background-dark p-8 md:p-10 rounded-3xl shadow-xl border border-primary/10"
+              >
+                <form class="flex flex-col gap-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="flex flex-col gap-1.5">
+                      <label
+                        class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1"
+                        >Full Name</label
+                      >
+                      <input
+                        class="rounded-lg border-primary/20 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4 transition-all"
+                        placeholder="John Doe"
+                        type="text"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label
+                        class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1"
+                        >Designation</label
+                      >
+                      <input
+                        class="rounded-lg border-primary/20 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4 transition-all"
+                        placeholder="e.g. Dean, Principal"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1"
+                      >Institution Name</label
+                    >
+                    <input
+                      class="rounded-lg border-primary/20 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4 transition-all"
+                      placeholder="University of Future Learning"
+                      type="text"
+                    />
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1"
+                      >Work Email</label
+                    >
+                    <input
+                      class="rounded-lg border-primary/20 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4 transition-all"
+                      placeholder="john@university.edu"
+                      type="email"
+                    />
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1"
+                      >Message / Inquiry</label
+                    >
+                    <textarea
+                      class="rounded-lg border-primary/20 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary p-4 transition-all"
+                      placeholder="Tell us about your institution's goals..."
+                      rows="4"
+                    ></textarea>
+                  </div>
+                  <button
+                    class="w-full rounded-lg h-14 bg-primary text-white font-bold text-lg shadow-lg shadow-primary/20 hover:bg-primary/90 mt-4 transition-all"
+                    type="submit"
+                  >
+                    Submit Inquiry
+                  </button>
+                  <p
+                    class="text-center text-xs text-slate-500 dark:text-slate-500 mt-2 italic"
+                  >
+                    By clicking submit, you agree to our institutional
+                    partnership terms.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </section>
+          <!-- Footer -->
+          <footer
+            class="bg-background-dark text-slate-400 py-16 px-6 md:px-20 border-t border-slate-800"
+          >
+            <div class="max-w-[1200px] mx-auto">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Logo Section -->
+                <div>
+                  <div class="flex items-center gap-3 text-primary mb-6">
+                    <img src="logo3.png" class="h-10 w-10" />
+                    <h2 class="text-slate-100 text-xl font-bold">ProgMaster</h2>
+                  </div>
+
+                  <p class="text-sm leading-relaxed">
+                    Pioneering the next era of professional education through
+                    strategic university-industry ecosystems.
+                  </p>
+                </div>
+
+                <!-- Partnerships -->
+                <div class="footer-section">
+                  <button
+                    class="footer-toggle flex justify-between items-center w-full md:block text-slate-100 font-bold mb-6"
+                  >
+                    Partnerships
+                    <span class="material-symbols-outlined md:hidden"
+                      >expand_more</span
+                    >
+                  </button>
+
+                  <ul
+                    class="footer-content hidden md:flex flex-col gap-4 text-sm"
+                  >
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >College Portal</a
+                      >
+                    </li>
+
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >Corporate Network</a
+                      >
+                    </li>
+
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >Alumni Support</a
+                      >
+                    </li>
+
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >Curriculum Licensing</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-section">
+                  <button
+                    class="footer-toggle flex justify-between items-center w-full md:block text-slate-100 font-bold mb-6"
+                  >
+                    Resources
+                    <span class="material-symbols-outlined md:hidden"
+                      >expand_more</span
+                    >
+                  </button>
+
+                  <ul
+                    class="footer-content hidden md:flex flex-col gap-4 text-sm"
+                  >
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >Impact Reports</a
+                      >
+                    </li>
+
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >Webinars</a
+                      >
+                    </li>
+
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >Case Studies</a
+                      >
+                    </li>
+
+                    <li>
+                      <a class="hover:text-primary transition-colors" href="#"
+                        >Help Center</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                  <button
+                    class="footer-toggle flex justify-between items-center w-full md:block text-slate-100 font-bold mb-6"
+                  >
+                    Newsletter
+                    <span class="material-symbols-outlined md:hidden"
+                      >expand_more</span
+                    >
+                  </button>
+
+                  <div class="footer-content hidden md:block">
+                    <p class="text-sm mb-4">
+                      Stay updated with higher ed trends.
+                    </p>
+
+                    <div class="flex gap-2">
+                      <input
+                        class="w-full bg-slate-800 border-none rounded-lg h-10 px-3 text-xs text-white focus:ring-1 focus:ring-primary"
+                        placeholder="Email address"
+                        type="email"
+                      />
+
+                      <button
+                        class="bg-primary text-white rounded-lg px-4 h-10 hover:bg-primary/90 transition-all"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >send</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Section -->
+
+              <div
+                class="pt-12 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6"
+              >
+                <p class="text-xs">
+                  © 2024 ProgMaster Private Limited. All rights reserved.
+                </p>
+
+                <div class="flex gap-8 text-xs">
+                  <a class="hover:text-white transition-colors" href="#">
+                    Privacy Policy
+                  </a>
+
+                  <a class="hover:text-white transition-colors" href="#">
+                    Terms of Service
+                  </a>
+
+                  <a class="hover:text-white transition-colors" href="#">
+                    Cookie Settings
+                  </a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script>
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      const line1 = document.querySelector(".line1");
+      const line2 = document.querySelector(".line2");
+      const line3 = document.querySelector(".line3");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("max-h-0");
+        menu.classList.toggle("max-h-96");
+
+        line1.classList.toggle("rotate-45");
+        line1.classList.toggle("translate-y-2");
+
+        line2.classList.toggle("opacity-0");
+
+        line3.classList.toggle("-rotate-45");
+        line3.classList.toggle("-translate-y-2");
+      });
+    </script>
+    <script>
+      const toggles = document.querySelectorAll(".footer-toggle");
+
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const content = toggle.nextElementSibling;
+
+          content.classList.toggle("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,857 @@
+<!doctype html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .premium-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 20px 25px -5px rgba(0, 0, 0, 0.03);
+        }
+        
+        .glow-accent-purple {
+            filter: blur(80px);
+            background: radial-gradient( circle, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0) 70%);
+        }
+        
+        .glow-accent-blue {
+            filter: blur(80px);
+            background: radial-gradient( circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0) 70%);
+        }
+    </style>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+    <div class="relative min-h-screen">
+        <!-- Visual Accents -->
+        <div class="fixed top-0 -left-20 w-96 h-96 glow-accent-purple pointer-events-none"></div>
+        <div class="fixed bottom-0 -right-20 w-96 h-96 glow-accent-blue pointer-events-none"></div>
+        <div class="layout-container flex h-full grow flex-col relative z-10">
+            <!-- Top Navigation Bar -->
+            <header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 md:px-20 py-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+                <!-- Logo -->
+                <div class="flex items-center gap-12">
+                    <div class="flex h-10 w-10 items-center justify-center">
+                        <img src="logo3.png" alt="" />
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="index.html">Home</a
+            >
+
+            <a
+              class="text-primary text-sm font-bold border-b-2 border-primary"
+              href="Programs.html"
+              >Programs</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Student reg.html"
+              >Internships</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Collegepatner.html"
+              >Partner With us</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Aboutus.html"
+              >About</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Contactus.html"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Hamburger -->
+          <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5">
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line1"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line2"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line3"
+            ></span>
+          </button>
+        </header>
+
+        <div
+          id="mobile-menu"
+          class="max-h-0 overflow-hidden transition-all duration-500 lg:hidden bg-white dark:bg-slate-900 border-b"
+        >
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="index.html"
+            >Home</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b text-primary font-bold"
+            href="Programs.html"
+            >Programs</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="Student reg.html"
+            >Internships</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="Collegepatner.html"
+            >Partner With us</a
+          >
+
+          <a
+            class="block px-6 py-4 border-b hover:bg-slate-100"
+            href="Aboutus.html"
+            >About</a
+          >
+
+          <a class="block px-6 py-4 hover:bg-slate-100" href="Contactus.html"
+            >Contact</a
+          >
+        </div>
+
+        <main class="flex-1 max-w-[1280px] mx-auto w-full px-6 md:px-10 py-12">
+          <!-- Hero Section -->
+          <div class="mb-12">
+            <div
+              class="relative rounded-2xl overflow-hidden h-[320px] mb-12 shadow-2xl"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-background-dark/80 via-background-dark/40 to-transparent z-10"
+              ></div>
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                data-alt="Diverse group of students working together in a modern office"
+                style="
+                  background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC_1AvG__vw2l2MFQL5ODyIbzIttwVGgwnWLlwveah746EhMcI44wmU-Zmkk8zy1z-DpeZ39FMuoi0ZBAgnmEXcwiTDc6EcwzjGcnJyG3oShym-WYcpAybq2PauDN9nr8QwFX3hVoGNIWgoPxjErTQI9nArXNRAIF1fwNqiND3qRZxP4d6JbdUURK6wfZqp6S7JIuxCvChT-N5h3pOaMkdwK_lIrpZSuypN8HtgXr58ZtuQX994BUoaBoLSP96pvOn6rzBlfL-_mNg&quot;);
+                "
+              ></div>
+              <div
+                class="relative z-20 h-full flex flex-col justify-center px-12 max-w-2xl"
+              >
+                <span
+                  class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-4 border border-primary/30"
+                  >Premium Internships</span
+                >
+                <h1 class="text-white text-5xl font-bold leading-tight mb-4">
+                  Master Your Career with Elite Industry Mentors
+                </h1>
+                <p class="text-slate-200 text-lg">
+                  Curated, high-fidelity internship programs designed for the
+                  next generation of industry leaders.
+                </p>
+              </div>
+            </div>
+            <!-- Search & Filters -->
+            <div
+              class="glass-card premium-shadow rounded-2xl p-6 flex flex-col lg:flex-row gap-4 items-center mb-12"
+            >
+              <div class="flex-1 w-full">
+                <div class="relative">
+                  <span
+                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+                    >search</span
+                  >
+                  <input
+                    class="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base"
+                    placeholder="Search by domain, role or skill..."
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3 w-full lg:w-auto">
+                <button
+                  class="flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 transition-colors"
+                >
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    >Domain</span
+                  >
+                  <span class="material-symbols-outlined text-slate-400 text-lg"
+                    >expand_more</span
+                  >
+                </button>
+                <button
+                  class="flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 transition-colors"
+                >
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    >Mode</span
+                  >
+                  <span class="material-symbols-outlined text-slate-400 text-lg"
+                    >expand_more</span
+                  >
+                </button>
+                <button
+                  class="flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 transition-colors"
+                >
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    >Duration</span
+                  >
+                  <span class="material-symbols-outlined text-slate-400 text-lg"
+                    >expand_more</span
+                  >
+                </button>
+              </div>
+            </div>
+            <!-- Program Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              <!-- Card 1 -->
+              <div
+                class="glass-card premium-shadow rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div class="relative h-48">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="Artificial Intelligence and Neural Networks abstract visualization"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCgQLvDuStcCe-BJkm955DZoTt0Bn_eu3ms_4HukesQey3SN6nUVbbex9lA0-Oeem_3eyoM171HBvszihWwus8erpBmJJjmXVobO-L0OeSJdJFqZmgbSKgEppWb81g3ZbeDmftAbxI96mDUY-VEHb9Q_yAMdGyCDo6ljPhsyLiZ88lZR3mArtF8xOOan-gihXGl8j5g9z3jdNhPkX5GG4MkCo2VU0L3c-BEOqc3qlE_c9rj7woFZbsfgkaW9BVaM7Co4BhEuQxvp3s&quot;);
+                    "
+                  ></div>
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span
+                      class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-slate-800"
+                      >Technology</span
+                    >
+                    <span
+                      class="px-3 py-1 bg-primary/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-white"
+                      >Trending</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-3">
+                    <div
+                      class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium"
+                    >
+                      <span class="material-symbols-outlined text-base"
+                        >schedule</span
+                      >
+                      12 Weeks
+                      <span class="mx-1">•</span>
+                      <span class="material-symbols-outlined text-base"
+                        >laptop_mac</span
+                      >
+                      Online
+                    </div>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-primary transition-colors"
+                  >
+                    Advanced AI &amp; Machine Learning
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1"
+                  >
+                    Master deep learning architectures, neural networks, and
+                    industry-scale NLP projects with direct mentorship from
+                    OpenAI &amp; Google experts.
+                  </p>
+                  <div
+                    class="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 dark:border-slate-800"
+                  >
+                    <div class="flex -space-x-2">
+                      <div
+                        class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 flex items-center justify-center text-[10px] font-bold"
+                      >
+                        +12
+                      </div>
+                    </div>
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div
+                class="glass-card premium-shadow rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div class="relative h-48">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="Clean and minimal UI/UX design workspace"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDejqKwqCazqRgAvemJkGeteWK45Xu34DaAdNbleg6siC-fXU4iLlP3l6OMDMBhuHV2pQkkyH8pNiuy3aepaxo93qp-RcxddhQ5tjn_YTzKSjuoxZRW7i1AhgZ4qOo0RHoDP45wRXQg7qLcU5Qh9F1G3xEg6wH-BhBzqHrQ7m9-6ExT9nto5isZyDQER_YvaJOZmmo7msFtXk6vWeq1_VyJ18kD4x8RT4sJH9rpVIFX1VnNhNsNBsnnaDwd1e2gZ82eHKrzmbp1zT8&quot;);
+                    "
+                  ></div>
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span
+                      class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-slate-800"
+                      >Design</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-3">
+                    <div
+                      class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium"
+                    >
+                      <span class="material-symbols-outlined text-base"
+                        >schedule</span
+                      >
+                      8 Weeks
+                      <span class="mx-1">•</span>
+                      <span class="material-symbols-outlined text-base"
+                        >apartment</span
+                      >
+                      Hybrid
+                    </div>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-primary transition-colors"
+                  >
+                    Product Design Strategy
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1"
+                  >
+                    Go beyond UI. Learn product thinking, user research
+                    methodology, and complex design systems for global
+                    enterprise-level applications.
+                  </p>
+                  <div
+                    class="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 dark:border-slate-800"
+                  >
+                    <div class="flex -space-x-2">
+                      <div
+                        class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 flex items-center justify-center text-[10px] font-bold"
+                      >
+                        +8
+                      </div>
+                    </div>
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div
+                class="glass-card premium-shadow rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div class="relative h-48">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="Financial data analytics and stock market charts"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAuDcLoR_vppK556F_Rcl9MM5fpre3M02ZHKrWynAC_Cf5VohaVWtwCd18qBgbkSU38vIghwYiLVxPAF-x5ZF4QK_EuNpFbwcaIwU8cdUBG98SD0i8Id3c-FnHFqDwdwL6oEVML-4rSmo_154DJSsBB6t3JSvOqJfyMBvmJf26tKxo5_c8V8kSLQRGimZkUNvLlb2iUyy1JTDNgSg-poc1natp25kkA9RlMOJvnxpZdKilCU60xgJgJGbyKrAx-vsg_O8HXvWZt0b0&quot;);
+                    "
+                  ></div>
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span
+                      class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-slate-800"
+                      >Finance</span
+                    >
+                    <span
+                      class="px-3 py-1 bg-blue-500/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-white"
+                      >Intensive</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-3">
+                    <div
+                      class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium"
+                    >
+                      <span class="material-symbols-outlined text-base"
+                        >schedule</span
+                      >
+                      16 Weeks
+                      <span class="mx-1">•</span>
+                      <span class="material-symbols-outlined text-base"
+                        >domain</span
+                      >
+                      Offline
+                    </div>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-primary transition-colors"
+                  >
+                    Quantitative Finance &amp; Trading
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1"
+                  >
+                    Intensive training in algorithmic trading, stochastic
+                    calculus, and portfolio optimization techniques used by top
+                    hedge funds.
+                  </p>
+                  <div
+                    class="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 dark:border-slate-800"
+                  >
+                    <div class="flex -space-x-2">
+                      <div
+                        class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 flex items-center justify-center text-[10px] font-bold"
+                      >
+                        +5
+                      </div>
+                    </div>
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div
+                class="glass-card premium-shadow rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div class="relative h-48">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="Cloud computing infrastructure and servers"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDdwMNhM4raBH39KfiZvgDHfpzhbeZqmGeAOaMt1oIIjCXhOKlvKeDaGN3owZlUXhPceivDQbJV7vJoGr-_SgWY1rLbIw2swc30l6VrDpTyJ-TPaesSM8Qh3acqI_je9fT_BpILW_w-OXgzuXiq_4YVCteZbB0OspMpmXRF9F8FnLim78YQdOXwS-a8GHYCEK01W8j0QKWg22tC3s7Ssfo73TVQEyxmkvBukLZlNTsBMhJv8lGZa9sCcsVcxzASU8wRqoNAXZyScP8&quot;);
+                    "
+                  ></div>
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span
+                      class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-slate-800"
+                      >Technology</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-3">
+                    <div
+                      class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium"
+                    >
+                      <span class="material-symbols-outlined text-base"
+                        >schedule</span
+                      >
+                      10 Weeks
+                      <span class="mx-1">•</span>
+                      <span class="material-symbols-outlined text-base"
+                        >laptop_mac</span
+                      >
+                      Online
+                    </div>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-primary transition-colors"
+                  >
+                    Cloud Architecture &amp; DevOps
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1"
+                  >
+                    Deploy and scale modern applications using AWS, Kubernetes,
+                    and Terraform. Focus on high-availability and security best
+                    practices.
+                  </p>
+                  <div
+                    class="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 dark:border-slate-800"
+                  >
+                    <div class="flex -space-x-2">
+                      <div
+                        class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 flex items-center justify-center text-[10px] font-bold"
+                      >
+                        +15
+                      </div>
+                    </div>
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div
+                class="glass-card premium-shadow rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div class="relative h-48">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="Digital marketing and branding strategy workshop"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAAtTKw7GDbcxxL9kzqVDbOCl6EPrSyqfjZoHz6gwjdEN1mQ5oNsTlOLjpfjqZ-CTvcEZYKQJ_kXrypxKbaUIicFK35yHj6SUeGNGRydPewRuTScW_mdM1KO9_xDhs1GaznQL-uyF2KAmHGCq_rn5kItLPGGPaaesAT-3x5Dx5ZmR0XOhDOfkqt4LB_77NYobgxW_w4Ngh05g9Ru2_h6uNk1hbgKTiUH4fwnEZKudOhdAik9UU25rMtPdpsS8jHByaAoa95ZBck9tA&quot;);
+                    "
+                  ></div>
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span
+                      class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-slate-800"
+                      >Marketing</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-3">
+                    <div
+                      class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium"
+                    >
+                      <span class="material-symbols-outlined text-base"
+                        >schedule</span
+                      >
+                      6 Weeks
+                      <span class="mx-1">•</span>
+                      <span class="material-symbols-outlined text-base"
+                        >laptop_mac</span
+                      >
+                      Online
+                    </div>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-primary transition-colors"
+                  >
+                    Growth Marketing &amp; Analytics
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1"
+                  >
+                    Learn to drive exponential user growth using data-driven
+                    experiments, performance marketing, and retention loops.
+                  </p>
+                  <div
+                    class="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 dark:border-slate-800"
+                  >
+                    <div class="flex -space-x-2">
+                      <div
+                        class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 flex items-center justify-center text-[10px] font-bold"
+                      >
+                        +6
+                      </div>
+                    </div>
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div
+                class="glass-card premium-shadow rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div class="relative h-48">
+                  <div
+                    class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="Data visualization and complex data sets"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuB_iHeIrm0TFyP_V60spL5kaSWLfQ8OyThce5p7bXnTC9Y8Kmtkz-Tnis4Fu7UUfu9ehEkqFCZxJZzz2lAErmMplfLjpATqWMCFI3b6KIcj4pNRt4NCjsW5UxT80zwZJp_4TdkISKS1Kw8Ndg2tPzbaNK3t0_mpDpwMJO4GHSf6vtaFgegJiI-orIu2k2f1mzwYOel2YzRHC7bq6ndELE2DoR00EkYfJOh7lXHH1xTNhEmBzfCMifNAloLvlCJgI8BKI3038jKHYuo&quot;);
+                    "
+                  ></div>
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span
+                      class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase text-slate-800"
+                      >Data Science</span
+                    >
+                  </div>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-3">
+                    <div
+                      class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium"
+                    >
+                      <span class="material-symbols-outlined text-base"
+                        >schedule</span
+                      >
+                      14 Weeks
+                      <span class="mx-1">•</span>
+                      <span class="material-symbols-outlined text-base"
+                        >apartment</span
+                      >
+                      Hybrid
+                    </div>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-primary transition-colors"
+                  >
+                    Data Science for Decisions
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1"
+                  >
+                    Bridging the gap between raw data and business strategy.
+                    Learn statistical modeling, predictive analytics, and
+                    executive storytelling.
+                  </p>
+                  <div
+                    class="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 dark:border-slate-800"
+                  >
+                    <div class="flex -space-x-2">
+                      <div
+                        class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 flex items-center justify-center text-[10px] font-bold"
+                      >
+                        +20
+                      </div>
+                    </div>
+                    <button
+                      class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Pagination -->
+            <div class="flex items-center justify-center gap-4 mt-16">
+              <button
+                class="size-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors"
+              >
+                <span class="material-symbols-outlined">chevron_left</span>
+              </button>
+              <button
+                class="size-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold"
+              >
+                1
+              </button>
+              <button
+                class="size-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors"
+              >
+                2
+              </button>
+              <button
+                class="size-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors"
+              >
+                3
+              </button>
+              <button
+                class="size-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors"
+              >
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
+            </div>
+          </div>
+        </main>
+        <!-- Footer -->
+        <footer
+          class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 py-12 px-6 md:px-20"
+        >
+          <div
+            class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12"
+          >
+            <!-- Logo Section -->
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="size-6 text-primary">
+                  <img src="logo3.png" alt="" />
+                </div>
+
+                <h2
+                  class="text-slate-900 dark:text-slate-100 text-lg font-bold"
+                >
+                  ProgMaster
+                </h2>
+              </div>
+
+              <p
+                class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed"
+              >
+                Elevating the standards of professional training and career
+                acceleration through elite mentorship and real-world experience.
+              </p>
+            </div>
+
+            <!-- Programs -->
+            <div class="footer-section">
+              <button
+                class="footer-toggle flex justify-between items-center w-full md:block font-bold text-slate-900 dark:text-slate-100 mb-6"
+              >
+                Programs
+                <span class="material-symbols-outlined md:hidden"
+                  >expand_more</span
+                >
+              </button>
+
+              <ul
+                class="footer-content hidden md:block space-y-4 text-sm text-slate-500 dark:text-slate-400"
+              >
+                <li>
+                  <a class="hover:text-primary transition-colors" href="#"
+                    >Data Science</a
+                  >
+                </li>
+
+                <li>
+                  <a class="hover:text-primary transition-colors" href="#"
+                    >Machine Learning</a
+                  >
+                </li>
+
+                <li>
+                  <a class="hover:text-primary transition-colors" href="#"
+                    >Product Design</a
+                  >
+                </li>
+
+                <li>
+                  <a class="hover:text-primary transition-colors" href="#"
+                    >Growth Marketing</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Company -->
+            <div class="footer-section">
+              <button
+                class="footer-toggle flex justify-between items-center w-full md:block font-bold text-slate-900 dark:text-slate-100 mb-6"
+              >
+                Company
+                <span class="material-symbols-outlined md:hidden"
+                  >expand_more</span
+                >
+              </button>
+
+              <ul
+                class="footer-content hidden md:block space-y-4 text-sm text-slate-500 dark:text-slate-400"
+              >
+                <li>
+                  <a
+                    class="hover:text-primary transition-colors"
+                    href="Aboutus.html"
+                    >About Us</a
+                  >
+                </li>
+
+                <li>
+                  <a class="hover:text-primary transition-colors" href="#"
+                    >Our Mentors</a
+                  >
+                </li>
+
+                <li>
+                  <a class="hover:text-primary transition-colors" href="#"
+                    >Success Stories</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="hover:text-primary transition-colors"
+                    href="Contactus.html"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section">
+              <button
+                class="footer-toggle flex justify-between items-center w-full md:block font-bold text-slate-900 dark:text-slate-100 mb-6"
+              >
+                Newsletter
+                <span class="material-symbols-outlined md:hidden"
+                  >expand_more</span
+                >
+              </button>
+
+              <div class="footer-content hidden md:block">
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                  Get the latest program updates and career tips.
+                </p>
+
+                <div class="flex gap-2">
+                  <input
+                    class="flex-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"
+                    placeholder="Email address"
+                    type="email"
+                  />
+
+                  <button class="bg-primary text-white p-2 rounded-lg">
+                    <span class="material-symbols-outlined">send</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      const line1 = document.querySelector(".line1");
+      const line2 = document.querySelector(".line2");
+      const line3 = document.querySelector(".line3");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("max-h-0");
+        menu.classList.toggle("max-h-96");
+
+        line1.classList.toggle("rotate-45");
+        line1.classList.toggle("translate-y-2");
+
+        line2.classList.toggle("opacity-0");
+
+        line3.classList.toggle("-rotate-45");
+        line3.classList.toggle("-translate-y-2");
+      });
+    </script>
+    <script>
+      const toggles = document.querySelectorAll(".footer-toggle");
+
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const content = toggle.nextElementSibling;
+
+          content.classList.toggle("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

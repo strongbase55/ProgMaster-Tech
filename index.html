@@ -1,0 +1,742 @@
+<!doctype html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>InternPlatform | Launch Your Career</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        @keyframes infiniteScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .scroll-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .scroll-track {
+            display: flex;
+            width: max-content;
+            animation: infiniteScroll 20s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen flex-col overflow-x-hidden">
+        <!-- Navigation -->
+        <header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 backdrop-blur-md dark:bg-background-dark/80">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="flex h-10 w-10 items-center justify-center">
+                        <img src="logo3.png" alt="" />
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-primary text-sm font-bold border-b-2 border-primary" href="index.html">Home</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Programs.html"
+              >Programs</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Student reg.html"
+              >Internships</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Collegepatner.html"
+              >Partner With us</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="Aboutus.html"
+              >About</a
+            >
+
+            <a
+              class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="#"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Hamburger -->
+          <button id="menu-btn" class="md:hidden flex flex-col gap-1.5">
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line1"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line2"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line3"
+            ></span>
+          </button>
+        </div>
+      </header>
+
+      <div
+        id="mobile-menu"
+        class="max-h-0 overflow-hidden transition-all duration-500 md:hidden bg-white dark:bg-slate-900 border-b"
+      >
+        <a
+          class="block px-6 py-4 border-b text-primary font-bold"
+          href="index.html"
+          >Home</a
+        >
+
+        <a
+          class="block px-6 py-4 border-b hover:bg-slate-100"
+          href="Programs.html"
+          >Programs</a
+        >
+
+        <a
+          class="block px-6 py-4 border-b hover:bg-slate-100"
+          href="Student reg.html"
+          >Internships</a
+        >
+
+        <a
+          class="block px-6 py-4 border-b hover:bg-slate-100"
+          href="Collegepatner.html"
+          >Partner With us</a
+        >
+
+        <a
+          class="block px-6 py-4 border-b hover:bg-slate-100"
+          href="Aboutus.html"
+          >About</a
+        >
+
+        <a class="block px-6 py-4 hover:bg-slate-100" href="#">Contact</a>
+            </div>
+            <main class="flex-1">
+                <!-- Hero Section -->
+                <section class="relative px-6 py-16 md:py-24">
+                    <div class="mx-auto max-w-7xl">
+                        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+                            <div class="flex flex-col gap-8">
+                                <div class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-sm font-bold text-primary">
+                                    <span class="relative flex h-2 w-2">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+                    ></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                    </span>
+                                    Now Hiring for Fall 2024
+                                </div>
+                                <h1 class="text-5xl font-black leading-tight tracking-tight text-slate-900 dark:text-slate-100 md:text-6xl">
+                                    Build Skills. <br />
+                                    <span class="bg-gradient-to-r from-primary to-[#ff8bcb] bg-clip-text text-transparent">Get Internships.</span
+                  >
+                  <br />
+                  Launch Your Career.
+                </h1>
+                <p
+                  class="text-lg leading-relaxed text-slate-600 dark:text-slate-400 max-w-xl"
+                >
+                  Join thousands of students gaining real-world experience
+                  through our industry partnered internships. We bridge the gap
+                  between education and employment.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <button
+                    class="rounded-xl bg-primary px-8 py-4 text-base font-bold text-white shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-transform"
+                    onclick="location.href = 'Student reg.html'"
+                  >
+                    Register as Student
+                  </button>
+                  <button
+                    class="rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-8 py-4 text-base font-bold text-slate-900 dark:text-slate-100 hover:bg-slate-50 transition-colors"
+                    onclick="location.href = 'Collegepatner.html'"
+                  >
+                    Partner with Us
+                  </button>
+                </div>
+              </div>
+              <div class="relative">
+                <div
+                  class="aspect-square w-full rounded-3xl bg-gradient-to-br from-primary/20 to-[#ff8bcb]/20 p-8"
+                >
+                  <div
+                    class="h-full w-full rounded-2xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center overflow-hidden shadow-2xl"
+                  >
+                    <img
+                      class="h-full w-full object-cover opacity-90"
+                      data-alt="Diverse group of students working together in a modern office"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5v26OrrleWNCqHIyoVvBycdFOXMpJNmIaMdZFYOnim1M6w1mREA8d0fF_tTlIm2jQk3vMjWOj4X6QpKK6dP8MH4ijqp60xjeJhzengCeDkfPCfuZQE4raURlGGKMOZXuViypiXM_BoSyPgaBO4DZUW-Z3E3ChJF0lDXcjcu8rmxy0_VapLqThdms61vlFPTnGzguI2zYllDSreguAcDykbEHrBwdj55STOgbpfk9cMyXuHJxfkHedAWsbVHrDXRtUcuH4x-alTsM"
+                    />
+                  </div>
+                </div>
+                <!-- Floating Stats -->
+                <div
+                  class="absolute -bottom-6 -left-6 rounded-2xl bg-white dark:bg-slate-900 p-6 shadow-xl border border-slate-100 dark:border-slate-800 hidden md:block"
+                >
+                  <div class="flex items-center gap-4">
+                    <div class="rounded-full bg-green-100 p-2 text-green-600">
+                      <span class="material-symbols-outlined">verified</span>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-black text-slate-900 dark:text-slate-100">
+                                    1000+
+                                </p>
+                                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                                    Internships Completed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+    </div>
+    <!-- Hero Stats Bar -->
+    <div class="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="group flex flex-col gap-2 rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-sm border border-slate-100 dark:border-slate-800 transition-all hover:shadow-md">
+            <div class="text-primary group-hover:scale-110 transition-transform w-fit">
+                <span class="material-symbols-outlined text-4xl">groups</span>
+            </div>
+            <p class="text-3xl font-black text-slate-900 dark:text-slate-100">
+                5000+
+            </p>
+            <p class="font-medium text-slate-500">Students Trained</p>
+        </div>
+        <div class="group flex flex-col gap-2 rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-sm border border-slate-100 dark:border-slate-800 transition-all hover:shadow-md">
+            <div class="text-primary group-hover:scale-110 transition-transform w-fit">
+                <span class="material-symbols-outlined text-4xl">domain</span>
+            </div>
+            <p class="text-3xl font-black text-slate-900 dark:text-slate-100">
+                200+
+            </p>
+            <p class="font-medium text-slate-500">Partner Companies</p>
+        </div>
+        <div class="group flex flex-col gap-2 rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-sm border border-slate-100 dark:border-slate-800 transition-all hover:shadow-md">
+            <div class="text-primary group-hover:scale-110 transition-transform w-fit">
+                <span class="material-symbols-outlined text-4xl">school</span>
+            </div>
+            <p class="text-3xl font-black text-slate-900 dark:text-slate-100">
+                95%
+            </p>
+            <p class="font-medium text-slate-500">Placement Success</p>
+        </div>
+    </div>
+    </div>
+    </section>
+    <!-- About Us Section -->
+    <section class="bg-slate-50 dark:bg-slate-900/50 py-24 px-6">
+        <div class="mx-auto max-w-7xl text-center">
+            <h2 class="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">
+                About Our Mission
+            </h2>
+            <h3 class="text-4xl font-black mb-8 text-slate-900 dark:text-slate-100">
+                Empowering the Next Generation
+            </h3>
+            <div class="mx-auto max-w-3xl">
+                <p class="text-xl leading-relaxed text-slate-600 dark:text-slate-400">
+                    We provide industry-focused training designed to bridge the gap between academia and professional careers. Our programs ensure students are career-ready through hands-on experience and expert mentorship. We don't just teach theory; we build careers through
+                    practical application and direct industry connections.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Training + Placement Process -->
+    <section class="py-24 px-6 overflow-hidden">
+        <div class="mx-auto max-w-7xl">
+            <div class="mb-16 text-center">
+                <h2 class="text-4xl font-black text-slate-900 dark:text-slate-100">
+                    Our Placement Process
+                </h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400 font-medium">
+                    Your step-by-step journey from student to professional
+                </p>
+            </div>
+            <div class="relative flex gap-8 overflow-x-auto md:grid md:grid-cols-5 md:overflow-visible">
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center group">
+                    <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary text-white shadow-xl shadow-primary/20 group-hover:rotate-12 transition-transform">
+                        <span class="material-symbols-outlined text-3xl">app_registration</span
+                  >
+                </div>
+                <h4 class="mb-2 text-xl font-bold">Register</h4>
+                <p class="text-sm text-slate-500">
+                  Sign up and choose your career track
+                </p>
+              </div>
+              <!-- Step 2 -->
+              <div
+                class="relative z-10 flex flex-col items-center text-center group"
+              >
+                <div
+                  class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 border-2 border-primary text-primary shadow-lg group-hover:rotate-12 transition-transform"
+                >
+                  <span class="material-symbols-outlined text-3xl"
+                    >menu_book</span
+                  >
+                </div>
+                <h4 class="mb-2 text-xl font-bold">Training</h4>
+                <p class="text-sm text-slate-500">
+                  Intensive curriculum led by experts
+                </p>
+              </div>
+              <!-- Step 3 -->
+              <div
+                class="relative z-10 flex flex-col items-center text-center group"
+              >
+                <div
+                  class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 border-2 border-primary text-primary shadow-lg group-hover:rotate-12 transition-transform"
+                >
+                  <span class="material-symbols-outlined text-3xl"
+                    >terminal</span
+                  >
+                </div>
+                <h4 class="mb-2 text-xl font-bold">Real Projects</h4>
+                <p class="text-sm text-slate-500">
+                  Apply skills to live industry tasks
+                </p>
+              </div>
+              <!-- Step 4 -->
+              <div
+                class="relative z-10 flex flex-col items-center text-center group"
+              >
+                <div
+                  class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 border-2 border-primary text-primary shadow-lg group-hover:rotate-12 transition-transform"
+                >
+                  <span class="material-symbols-outlined text-3xl"
+                    >workspace_premium</span
+                  >
+                </div>
+                <h4 class="mb-2 text-xl font-bold">Certification</h4>
+                <p class="text-sm text-slate-500">
+                  Verified credentials from partners
+                </p>
+              </div>
+              <!-- Step 5 -->
+              <div
+                class="relative z-10 flex flex-col items-center text-center group"
+              >
+                <div
+                  class="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary text-white shadow-xl shadow-primary/20 group-hover:rotate-12 transition-transform"
+                >
+                  <span class="material-symbols-outlined text-3xl"
+                    >work_history</span
+                  >
+                </div>
+                <h4 class="mb-2 text-xl font-bold">Placement</h4>
+                <p class="text-sm text-slate-500">Get hired by top companies</p>
+              </div>
+              <!-- Connector Line (Desktop) -->
+              <div
+                class="absolute top-10 left-[10%] right-[10%] hidden h-[2px] bg-primary/20 md:block -z-0"
+              ></div>
+            </div>
+          </div>
+        </section>
+        <!-- Trusted Partners -->
+        <section class="bg-background-light dark:bg-background-dark py-16 px-6">
+          <div class="mx-auto max-w-7xl">
+            <p
+              class="text-center font-bold text-slate-500 uppercase tracking-widest text-xs mb-10"
+            >
+              Trusted by 80+ Industry Partners
+            </p>
+            <div class="scroll-container py-6">
+              <div class="scroll-track gap-12">
+                <div
+                  class="flex gap-12 overflow-x-auto whitespace-nowrap py-4 grayscale opacity-60 scrollbar-hide"
+                >
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    TECHCORP
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    CLOUDLY
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    DEVFLOW
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    ACCENTURE
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    FLAWSKIN
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    ORNO TECH
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    MICROCHIP
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    RIVERSILICA
+                  </div>
+                  <div
+                    class="h-12 w-36 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    PURPLE.IO
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    ARROW
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    CROSS POINT
+                  </div>
+                  <div
+                    class="h-12 w-32 bg-slate-400/20 rounded-lg flex items-center justify-center italic font-black text-xl"
+                  >
+                    PIXELIA
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Testimonials -->
+        <section class="py-24 px-6 bg-slate-50 dark:bg-slate-900/50">
+          <div class="mx-auto max-w-7xl">
+            <div class="mb-16">
+              <h2
+                class="text-4xl font-black text-slate-900 dark:text-slate-100"
+              >
+                Success Stories
+              </h2>
+              <p class="mt-4 text-slate-600 dark:text-slate-400 font-medium">
+                Hear from our students who launched their careers
+              </p>
+            </div>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+              <!-- Testimonial 1 -->
+              <div
+                class="rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-sm border border-slate-100 dark:border-slate-800"
+              >
+                <div class="mb-6 flex gap-1 text-primary">
+                  <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="mb-8 text-slate-600 dark:text-slate-400 italic">
+                        "The training was rigorous but worth it. I learned more in 3 months here than in 3 years of college. Landed a full-time role at Cloudly!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-12 w-12 rounded-full bg-slate-200 overflow-hidden">
+                            <img class="h-full w-full object-cover" data-alt="Profile photo of a successful female intern" src="https://t4.ftcdn.net/jpg/13/05/71/97/240_F_1305719796_ivQ6nzGfZZgTC86HGbalPY3376xkdD4N.jpg" />
+                        </div>
+                        <div>
+                            <h5 class="font-bold">Sravani sai</h5>
+                            <p class="text-xs text-slate-500 font-medium">
+                                Software Engineer @ Cloudly
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-sm border border-slate-100 dark:border-slate-800">
+                    <div class="mb-6 flex gap-1 text-primary">
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="mb-8 text-slate-600 dark:text-slate-400 italic">
+                        "Working on real projects gave me the confidence I needed. The mentorship program is exceptional. Highly recommended for any student."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-12 w-12 rounded-full bg-slate-200 overflow-hidden">
+                            <img class="h-full w-full object-cover" data-alt="Profile photo of a successful male intern" src="https://t3.ftcdn.net/jpg/06/99/19/54/240_F_699195440_LDdsHnqjZGiE8w2gUNCQTSavnNKsmbyM.jpg" />
+                        </div>
+                        <div>
+                            <h5 class="font-bold">Lohith</h5>
+                            <p class="text-xs text-slate-500 font-medium">
+                                UI/UX Designer @ Pixelia
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-sm border border-slate-100 dark:border-slate-800">
+                    <div class="mb-6 flex gap-1 text-primary">
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="mb-8 text-slate-600 dark:text-slate-400 italic">
+                        "The certification from InternPlatform was highly recognized during my interviews. I had three job offers before finishing my internship!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-12 w-12 rounded-full bg-slate-200 overflow-hidden">
+                            <img class="h-full w-full object-cover" data-alt="Profile photo of a young professional woman" src="https://t4.ftcdn.net/jpg/03/13/37/31/240_F_313373132_b9Az7XaGLRvSLHXlINXBIGPMIOLok8ZB.jpg" />
+                        </div>
+                        <div>
+                            <h5 class="font-bold">Chandhini</h5>
+                            <p class="text-xs text-slate-500 font-medium">
+                                Data Analyst @ TechCorp
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="bg-primary rounded-2xl p-12 lg:p-24 relative overflow-hidden premium-shadow">
+            <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl"></div>
+            <div class="relative z-10 text-center max-w-3xl mx-auto space-y-8">
+                <h2 class="text-4xl lg:text-6xl font-black text-white tracking-tight">
+                    Ready to launch your tech career?
+                </h2>
+                <p class="text-primary-foreground text-white/80 text-lg font-medium">
+                    Join our next cohort of innovators and builders. Limited spots available for the Spring program.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-primary px-10 py-5 rounded-xl font-black text-xl hover:scale-105 transition-transform shadow-xl" onclick="window.location.href = 'Student reg.html'">
+                  Apply Now
+                </button>
+                    <button class="bg-primary border-2 border-white/30 text-white px-10 py-5 rounded-xl font-black text-xl hover:bg-white/10 transition-colors">
+                  Book a Call
+                </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-900 px-6 py-16">
+        <div class="mx-auto max-w-7xl">
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-4">
+                <!-- Logo Section -->
+                <div class="col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="flex h-8 w-8 items-center justify-center">
+                            <img src="logo3.png" alt="" />
+                        </div>
+
+                        <h2 class="text-lg font-bold text-slate-900 dark:text-slate-100">
+                            ProgMaster
+                        </h2>
+                    </div>
+
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Connecting ambitious students with top-tier companies for meaningful internship experiences.
+                    </p>
+
+                    <div class="mt-6 flex gap-4 text-slate-400">
+                        <a class="hover:text-primary" href="#">
+                            <span class="material-symbols-outlined">public</span>
+                        </a>
+
+                        <a class="hover:text-primary" href="#">
+                            <span class="material-symbols-outlined">mail</span>
+                        </a>
+
+                        <a class="hover:text-primary" href="#">
+                            <span class="material-symbols-outlined">contact_support</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <button class="footer-toggle flex justify-between items-center w-full md:block mb-6 font-bold text-slate-900 dark:text-slate-100">
+                Quick Links
+
+                <span class="material-symbols-outlined md:hidden"
+                  >expand_more</span
+                >
+              </button>
+
+                    <ul class="footer-content hidden md:flex flex-col gap-3 text-sm font-medium text-slate-500">
+                        <li>
+                            <a class="hover:text-primary" href="#">Internship Search</a>
+                        </li>
+
+                        <li>
+                            <a class="hover:text-primary" href="#">Training Programs</a>
+                        </li>
+
+                        <li>
+                            <a class="hover:text-primary" href="#">Corporate Solutions</a>
+                        </li>
+
+                        <li>
+                            <a class="hover:text-primary" href="#">Career Guidance</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div class="footer-section">
+                    <button class="footer-toggle flex justify-between items-center w-full md:block mb-6 font-bold text-slate-900 dark:text-slate-100">
+                Company
+
+                <span class="material-symbols-outlined md:hidden"
+                  >expand_more</span
+                >
+              </button>
+
+                    <ul class="footer-content hidden md:flex flex-col gap-3 text-sm font-medium text-slate-500">
+                        <li>
+                            <a class="hover:text-primary" href="Aboutus.html">About Us</a>
+                        </li>
+
+                        <li>
+                            <a class="hover:text-primary" href="#">Success Stories</a>
+                        </li>
+
+                        <li>
+                            <a class="hover:text-primary" href="Contactus.html">Contact Us</a
+                  >
+                </li>
+
+                <li>
+                  <a class="hover:text-primary" href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <button class="footer-toggle flex justify-between items-center w-full md:block mb-6 font-bold text-slate-900 dark:text-slate-100">
+                Contact Info
+
+                <span class="material-symbols-outlined md:hidden"
+                  >expand_more</span
+                >
+              </button>
+
+                    <ul class="footer-content hidden md:flex flex-col gap-3 text-sm font-medium text-slate-500">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-base">mail</span
+                  >
+                  tech@progmaster.in
+                </li>
+
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary text-base"
+                    >call</span
+                  >
+                  +91 9440223975 , +91 9440223781
+                </li>
+
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary text-base"
+                    >location_on</span
+                  >
+                   3rd Floor, AMR Complex, Bazaar St, Puttur, Andhra Pradesh
+                    517583
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Copyright -->
+          <div
+            class="mt-16 border-t border-slate-100 dark:border-slate-900 pt-8 text-center"
+          >
+            <p class="text-xs text-slate-400">
+              © 2024 ProgMaster. All rights reserved. Built for the future of
+              talent.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      const line1 = document.querySelector(".line1");
+      const line2 = document.querySelector(".line2");
+      const line3 = document.querySelector(".line3");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("max-h-0");
+        menu.classList.toggle("max-h-96");
+
+        line1.classList.toggle("rotate-45");
+        line1.classList.toggle("translate-y-2");
+
+        line2.classList.toggle("opacity-0");
+
+        line3.classList.toggle("-rotate-45");
+        line3.classList.toggle("-translate-y-2");
+      });
+    </script>
+    <script>
+      const toggles = document.querySelectorAll(".footer-toggle");
+
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const content = toggle.nextElementSibling;
+
+          content.classList.toggle("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

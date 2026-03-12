@@ -1,0 +1,577 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us | InternshipHub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        display: ["Inter"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient( 135deg, #6366f1 0%, #a855f7 50%, #ec5b13 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Navigation -->
+        <header class="sticky top-0 z-50 glass border-b border-slate-200/50 px-6 lg:px-20 py-4 flex items-center justify-between bg-white/70 backdrop-blur-md">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <img src="logo3.png" class="h-10 w-10" />
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-semibold hover:text-primary" href="index.html">Home</a
+          >
+
+          <a
+            class="text-sm font-semibold hover:text-primary"
+            href="Programs.html"
+            >Programs</a
+          >
+
+          <a
+            class="text-sm font-semibold hover:text-primary"
+            href="Student reg.html"
+            >Internships</a
+          >
+
+          <a
+            class="text-primary text-sm font-bold border-b-2 border-primary"
+            href="#"
+            >About</a
+          >
+
+          <a
+            class="text-sm font-semibold hover:text-primary"
+            href="Contactus.html"
+            >Contact</a
+          >
+        </nav>
+
+        <!-- Animated Hamburger -->
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5">
+          <span
+            class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line1"
+          ></span>
+
+          <span
+            class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line2"
+          ></span>
+
+          <span
+            class="w-6 h-0.5 bg-slate-800 transition-all duration-300 line3"
+          ></span>
+        </button>
+      </header>
+      <div
+        id="mobile-menu"
+        class="max-h-0 overflow-hidden transition-all duration-500 md:hidden bg-white border-b"
+      >
+        <a class="block px-6 py-4 border-b hover:bg-slate-100" href="index.html"
+          >Home</a
+        >
+
+        <a
+          class="block px-6 py-4 border-b hover:bg-slate-100"
+          href="Programs.html"
+          >Programs</a
+        >
+
+        <a
+          class="block px-6 py-4 border-b hover:bg-slate-100"
+          href="Student reg.html"
+          >Internships</a
+        >
+
+        <a class="block px-6 py-4 border-b text-primary font-bold" href="#"
+          >About</a
+        >
+
+        <a class="block px-6 py-4 hover:bg-slate-100" href="Contactus.html"
+          >Contact</a
+        >
+      </div>
+      <!-- Hero Section -->
+      <section class="relative pt-20 pb-16 px-6 lg:px-20 overflow-hidden">
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30"
+        >
+          <div
+            class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-400 blur-[120px] rounded-full"
+          ></div>
+          <div
+            class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-400 blur-[120px] rounded-full"
+          ></div>
+        </div>
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span
+              class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-6"
+              >Our Story</span
+            >
+            <h2 class="text-5xl lg:text-7xl font-black leading-[1.1] mb-8">
+              Empowering the
+              <span class="gradient-text">Next Generation</span> of Pros
+            </h2>
+            <p
+              class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl"
+            >
+              We are on a mission to bridge the gap between academic theory and
+              industry reality. Through curated internships and expert-led
+              training, we help students transform their potential into
+              professional excellence.
+            </p>
+          </div>
+          <div class="relative">
+            <div
+              class="rounded-3xl overflow-hidden shadow-2xl rotate-2 aspect-[4/3] bg-cover bg-center"
+              data-alt="Modern collaborative workspace with young professionals"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAra3bmu8Q1M_-DfY4XBD1rapwX4ai_f0TMtY2EeIpbhcOBTv-6pA4GErgF0m4JiPN0kenCobHjaSrNJFG6giIrvaHVxVr0qqP1Em9VjOoS2eUGfnEKbsuURh71KvikExhacb6dCx4p7X7vo8hckalb2TeIyjCR2_2PjYTIB3OTFvWIIPwCMLPC7V09TCMEs9K4gR3DRZcX6bJ1ipn-Vt8Swu0I2qAiXt6FFFPE-2Wq-xwZn7-Qn7O911RzhKiMO4HxAQG6sH-QFFE&quot;);
+              "
+            ></div>
+            <div
+              class="absolute -bottom-6 -left-6 glass p-6 rounded-2xl shadow-xl max-w-[240px]"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <span class="material-symbols-outlined text-primary"
+                  >groups</span
+                >
+                <span class="font-bold">10k+ Alumni</span>
+              </div>
+              <p class="text-xs text-slate-500">
+                Successfully placed in top-tier tech companies globally.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Core Values Section -->
+      <section class="py-24 px-6 lg:px-20 bg-white/50">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h3 class="text-3xl font-bold mb-4">Our Core Values</h3>
+            <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Value 1 -->
+            <div
+              class="glass p-10 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group"
+            >
+              <div
+                class="size-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors"
+              >
+                <span class="material-symbols-outlined text-3xl"
+                  >psychology</span
+                >
+              </div>
+              <h4 class="text-xl font-bold mb-4">Expertise</h4>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                Learning from the best. Our mentors are industry veterans
+                committed to sharing real-world insights.
+              </p>
+            </div>
+            <!-- Value 2 -->
+            <div
+              class="glass p-10 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group"
+            >
+              <div
+                class="size-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors"
+              >
+                <span class="material-symbols-outlined text-3xl"
+                  >trending_up</span
+                >
+              </div>
+              <h4 class="text-xl font-bold mb-4">Growth</h4>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                Continuous evolution. We foster an environment where students
+                and partners grow together every day.
+              </p>
+            </div>
+            <!-- Value 3 -->
+            <div
+              class="glass p-10 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group"
+            >
+              <div
+                class="size-14 rounded-2xl bg-orange-100 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors"
+              >
+                <span class="material-symbols-outlined text-3xl"
+                  >auto_awesome</span
+                >
+              </div>
+              <h4 class="text-xl font-bold mb-4">Impact</h4>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                Making a difference. Every internship is designed to create
+                tangible value for both student and host.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Leadership Section -->
+      <!-- <section class="py-24 px-6 lg:px-20 gradient-bg">
+        <div class="max-w-6xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+          >
+            <div class="max-w-xl">
+              <h3 class="text-4xl font-bold mb-4">Meet Our Leadership</h3>
+              <p class="text-slate-600 dark:text-slate-400">
+                Driven by a passion for education and innovation, our team
+                brings decades of experience from top technology firms.
+              </p>
+            </div>
+            <button
+              class="flex items-center gap-2 text-primary font-bold hover:underline"
+            >
+              View all team
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"> -->
+      <!-- Leader 1 -->
+      <!-- <div class="group">
+              <div
+                class="aspect-[4/5] rounded-2xl overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  data-alt="Male executive in professional attire"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZB7d2vlJWN3wPfvoSMx5gMdlyOaIOqHdTn8fF-HTIUGB1KraSw5yUIcv13iW_4bEZU_gCLeS4NoKOfv8zfLyygokl1KcC0G_NT496AQWm7KUXBhDra8EPXQvcl0oIY5eKQS7S1GghnJBWP5L-a9H4BfJ5jmJ0rEQ6Z5VX9SNpiW7nve05REvsmdJIPQ1Vc1mObfLqTxdqKxi3tf5NqCD0xAsU5cujBw7HNevzsSZ1j4URX_N3BM2fOVzzTdkVLd_4KGjIPIk4gC4"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"
+                >
+                  <div class="flex gap-4 text-white">
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >link</span
+                    >
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >mail</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <h5 class="text-lg font-bold">David Chen</h5>
+              <p class="text-sm text-slate-500">Founder &amp; CEO</p>
+            </div> -->
+      <!-- Leader 2 -->
+      <!-- <div class="group">
+              <div
+                class="aspect-[4/5] rounded-2xl overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  data-alt="Female executive in professional attire"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUg02Zts8z_K5ZhgwCAvG6bJDZWXUPWAABGuWorxxZLj6VyN0OXxSB2XSQhmAnmJcAeOfVOkhHcLrkr_GPyRQrSM7224aDU5O_TIFgqn8AK1yfPqFtyGLiyYJI_vre1EF1F0z5R9toz22Rmr87_0jyOY5vVerGntjT4QnJpHkrnj-u_4KnP1q7NMMy2MNIjWRS8DDmwtt3fbqBt57mgAwKjatUb0rQTdb-EcgoZifO1yyfVajSNE2UhHPm1nhSlcdLSvz7va8iXjo"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"
+                >
+                  <div class="flex gap-4 text-white">
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >link</span
+                    >
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >mail</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <h5 class="text-lg font-bold">Sarah Williams</h5>
+              <p class="text-sm text-slate-500">Head of Partnerships</p>
+            </div> -->
+      <!-- Leader 3 -->
+      <!-- <div class="group">
+              <div
+                class="aspect-[4/5] rounded-2xl overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  data-alt="Male executive in professional attire"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY_SCVQQoX4rHrqyNsJKdMvhBZyUjqTwO36IDoKD-1Smu0vZlsUD24SV2R_iuuoDGxZUCKN2pIan_WtW1Js0c92uYFsWo9tAjiXgVEHQo4R5y71OxgK2MQj3iOX5IiN_G-FiZvCjS8pVJTX9lPpQyYGpnjCw88oOnmGXMtfB6a8NjljcHQdzHx2vzRNOo3UOi8SKqYf6Wcxue3DWqWn3N946E-LrBwf-T1YCjbh_j-8RKTeF_kozECZ28Y_-_ZMvt08uzOmckRCxg"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"
+                >
+                  <div class="flex gap-4 text-white">
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >link</span
+                    >
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >mail</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <h5 class="text-lg font-bold">Marcus Thorne</h5>
+              <p class="text-sm text-slate-500">Chief Technology Officer</p>
+            </div> -->
+      <!-- Leader 4 -->
+      <!-- <div class="group">
+              <div
+                class="aspect-[4/5] rounded-2xl overflow-hidden mb-4 relative"
+              >
+                <img
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  data-alt="Female executive in professional attire"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuARUZuMLj0kVQeovFM1zDwsEHDv8TdGBYuXxUDMAEdmsFTFPh3nH7iK2kINMWv9TwcPG5GyuWE0MrfXYRkquHm4j0hjvf3aUWJnzbZcpQEebm8LwYj_XxbvaV_9r0vPYn7G9odbM5dqMIFqPIRW6sKox5CjGqzWJgU5YMDqbJzwmI6pOWD3PG2V0d_zNaNUXOsyA7eLj2V5KCTg4oFBfkUklUtIbMD0WdUABxYpml3rnA-KZ4KtB-97leNrCTDlgyVGMBLdjR6cOsw"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"
+                >
+                  <div class="flex gap-4 text-white">
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >link</span
+                    >
+                    <span
+                      class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors"
+                      >mail</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <h5 class="text-lg font-bold">Elena Rodriguez</h5>
+              <p class="text-sm text-slate-500">Director of Education</p>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- Call to Action -->
+      <section class="py-24 px-6 lg:px-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary/5 -z-10"></div>
+        <div
+          class="max-w-4xl mx-auto glass p-12 lg:p-20 rounded-[40px] text-center border border-white shadow-2xl relative"
+        >
+          <div
+            class="absolute -top-10 -right-10 size-40 bg-primary/20 blur-[60px] rounded-full"
+          ></div>
+          <h3 class="text-4xl lg:text-5xl font-black mb-6">
+            Ready to start your
+            <span class="text-primary">career journey?</span>
+          </h3>
+          <p
+            class="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
+            Join thousands of students who have accelerated their professional
+            growth through our platform. Your dream internship is just one click
+            away.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              class="bg-primary text-white px-10 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform shadow-lg shadow-primary/30"
+            >
+              Get Started Today
+            </button>
+            <button
+              class="bg-white text-slate-900 border border-slate-200 px-10 py-4 rounded-full text-lg font-bold hover:bg-slate-50 transition-colors"
+            >
+              Browse Internships
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="bg-slate-950 text-slate-400 py-16 px-6 lg:px-20">
+        <div class="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12">
+          <div class="col-span-2 lg:col-span-1">
+            <div class="flex items-center gap-3 mb-6 text-white">
+              <div class="flex h-10 w-10 items-center justify-center">
+                <img src="logo3.png" alt="" />
+              </div>
+              <span class="text-xl font-bold">ProgMaster</span>
+            </div>
+            <p class="text-sm leading-relaxed mb-6">
+              Empowering students through premium training and placement
+              opportunities worldwide.
+            </p>
+            <div class="flex gap-4">
+              <div
+                class="size-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"
+              >
+                <span class="material-symbols-outlined text-sm text-white"
+                  >share</span
+                >
+              </div>
+              <div
+                class="size-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"
+              >
+                <span class="material-symbols-outlined text-sm text-white"
+                  >language</span
+                >
+              </div>
+            </div>
+          </div>
+          <div>
+            <h6 class="text-white font-bold mb-6">Quick Links</h6>
+            <ul class="space-y-4 text-sm">
+              <li>
+                <a
+                  class="hover:text-primary transition-colors"
+                  href="Contactus.html"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Success Stories</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-primary transition-colors"
+                  href="Collegepatner.html"
+                  >Partner With Us</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Careers</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h6 class="text-white font-bold mb-6">Resources</h6>
+            <ul class="space-y-4 text-sm">
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Student Blog</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Training Catalog</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Help Center</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition-colors" href="#"
+                  >Resume Builder</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h6 class="text-white font-bold mb-6">Newsletter</h6>
+            <p class="text-sm mb-4">
+              Get the latest career tips delivered to your inbox.
+            </p>
+            <div class="flex flex-col gap-2">
+              <input
+                class="bg-slate-900 border-slate-800 rounded-lg px-4 py-2 text-sm focus:ring-primary focus:border-primary"
+                placeholder="Email address"
+                type="email"
+              />
+              <button
+                class="bg-primary text-white py-2 rounded-lg font-bold text-sm hover:opacity-90"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="max-w-6xl mx-auto pt-16 mt-16 border-t border-slate-900 flex flex-col md:flex-row justify-between gap-6 text-xs"
+        >
+          <p>© 2024 ProgMaster Private Limited. All rights reserved.</p>
+          <div class="flex gap-8">
+            <a class="hover:text-white" href="#">Privacy Policy</a>
+                <a class="hover:text-white" href="#">Terms of Service</a>
+                <a class="hover:text-white" href="#">Cookie Policy</a>
+    </div>
+    </div>
+    </footer>
+    </div>
+    <script>
+        const btn = document.getElementById("menu-btn");
+        const menu = document.getElementById("mobile-menu");
+
+        const line1 = document.querySelector(".line1");
+        const line2 = document.querySelector(".line2");
+        const line3 = document.querySelector(".line3");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("max-h-0");
+            menu.classList.toggle("max-h-96");
+
+            /* Hamburger Animation */
+
+            line1.classList.toggle("rotate-45");
+            line1.classList.toggle("translate-y-2");
+
+            line2.classList.toggle("opacity-0");
+
+            line3.classList.toggle("-rotate-45");
+            line3.classList.toggle("-translate-y-2");
+        });
+    </script>
+    <script>
+        const toggles = document.querySelectorAll(".footer-toggle");
+
+        toggles.forEach((toggle) => {
+            toggle.addEventListener("click", () => {
+                const content = toggle.nextElementSibling;
+
+                content.classList.toggle("hidden");
+            });
+        });
+    </script>
+</body>
+
+</html>
